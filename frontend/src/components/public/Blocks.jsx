@@ -5,6 +5,7 @@ import { ContactForm } from "./ContactForm";
 import { NoteList } from "./NoteList";
 import { media } from "../../lib/api";
 import { useSite } from "../../lib/site";
+import { CraftHero } from "./CraftHero";
 
 export const fontStack = (f) => `"${f}", system-ui, sans-serif`;
 const IMPORTANT_PROPS = ["fontFamily", "fontSize", "fontWeight", "fontStyle", "color", "textAlign", "textTransform", "lineHeight", "letterSpacing"];
@@ -80,8 +81,11 @@ function AreaStrip() {
   );
 }
 
-function Hero({ d, s, first, i, home }) {
+function Hero({ d, s, first, i, home, pageKey }) {
   const hasImg = !!d.image?.media;
+  if (pageKey === "craft-livelihood" && hasImg) {
+    return <CraftHero data={d} first={first} id={`block-${i}`} editable={(field) => sx(s, field)} />;
+  }
   const text = (
     <div className="hero-text reveal">
       <Eyebrow text={d.eyebrow} ed={sx(s, "eyebrow")} />
@@ -183,11 +187,11 @@ function TextBlock({ d, s, first, id }) {
   );
 }
 
-function BlockInner({ s, first, i, home }) {
+function BlockInner({ s, first, i, home, pageKey }) {
   const d = s.data || {};
   const t = s.type;
   const id = `block-${i}`;
-  if (t === "hero") return <section data-testid={id}><Hero d={d} s={s} first={first} i={i} home={home} /></section>;
+  if (t === "hero") return <section data-testid={id}><Hero d={d} s={s} first={first} i={i} home={home} pageKey={pageKey} /></section>;
   if (t === "text" && d.style === "statement")
     return (
       <section className="wrap section statement" data-testid={id}>
@@ -294,6 +298,6 @@ function BlockInner({ s, first, i, home }) {
   return null;
 }
 
-export function Blocks({ sections, home = false }) {
-  return sections.filter((s) => !s.hidden).map((s, i) => <Block key={s.id || i} s={s} i={i} first={i === 0} home={home} />);
+export function Blocks({ sections, home = false, pageKey }) {
+  return sections.filter((s) => !s.hidden).map((s, i) => <Block key={s.id || i} s={s} i={i} first={i === 0} home={home} pageKey={pageKey} />);
 }

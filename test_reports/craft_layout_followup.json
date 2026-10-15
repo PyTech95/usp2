@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-15",
+  "task": "Craft & Livelihood reference layout follow-up to iteration_10",
+  "build": "PASS: production bundle compiled",
+  "verified": {
+    "tablet_width": 1024,
+    "tablet_hero_ratio": 1.6000053658143965,
+    "tablet_horizontal_overflow": false,
+    "media_responses_observed": 9,
+    "failed_media_responses": [],
+    "unauthorized_endpoints": ["/api/auth/me"],
+    "editor_navigation_craft_to_home": "PASS",
+    "editor_navigation_home_to_our_work": "PASS",
+    "editor_navigation_our_work_to_field_notes": "PASS",
+    "editor_navigation_field_notes_to_connect": "PASS",
+    "nav_links_uncovered": true,
+    "editor_persists_across_all_navigations": true,
+    "editor_exit": "PASS",
+    "content_saved": false
+  },
+  "notes": [
+    "Desktop visual measurements, image pixel rendering, responsive matrix and editor selection passed in iteration_10",
+    "1024 ratio breakpoint fixed and verified in a real 1024px iframe viewport",
+    "The alleged media 401s in iteration_10 were not reproduced: captured 401 URLs were only expected anonymous auth/me session probes",
+    "Homepage and subsequent Craft sections unchanged; no DB or media changes"
+  ],
+  "mocked_apis": false,
+  "outstanding_action": "User visual approval"
+}

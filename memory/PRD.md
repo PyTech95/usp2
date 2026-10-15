@@ -1,6 +1,17 @@
 # USP India — PRD
 
-## Current task — 2026-10-15 homepage layout reference pass
+## Current task — 2026-10-15 Craft & Livelihood reference pass
+- User: **"craft-livelihood should also need to match with attached image 100%"**. Approved scope: header, hero, intro strip and Knowledge Carried Forward section visible in the image; homepage and subsequent craft sections unchanged.
+- Reference: https://customer-assets-39nsmqrw.emergentagent.net/job_5ec4ca08-0c12-4a0c-bc35-7fc5dff11a55/artifacts/504cb517e1e146c4_image.png (1550×1600; local `/tmp/craft-reference.png`).
+- Added `components/public/CraftHero.jsx` and `styles/craft-reference.css`. PageBody assigns `#craft-reference` and passes `pageKey` into Blocks; only Craft's image hero uses the new component. Existing approved media ID, text, CMS fields and all lower sections retained.
+- Layout: grey divided navigation aligned to reference; 91%-wide hero without viewport-height cap; white two-line title at bottom-left, subtle bottom gradient; indented grey intro strip; 47/53 Knowledge columns, larger light Public Sans text and ruby rule. CSS limited to header, new hero and adjacent first text block. Responsive ratios: desktop 20:11, tablet through 1024px 16:10, mobile through 600px 4:5.
+- Verification: `yarn build` PASS. `/app/test_reports/iteration_10.json`: desktop 1440/1550 visual metrics, real nonblank image pixel check, responsive matrix 320/390/768/1024/1440/1550/1920, editor selection and 8 resize handles verified. Tablet 1024 ratio corrected after report. Follow-up browser verification: ratio 1.600005 at 1024, no overflow; 9 media responses with no HTTP failures; editor persists Craft→Home→Our Work→Field Notes→Connect and exits cleanly. No content saved by tests.
+- Important correction to testing report: alleged media 401s were **not reproduced**; captured unauthorized URLs are exclusively expected anonymous `/api/auth/me` probes. No auth logic changed and no unresolved media-access bug found.
+- No DB updates, media replacements, credentials changes, production writes or new integrations. No mocks.
+- **P0:** User visual review of Craft reference match. **P1:** Homepage exact Field Notes photos and real article content deferred by user; remaining inner pages only on request. **P2:** SSR parity/hardening and preview→production promotion workflow remain backlog.
+- Enhancement suggestion: link the crafts to their real Field Notes stories after those stories are approved.
+
+## Completed — 2026-10-15 homepage layout reference pass
 - User: **"copy the same design with 100% match for home page"**, then approved homepage-only changes. Final clarification: **"image we can change later focus on layout"**. Do not source/generate/replace photographs in this task or redesign inner pages.
 - Reference: `USP_Homepage_Revised (1).webp` (611×2000), stored for comparison at `/tmp/home-reference.webp`. This pass supersedes the older journal/cinematic instructions below. Exact photo parity is NOT claimed: second reference photo (two basket makers outdoors) is unavailable and explicitly deferred.
 - Added `/frontend/src/styles/home-reference.css`, imported after legacy CSS, scoped to `#home-reference` on PageBody. Public Sans, sampled light-grey/peach palette, three-line text-only hero, aligned 7% rails, two-column introductions, numbered 2×2 work grid with horizontal rules alongside numbers, grey impact band, asymmetric equal-height portrait/landscape Field Notes photos, full-width Connect copy with links underneath, light footer. Blog/Privacy retained from prior request.

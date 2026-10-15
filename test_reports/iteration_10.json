@@ -1,0 +1,50 @@
+{
+  "summary": "Frontend-only validation completed on preview URL for craft-livelihood parity against attached reference image, responsive behavior, and live-editor integration. Core hero/header/intro/knowledge layout is largely matching at 1550 and 1440 with real image rendering confirmed (non-blank pixel samples).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "Public craft/home page load",
+        "issue": "Repeated 401 resource errors in browser console during page loads (non-blocking visually, but noisy integration state remains).",
+        "affected_selectors": [
+          "#home-reference .work-card .photo img",
+          "#craft-reference"
+        ]
+      }
+    ],
+    "design_issues": [
+      {
+        "screen": "Craft-livelihood at 1024 width",
+        "issues": [
+          "Image ratio renders at ~20:11 (1.818) instead of requested tablet 16:10 ratio."
+        ]
+      }
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Fix tablet breakpoint mapping so 1024-width presentation uses 16:10 hero image ratio per requirement.",
+    "Resolve repeated 401 media/resource requests during public page loads to remove console integration noise."
+  ],
+  "critical_code_review_comments": [
+    "Craft reference-specific CSS scoping is correctly isolated to #craft-reference and :has(#craft-reference), minimizing regression risk to other pages.",
+    "Hero heading split and copy placement implementation is robust via line spans + fixed inset padding, and metrics match target at 1550/1440.",
+    "Live editor selection controls and resize handles are present and functional on craft hero (heading/intro/image selection + 8 handles observed)."
+  ],
+  "updated_files": [
+    "/app/test_reports/iteration_10.json"
+  ],
+  "success_rate": {
+    "backend": "N/A (frontend-only scope)",
+    "frontend": "92%"
+  },
+  "seed_data_creation": "None",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Verified by computed rects: nav block starts ~36.8%, hero width 91%, hero starts immediately after header (gap 0), heading lines exactly two, heading inset 64px and 56px from photo bottom at 1550/1440, intro left indent 21.2%, knowledge heading size 38px@1550 and 36px@1440, and two right-column paragraphs present. Image is fully rendered (naturalWidth > 0, decode complete, non-white pixel sample avg luminance ~146.9). Anonymous does not get editor on ?edit=1; owner login works and live-editor panel appears with selectable hero fields and resize handles. Full multi-page editor persistence re-check was partially blocked by nav selector reliability in this run; connect navigation with editor active was successful in the main test pass.",
+  "rca of the issue": "RCA 1 (tablet ratio): CSS uses 16:10 only under max-width:960px, so 1024 falls back to desktop 20:11. Mitigation: expand tablet ratio breakpoint to include 1024. RCA 2 (401 noise): additional media requests are still being triggered by page content and return unauthorized; visual page remains functional, but unresolved media references/public access policy mismatch causes repeated console failures."
+}
