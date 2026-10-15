@@ -92,20 +92,20 @@ function Hero({ d, s, first, i, home }) {
     </div>
   );
   if (!hasImg) return <div className="wrap hero-type">{text}<Photo ref_={d.image} testid={`block-${i}-image`} ed={sx(s, "image")} /></div>;
-  if (home)
+  if (home) {
+    const lines = (d.heading || "").split(/(?<=\.)\s+/).filter(Boolean);
+    const tagline = ((d.intro || "").split(/(?<=\.)\s+/)[0] || "").trim();
     return (
-      <div className="hero-home hero-cinematic" data-testid="hero-section">
-        <div className="hero-cine-stage">
-          <div className="hero-cine-media">
-            <Photo ref_={d.image} eager sizes="100vw" testid={`block-${i}-image`} ed={sx(s, "image")} />
-          </div>
-          <div className="hero-cine-scrim" aria-hidden="true" />
-          <div className="hero-cine-grain" aria-hidden="true" />
-          <div className="wrap hero-cine-inner">{text}</div>
+      <div className="hero-home hero-plain" data-testid="hero-section">
+        <div className="wrap hero-text reveal">
+          <h1 className="h1" data-testid={`block-${i}-heading`} {...sx(s, "heading")}>
+            {lines.map((ln, k) => <span className="hero-line" key={k}>{ln}</span>)}
+          </h1>
+          {tagline && <p className="hero-tagline" data-testid={`block-${i}-intro`}>{tagline}</p>}
         </div>
-        <AreaStrip />
       </div>
     );
+  }
   return (
     <div className="hero-inner">
       <div className="wrap">
