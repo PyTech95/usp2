@@ -268,4 +268,9 @@ async def public_image(mid: str, w: int):
     d = next((x for x in m["derivs"] if x["w"] == w), None)
     if not d:
         raise HTTPException(404, "Not found")
-    return serve(await fetch(d["path"]), d["ctype"], "public, max-age=300")
+    try:
+        data = await fetch(d["path"])
+    except Exception:
+        # Transient object-storage error (e.g. rate limit) — 503 so caches don't store it and the browser retries.
+        raise HTTPException(503, "Image temporarily unavailable")
+    return serve(data, d["ctype"], "public, max-age=31536000, immutable")

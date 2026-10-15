@@ -1,8 +1,10 @@
 import os
 import io
+import time
 import uuid
 import logging
 import hashlib
+import threading
 from datetime import datetime, timezone, date
 from pathlib import Path
 from dotenv import load_dotenv
@@ -129,21 +131,45 @@ def ip_hash(request: Request):
 _STORAGE_BASE = (os.environ.get("INTEGRATION_PROXY_URL") or "").strip() or "https://integrations.emergentagent.com"
 STORAGE_URL = _STORAGE_BASE.rstrip("/") + "/objstore/api/v1/storage"
 _storage_key = None
+_storage_lock = threading.Lock()
+
+
+def _req(method, url, **kwargs):
+    """HTTP call that retries on 429/transient 5xx with exponential backoff (honours Retry-After)."""
+    delay = 0.5
+    r = None
+    for attempt in range(5):
+        r = requests.request(method, url, **kwargs)
+        if r.status_code in (429, 502, 503, 504):
+            ra = r.headers.get("Retry-After")
+            try:
+                wait = float(ra) if ra else delay
+            except ValueError:
+                wait = delay
+            time.sleep(min(max(wait, 0.1), 8))
+            delay = min(delay * 2, 8)
+            continue
+        return r
+    return r  # exhausted; caller's raise_for_status surfaces it
 
 
 def init_storage(force=False):
     global _storage_key
     if _storage_key and not force:
         return _storage_key
-    r = requests.post(f"{STORAGE_URL}/init", json={"emergent_key": os.environ["EMERGENT_LLM_KEY"]}, timeout=30)
-    r.raise_for_status()
-    _storage_key = r.json()["storage_key"]
-    return _storage_key
+    # Share a single /init across a cold-start burst instead of each image racing it.
+    with _storage_lock:
+        if _storage_key and not force:
+            return _storage_key
+        r = _req("POST", f"{STORAGE_URL}/init", json={"emergent_key": os.environ["EMERGENT_LLM_KEY"]}, timeout=30)
+        r.raise_for_status()
+        _storage_key = r.json()["storage_key"]
+        return _storage_key
 
 
 def _put(path, data, ctype):
     for attempt in range(2):
-        r = requests.put(f"{STORAGE_URL}/objects/{path}", headers={"X-Storage-Key": init_storage(attempt == 1), "Content-Type": ctype}, data=data, timeout=120)
+        r = _req("PUT", f"{STORAGE_URL}/objects/{path}", headers={"X-Storage-Key": init_storage(attempt == 1), "Content-Type": ctype}, data=data, timeout=120)
         if r.status_code == 404 and attempt == 0:
             continue
         r.raise_for_status()
@@ -152,7 +178,7 @@ def _put(path, data, ctype):
 
 def _get(path):
     for attempt in range(2):
-        r = requests.get(f"{STORAGE_URL}/objects/{path}", headers={"X-Storage-Key": init_storage(attempt == 1)}, timeout=60)
+        r = _req("GET", f"{STORAGE_URL}/objects/{path}", headers={"X-Storage-Key": init_storage(attempt == 1)}, timeout=60)
         if r.status_code == 404 and attempt == 0:
             continue
         r.raise_for_status()

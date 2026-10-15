@@ -77,9 +77,10 @@ export function LiveEditor(props) {
   const { can } = useAuth();
   const site = useSite();
   const editParam = typeof window !== "undefined" && new URLSearchParams(window.location.search).has("edit");
+  const persisted = typeof window !== "undefined" && (() => { try { return sessionStorage.getItem("usp-live-edit") === "1"; } catch { return false; } })();
   if (!can("content.publish")) return null;
-  if (!site?.live_editor_enabled && !editParam) return null;
-  return <Editor key={props.pageKey} autoStart={editParam} {...props} />;
+  if (!site?.live_editor_enabled && !editParam && !persisted) return null;
+  return <Editor key={props.pageKey} autoStart={editParam || persisted} {...props} />;
 }
 
 function Editor({ pageKey, content, setContent, original, remount, autoStart }) {
@@ -153,6 +154,7 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
   // toggle editing mode
   useEffect(() => {
     document.body.classList.toggle("live-editing", on);
+    try { if (on) sessionStorage.setItem("usp-live-edit", "1"); else sessionStorage.removeItem("usp-live-edit"); } catch { /* ignore */ }
     remount();
     return () => document.body.classList.remove("live-editing");
   }, [on]); // eslint-disable-line
