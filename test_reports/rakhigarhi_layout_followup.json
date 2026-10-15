@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-15",
+  "task": "Rakhigarhi PDF/reference page follow-up to iteration_12",
+  "backend": {"passed": 15, "failed": 0, "report": "/app/test_reports/pytest/rakhigarhi_followup.xml"},
+  "report_correction": "The two hash links already existed under Our Work > Rakhigarhi > children. The original test incorrectly expected them directly under Our Work. Corrected the test hierarchy; no menu or app navigation changes were required.",
+  "ui_followup": {
+    "nav-m-rak-1": "PASS: hover opens actual menu; click navigates and scrolls to #archaeology",
+    "nav-m-rak-2": "PASS: hover opens actual menu; click navigates and scrolls to #haveli-chaupal",
+    "approved_collage_images_loaded": 3,
+    "desktop_horizontal_overflow": false,
+    "hero_background": "rgb(255, 255, 255)",
+    "detail_image_fit": "contain",
+    "detail_image_boxes_1920": [
+      {"width": 362.75, "height": 458.59375},
+      {"width": 250.390625, "height": 458.59375}
+    ]
+  },
+  "already_verified_by_agent": [
+    "Nine sections and full PDF copy without old draft placeholders",
+    "Responsive widths 320,390,768,1024,1440,1536,1920 without overflow",
+    "Three-column use grid and Ambition reflow appropriately",
+    "Facade and nested collage images selectable with Library/Upload and 8 resize handles",
+    "Hero/body/aside text editing and cross-page editor persistence",
+    "Home, Craft and Workshops regression checks"
+  ],
+  "mocked_apis": false,
+  "placeholders_on_rakhigarhi": 0,
+  "remaining": "User visual review"
+}

@@ -7,6 +7,7 @@ import { media } from "../../lib/api";
 import { useSite } from "../../lib/site";
 import { CraftHero } from "./CraftHero";
 import { WorkshopsHero } from "./WorkshopsHero";
+import { RakhigarhiHero, HaveliRestoration } from "./RakhigarhiSections";
 
 export const fontStack = (f) => `"${f}", system-ui, sans-serif`;
 const IMPORTANT_PROPS = ["fontFamily", "fontSize", "fontWeight", "fontStyle", "color", "textAlign", "textTransform", "lineHeight", "letterSpacing"];
@@ -84,6 +85,9 @@ function AreaStrip() {
 
 function Hero({ d, s, first, i, home, pageKey }) {
   const hasImg = !!d.image?.media;
+  if (pageKey === "rakhigarhi") {
+    return <RakhigarhiHero data={d} id={`block-${i}`} editable={(field) => sx(s, field)} />;
+  }
   if (pageKey === "workshops-learning") {
     return <WorkshopsHero data={d} id={`block-${i}`} editable={(field) => sx(s, field)} />;
   }
@@ -199,6 +203,9 @@ function BlockInner({ s, first, i, home, pageKey }) {
   const d = s.data || {};
   const t = s.type;
   const id = `block-${i}`;
+  if (pageKey === "rakhigarhi" && t === "image_text" && d.layout === "haveli-reference") {
+    return <HaveliRestoration data={d} id={id} editable={(field) => sx(s, field)} />;
+  }
   if (t === "hero") return <section data-testid={id}><Hero d={d} s={s} first={first} i={i} home={home} pageKey={pageKey} /></section>;
   if (t === "text" && d.style === "statement")
     return (
@@ -307,5 +314,19 @@ function BlockInner({ s, first, i, home, pageKey }) {
 }
 
 export function Blocks({ sections, home = false, pageKey }) {
-  return sections.filter((s) => !s.hidden).map((s, i) => <Block key={s.id || i} s={s} i={i} first={i === 0} home={home} pageKey={pageKey} />);
+  const visible = sections.filter((s) => !s.hidden);
+  const render = (s, i) => <Block key={s.id || i} s={s} i={i} first={i === 0} home={home} pageKey={pageKey} />;
+  if (pageKey !== "rakhigarhi") return visible.map(render);
+  const result = [];
+  let group = [];
+  const flush = () => {
+    if (group.length) result.push(<div className="rak-use-grid" data-testid={`rakhigarhi-use-grid-${result.length}`} key={`use-${group[0].key}`}>{group}</div>);
+    group = [];
+  };
+  visible.forEach((s, i) => {
+    if (s.data?.layout === "haveli-use") group.push(render(s, i));
+    else { flush(); result.push(render(s, i)); }
+  });
+  flush();
+  return result;
 }

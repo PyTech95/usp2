@@ -1,0 +1,61 @@
+{
+  "summary": "Completed backend + frontend verification for Rakhigarhi reference page and related regressions. Public section structure/copy/images/responsive behavior and live-editor image/text editing flows are working. One requirement mismatch found: expected hash deep-links are not present in navigation/menu data.",
+  "backend_issues": {
+    "critical": [
+      {
+        "endpoint": "/api/public/site",
+        "issue": "Main menu data does not include /our-work/rakhigarhi#archaeology and /our-work/rakhigarhi#haveli-chaupal; only /our-work/rakhigarhi is present.",
+        "priority": "HIGH"
+      }
+    ],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "Rakhigarhi navigation deep links",
+        "issue": "No anchor links with #archaeology or #haveli-chaupal are rendered in current public navigation; direct hash URLs resolve, but explicit links are absent.",
+        "affected_selectors": [
+          "a[href*='#archaeology']",
+          "a[href*='#haveli-chaupal']"
+        ]
+      },
+      {
+        "flow": "Anonymous public browsing",
+        "issue": "Observed 401 only on /api/auth/me during unauthenticated visits (expected/non-blocking).",
+        "affected_selectors": [
+          "N/A (network: /api/auth/me)"
+        ]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_rakhigarhi_public_api.py",
+    "/app/backend/tests/test_workshops_public_api.py",
+    "/app/test_reports/pytest/pytest_results_iteration_12.xml"
+  ],
+  "action_items": [
+    "Add/restore required hash deep-links for Rakhigarhi sections (#archaeology and #haveli-chaupal) in intended menu/navigation source.",
+    "Re-run backend pytest and UI smoke after menu deep-link fix."
+  ],
+  "critical_code_review_comments": [
+    "Rakhigarhi content migration appears correctly applied and stable: 9 sections, expected anchors/order, white hero copy, approved media references, and migration marker design_migration=rakhigarhi-reference-2026-10-15.",
+    "Revision safety checks passed: pre-migration backups exist in revisions (before Rakhigarhi reference for published/draft).",
+    "LiveEditor image-path handling works for image and collage.n fields: selecting facade/detail images exposes Library/Upload controls and all 8 resize handles without turning those image targets into contentEditable text."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_rakhigarhi_public_api.py",
+    "/app/test_reports/iteration_12.json"
+  ],
+  "success_rate": {
+    "backend": "93% (14/15)",
+    "frontend": "96%"
+  },
+  "seed_data_creation": "None",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Validated on preview URL with owner credentials from /app/memory/test_credentials.md. Public checks passed for: hero copy, required section anchors, collage image decode after scroll, responsive widths 320/390/768/1024/1440/1536/1920 (no overflow), 3-column to 1-column use grid behavior, ambition stacking <=960, Explore Craft & Livelihood link, and cross-page regressions (home/craft/workshops available; workshops dummy placeholders/film pending unchanged via existing tests). Live editor checks passed for owner on ?edit=1 with persistence across craft/home/workshops and image-field selection for facade+collage[0]+collage[1].",
+  "rca of the issue": "Root cause of failing test: site menu configuration currently stores only /our-work/rakhigarhi child link and does not contain deep-link anchors for #archaeology and #haveli-chaupal. This is a content/menu data mismatch rather than routing failure, because direct hash URLs themselves resolve and target sections exist. Mitigation: update menu children or intended navigation source to include the two deep-link hrefs and keep hash fragments intact through render."
+}

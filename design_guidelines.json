@@ -2,6 +2,7 @@
   "project": "USP India reference-led editorial CMS",
   "typography": "Public Sans. No serif redesign. Existing Home and Craft reference styles remain untouched.",
   "implemented_pages": {
+    "rakhigarhi": {"stylesheet": "frontend/src/styles/rakhigarhi-reference.css", "references": ["fe9f5e51cce6bb29_USP Rakhigarhi Editorial Landing Page (1).png", "93e3a237d7da9092_Restoring the Haveli’s Legacy (2).png", "b53aafd342713049_One Restoration, Wider Possibility.png"], "notes": "Latest white text-only hero, ruby overline, two-column muted intro, wide facade above two detail photos and narrative, three uses in a responsive grid, large two-line Ambition heading and three divided paragraphs. Public Sans, 6% rails. Approved library photographs only; missing image fallback may use dummy boxes. Other pages unchanged."},
     "home": {"stylesheet": "frontend/src/styles/home-reference.css", "reference": "USP_Homepage_Revised (1).webp", "notes": "Text-only grey hero, numbered grid, asymmetric Field Notes photographs, light footer."},
     "craft": {"stylesheet": "frontend/src/styles/craft-reference.css", "reference": "504cb517e1e146c4_image.png", "notes": "Wide photograph hero, white bottom-left title, grey intro strip, two-column Knowledge section."},
     "workshops": {

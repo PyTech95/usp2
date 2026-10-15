@@ -20,6 +20,7 @@ const LABELS = { eyebrow: "Small label", heading: "Heading", subheading: "Sub-he
 function labelFor(field) {
   if (!field) return "";
   if (LABELS[field]) return LABELS[field];
+  if (/^collage\.\d+$/.test(field)) return `Photograph ${Number(field.split(".")[1]) + 1}`;
   const m = field.match(/^(items|cards)\.(\d+)\.(\w+)$/);
   if (m) {
     const kind = m[1] === "items" ? "Card" : "Note card";
@@ -103,7 +104,8 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
   const sec = sel && sections.find((s) => s.id === sel.sec);
   const field = sel?.field;
   const st = (sec?.styles || {})[field] || {};
-  const isText = !!field && field !== "_section" && field !== "image" && !field.endsWith(".image");
+  const isImage = !!field && (field === "image" || field.endsWith(".image") || /^collage\.\d+$/.test(field));
+  const isText = !!field && field !== "_section" && !isImage;
   const selEl = on && sel ? findEl(sel) : null;
   const cstyle = selEl ? window.getComputedStyle(selEl) : null;
   const padPH = (p) => (cstyle ? String(Math.round(parseFloat(cstyle[p]) || 0)) : "0");
@@ -243,7 +245,7 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
       toast.success("Saved — your changes are now live on the public page");
     } catch (e) { toast.error(errMsg(e)); } finally { setBusy(false); }
   };
-  const setImage = (m) => { patchSec(sel.sec, (s) => ({ ...s, data: { ...s.data, image: { ...(s.data.image || {}), media_id: m.id, media: undefined } } })); remount(); setBusy(false); };
+  const setImage = (m) => { patchSec(sel.sec, (s) => ({ ...s, data: setPath(s.data, field, { ...(getPath(s.data, field) || {}), media_id: m.id, media: undefined }) })); remount(); setBusy(false); };
   const upload = async (file) => {
     if (!file) return;
     const fd = new FormData(); fd.append("file", file); fd.append("category", "live-editor");
@@ -392,7 +394,7 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
           <div data-testid="live-controls">
             <p className="live-label" data-testid="live-selected-label">{labelFor(field)}</p>
 
-            {field === "image" ? (
+            {isImage ? (
               <div className="live-row">
                 <button type="button" className="live-btn" onClick={() => setPicker(true)} data-testid="live-choose-image"><Images size={14} /> Library</button>
                 <button type="button" className="live-btn" onClick={() => fileRef.current?.click()} disabled={busy} data-testid="live-upload-image"><Upload size={14} /> Upload</button>
@@ -434,7 +436,7 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
               </div>
             </>)}
 
-            {(field === "image" || isText || field === "_section") && (
+            {(isImage || isText || field === "_section") && (
               <>
                 <div className="live-row">
                   <label className="live-field">Width (px)<input type="number" value={px(st.width)} placeholder="auto" onChange={(e) => setStyles({ width: e.target.value ? `${e.target.value}px` : "" })} data-testid="live-width" /></label>
