@@ -1024,6 +1024,10 @@ body.live-editing main [data-edit][contenteditable="true"] { cursor: text; outli
 .live-field { display: flex; flex-direction: column; gap: 4px; font-size: 12px; flex: 1; margin-bottom: 10px; }
 .live-field input, .live-field select { border: 1px solid #ccc; height: 32px; padding: 0 6px; width: 100%; background: #fff; }
 .live-field input[type=color] { padding: 2px; }
+.live-color-row { display: flex; gap: 6px; align-items: center; }
+.live-color-row input[type=color] { width: 40px; flex: 0 0 40px; height: 32px; }
+.live-color-hex { flex: 1 1 auto; min-width: 0; }
+.live-color-cap { display: inline-flex; align-items: center; gap: 4px; }
 .live-label { font-weight: 600; text-transform: uppercase; letter-spacing: .08em; font-size: 11px; color: #D41445; margin-bottom: 6px; }
 .live-hint { color: #3a3a3a; font-size: 12px; line-height: 1.5; margin-bottom: 10px; }
 @media (max-width: 760px) { body.live-editing main { padding-right: 0; } .live-panel { top: auto; bottom: 8px; height: 46dvh; left: 8px; right: 8px; width: auto; } }

@@ -184,13 +184,13 @@ async def seed():
     await db.tokens.create_index("expires_at_dt", expireAfterSeconds=0)
 
     email, pw = os.environ["ADMIN_EMAIL"].lower(), os.environ["ADMIN_PASSWORD"]
-    u = await db.users.find_one({"email": email})
-    if not u:
-        await db.users.insert_one({"id": new_id(), "email": email, "name": "Owner", "role": "owner", "active": True, "password_hash": hash_password(pw), "created_at": now()})
-    elif not verify_password(pw, u["password_hash"]):
-        await db.users.update_one({"email": email}, {"$set": {"password_hash": hash_password(pw)}})
+    # Bootstrap a new installation only. Republish must NEVER reset a live
+    # account's password/role or create a second owner from changed env values.
+    if await db.users.find_one({}, {"_id": 0, "id": 1}) is None:
+        await db.users.update_one({"email": email}, {"$setOnInsert": {"id": new_id(), "email": email, "name": "Owner", "role": "owner", "active": True, "password_hash": hash_password(pw), "created_at": now()}}, upsert=True)
 
-    if not await db.settings.find_one({"key": "site"}):
+    new_site = await db.settings.find_one({"key": "site"}) is None
+    if new_site:
         await db.settings.insert_one(default_settings())
 
     for key, (title, sections) in page_sections().items():
@@ -200,11 +200,11 @@ async def seed():
         await db.pages.insert_one({"id": new_id(), "key": key, "path": PAGE_PATHS[key], "required": True, "draft": content, "published": content,
                                    "status": "published", "updated_at": now(), "published_at": now(), "has_unpublished_changes": False})
 
-    if await db.register.count_documents({}) == 0:
+    if new_site and await db.register.count_documents({}) == 0:
         await db.register.insert_many([{"id": new_id(), "subject": s, "source": src, "direction": d, "status": "awaiting upload",
                                         "permission": "restricted" if "OWNER" in src else "pending", "notes": "", "media_ids": []} for s, src, d in REGISTER])
 
-    if await db.notes.count_documents({}) == 0:
+    if new_site and await db.notes.count_documents({}) == 0:
         c = {"title": "How Field Notes will work (template preview)", "slug": "how-field-notes-will-work",
              "standfirst": "A layout sample for the editorial team. Not a fieldwork story.", "kind": "resource",
              "author": "USP India editorial team (placeholder)", "category": "Resources", "tags": ["template"],

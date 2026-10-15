@@ -11,10 +11,7 @@ import { MediaPicker } from "../admin/Kit";
 import { useLiveEditor } from "./editor/LiveEditorProvider";
 import { FieldInspector } from "./editor/FieldInspector";
 import { isImageField } from "./editor/editorFields";
-
-export const FONTS = ["Public Sans", "Lora", "Source Serif 4", "Libre Baskerville", "Source Sans 3", "Noto Sans",
-  "Atkinson Hyperlegible", "Cormorant", "Literata", "Playfair Display", "Merriweather", "DM Serif Display",
-  "Montserrat", "Poppins", "Raleway", "Work Sans"];
+import { ColorField, FONTS, px } from "./editor/ColorField";
 
 const LABELS = { eyebrow: "Small label", heading: "Heading", subheading: "Sub-heading", intro: "Intro text",
   body_html: "Body text", aside: "Side statement", text: "Text", image: "Image", _section: "Whole section" };
@@ -36,7 +33,6 @@ const ADD_TYPES = [
   ["gallery", "Gallery", LayoutGrid], ["quote", "Quote", Square], ["contact_invite", "Call to action", Plus],
   ["hero", "Hero banner", Square],
 ];
-const px = (v) => (v ? parseInt(v, 10) : "");
 const newId = () => Math.random().toString(36).slice(2, 12);
 const clone = (o) => JSON.parse(JSON.stringify(o));
 const getPath = (obj, path) => path.split(".").reduce((o, k) => (o == null ? o : o[k]), obj);
@@ -389,7 +385,7 @@ function Editor({ pageKey, content, setContent, original, remount, noteId }) {
         </div>
       )}
 
-      <aside className="live-ui live-panel" style={{ "--live-panel-top": `${panelTop}px`, ...(pos ? { top: pos.top, left: pos.left, right: "auto" } : {}) }} data-testid="live-editor-panel">
+      <aside className="live-ui live-panel" style={{ "--live-panel-top": `${panelTop}px`, ...(pos ? { top: pos.top, left: pos.left, right: "auto" } : {}) }} data-testid="live-editor-panel" data-live-panel-ready="true">
         <div className="live-row live-top">
           <strong className="live-drag" onPointerDown={dragPanel} title="Drag to move" data-testid="live-panel-drag"><GripVertical size={14} /> Live editor</strong>
           <button type="button" className="live-btn" disabled={!hist.past.length} onClick={undo} title="Undo" data-testid="live-undo"><Undo2 size={14} /></button>
@@ -445,7 +441,9 @@ function Editor({ pageKey, content, setContent, original, remount, noteId }) {
                 <button type="button" className={`live-btn ${st.textTransform === "uppercase" ? "live-on" : ""}`} onClick={() => setStyles({ textTransform: st.textTransform === "uppercase" ? "" : "uppercase" })} title="UPPERCASE" data-testid="live-uppercase">AA</button>
               </div>
               <div className="live-row">
-                <label className="live-field"><Paintbrush size={12} /> Colour<input type="color" value={st.color || "#2b2b2b"} onChange={(e) => setStyles({ color: e.target.value })} data-testid="live-font-color" /></label>
+                <ColorField label={<span className="live-color-cap"><Paintbrush size={12} /> Colour</span>} value={st.color || ""} onChange={(v) => setStyles({ color: v })} testid="live-font-color" fallback="#2b2b2b" />
+              </div>
+              <div className="live-row">
                 <div className="live-field">Align
                   <div className="live-row" style={{ margin: 0 }}>{[["left", AlignLeft], ["center", AlignCenter], ["right", AlignRight]].map(([a, I]) => (
                     <button key={a} type="button" className={`live-btn ${st.textAlign === a ? "live-on" : ""}`} onClick={() => setStyles({ textAlign: st.textAlign === a ? "" : a })} aria-label={`Align ${a}`} data-testid={`live-align-${a}`}><I size={14} /></button>
@@ -557,7 +555,7 @@ function SectionStyle({ sec, onChange }) {
   return (
     <>
       <div className="live-row">
-        <label className="live-field">Background<input type="color" value={s.backgroundColor || "#ffffff"} onChange={(e) => onChange({ backgroundColor: e.target.value })} data-testid="live-sec-bg" /></label>
+        <ColorField label="Background" value={s.backgroundColor || ""} onChange={(v) => onChange({ backgroundColor: v })} testid="live-sec-bg" fallback="#ffffff" />
         <button type="button" className="live-btn" onClick={() => onChange({ backgroundColor: "" })} data-testid="live-sec-bg-clear" title="Clear background"><RotateCcw size={14} /></button>
       </div>
       <div className="live-row">

@@ -1,11 +1,30 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
-import { useSite, PreviewCtx } from "../../lib/site";
+import { useSite, PreviewCtx, loadFont } from "../../lib/site";
 import { media } from "../../lib/api";
 import { LiveEditorProvider } from "./editor/LiveEditorProvider";
 import { SiteChromeEditor } from "./editor/SiteChromeEditor";
 import { SiteText } from "./editor/SiteText";
+
+function HeaderStyleTag({ styles }) {
+  useEffect(() => { if (styles?.fontFamily) loadFont(styles.fontFamily); }, [styles]);
+  if (!styles || !Object.keys(styles).length) return null;
+  const header = [
+    styles.backgroundColor && `background: ${styles.backgroundColor} !important`,
+    styles.paddingTop && `padding-top: ${styles.paddingTop} !important`,
+    styles.paddingBottom && `padding-bottom: ${styles.paddingBottom} !important`,
+  ].filter(Boolean).join("; ");
+  const text = [
+    styles.color && `color: ${styles.color} !important`,
+    styles.fontFamily && `font-family: "${styles.fontFamily}", system-ui, sans-serif !important`,
+  ].filter(Boolean).join("; ");
+  const css = [
+    header && `.site .header { ${header}; }`,
+    text && `.site .header .brand-name, .site .header .brand-sub, .site .header .nav-link, .site .header .dropdown a { ${text}; }`,
+  ].filter(Boolean).join("\n");
+  return <style data-testid="header-style-overrides">{css}</style>;
+}
 
 function Dropdown({ item, onNavigate }) {
   const [open, setOpen] = useState(false);
@@ -50,6 +69,7 @@ function Header({ site }) {
   const close = () => setOpen(false);
   return (
     <header className="header">
+      <HeaderStyleTag styles={site?.header_styles} />
       <div className="wrap header-inner">
         <Link to="/" className="brand" data-testid="brand-link">
           {site?.logo && <img src={media(site.logo.src)} alt="" width={site.logo.width} height={site.logo.height} style={{ height: 44, width: "auto" }} data-site-edit="logo_media_id" data-testid="header-logo" />}

@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { Download, Upload, Loader2, DatabaseBackup, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
 import { api, errMsg } from "../../lib/api";
+import { ContentReleasePanel } from "../../components/admin/ContentReleasePanel";
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL;
 
@@ -47,6 +48,7 @@ export default function ImportExport() {
         <p className="text-muted-foreground mt-1 text-sm">Move the entire website — all pages, Field Notes, media and settings — to another environment.</p>
       </div>
 
+      <ContentReleasePanel />
       <section className="border rounded-lg p-6 bg-white" data-testid="export-card">
         <h2 className="font-semibold text-lg flex items-center gap-2"><Download size={18} /> Export the whole site</h2>
         <p className="text-sm text-muted-foreground mt-1">Downloads a single <code>.zip</code> containing every page, Field Note, media file (images) and site settings. Keep it safe or move it to another install.</p>

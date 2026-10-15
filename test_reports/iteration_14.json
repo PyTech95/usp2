@@ -1,0 +1,57 @@
+{
+  "summary": "Completed backend+frontend verification for preview->live content release sync logic using isolated Mongo fixture DBs and real preview APIs. Backup-first import, rollback, restore safety backup, source/target identity gating, create-only auth seed behavior, and auto-capture of baked content_release.json after draft mutation all passed. Admin UI at /admin/transfer is correct and release panel actions work.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "LiveEditor dock",
+        "issue": "Regression note: live editor persisted open/close/navigate/reload, but live-editor logout control remained visible during authenticated public browsing (possible mismatch with requested 'hides logout' behavior).",
+        "selector": "[data-testid='live-editor-logout']",
+        "priority": "MEDIUM"
+      }
+    ],
+    "integration_issues": [
+      {
+        "flow": "Anonymous browsing/admin unauthenticated probes",
+        "issue": "Observed repeated 401 console/network entries for /api/auth/me while unauthenticated (non-blocking, expected auth probe pattern).",
+        "affected_selectors": [
+          "N/A (network: /api/auth/me)"
+        ]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_content_release_sync.py",
+    "/app/backend/tests/test_live_editor_auth_site_api.py",
+    "/app/backend/tests/test_rakhigarhi_public_api.py",
+    "/app/backend/tests/test_workshops_public_api.py",
+    "/app/test_reports/pytest/pytest_results_iteration_14_content_sync.xml",
+    "/app/test_reports/pytest/pytest_results_iteration_14_all.xml"
+  ],
+  "action_items": [
+    "Confirm expected product behavior for public live-editor logout control visibility; hide if required.",
+    "If required, add an explicit frontend assertion path/spec for logout hidden-state to prevent future regressions."
+  ],
+  "critical_code_review_comments": [
+    "content_sync.target.apply correctly performs validation before write, backup before mutation, and full rollback on write failure.",
+    "Seed logic is create-only for owner bootstrap: existing users/password_hash/roles remained unchanged under different ADMIN_EMAIL/ADMIN_PASSWORD values.",
+    "Runtime startup path applies baked() snapshot and does not depend on a moving latest pointer, aligning with cold-start safety requirement."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_content_release_sync.py",
+    "/app/test_reports/iteration_14.json"
+  ],
+  "success_rate": {
+    "backend": "100% of executed tests passed (39 passed, 2 skipped across full suite; content-sync file 14/14 passed)",
+    "frontend": "~92% targeted checks passed (admin transfer route/panel/prepare + live-editor persistence passed; logout-visibility mismatch noted)"
+  },
+  "seed_data_creation": "No persistent seed data added to preview/production DBs. Temporary isolated fixture DBs were created and dropped during tests.",
+  "retest_needed": true,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "This run validated P0 sync behavior mostly via isolated DB method-level tests plus real preview API/UI smoke. content_release.json was re-captured cleanly at end using /app/backend/scripts/prepare_content_release.py (release_id e5d5ca14647f80681e73d484abb810c58d48c040d38d4d7822b8651e557bb98c). /admin/import-export correctly showed Not Found (wrong route test); /admin/transfer is the functional route with release panel showing 10 pages, 3 notes, 63 media, Rakhigarhi 9 sections.",
+  "rca of the issue": "No backend sync RCA defects were reproduced in this run. The originally reported republish gap (Rakhigarhi placeholder after live apply) is not reproducible under current code path in isolated target simulations: validated source-authoritative import of pages/notes/media/settings, protection of users/enquiries/auth collections, idempotent no-op on identical release, forced apply backup creation, and rollback to exact pre-import content on injected mid-write failure. Remaining questionable behavior is frontend-level live-editor logout visibility expectation."
+}

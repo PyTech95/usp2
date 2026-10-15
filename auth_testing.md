@@ -16,3 +16,13 @@ No new login method, seed account or credential change is part of this task.
 8. Repeat using the compiled production assets and REAL APIs, not mocked responses.
    UI asset interception under the preview origin may serve build files for testing;
    do not intercept API responses or run a second backend.
+
+## Content promotion / republish password preservation (2026-10-15)
+- Explicit requirement supersedes the generic playbook's env-password rotation example:
+  startup creates the initial owner ONLY when no user exists. Existing hashes, roles,
+  profiles and sessions must stay byte-for-byte unchanged even if ADMIN_PASSWORD or
+  ADMIN_EMAIL differs from a deployed user's current account.
+- Test create-only initialization in an isolated database and run startup/seed twice.
+- Empty notes/register collections on an existing site must not resurrect seed samples.
+- Content release importer must never touch users, enquiries, register, login_attempts
+  or tokens. Test backup-first import, idempotence and failure rollback separately.

@@ -429,6 +429,32 @@ async def site_live_patch(body: SiteLivePatch, user=Depends(require("config"))):
     return {"path": path, "value": value}
 
 
+HEADER_STYLE_KEYS = {"backgroundColor", "color", "fontFamily", "paddingTop", "paddingBottom"}
+_css_value = re.compile(r"^[#0-9a-zA-Z .,%()\-'\"]{1,80}$")
+
+
+class SiteStylesPatch(BaseModel):
+    styles: dict
+
+
+@router.put("/site-styles")
+async def site_styles_patch(body: SiteStylesPatch, user=Depends(require("config"))):
+    """Store whitelisted header presentation styles only; reject any CSS injection."""
+    clean = {}
+    for key, raw in (body.styles or {}).items():
+        if key not in HEADER_STYLE_KEYS:
+            continue
+        val = ("" if raw is None else str(raw)).strip()
+        if not val:
+            continue
+        if not _css_value.fullmatch(val):
+            raise HTTPException(400, f"Invalid value for {key}")
+        clean[key] = val
+    await db.settings.update_one({"key": "site"}, {"$set": {"header_styles": clean, "updated_at": now()}})
+    await snapshot("settings", "site", {"header_styles": clean}, "header style live edit", user)
+    return {"header_styles": clean}
+
+
 @router.get("/settings")
 async def get_settings(user=Depends(current_user)):
     s = await db.settings.find_one({"key": "site"}, {"_id": 0})

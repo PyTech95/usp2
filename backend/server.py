@@ -9,6 +9,8 @@ import routes_auth
 import routes_admin
 import routes_media
 import routes_public
+import routes_content_release
+from content_sync import runtime as content_runtime
 from seed import seed
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
@@ -30,6 +32,9 @@ async def security(request: Request, call_next):
                 if not tok or request.headers.get("x-csrf-token") != tok:
                     return JSONResponse({"detail": "Security token missing or invalid. Please reload the page."}, status_code=403)
     resp = await call_next(request)
+    release = await content_runtime.after_mutation(request.url.path, request.method, resp.status_code)
+    if release:
+        resp.headers["X-Content-Release-State"] = release["state"]
     resp.headers.setdefault("X-Content-Type-Options", "nosniff")
     resp.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
     if request.url.path.startswith("/api/admin") or request.url.path.startswith("/api/auth"):
@@ -38,7 +43,7 @@ async def security(request: Request, call_next):
     return resp
 
 
-for r in (routes_auth.router, routes_admin.router, routes_media.router, routes_public.router):
+for r in (routes_auth.router, routes_admin.router, routes_media.router, routes_public.router, routes_content_release.router):
     app.include_router(r)
 
 app.add_middleware(CORSMiddleware, allow_credentials=True, allow_origins=ALLOWED_ORIGINS, allow_methods=["*"], allow_headers=["*"])
@@ -52,11 +57,16 @@ async def startup():
         log.info("Object storage initialised")
     except Exception as e:
         log.error("Object storage init failed: %s", e)
+    # Target readiness waits for a complete, validated, backup-first import.
+    # A failure must not silently serve half-imported/default content.
+    await content_runtime.startup()
 
 
 @app.get("/api/health")
 async def health():
     await db.command("ping")
+    if not await content_runtime.readiness():
+        return JSONResponse({"ok": False, "content_release": "pending_or_failed"}, status_code=503)
     return {"ok": True}
 
 

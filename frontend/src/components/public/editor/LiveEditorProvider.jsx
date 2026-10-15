@@ -59,7 +59,10 @@ export function LiveEditorProvider({ children, preview = false }) {
   return <Context.Provider value={{ on, setOn, scope, setScope, registerDirty }}>
     {children}
     {allowed && <div className="live-ui live-dock" data-testid="live-editor-dock">
-      <button type="button" onClick={() => { if (scope === "site") setScope("page"); else setOn(!on); }} aria-expanded={on} data-testid="live-editor-toggle">
+      <button type="button" onClick={() => {
+        if (scope === "site") setScope("page");
+        else setOn(!(on && document.querySelector('[data-live-panel-ready="true"]')));
+      }} aria-expanded={on} data-testid="live-editor-toggle">
         {on ? <X size={15} /> : <Pencil size={15} />} {on ? "Close editor" : "Live editor"}
       </button>
       {can("config") && <button type="button" title="Edit header, footer and shared text" onClick={() => { setOn(true); setScope(scope === "site" ? "page" : "site"); }} aria-pressed={scope === "site"} data-testid="live-site-toggle"><Globe size={15} /> Site text</button>}

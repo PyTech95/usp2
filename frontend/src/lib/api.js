@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "sonner";
 
 export const BACKEND = process.env.REACT_APP_BACKEND_URL;
 export const api = axios.create({ baseURL: `${BACKEND}/api`, withCredentials: true });
@@ -13,7 +14,10 @@ api.interceptors.request.use((cfg) => {
 
 let refreshing = null;
 api.interceptors.response.use(
-  (r) => r,
+  (r) => {
+    if (r.headers["x-content-release-state"] === "pending") toast.warning("Saved here, but republish preparation is pending. Retry it in Import / Export.", { id: "content-release-pending" });
+    return r;
+  },
   async (err) => {
     const cfg = err.config || {};
     if (err.response?.status === 401 && !cfg._retry && !String(cfg.url).includes("/auth/")) {
