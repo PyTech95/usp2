@@ -1,0 +1,50 @@
+{
+  "summary": "Verified homepage matches the clean editorial USP_Homepage_Revised mockup. Tested client-rendered DOM at 1440 desktop and 390 mobile, inspected computed styles, and ran regression on /about, /our-work, /our-work/craft-livelihood, /field-notes, /connect. All critical mockup requirements pass. Only minor nits found (see below).",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "Hero reveal animation", "issue": "On client-side navigation back to '/', the hero heading/tagline render in a very faded light-grey state (looks like a reveal animation that never completes when returning from another route). Hard-refresh of '/' renders correctly dark. Not visible on first load, so low priority but visible to users navigating via SPA.", "selector": ".page-home .hero-plain .h1", "priority": "LOW"},
+      {"component": "Our Work images", "issue": "Spec asked for images to be hidden via display:none. Current implementation keeps display:block but the <img> elements collapse to 0x0 (naturalWidth=0 because the media endpoint returns 401 for those IDs). Visually there is no image shown, but the DOM still fires 4 failed media requests (401). Cleaner fix: apply display:none to .page-home .work-card .photo-frame (or stop rendering the img) to silence 401 console errors.", "selector": ".page-home .work-card .photo-frame img", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "mockup_match_report": {
+    "hero_warm_grey_band": "PASS — computed background rgb(237,234,231) on .hero-plain, 408px tall band",
+    "hero_heading": "PASS — 'WHAT WE INHERIT.\\nWHAT WE CREATE.\\nWHAT WE CARRY FORWARD.' uppercase sans-serif on three lines",
+    "hero_tagline": "PASS — single tagline 'Culture isn’t fixed in time.'",
+    "hero_no_buttons_no_area_strip": "PASS — 0 hero buttons, no AreaStrip element",
+    "typography_public_sans": "PASS — .h2 font-family resolves to 'Public Sans', system-ui, sans-serif",
+    "who_we_are": "PASS — eyebrow 'WHO WE ARE' (no dash), heading 'Heritage, Art and Culture — Kept in Motion.', two-column layout",
+    "our_work_2x2_four_items": "PASS — numbers 01-04 and labels RAKHIGARHI / THEATRE / CRAFT & LIVELIHOOD / WORKSHOPS & LEARNING all present; photo-frames collapse to 0x0 so no photos visible",
+    "no_wide_feature_image_between_work_and_shape": "PASS — no visible feature image block",
+    "what_takes_shape_warm_grey_band": "PASS — warm-grey band rgb(237,234,231) present on wrapper .hb.hb-text.band (height 379px) containing heading 'The Value Can Extend Beyond the Initiative.'",
+    "field_notes_two_cards": "PASS — both cards present with correct eyebrows (RAKHIGARHI / HERITAGE, RAKHIGARHI / CRAFT), titles ('What Was Already There.', 'The OG Basket Makers.'), 'Read the Story →' and 'Explore Field Notes →'. Both approved images 07f3512b... and 6fc82b55... load with naturalWidth=648",
+    "connect_text_links_not_buttons": "PASS — Collaborate / Volunteer / Get in Touch render as links with transparent background",
+    "light_footer": "PASS — footer bg rgb(251,250,248), color rgb(43,43,43)",
+    "no_horizontal_overflow_1440": "PASS — scrollWidth 1440 = innerWidth 1440",
+    "no_horizontal_overflow_390": "PASS — scrollWidth 390 = innerWidth 390; 2-col sections stack",
+    "regression_pages": "PASS — /about, /our-work, /our-work/craft-livelihood, /field-notes, /connect all return 200 with content"
+  },
+  "test_report_links": [
+    "/app/test_reports/home_desktop_1440.png",
+    "/app/test_reports/home_mobile_390.png",
+    "/app/test_reports/our_work_closeup.png",
+    "/app/test_reports/field_notes_closeup.png",
+    "/app/test_reports/what_takes_shape.png"
+  ],
+  "action_items": [
+    "Optional: hide .page-home .work-card .photo-frame via display:none (or stop rendering <img>) to eliminate the 4 x 401 media requests in the console.",
+    "Investigate hero-reveal animation state when returning to '/' via client-side navigation — heading/tagline stay in a faded pre-reveal state until next scroll."
+  ],
+  "critical_code_review_comments": [
+    "Work-card images still hit the backend media endpoint (401) even though they are visually hidden; prefer removing them from the DOM or display:none the <img> to keep the console clean and avoid unnecessary network calls.",
+    "The warm-grey band for 'What Takes Shape' is driven by a sibling wrapper (.hb.hb-text.band) rather than the <section> itself, which makes computed-style assertions on the section element return transparent. Fine visually, but worth consolidating for easier automated verification."
+  ],
+  "updated_files": [],
+  "success_rate": { "backend": "n/a (frontend-only test)", "frontend": "100% on mockup acceptance criteria (2 low-priority polish items)" },
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Homepage client render reliably triggers with wait_for_function on '.page-home .hero-plain .h1' + body text containing 'WHAT WE INHERIT'. Field Notes approved images render correctly. Four work-card <img> under .photo-frame return 401 but collapse to 0x0 (visually hidden). Possible hero fade-in regression on SPA back-navigation worth watching."
+}

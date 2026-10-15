@@ -1492,6 +1492,7 @@ body.live-editing .header { z-index: 1; }
 .site .page-home .work-card{ background:transparent !important; border:0 !important; border-radius:0 !important; padding:0 !important; box-shadow:none !important; transform:none !important; }
 .site .page-home .work-card:hover{ transform:none !important; box-shadow:none !important; }
 .site .page-home .work-card .photo{ display:none !important; }
+.site .page-home .work-card .photo-frame{ display:none !important; }
 .site .page-home .work-card-body{ padding:0 !important; margin:0 !important; border:0 !important; display:block; }
 .site .page-home .work-card .work-num{ display:block !important; font-family:var(--m-sans) !important; }
 .site .page-home .work-card .wn-sep{ display:none !important; }

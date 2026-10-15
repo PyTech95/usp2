@@ -97,7 +97,7 @@ function Hero({ d, s, first, i, home }) {
     const tagline = ((d.intro || "").split(/(?<=\.)\s+/)[0] || "").trim();
     return (
       <div className="hero-home hero-plain" data-testid="hero-section">
-        <div className="wrap hero-text reveal">
+        <div className="wrap hero-text">
           <h1 className="h1" data-testid={`block-${i}-heading`} {...sx(s, "heading")}>
             {lines.map((ln, k) => <span className="hero-line" key={k}>{ln}</span>)}
           </h1>
