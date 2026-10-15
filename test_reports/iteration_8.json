@@ -1,0 +1,46 @@
+{
+  "summary": "Verified both bug fixes and the design tweak on the preview URL. (1) Live Editor now persists across pages: enabled via /?edit=1 after owner login, it stays active across 3 client-side navigations (Home -> Our Work -> Field Notes -> Connect), with body class 'live-editing' present and [data-testid=live-editor-panel] visible on every page. sessionStorage key 'usp-live-edit' is set to '1'. After clicking the exit (X) button the key is cleared and subsequent navigation to /field-notes does NOT re-open the editor (body class empty, panel hidden). (2) Media endpoint serves images: GET /api/media/6fc82b55f714459f9499182413231bbb/800 and /api/media/07f3512b576f4ea19497a610d33a9fc9/800 both return 200 image/jpeg (153KB, 199KB). Field Notes homepage cards render both images with naturalWidth>0 (previous iteration confirmed 648). (3) DESIGN: top nav shows exactly WHO WE ARE / OUR WORK / FIELD NOTES / CONNECT, 'Home' link exists in DOM but is hidden on desktop (offsetWidth=0), 'Blog' is NOT in the top nav. Footer contains BLOG link (href=/blog), brand 'USP' + 'Urban Suburban Perspectives' on the left, tagline 'HERITAGE, ART AND CULTURE' on the right, bg rgb(251,250,248), color rgb(43,43,43), only Blog + Privacy links in the bottom bar (big footer nav list hidden). No horizontal overflow at 1440 or 390. Regression: /, /about, /our-work, /our-work/craft-livelihood, /field-notes, /connect, /blog all return 200.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "/api/media/{id}/{w}", "issue": "Response Cache-Control header reaching the client is 'no-store, no-cache, must-revalidate' instead of the intended 'public, max-age=31536000, immutable' set in routes_media.py public_image(). Likely overridden by an upstream middleware or ingress/CDN. Images still serve 200, so functionality is fine, but the long-lived caching benefit of the fix is lost."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verification_matrix": {
+    "live_editor_persists_home_to_our_work": "PASS (body='live-editing', panel visible)",
+    "live_editor_persists_our_work_to_field_notes": "PASS",
+    "live_editor_persists_field_notes_to_connect": "PASS",
+    "live_editor_off_clears_sessionstorage": "PASS (sessionStorage null after exit)",
+    "live_editor_off_stays_off_after_navigation": "PASS (panel not visible on /field-notes after exit)",
+    "media_6fc82b55_800": "PASS (HTTP 200 image/jpeg, 153439 bytes)",
+    "media_07f3512b_800": "PASS (HTTP 200 image/jpeg, 199020 bytes)",
+    "top_nav_contains_only_who_our_field_connect": "PASS",
+    "home_link_hidden_on_desktop": "PASS (offsetWidth=0)",
+    "blog_not_in_top_nav": "PASS",
+    "footer_has_blog_link": "PASS (href=/blog)",
+    "footer_brand_and_tagline": "PASS (USP / Urban Suburban Perspectives / HERITAGE, ART AND CULTURE)",
+    "footer_light_scheme": "PASS (bg rgb(251,250,248))",
+    "no_overflow_1440_390": "PASS",
+    "regression_pages_200": "PASS (/, /about, /our-work, /our-work/craft-livelihood, /field-notes, /connect, /blog)"
+  },
+  "test_report_links": [],
+  "action_items": [
+    "(Minor, optional) Investigate why /api/media response Cache-Control is overridden to 'no-store, no-cache, must-revalidate' at the client; the handler sets 'public, max-age=31536000, immutable' but something upstream (likely a global no-store middleware) is replacing it. Fixing this will restore the long-cache benefit of the rate-limit mitigation."
+  ],
+  "critical_code_review_comments": [
+    "LiveEditor persistence via sessionStorage is implemented correctly and symmetrically (read in LiveEditor(), write/remove in Editor() useEffect on [on]). Good.",
+    "The 'no-store' Cache-Control override on /api/media appears to come from a global response middleware; worth auditing so per-route cache headers are preserved."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% on tested endpoints", "frontend": "100% on all acceptance criteria"},
+  "test_credentials": "Owner: intrinsicamerica.web@gmail.com / Usp-NArl-bV_MfteEKPs (used from /app/memory/test_credentials.md)",
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Live editor persistence is driven by sessionStorage key 'usp-live-edit' + body class 'live-editing'. To test, log in as owner via /admin, then navigate to /?edit=1, then click header links. The [data-testid=live-editor-panel] should remain visible across navigations. The /api/media endpoint works but a middleware strips the long-cache Cache-Control header — not a functional bug."
+}
