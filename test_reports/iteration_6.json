@@ -1,0 +1,72 @@
+{
+  "summary": "Frontend-only retest of USP India homepage cinematic redesign after iteration_5 fixes. All 3 targeted fixes verified via Playwright with wait_for_function on client render. Hero is now flush under the header (0px gap). Dark 'What Takes Shape' manifesto band renders with correct dark background and WHITE serif heading. Hero scrim is denser and ochre eyebrow + white Cormorant H1 are legible. All home sections present, no horizontal overflow at 1440px or 390px, all regression routes return 200.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verification_details": {
+    "fix1_hero_flush": {
+      "headerBottom": 97.72,
+      "heroTop": 97.72,
+      "gap_px": 0,
+      "hbHero_padding": "0px",
+      "hbHero_margin": "0px",
+      "hbHeroSection_padding": "0px",
+      "hbHeroSection_margin": "0px",
+      "status": "PASS"
+    },
+    "fix2_dark_manifesto_band": {
+      "band_element": "DIV.hb hb-text band",
+      "band_background": "rgb(30, 26, 23)",
+      "heading_text": "The Value Can Extend Beyond the Initiative.",
+      "heading_tag": "H2.h2 reveal reveal-up",
+      "heading_color": "rgb(255, 255, 255)",
+      "eyebrow_text": "What Takes Shape",
+      "eyebrow_color": "rgb(200, 138, 59)",
+      "status": "PASS"
+    },
+    "fix3_hero_scrim": {
+      "eyebrow_text": "Urban Suburban Perspectives",
+      "eyebrow_color": "rgb(200, 138, 59)",
+      "h1_text": "What We Inherit. What We Create. What We Carry Forward.",
+      "h1_color": "rgb(255, 255, 255)",
+      "scrim_background": "linear-gradient(to top, rgba(24,20,17,0.9) 0%, rgba(24,20,17,0.6) 30%, rgba(24,20,17,0.34) 58%, rgba(24,20,17,0.42) 100%), linear-gradient(to right, rgba(24,20,17,0.6) 0%, rgba(24,20,17,0.2) 45%, rgba(24,20,17,0) 80%)",
+      "status": "PASS"
+    },
+    "sections_1440": {
+      "hero": true,
+      "area_links_0_to_3": [true, true, true, true],
+      "work_items_0_to_3": [true, true, true, true],
+      "hero_cta_elements": 7,
+      "horizontal_overflow": false,
+      "html_scrollWidth": 1440,
+      "window_innerWidth": 1440
+    },
+    "mobile_390": {"html_scrollWidth": 390, "window_innerWidth": 390, "overflow": false},
+    "regression_routes": {
+      "/about": {"status": 200, "title": "About — USP India"},
+      "/our-work": {"status": 200, "title": "Our Work — USP India"},
+      "/our-work/craft-livelihood": {"status": 200, "title": "Craft & Livelihood — USP India"},
+      "/field-notes": {"status": 200, "title": "Field Notes — USP India"},
+      "/connect": {"status": 200, "title": "Connect — USP India"}
+    }
+  },
+  "screenshots": [
+    "/app/test_reports/hero_flush_1440.png",
+    "/app/test_reports/manifesto_band_1440.png",
+    "/app/test_reports/home_mobile_390.png"
+  ],
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (frontend-only)", "frontend": "100%"},
+  "test_credentials": "N/A — public homepage",
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "All 3 iteration_5 fixes verified. Hero flush (0px gap), dark manifesto band renders with rgb(30,26,23) background and white heading rgb(255,255,255), scrim two-layer gradient makes ochre eyebrow and white H1 legible. All home sections (hero, area-link-0..3, work-item-0..3, manifesto band, field notes, connect invite) present. No horizontal overflow at 1440 or 390. Regression routes all 200. IMPORTANT for future testers: this is SSR-first — always wait_for_function on document.querySelector('.hero-cinematic .h1')?.textContent?.includes('Inherit') before asserting; the pre-hydration shell will mislead screenshot/evaluate calls.",
+  "rca_of_the_issue": "N/A — retest passed, no new issues found."
+}
