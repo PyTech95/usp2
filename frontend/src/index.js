@@ -6,6 +6,7 @@ import "@/styles/home-reference.css";
 import "@/styles/craft-reference.css";
 import "@/styles/workshops-reference.css";
 import "@/styles/rakhigarhi-reference.css";
+import "@/styles/live-editor-access.css";
 import App from "@/App";
 
 const queryClient = new QueryClient({

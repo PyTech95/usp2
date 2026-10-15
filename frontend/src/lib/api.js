@@ -23,7 +23,7 @@ api.interceptors.response.use(
         await refreshing;
         return api(cfg);
       } catch (e) {
-        /* fall through */
+        if (e.response?.status === 401) window.dispatchEvent(new Event("usp-session-expired"));
       }
     }
     return Promise.reject(err);

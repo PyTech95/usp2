@@ -20,14 +20,15 @@ export function Photo({ ref_, eager = false, sizes = "(min-width: 1024px) 58vw, 
     if (preview) return <Pending ref_={ref_} testid={testid} />;
     if (ed?.["data-edit"] && typeof document !== "undefined" && document.body.classList.contains("live-editing"))
       return (
-        <figure className={`photo photo-addslot ${className}`} data-testid={testid} data-edit={ed["data-edit"]}>
+        <figure className={`photo photo-addslot ${className}`} ref={ed.ref} style={ed.style} data-testid={testid} data-edit={ed["data-edit"]}>
           <div className="photo-frame"><span>Click to add an image</span></div>
         </figure>
       );
     return null;
   }
   const shown = showOriginal && m.original ? m.original : m;
-  const caption = ref_.caption || m.caption;
+  const caption = ref_.caption ?? m.caption;
+  const credit = ref_.credit ?? m.credit;
   const es = ed?.style || {};
   const style = {
     "--fx-d": `${m.focal_desktop.x}%`, "--fy-d": `${m.focal_desktop.y}%`,
@@ -44,9 +45,9 @@ export function Photo({ ref_, eager = false, sizes = "(min-width: 1024px) 58vw, 
     ...(es.paddingLeft ? { paddingLeft: es.paddingLeft } : {}),
     ...(es.paddingRight ? { paddingRight: es.paddingRight } : {}),
   };
-  const imgStyle = es.height ? { height: es.height, width: "100%", aspectRatio: "auto", objectFit: "cover" } : undefined;
+  const imgStyle = { ...(es.height ? { height: es.height, width: "100%", aspectRatio: "auto", objectFit: "cover" } : {}), ...(es.objectPosition ? { objectPosition: es.objectPosition } : {}) };
   return (
-    <figure className={`photo ${crop ? "crop" : ""} ${framed ? "framed" : ""} ${className}`} style={style} data-testid={testid} data-edit={ed?.["data-edit"]}>
+    <figure className={`photo ${crop ? "crop" : ""} ${framed ? "framed" : ""} ${className}`} style={style} ref={ed?.ref} data-testid={testid} data-edit={ed?.["data-edit"]}>
       <div className="photo-frame">
         <img
           key={shown.id}
@@ -55,14 +56,15 @@ export function Photo({ ref_, eager = false, sizes = "(min-width: 1024px) 58vw, 
           sizes={sizes}
           width={shown.width}
           height={shown.height}
-          alt={m.alt || ""}
+          alt={ref_.alt ?? m.alt ?? ""}
           loading={eager ? "eager" : "lazy"}
           fetchPriority={eager ? "high" : undefined}
           decoding="async"
           style={imgStyle}
+          ref={(node) => { if (node) Object.entries(imgStyle).forEach(([key, val]) => node.style.setProperty(key.replace(/[A-Z]/g, (c) => `-${c.toLowerCase()}`), val, "important")); }}
         />
       </div>
-      {(caption || m.credit) && <figcaption>{caption}{m.credit ? ` — ${m.credit}` : ""}</figcaption>}
+      {(caption || credit) && <figcaption data-testid={testid ? `${testid}-caption` : undefined}><span {...ed?.captionEd}>{caption}</span>{credit && <> — <span {...ed?.creditEd}>{credit}</span></>}</figcaption>}
       {m.original && (
         <div className="photo-original">
           <button type="button" aria-pressed={showOriginal} onClick={() => setShowOriginal(!showOriginal)} data-testid={testid ? `${testid}-original-toggle` : "photo-original-toggle"}>

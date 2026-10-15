@@ -2,9 +2,11 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { api, media } from "./api";
 
 const SiteCtx = createContext(null);
+const SiteRefreshCtx = createContext(() => {});
 export const PreviewCtx = createContext(false);
 export const useSite = () => useContext(SiteCtx);
 export const usePreview = () => useContext(PreviewCtx);
+export const useRefreshSite = () => useContext(SiteRefreshCtx);
 
 const SPACING = { compact: 0.75, comfortable: 1, airy: 1.3 };
 const RADIUS = { square: "0px", soft: "4px", pill: "999px" };
@@ -34,6 +36,7 @@ export function loadFont(fam) {
 
 export function SiteProvider({ children }) {
   const [site, setSite] = useState(null);
+  const refresh = () => api.get("/public/site").then((r) => { setSite(r.data); return r.data; });
   useEffect(() => {
     api.get("/public/site").then((r) => {
       if (!r.data || typeof r.data !== "object") return;
@@ -50,7 +53,7 @@ export function SiteProvider({ children }) {
       }
     });
   }, []);
-  return <SiteCtx.Provider value={site}>{children}</SiteCtx.Provider>;
+  return <SiteRefreshCtx.Provider value={refresh}><SiteCtx.Provider value={site}>{children}</SiteCtx.Provider></SiteRefreshCtx.Provider>;
 }
 
 function setMeta(attr, key, val) {

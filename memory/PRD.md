@@ -1,5 +1,12 @@
 # USP India — PRD
 
+## IN PROGRESS — 2026-10-15 persistent Live Editor and full editable coverage
+- User approved: authenticated publisher always has bottom Live Editor launcher on every public route, even after closing panel/navigation; logout hides it. Include header/menu/footer/button labels, page text/images and notes; preserve existing login/publish permissions; test actual compiled production assets as well as preview.
+- Root cause confirmed: `/api/public/site` returns no enabled flag, and old per-page LiveEditor gate required flag/query/session. Closing removed session flag; next route hid launcher. Article editor had same gate and inconsistent controls.
+- Implementation underway: layout-level LiveEditorProvider/dock and SiteChromeEditor; owner-only `/api/admin/site-live` narrowly patches public copy; SiteText registry for shared labels. Existing page editor uses provider mode, full field inspector, nested image selection/live previews/captions/credits/alt, more block `data-edit` coverage; FieldNoteView uses same editor for body/cover/references. AuthProvider refresh/logout/cross-tab handling updated after integration playbook. Existing role permissions unchanged.
+- Latest build compiled with only two hook warnings (subsequently fixed), backend compile pass. **FULL TESTING STILL PENDING — do not mark complete**. Need final build, one smoke screenshot, mandatory testing agent incl compiled-bundle browser testing with REAL API responses, restore any test content. `/app/auth_testing.md` records auth verification.
+- New shared files: `components/public/editor/{LiveEditorProvider,SiteChromeEditor,SiteText,FieldInspector}.jsx`, `editorFields.js`, `styles/live-editor-access.css`. Existing credentials unchanged.
+
 ## Current task — 2026-10-15 Rakhigarhi complete PDF/reference page
 - User: **"create this page"** with `Rakhigarhi (16).pdf` and four screenshots; replied **"yes please"** to implementation plan. Proceeded with stated default: last screenshot's WHITE text-only hero; matching approved library Haveli photos; dummy boxes only for missing assets. Home/Craft/Workshops unchanged.
 - Replaced old draft-placeholder Rakhigarhi content with nine CMS sections from the PDF: hero, archaeology introduction, Haveli restoration, Haveli in use, Craft Centre, Place to Arrive, Place to Pause, active-use summary, Ambition. Removed only the obvious repeated pasted restoration sentence, matching supplied collage screenshot; no invented history or activities. Explore Craft & Livelihood links to the actual Craft page.

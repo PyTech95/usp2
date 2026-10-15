@@ -1,0 +1,11 @@
+.live-dock { position: fixed; left: 18px; bottom: 18px; z-index: 100010; display: flex; align-items: center; gap: 1px; padding: 4px; background: #202522; border: 1px solid #fff; border-radius: 6px; box-shadow: 0 3px 16px #0003; max-width: calc(100vw - 36px); }
+.live-dock button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 40px; padding: 8px 12px; border: 0; border-radius: 3px; background: transparent; color: #fff; font: 500 13px/1.3 "Public Sans",sans-serif; cursor: pointer; transition: background-color .15s; }
+.live-dock button:hover,.live-dock button[aria-pressed="true"] { background: #46514a; }
+.live-dock button:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
+.live-field-inspector { padding: 10px 0; border-block: 1px solid #e3e3e3; margin-bottom: 12px; }
+.live-field-inspector textarea,.live-site-panel textarea { width: 100%; padding: 8px; min-height: 64px; resize: vertical; border: 1px solid #bbb; background: white; color: #202522; font: 13px/1.5 "Public Sans",sans-serif; }
+.live-panel select { max-width: 100%; }
+.live-site-panel { top: 140px; max-height: calc(100dvh - 220px); }
+.live-site-editing [data-site-edit]:hover { outline: 2px dashed #b31944; outline-offset: 3px; cursor: text; }
+.live-editing [data-edit] { scroll-margin-block: 150px 80px; }
+@media(max-width:760px) { .live-dock { left: 8px; bottom: 8px; max-width: calc(100vw - 16px); } .live-dock button { padding-inline: 10px; font-size: 12px; } .live-panel { bottom: 65px; } .live-site-panel { top: auto; bottom: 65px; max-height: 55dvh; } }

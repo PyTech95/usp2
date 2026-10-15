@@ -7,9 +7,10 @@ import {
   ArrowLeft, ArrowRight,
 } from "lucide-react";
 import { api, errMsg } from "../../lib/api";
-import { useAuth } from "../../lib/auth";
-import { useSite } from "../../lib/site";
 import { MediaPicker } from "../admin/Kit";
+import { useLiveEditor } from "./editor/LiveEditorProvider";
+import { FieldInspector } from "./editor/FieldInspector";
+import { isImageField } from "./editor/editorFields";
 
 export const FONTS = ["Public Sans", "Lora", "Source Serif 4", "Libre Baskerville", "Source Sans 3", "Noto Sans",
   "Atkinson Hyperlegible", "Cormorant", "Literata", "Playfair Display", "Merriweather", "DM Serif Display",
@@ -75,17 +76,14 @@ const stripMedia = (o) => {
 };
 
 export function LiveEditor(props) {
-  const { can } = useAuth();
-  const site = useSite();
-  const editParam = typeof window !== "undefined" && new URLSearchParams(window.location.search).has("edit");
-  const persisted = typeof window !== "undefined" && (() => { try { return sessionStorage.getItem("usp-live-edit") === "1"; } catch { return false; } })();
-  if (!can("content.publish")) return null;
-  if (!site?.live_editor_enabled && !editParam && !persisted) return null;
-  return <Editor key={props.pageKey} autoStart={editParam || persisted} {...props} />;
+  // Permission/mode is centralized in the layout provider. Keep the local state
+  // mounted through logout so its closing effect can discard unsaved content.
+  if (!props.content) return null;
+  return <Editor key={props.pageKey} {...props} />;
 }
 
-function Editor({ pageKey, content, setContent, original, remount, autoStart }) {
-  const [on, setOn] = useState(!!autoStart);
+function Editor({ pageKey, content, setContent, original, remount, noteId }) {
+  const { on, setOn, scope, registerDirty } = useLiveEditor();
   const [sel, setSel] = useState(null);
   const [dirty, setDirty] = useState(false);
   const [base, setBase] = useState(original);
@@ -99,24 +97,33 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
   const [panelTop, setPanelTop] = useState(132);
   const [guides, setGuides] = useState([]);
   const fileRef = useRef(null);
+  const inlineDraft = useRef(null);
 
   const sections = content.sections;
   const sec = sel && sections.find((s) => s.id === sel.sec);
   const field = sel?.field;
   const st = (sec?.styles || {})[field] || {};
-  const isImage = !!field && (field === "image" || field.endsWith(".image") || /^collage\.\d+$/.test(field));
+  const isImage = isImageField(field);
   const isText = !!field && field !== "_section" && !isImage;
   const selEl = on && sel ? findEl(sel) : null;
   const cstyle = selEl ? window.getComputedStyle(selEl) : null;
   const padPH = (p) => (cstyle ? String(Math.round(parseFloat(cstyle[p]) || 0)) : "0");
 
   const commit = useCallback((nextSections, mark = true) => {
-    setHist((h) => ({ past: [...h.past, content.sections].slice(-50), future: [] }));
+    setHist((h) => ({ past: [...h.past, content].slice(-50), future: [] }));
     setContent((c) => ({ ...c, sections: nextSections }));
     if (mark) setDirty(true);
-  }, [content.sections, setContent]);
+  }, [content, setContent]);
 
   const patchSec = (id, fn) => commit(sections.map((s) => (s.id === id ? fn(s) : s)));
+  const selectField = (next) => {
+    const draft = inlineDraft.current;
+    if (draft) {
+      inlineDraft.current = null;
+      patchSec(draft.sec, (s) => ({ ...s, data: setPath(s.data, draft.field, draft.value) }));
+    }
+    setSel(next);
+  };
   const setStyles = (patch) => {
     if (!sel) return;
     patchSec(sel.sec, (s) => {
@@ -129,14 +136,14 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
   const undo = () => setHist((h) => {
     if (!h.past.length) return h;
     const prev = h.past[h.past.length - 1];
-    setContent((c) => ({ ...c, sections: prev })); setDirty(true); remount();
-    return { past: h.past.slice(0, -1), future: [content.sections, ...h.future].slice(0, 50) };
+    setContent(prev); setDirty(true); remount();
+    return { past: h.past.slice(0, -1), future: [content, ...h.future].slice(0, 50) };
   });
   const redo = () => setHist((h) => {
     if (!h.future.length) return h;
     const next = h.future[0];
-    setContent((c) => ({ ...c, sections: next })); setDirty(true); remount();
-    return { past: [...h.past, content.sections].slice(-50), future: h.future.slice(1) };
+    setContent(next); setDirty(true); remount();
+    return { past: [...h.past, content].slice(-50), future: h.future.slice(1) };
   });
 
   // section operations
@@ -154,19 +161,21 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
     toast.success("Section added");
   };
 
-  // toggle editing mode
+  useEffect(() => { registerDirty(dirty); return () => registerDirty(false); }, [dirty, registerDirty]);
+  // Closing the panel discards only unsaved local edits; the launcher stays mounted.
   useEffect(() => {
-    document.body.classList.toggle("live-editing", on);
-    try { if (on) sessionStorage.setItem("usp-live-edit", "1"); else sessionStorage.removeItem("usp-live-edit"); } catch { /* ignore */ }
+    if (!on) {
+      if (dirty) { setContent(base); setDirty(false); }
+      setSel(null); setDevice("desktop"); inlineDraft.current = null;
+    }
     remount();
-    return () => document.body.classList.remove("live-editing");
   }, [on]); // eslint-disable-line
 
   useEffect(() => {
     document.body.classList.remove("live-dev-tablet", "live-dev-mobile");
   }, [on, device]);
 
-  const previewSrc = typeof window !== "undefined" ? window.location.pathname : "/";
+  const previewSrc = typeof window !== "undefined" ? `${window.location.pathname}?editor-preview=1` : "/";
 
   // Keep the default panel clear of navigation on every page and viewport.
   useEffect(() => {
@@ -182,32 +191,40 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
 
   // click to select
   useEffect(() => {
-    if (!on) return undefined;
+    if (!on || scope !== "page") return undefined;
     const h = (e) => {
-      if (e.target.closest(".live-ui, [role=dialog]") || !e.target.closest("main")) return;
+      if (e.target.closest(".live-ui, [role=dialog], [data-site-edit], [data-live-navigate]") || !e.target.closest("main")) return;
       const el = e.target.closest("[data-edit]");
       const secEl = e.target.closest("[data-sec]");
-      if (e.target.closest("a, button") || el || secEl) { e.preventDefault(); e.stopPropagation(); }
-      if (secEl) setSel({ sec: secEl.dataset.sec, field: el ? el.dataset.edit : "_section" });
+      if (el || secEl) { e.preventDefault(); e.stopPropagation(); }
+      if (secEl) selectField({ sec: secEl.dataset.sec, field: el ? el.dataset.edit : "_section" });
     };
     document.addEventListener("click", h, true);
     return () => document.removeEventListener("click", h, true);
-  }, [on]);
+  }, [on, scope, sections]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // inline contentEditable for text fields
   useEffect(() => {
     const el = findEl(sel);
-    if (!on || !el || !isText) return undefined;
+    if (!on || scope !== "page" || !el || !isText) return undefined;
     el.contentEditable = "true";
+    const record = () => {
+      inlineDraft.current = { ...sel, value: field.endsWith("_html") ? el.innerHTML : el.innerText.replace(/\n{3,}/g, "\n\n").trim() };
+      setDirty(true);
+    };
     const commitText = () => {
+      const draft = inlineDraft.current;
+      if (!draft || draft.sec !== sel.sec || draft.field !== field) return;
+      inlineDraft.current = null;
       const s = sections.find((x) => x.id === sel.sec);
       if (!s) return;
-      const v = field.endsWith("_html") ? el.innerHTML : el.innerText.replace(/\n{3,}/g, "\n\n").trim();
+      const v = draft.value;
       if (v !== (getPath(s.data, field) || "")) { patchSec(sel.sec, (x) => ({ ...x, data: setPath(x.data, field, v) })); remount(); }
     };
     el.addEventListener("blur", commitText);
-    return () => { el.removeEventListener("blur", commitText); el.removeAttribute("contenteditable"); };
-  }, [on, sel, content]); // eslint-disable-line
+    el.addEventListener("input", record);
+    return () => { el.removeEventListener("input", record); el.removeEventListener("blur", commitText); el.removeAttribute("contenteditable"); };
+  }, [on, scope, sel, content]); // eslint-disable-line
 
   // track selection rectangle
   useEffect(() => {
@@ -232,31 +249,32 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
     setBusy(true);
     // Flush any in-progress inline text edit (user may click Save without blurring first)
     let secs = sections;
-    const activeEl = findEl(sel);
-    if (activeEl && isText) {
-      const v = field.endsWith("_html") ? activeEl.innerHTML : activeEl.innerText.replace(/\n{3,}/g, "\n\n").trim();
-      secs = sections.map((s) => (s.id === sel.sec ? { ...s, data: setPath(s.data, field, v) } : s));
+    const draft = inlineDraft.current;
+    if (draft) {
+      secs = sections.map((s) => (s.id === draft.sec ? { ...s, data: setPath(s.data, draft.field, draft.value) } : s));
+      inlineDraft.current = null;
       setContent((c) => ({ ...c, sections: secs }));
     }
     try {
       const payload = { title: content.title, sections: secs.map((s) => ({ id: s.id, type: s.type, hidden: !!s.hidden, data: stripMedia(s.data), styles: s.styles || {} })) };
-      const r = await api.put(`/admin/pages/${pageKey}/live`, payload);
-      setContent(r.data.content); setBase(r.data.content); setDirty(false); setHist({ past: [], future: [] }); remount();
-      toast.success("Saved — your changes are now live on the public page");
+      const r = noteId ? await api.put(`/admin/notes/${noteId}/live`, { ...stripMedia(secs[0].data), styles: secs[0].styles || {} }) : await api.put(`/admin/pages/${pageKey}/live`, payload);
+      const saved = noteId ? { ...content, sections: [{ ...secs[0], data: r.data.note, styles: r.data.note.styles || {} }] } : r.data.content;
+      setContent(saved); setBase(saved); setDirty(false); setHist({ past: [], future: [] }); remount();
+      toast.success("Saved on this site");
     } catch (e) { toast.error(errMsg(e)); } finally { setBusy(false); }
   };
-  const setImage = (m) => { patchSec(sel.sec, (s) => ({ ...s, data: setPath(s.data, field, { ...(getPath(s.data, field) || {}), media_id: m.id, media: undefined }) })); remount(); setBusy(false); };
+  const setImage = (m) => {
+    const resolved = { ...m, src: m.preview, srcs: (m.derivs || []).map((d) => ({ w: d.w, url: `/api/admin/media/${m.id}/view/${d.w}?v=${m.version}` })) };
+    patchSec(sel.sec, (s) => ({ ...s, data: setPath(s.data, field, { ...(getPath(s.data, field) || {}), media_id: m.id, media: resolved }) }));
+    remount(); setBusy(false);
+  };
   const upload = async (file) => {
     if (!file) return;
     const fd = new FormData(); fd.append("file", file); fd.append("category", "live-editor");
     try { setBusy(true); const r = await api.post("/admin/media", fd); setImage(r.data); }
     catch (e) { toast.error(errMsg(e)); setBusy(false); }
   };
-  const exit = () => {
-    if (dirty && !window.confirm("You have unsaved changes. Leave the live editor and discard them?")) return;
-    if (dirty) { setContent(base); setDirty(false); remount(); }
-    setSel(null); setDevice("desktop"); setOn(false);
-  };
+  const exit = () => setOn(false);
   const num = (v) => (v ? parseInt(v, 10) || 0 : 0);
   const SNAP = 6;
   const gatherSnaps = (exclude) => {
@@ -336,9 +354,7 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
     window.addEventListener("pointermove", mv); window.addEventListener("pointerup", up);
   };
 
-  if (!on) return (
-    <button type="button" className="live-ui live-toggle" onClick={() => setOn(true)} data-testid="live-editor-toggle"><Pencil size={15} /> Live editor</button>
-  );
+  if (!on || scope !== "page") return null;
 
   return (
     <>
@@ -360,7 +376,7 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
           <Dim cls="live-dim-down" icon={ArrowDown} value={num(st.translateY) > 0 ? num(st.translateY) : 0} onSet={(v) => setStyles({ translateY: v ? `${v}px` : "" })} testid="live-dim-down" />
           <Dim cls="live-dim-left" icon={ArrowLeft} value={num(st.translateX) < 0 ? -num(st.translateX) : 0} onSet={(v) => setStyles({ translateX: v ? `-${v}px` : "" })} testid="live-dim-left" />
           <Dim cls="live-dim-right" icon={ArrowRight} value={num(st.translateX) > 0 ? num(st.translateX) : 0} onSet={(v) => setStyles({ translateX: v ? `${v}px` : "" })} testid="live-dim-right" />
-          {sec && (
+          {sec && !noteId && (
             <div className="live-sectools" data-testid="live-section-tools">
               <button type="button" title="Move up" onClick={() => move(sec.id, -1)} data-testid="live-sec-up"><ArrowUp size={14} /></button>
               <button type="button" title="Move down" onClick={() => move(sec.id, 1)} data-testid="live-sec-down"><ArrowDown size={14} /></button>
@@ -388,6 +404,8 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
           ))}
         </div>
 
+        <FieldInspector sections={sections} selected={sel} onSelect={selectField} title={content.title} onTitleChange={noteId ? undefined : (title) => { setHist((h) => ({ past: [...h.past, content].slice(-50), future: [] })); setContent((c) => ({ ...c, title })); setDirty(true); }} onChange={(id, path, value) => { inlineDraft.current = null; patchSec(id, (s) => ({ ...s, data: setPath(s.data, path, value) })); }} />
+
         {!sel || !sec ? (
           <p className="live-hint" data-testid="live-hint">Click any heading, text, image or whole section on the page. Drag the dark grip to move it anywhere (up, down, left, right), or drag any of the 8 red handles to resize from every side. Use the numeric Move X/Y and Width/Height boxes for precise control. Press Save to publish live.</p>
         ) : (
@@ -395,10 +413,14 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
             <p className="live-label" data-testid="live-selected-label">{labelFor(field)}</p>
 
             {isImage ? (
+              <div>
               <div className="live-row">
                 <button type="button" className="live-btn" onClick={() => setPicker(true)} data-testid="live-choose-image"><Images size={14} /> Library</button>
                 <button type="button" className="live-btn" onClick={() => fileRef.current?.click()} disabled={busy} data-testid="live-upload-image"><Upload size={14} /> Upload</button>
                 <input ref={fileRef} type="file" accept="image/*" hidden onChange={(e) => upload(e.target.files?.[0])} data-testid="live-upload-input" />
+              </div>
+              {["caption", "credit", "alt"].map((name) => <label key={name} className="live-field">{name}<input type="text" value={getPath(sec.data, `${field}.${name}`) ?? getPath(sec.data, `${field}.media.${name}`) ?? ""} onChange={(e) => patchSec(sec.id, (s) => ({ ...s, data: setPath(s.data, `${field}.${name}`, e.target.value) }))} data-testid={`live-image-${name}`} /></label>)}
+              <label className="live-field">Image position<input type="text" value={st.objectPosition || ""} placeholder="50% 50%" onChange={(e) => setStyles({ objectPosition: e.target.value })} data-testid="live-image-position" /></label>
               </div>
             ) : field === "_section" ? (
               <p className="live-hint">Style the whole section — its background colour and spacing.</p>
@@ -484,9 +506,9 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
           </div>
         )}
 
-        <div className="live-add-block">
+        {!noteId && <div className="live-add-block">
           <button type="button" className="live-btn live-add-btn" onClick={() => setAddAt(sections.length)} data-testid="live-add-section"><Plus size={14} /> Add a new section</button>
-        </div>
+        </div>}
       </aside>
 
       {addAt !== null && (

@@ -6,6 +6,7 @@ export const PhotoPlaceholder = ({ label, crop, className, testid, ed }) => (
     data-testid={testid}
     data-edit={ed?.["data-edit"]}
     style={{ "--placeholder-ratio": crop || "4/3", ...ed?.style }}
+    ref={ed?.ref}
     role="img"
     aria-label={`${label || "Photograph"} — placeholder`}
   >

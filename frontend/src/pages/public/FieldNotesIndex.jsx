@@ -7,6 +7,7 @@ import { NoteList } from "../../components/public/NoteList";
 import { Blocks } from "../../components/public/Blocks";
 import { LiveEditor } from "../../components/public/LiveEditor";
 import { Crumbs } from "./PageView";
+import { SiteText, textFor } from "../../components/public/editor/SiteText";
 
 export default function FieldNotesIndex() {
   const site = useSite();
@@ -43,24 +44,24 @@ export default function FieldNotesIndex() {
       <section className="wrap section" style={{ paddingTop: 0 }}>
         <form role="search" onSubmit={(e) => { e.preventDefault(); setParams(term ? { q: term, ...(category && { category }) } : category ? { category } : {}); }}
           style={{ display: "flex", gap: ".5rem", maxWidth: 560, marginBottom: "1.5rem" }} className="form-field">
-          <label htmlFor="notes-search" className="sr-only">Search Field Notes</label>
-          <input id="notes-search" type="search" value={term} onChange={(e) => setTerm(e.target.value)} placeholder="Search Field Notes" style={{ flex: 1 }} data-testid="notes-search-input" />
-          <button className="btn" type="submit" data-testid="notes-search-submit"><Search size={16} aria-hidden="true" /> Search</button>
+          <label htmlFor="notes-search" className="sr-only"><SiteText name="search_notes" /></label>
+          <input id="notes-search" type="search" value={term} onChange={(e) => setTerm(e.target.value)} placeholder={textFor(site, "search_notes")} style={{ flex: 1, minWidth: 0 }} data-testid="notes-search-input" />
+          <button className="btn" type="submit" data-testid="notes-search-submit"><Search size={16} aria-hidden="true" /> <SiteText name="search" /></button>
         </form>
         <nav aria-label="Topics" style={{ display: "flex", flexWrap: "wrap", gap: ".5rem" }} data-testid="notes-filters">
-          <Link className="chip" to={href({ category: "", page: "" })} aria-current={!category ? "true" : undefined}>All topics</Link>
+          <Link className="chip" to={href({ category: "", page: "" })} aria-current={!category ? "true" : undefined} data-testid="notes-all-topics"><SiteText name="all_topics" /></Link>
           {(site?.categories || []).map((c) => (
-            <Link key={c} className="chip" to={href({ category: c, page: "" })} aria-current={category === c ? "true" : undefined} data-testid={`notes-filter-${c}`}>{c}</Link>
+            <Link key={c} className="chip" to={href({ category: c, page: "" })} aria-current={category === c ? "true" : undefined} data-testid={`notes-filter-${c}`}><SiteText name={`category_${c.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`} fallback={c} /></Link>
           ))}
         </nav>
         {list && (
           <>
-            <p className="meta" style={{ marginTop: "1.5rem" }} aria-live="polite" data-testid="notes-count">{list.total} {list.total === 1 ? "note" : "notes"}{q ? ` matching “${q}”` : ""}{category ? ` in ${category}` : ""}</p>
+            <p className="meta" style={{ marginTop: "1.5rem" }} aria-live="polite" data-testid="notes-count">{list.total} <SiteText name={list.total === 1 ? "note_singular" : "note_plural"} />{q && <> <SiteText name="matching" /> “{q}”</>}{category && <> <SiteText name="in_category" /> {category}</>}</p>
             <NoteList items={list.items} />
             {list.pages > 1 && (
               <nav aria-label="Pagination" style={{ display: "flex", gap: ".5rem", marginTop: "2rem" }} data-testid="notes-pagination">
                 {Array.from({ length: list.pages }, (_, i) => i + 1).map((n) => (
-                  <Link key={n} className="chip" to={href({ page: n === 1 ? "" : String(n) })} aria-current={n === page ? "true" : undefined}>Page {n}</Link>
+                  <Link key={n} className="chip" to={href({ page: n === 1 ? "" : String(n) })} aria-current={n === page ? "true" : undefined} data-testid={`notes-page-${n}`}><SiteText name="page" /> {n}</Link>
                 ))}
               </nav>
             )}

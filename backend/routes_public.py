@@ -13,6 +13,8 @@ TOPICS = ["General", "Collaboration", "Volunteer", "Craft", "Theatre", "Workshop
 async def get_site():
     s = await db.settings.find_one({"key": "site"}, {"_id": 0, "checklist": 0, "taxonomy": 0, "email_notifications": 0})
     out = {k: s.get(k) for k in ("site_name", "full_name", "tagline", "theme", "footer_text", "privacy_html", "contact", "social", "menus", "preview_banner", "indexing_enabled", "live_editor_enabled")}
+    out["brand_label"] = s.get("brand_label", "USP")
+    out["ui_text"] = s.get("ui_text", {})
     for f in ("logo_media_id", "favicon_media_id", "default_share_media_id"):
         m = await db.media.find_one({"id": s.get(f)}, {"_id": 0}) if s.get(f) else None
         out[f.replace("_media_id", "")] = media_public_view(m) if media_public_ok(m) else None

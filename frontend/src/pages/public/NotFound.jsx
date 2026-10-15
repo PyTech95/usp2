@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { api } from "../../lib/api";
 import { useMeta } from "../../lib/site";
+import { SiteText } from "../../components/public/editor/SiteText";
 
 export default function NotFound() {
   const loc = useLocation();
@@ -17,11 +18,11 @@ export default function NotFound() {
   return (
     <div className="wrap hero-type" data-testid="not-found">
       <p className="eyebrow">404</p>
-      <h1 className="h1">Page not found</h1>
-      <p className="lede">This address does not exist on the USP India website.</p>
+      <SiteText name="not_found" as="h1" className="h1" />
+      <SiteText name="not_found_body" as="p" className="lede" />
       <div className="hero-actions">
-        <Link to="/" className="btn">Go to Home</Link>
-        <Link to="/field-notes" className="btn btn-ghost">Read Field Notes</Link>
+        <Link to="/" className="btn" data-testid="not-found-home"><SiteText name="go_home" /></Link>
+        <Link to="/field-notes" className="btn btn-ghost" data-testid="not-found-notes"><SiteText name="read_notes" /></Link>
       </div>
     </div>
   );

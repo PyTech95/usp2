@@ -4,7 +4,7 @@ import os
 import re
 from fastapi import APIRouter, HTTPException, Depends, UploadFile, File
 from fastapi.responses import Response, FileResponse
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, Field
 from core import (db, now, new_id, require, current_user, can, sanitize_tree, resolve_media_tree, public_user,
                   PAGE_PATHS, SITE_URL, media_public_ok)
 from seed import DEFAULT_THEME
@@ -293,7 +293,7 @@ async def publish_note(nid: str, body: PublishIn = PublishIn(), user=Depends(req
     return await get_note(nid)
 
 
-NOTE_LIVE_FIELDS = {"title", "standfirst", "author", "credits", "body_html", "cover"}
+NOTE_LIVE_FIELDS = {"title", "standfirst", "author", "credits", "body_html", "cover", "category", "kind", "references", "downloads", "styles"}
 
 
 @router.put("/notes/{nid}/live")
@@ -306,6 +306,11 @@ async def note_live_save(nid: str, body: dict, user=Depends(require("content.pub
             base[k] = v
     base["title"] = str(base.get("title", "")).strip()[:200] or "Untitled"
     base["cover"] = strip_resolved(base.get("cover") or {})
+    base["references"] = strip_resolved(base.get("references") or [])
+    base["downloads"] = strip_resolved(base.get("downloads") or [])
+    base["styles"] = clean_styles(base.get("styles"))
+    if base.get("kind", "article") not in NOTE_KINDS:
+        raise HTTPException(400, "Choose a valid Field Note type")
     base["seo"] = clean_seo(base.get("seo") or {})
     d = sanitize_tree(base)
     await db.notes.update_one({"id": nid}, {"$set": {"draft": d, "published": d, "status": "published",
@@ -387,6 +392,41 @@ def check_theme(theme):
 FONTS = {"heading": ["Public Sans", "Lora", "Source Serif 4", "Libre Baskerville"], "body": ["Public Sans", "Source Sans 3", "Noto Sans", "Atkinson Hyperlegible"]}
 SETTINGS_FIELDS = {"site_name", "full_name", "tagline", "logo_media_id", "favicon_media_id", "theme", "footer_text", "privacy_html",
                    "contact", "social", "preview_banner", "indexing_enabled", "default_share_media_id", "live_editor_enabled"}
+
+
+class SiteLivePatch(BaseModel):
+    path: str = Field(min_length=1, max_length=180)
+    value: str = Field(max_length=20000)
+
+
+@router.put("/site-live")
+async def site_live_patch(body: SiteLivePatch, user=Depends(require("config"))):
+    """Patch public copy only; never accept arbitrary settings or Mongo paths."""
+    path = body.path
+    plain = {"brand_label", "site_name", "full_name", "tagline", "privacy_html", "logo_media_id", "contact.email", "contact.phone"}
+    menu = re.fullmatch(r"menus\.(main|footer)\.\d+(?:\.children\.\d+){0,2}\.label", path)
+    ui = re.fullmatch(r"ui_text\.[a-z][a-z0-9_]{0,79}", path)
+    social = re.fullmatch(r"social\.\d+\.label", path)
+    if path not in plain and not (menu or ui or social):
+        raise HTTPException(400, "This setting is not editable as public copy")
+    s = await db.settings.find_one({"key": "site"}, {"_id": 0})
+    if menu or social:
+        current = s
+        try:
+            for part in path.split("."):
+                current = current[int(part)] if isinstance(current, list) else current[part]
+        except (KeyError, IndexError, ValueError, TypeError):
+            raise HTTPException(400, "That menu or social item no longer exists")
+        if not body.value.strip():
+            raise HTTPException(400, "Link labels cannot be empty")
+    if path == "logo_media_id" and body.value:
+        logo = await db.media.find_one({"id": body.value}, {"_id": 0})
+        if not logo or not media_public_ok(logo):
+            raise HTTPException(400, "Choose an approved public logo image")
+    value = sanitize_tree({path.split(".")[-1]: body.value})[path.split(".")[-1]]
+    await db.settings.update_one({"key": "site"}, {"$set": {path: value, "updated_at": now()}})
+    await snapshot("settings", "site", {"path": path, "value": value}, "public copy live edit", user)
+    return {"path": path, "value": value}
 
 
 @router.get("/settings")

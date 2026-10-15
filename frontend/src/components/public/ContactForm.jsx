@@ -1,21 +1,24 @@
 import { useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { api, errMsg } from "../../lib/api";
+import { useSite } from "../../lib/site";
+import { SiteText, textFor } from "./editor/SiteText";
 
 const TOPICS = ["General", "Collaboration", "Volunteer", "Craft", "Theatre", "Workshops & Learning"];
 const EMPTY = { name: "", email: "", topic: "", message: "", phone: "", organisation: "", website: "" };
 
-function validate(f) {
+function validate(f, site) {
   const e = {};
-  if (!f.name.trim()) e.name = "Please enter your name.";
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) e.email = "Please enter a valid email address.";
-  if (!TOPICS.includes(f.topic)) e.topic = "Please choose a topic.";
-  if (f.message.trim().length < 10) e.message = "Please write a message of at least 10 characters.";
-  if (f.phone && !/^[0-9+()\-\s]{6,40}$/.test(f.phone)) e.phone = "Phone may contain digits, spaces and + ( ) - only.";
+  if (!f.name.trim()) e.name = textFor(site, "error_name");
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) e.email = textFor(site, "error_email");
+  if (!TOPICS.includes(f.topic)) e.topic = textFor(site, "error_topic");
+  if (f.message.trim().length < 10) e.message = textFor(site, "error_message");
+  if (f.phone && !/^[0-9+()\-\s]{6,40}$/.test(f.phone)) e.phone = textFor(site, "error_phone");
   return e;
 }
 
 export function ContactForm() {
+  const site = useSite();
   const [params] = useSearchParams();
   const initialTopic = TOPICS.includes(params.get("topic")) ? params.get("topic") : "";
   const [f, setF] = useState({ ...EMPTY, topic: initialTopic });
@@ -26,7 +29,7 @@ export function ContactForm() {
 
   const submit = async (e) => {
     e.preventDefault();
-    const v = validate(f);
+    const v = validate(f, site);
     setErrors(v);
     if (Object.keys(v).length) {
       document.getElementById(`f-${Object.keys(v)[0]}`)?.focus();
@@ -44,7 +47,7 @@ export function ContactForm() {
 
   const field = (k, label, opts = {}) => (
     <div className="form-field">
-      <label htmlFor={`f-${k}`}>{label}{opts.optional ? <span style={{ fontWeight: 400 }}> (optional)</span> : ""}</label>
+      <label htmlFor={`f-${k}`}><SiteText name={`contact_${k}`} fallback={label} />{opts.optional ? <span style={{ fontWeight: 400 }}> (<SiteText name="optional" />)</span> : ""}</label>
       {opts.textarea ? (
         <textarea id={`f-${k}`} rows={6} value={f[k]} onChange={set(k)} aria-invalid={!!errors[k]} aria-describedby={errors[k] ? `e-${k}` : undefined} data-testid={`contact-${k}`} />
       ) : (
@@ -59,8 +62,8 @@ export function ContactForm() {
       <div aria-live="polite">
         {state.status === "ok" && (
           <div className="notice" role="status" data-testid="contact-success">
-            <strong>Thank you — your message has been received.</strong>
-            <p style={{ margin: ".3rem 0 0" }}>{state.msg === "not_configured" ? "It is stored securely for the USP India team. Email notifications are not yet switched on, so replies may take a little longer." : "The team has been notified."}</p>
+            <SiteText as="strong" name="contact_thanks" />
+            <SiteText as="p" style={{ margin: ".3rem 0 0" }} name={state.msg === "not_configured" ? "contact_stored" : "contact_notified"} />
           </div>
         )}
         {state.status === "error" && <div className="notice error" role="alert" data-testid="contact-error">{state.msg}</div>}
@@ -68,10 +71,10 @@ export function ContactForm() {
       {field("name", "Name", { auto: "name" })}
       {field("email", "Email", { type: "email", auto: "email" })}
       <div className="form-field">
-        <label htmlFor="f-topic">Enquiry topic</label>
+        <label htmlFor="f-topic"><SiteText name="contact_topic" /></label>
         <select id="f-topic" value={f.topic} onChange={set("topic")} aria-invalid={!!errors.topic} data-testid="contact-topic">
-          <option value="">Choose a topic</option>
-          {TOPICS.map((t) => <option key={t}>{t}</option>)}
+          <option value="">{textFor(site, "choose_topic")}</option>
+          {TOPICS.map((t, i) => <option key={t} value={t}>{textFor(site, ["topic_general", "topic_collaboration", "topic_volunteer", "topic_craft", "topic_theatre", "topic_workshops"][i])}</option>)}
         </select>
         {errors.topic && <span className="field-error" data-testid="contact-topic-error">{errors.topic}</span>}
       </div>
@@ -83,7 +86,7 @@ export function ContactForm() {
         <input id="f-website" tabIndex={-1} autoComplete="off" value={f.website} onChange={set("website")} />
       </div>
       <button type="submit" className="btn" disabled={state.status === "sending"} data-testid="contact-submit">
-        {state.status === "sending" ? "Sending…" : "Send message"}
+        <SiteText name={state.status === "sending" ? "sending" : "send_message"} />
       </button>
     </form>
   );

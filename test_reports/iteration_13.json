@@ -1,0 +1,57 @@
+{
+  "summary": "Executed backend+frontend regression focused on live editor persistence/auth/session/site-text behavior using real preview APIs and compiled frontend build interception (document + /static only). Core dock persistence, logout sync, stale edit-flag blocking, site-live allowlist enforcement, and auth refresh/login security checks passed. One intermittent panel-open issue observed once after reload during compiled run; not consistently reproducible.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "Live editor panel toggle after save/reload (compiled run)",
+        "issue": "Observed one timeout where panel did not appear immediately after clicking dock toggle post-reload; subsequent retries and follow-up runs worked.",
+        "selector": "[data-testid='live-editor-toggle'] -> [data-testid='live-editor-panel']",
+        "priority": "MEDIUM"
+      }
+    ],
+    "integration_issues": [
+      {
+        "flow": "Anonymous public browsing",
+        "issue": "Console still shows repeated 401 network errors for /api/auth/me while unauthenticated (expected auth probe behavior, noisy logs).",
+        "affected_selectors": [
+          "N/A (network: /api/auth/me)"
+        ]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_live_editor_auth_site_api.py",
+    "/app/backend/tests/test_rakhigarhi_public_api.py",
+    "/app/backend/tests/test_workshops_public_api.py",
+    "/app/test_reports/pytest/pytest_results_iteration_13.xml",
+    "/app/test_reports/pytest/pytest_results_iteration_13_all.xml"
+  ],
+  "action_items": [
+    "Investigate intermittent panel-open race after reload in compiled mode (toggle click sometimes does not mount panel on first attempt).",
+    "Run an additional deep pass for remaining unverified scope items: exhaustive per-field image/nested path edits, undo/redo across multiple mutations, all responsive breakpoints (320/390/768/1440/1920) with layout regression capture, and full Field Note mutation matrix (references/download labels/styles).",
+    "Optionally reduce unauthenticated /api/auth/me 401 noise in console/logs if product wants cleaner public-browser telemetry."
+  ],
+  "critical_code_review_comments": [
+    "Auth playbook checks passed in code+runtime: bcrypt hash format ($2b$), httpOnly access/refresh cookies, explicit credentialed CORS origin, brute-force lockout after 5 failures, and seed behavior updates existing admin hash when ADMIN_PASSWORD changes.",
+    "Live editor permission gate is role-based via can('content.publish') with read-only suppression in preview/editor-preview; anonymous users cannot force editor via sessionStorage or ?edit.",
+    "New /api/admin/site-live path validation is correctly allowlisted (public copy paths only) and rejects arbitrary or missing menu paths."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_live_editor_auth_site_api.py",
+    "/app/test_reports/iteration_13.json"
+  ],
+  "success_rate": {
+    "backend": "100% of executed tests passed (25 passed, 2 skipped in full suite run)",
+    "frontend": "~88% targeted compiled-flow checks passed (core flows green, one intermittent panel-open timeout)"
+  },
+  "seed_data_creation": "No new users/accounts created. Temporary content mutations (home heading/tagline) were restored to original values within the same run.",
+  "retest_needed": true,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Compiled-build validation was executed using Playwright route interception for document+/static assets only; /api calls remained real. Verified: login without ?edit, dock persistence across nine public routes, close state retaining launcher, direct-route reload persistence, unsaved-change prompt cancel behavior, page title control visible on pages and absent on note editor, note editor lacks add-section controls, logout removes dock in current+second tab (storage sync), stale sessionStorage usp-live-edit + ?edit does not re-enable editor for anonymous state, and editor-preview mode hides dock/panel. Could not finish full exhaustive image/nested-path matrix in this pass.",
+  "rca of the issue": "Intermittent UI timing/race condition suspected around dock-toggle->panel mount after reload in compiled mode. Repro happened once right after a save+reload sequence, then did not recur in follow-up retries. Potential cause areas: state transition between active/scope/sessionStorage sync and rehydration timing after route reload. Mitigation: add deterministic post-reload stabilization (e.g., await auth/site hydration complete before allowing toggle action) or debounce toggle until provider ready."
+}
