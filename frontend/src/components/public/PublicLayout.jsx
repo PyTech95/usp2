@@ -50,7 +50,7 @@ function Header({ site }) {
       <div className="wrap header-inner">
         <Link to="/" className="brand" data-testid="brand-link">
           {site?.logo && <img src={media(site.logo.src)} alt="" width={site.logo.width} height={site.logo.height} style={{ height: 44, width: "auto" }} />}
-          <span><span className="brand-name">USP</span><span className="brand-sub">{site?.full_name}</span></span>
+          <span><span className="brand-name" data-testid="header-brand-name">USP</span><span className="brand-sub" data-testid="header-brand-subtitle">{site?.full_name}</span></span>
         </Link>
         <nav aria-label="Main">
           <button type="button" className="nav-link menu-toggle" aria-expanded={open} aria-controls="main-menu" onClick={() => setOpen(!open)} data-testid="mobile-menu-toggle">
@@ -74,8 +74,8 @@ function Footer({ site }) {
     <footer className="footer" data-testid="site-footer">
       <div className="wrap footer-top">
         <div>
-          <p className="footer-brand">USP</p>
-          <p className="footer-sub">{site?.full_name}</p>
+          <p className="footer-brand" data-testid="footer-brand-name">USP</p>
+          <p className="footer-sub" data-testid="footer-brand-subtitle">{site?.full_name}</p>
         </div>
         <nav aria-label="Footer" className="footer-nav">
           {(site?.menus?.main || []).filter((i) => i.href !== "/").map((i) => <Link key={i.id} to={i.href} data-testid={`footer-link-${i.id}`}>{i.label}</Link>)}
@@ -87,9 +87,9 @@ function Footer({ site }) {
         {site?.contact?.email && <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>}
         {site?.contact?.phone && <span>{site.contact.phone}</span>}
         {(site?.social || []).map((s) => <a key={s.url} href={s.url} rel="noopener noreferrer">{s.label}</a>)}
-        {(site?.menus?.footer || []).map((f) => <a key={f.id || f.href} href={f.href}>{f.label}</a>)}
+        {(site?.menus?.footer || []).map((f) => <a key={f.id || f.href} href={f.href} data-testid={`footer-menu-${f.id || f.label.toLowerCase()}`}>{f.label}</a>)}
         <details data-testid="footer-privacy" className="footer-privacy">
-          <summary style={{ cursor: "pointer" }}>Privacy</summary>
+          <summary style={{ cursor: "pointer" }} data-testid="footer-privacy-toggle">Privacy</summary>
           <div dangerouslySetInnerHTML={{ __html: site?.privacy_html || "" }} />
         </details>
       </div>

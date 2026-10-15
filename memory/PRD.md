@@ -1,5 +1,20 @@
 # USP India — PRD
 
+## Current task — 2026-10-15 homepage layout reference pass
+- User: **"copy the same design with 100% match for home page"**, then approved homepage-only changes. Final clarification: **"image we can change later focus on layout"**. Do not source/generate/replace photographs in this task or redesign inner pages.
+- Reference: `USP_Homepage_Revised (1).webp` (611×2000), stored for comparison at `/tmp/home-reference.webp`. This pass supersedes the older journal/cinematic instructions below. Exact photo parity is NOT claimed: second reference photo (two basket makers outdoors) is unavailable and explicitly deferred.
+- Added `/frontend/src/styles/home-reference.css`, imported after legacy CSS, scoped to `#home-reference` on PageBody. Public Sans, sampled light-grey/peach palette, three-line text-only hero, aligned 7% rails, two-column introductions, numbered 2×2 work grid with horizontal rules alongside numbers, grey impact band, asymmetric equal-height portrait/landscape Field Notes photos, full-width Connect copy with links underneath, light footer. Blog/Privacy retained from prior request.
+- `Blocks.jsx`: home-only SectionHead columns make the introduction an actual right-column sibling; work Explore links are real links; hidden home work images no longer mount/fetch; homepage hero no longer depends on a resolved image. Existing CMS content and media IDs unchanged. Card image/edit and content test IDs added. PublicLayout changes limited to test IDs.
+- Testing discovered the editor panel covering header navigation. Default panel now tracks header height via ResizeObserver; mobile panel is anchored at bottom. Editor functionality, persistence, undo/save and data model unchanged.
+- Verification: `yarn build` **PASS**. Testing agent `/app/test_reports/iteration_9.json`: layout/responsiveness at 320/390/768/1024/1440/1920, images, links, inner-page regression and editor selection passed; all reported actionable issues then corrected and self-tested. Follow-up `/app/test_reports/home_layout_followup.json` records four unblocked editor-on navigations, persistence/exit, no hidden work images, identical header/hero/Connect/footer left positions at 1920 (134.39px), no overflow. Anonymous `/api/auth/me` 401 probes remain expected; follow-up log shows no media 401 errors.
+- No data mutations, credentials changes, production sync or deployment performed in this pass. No mocked integrations.
+
+### Current priorities
+- **P0:** User visual approval of the layout in preview; no known failing flow from this pass.
+- **P1:** Replace Field Notes photographs when user supplies originals; publish real stories and link homepage cards to their actual articles (currently both link to the Field Notes index). Inner-page design alignment only on renewed user request.
+- **P2:** Production SSR parity/hardening; an explicit Preview→Production content promotion workflow. Keep object-storage retry/locking and separate database boundaries intact.
+- Enhancement suggestion: direct article links for the two Field Notes cards after real story copy is approved.
+
 ## Original problem statement
 "USP India — Emergent Master Build Prompt": build a complete database-backed NGO website and a genuinely usable admin panel for USP India / Urban Suburban Perspectives (https://www.uspindia.org). Warm contemporary documentary-journal direction; five menus (Home, About, Our Work [Rakhigarhi, Theatre, Craft & Livelihood, Workshops & Learning], Field Notes, Connect); originals are documentary records — never regenerate, beautify or invent; separate authenticity / permission / edit-approval; real CMS (pages with blocks, drafts, publishing, revisions, Field Notes, Media Library with focal points, versions, before/after, Menus, Appearance tokens with contrast validation, Enquiries, SEO & Sharing with redirects, Users with Owner/Editor/Contributor/Reviewer, Settings); server-rendered public HTML with metadata, JSON-LD, sitemap, real 404s; security (hashed passwords, CSRF, rate limiting, sanitised HTML, validated uploads); no invented facts; private preview with approval checklist. (Full text in the first conversation message.)
 

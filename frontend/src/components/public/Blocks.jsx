@@ -49,16 +49,17 @@ function secStyleOf(raw) {
   return Object.keys(o).length ? o : undefined;
 }
 const Html = ({ html, testid, ed }) => <div className="prose" data-testid={testid} {...ed} dangerouslySetInnerHTML={{ __html: html || "" }} />;
-const Eyebrow = ({ text, ed }) => (text ? <p className="eyebrow" {...ed}>{text}</p> : null);
+const Eyebrow = ({ text, ed }) => (text ? <p className="eyebrow" data-testid={`eyebrow-${text.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`} {...ed}>{text}</p> : null);
 const Paras = ({ text, className = "lede", testid, ed }) => (text ? <div className={className} data-testid={testid} {...ed}>{text.split(/\n\s*\n/).map((t, k) => <p key={k}>{t}</p>)}</div> : null);
 const H = ({ first, children, testid, ed }) => (first ? <h1 className="h1" data-testid={testid} {...ed}>{children}</h1> : <h2 className="h2" data-testid={testid} {...ed}>{children}</h2>);
 const Btn = ({ href, label, ghost, testid }) =>
   href?.startsWith("/") ? <Link to={href} className={`btn ${ghost ? "btn-ghost" : ""}`} data-testid={testid}>{label} <ArrowRight size={16} aria-hidden="true" /></Link>
     : <a href={href} className={`btn ${ghost ? "btn-ghost" : ""}`} data-testid={testid}>{label}</a>;
 
-const SectionHead = ({ first, heading, intro, testid, aside, s }) => (
+const SectionHead = ({ first, heading, intro, testid, aside, s, columns = false }) => (
   <div className="sec-head">
-    <div>{heading && <H first={first} testid={testid} ed={sx(s, "heading")}>{heading}</H>}{intro && <p className="lede" {...sx(s, "intro")} style={{ margin: 0, ...sx(s, "intro").style }}>{intro}</p>}</div>
+    <div>{heading && <H first={first} testid={testid} ed={sx(s, "heading")}>{heading}</H>}{!columns && intro && <p className="lede" {...sx(s, "intro")} style={{ margin: 0, ...sx(s, "intro").style }}>{intro}</p>}</div>
+    {columns && <Paras text={intro} testid={`${testid}-intro`} ed={sx(s, "intro")} />}
     {aside}
   </div>
 );
@@ -91,7 +92,6 @@ function Hero({ d, s, first, i, home }) {
       )}
     </div>
   );
-  if (!hasImg) return <div className="wrap hero-type">{text}<Photo ref_={d.image} testid={`block-${i}-image`} ed={sx(s, "image")} /></div>;
   if (home) {
     const lines = (d.heading || "").split(/(?<=\.)\s+/).filter(Boolean);
     const tagline = ((d.intro || "").split(/(?<=\.)\s+/)[0] || "").trim();
@@ -106,6 +106,7 @@ function Hero({ d, s, first, i, home }) {
       </div>
     );
   }
+  if (!hasImg) return <div className="wrap hero-type">{text}<Photo ref_={d.image} testid={`block-${i}-image`} ed={sx(s, "image")} /></div>;
   return (
     <div className="hero-inner">
       <div className="wrap">
@@ -117,20 +118,20 @@ function Hero({ d, s, first, i, home }) {
   );
 }
 
-function RelatedWork({ d, s, i }) {
+function RelatedWork({ d, s, i, home }) {
   return (
     <div className="wrap section">
       <Eyebrow text={d.eyebrow} ed={sx(s, "eyebrow")} />
-      <SectionHead s={s} heading={d.heading} intro={d.intro} aside={<Link to="/our-work" className="more-link">All areas of work <ArrowUpRight size={16} aria-hidden="true" /></Link>} />
+      <SectionHead s={s} columns={home} testid={`block-${i}-heading`} heading={d.heading} intro={d.intro} aside={!home && <Link to="/our-work" className="more-link" data-testid={`block-${i}-all-work`}>All areas of work <ArrowUpRight size={16} aria-hidden="true" /></Link>} />
       <div className="work-grid">
         {(d.items || []).map((it, k) => (
           <article className={`work-card reveal d${k + 1}`} key={k} data-testid={`work-item-${k}`}>
-            <Photo ref_={it.image} crop="4/5" sizes="(min-width: 860px) 24vw, 90vw" />
+            {!home && <Photo ref_={it.image} crop="4/5" sizes="(min-width: 860px) 24vw, 90vw" testid={`work-item-${k}-image`} />}
             <div className="work-card-body">
-              <span className="work-num" aria-hidden="true"><span className="wn-n">{String(k + 1).padStart(2, "0")}</span><span className="wn-sep"> — </span><span className="wn-t" {...sx(s, `items.${k}.title`)}>{it.title}</span></span>
-              <h3 className="h3"><Link to={it.href || "#"}><span {...sx(s, `items.${k}.subtitle`)}>{it.subtitle || it.title}</span></Link></h3>
-              <p {...sx(s, `items.${k}.text`)}>{it.text}</p>
-              <span className="more-link" aria-hidden="true">Explore <ArrowRight size={14} /></span>
+              <span className="work-num"><span className="wn-n" aria-hidden="true">{String(k + 1).padStart(2, "0")}</span><span className="wn-sep"> — </span><span className="wn-t" data-testid={`work-item-${k}-category`} {...sx(s, `items.${k}.title`)}>{it.title}</span></span>
+              <h3 className="h3"><Link to={it.href || "#"} data-testid={`work-item-${k}-link`}><span data-testid={`work-item-${k}-title`} {...sx(s, `items.${k}.subtitle`)}>{home ? (it.subtitle || it.title).split(/(?<=\.)\s+/).map((line, n) => <span className="work-title-line" key={n}>{line}</span>) : it.subtitle || it.title}</span></Link></h3>
+              <p data-testid={`work-item-${k}-description`} {...sx(s, `items.${k}.text`)}>{it.text}</p>
+              {home ? <Link to={it.href || "/our-work"} className="more-link" data-testid={`work-item-${k}-explore`}>Explore <ArrowRight size={14} aria-hidden="true" /></Link> : <span className="more-link" aria-hidden="true">Explore <ArrowRight size={14} /></span>}
             </div>
           </article>
         ))}
@@ -144,10 +145,10 @@ function NoteCards({ cards, id, s }) {
     <div className="note-cards">
       {cards.map((c, k) => (
         <article className="note-card reveal" key={k} data-testid={`${id}-card-${k}`}>
-          <Photo ref_={c.image} crop={c.crop} sizes="(min-width: 860px) 45vw, 100vw" />
-          {c.eyebrow && <p className="eyebrow" {...sx(s, `cards.${k}.eyebrow`)}>{c.eyebrow}</p>}
-          <h3 className="h3" {...sx(s, `cards.${k}.title`)}>{c.title}</h3>
-          {c.text && <p {...sx(s, `cards.${k}.text`)}>{c.text}</p>}
+          <Photo ref_={c.image} crop={c.crop} sizes="(min-width: 860px) 45vw, 100vw" testid={`${id}-card-${k}-image`} ed={sx(s, `cards.${k}.image`)} />
+          {c.eyebrow && <p className="eyebrow" data-testid={`${id}-card-${k}-category`} {...sx(s, `cards.${k}.eyebrow`)}>{c.eyebrow}</p>}
+          <h3 className="h3" data-testid={`${id}-card-${k}-title`} {...sx(s, `cards.${k}.title`)}>{c.title}</h3>
+          {c.text && <p data-testid={`${id}-card-${k}-description`} {...sx(s, `cards.${k}.text`)}>{c.text}</p>}
           <Link to={c.href || "/field-notes"} className="more-link" data-testid={`${id}-card-${k}-link`}>{c.link_label || "Read the Story"} <ArrowRight size={14} aria-hidden="true" /></Link>
         </article>
       ))}
@@ -251,12 +252,12 @@ function BlockInner({ s, first, i, home }) {
         {d.transcript_html && <details><summary>Transcript</summary><Html html={d.transcript_html} /></details>}
       </section>
     ) : null;
-  if (t === "related_work") return <section data-testid={id}><RelatedWork d={d} s={s} i={i} /></section>;
+  if (t === "related_work") return <section data-testid={id}><RelatedWork d={d} s={s} i={i} home={home} /></section>;
   if (t === "notes_feed")
     return (
       <section className="wrap section" data-testid={id}>
         <Eyebrow text={d.eyebrow} ed={sx(s, "eyebrow")} />
-        <SectionHead s={s} first={first} heading={d.heading} intro={d.intro} aside={<Link to={d.category ? `/field-notes?category=${encodeURIComponent(d.category)}` : "/field-notes"} className="more-link">All Field Notes <ArrowUpRight size={16} aria-hidden="true" /></Link>} />
+        <SectionHead s={s} columns={home} testid={`${id}-heading`} first={first} heading={d.heading} intro={home ? d.intro?.replace(/(along the way\.)\s+/, "$1\n\n") : d.intro} aside={!home && <Link to={d.category ? `/field-notes?category=${encodeURIComponent(d.category)}` : "/field-notes"} className="more-link" data-testid={`${id}-all-notes`}>All Field Notes <ArrowUpRight size={16} aria-hidden="true" /></Link>} />
         {d.cards?.length ? <NoteCards cards={d.cards} id={id} s={s} /> : <NoteList items={s.notes || []} />}
         {d.more_label && <Link to={d.more_href || "/field-notes"} className="more-link notes-more" data-testid={`${id}-more`}>{d.more_label} <ArrowRight size={14} aria-hidden="true" /></Link>}
       </section>
@@ -274,7 +275,7 @@ function BlockInner({ s, first, i, home }) {
     return (
       <section className="invite" data-testid={id}>
         <div className="wrap invite-inner">
-          <div><Eyebrow text={d.eyebrow} ed={sx(s, "eyebrow")} />{d.heading && <H first={first} ed={sx(s, "heading")}>{d.heading}</H>}<p className="lede" {...sx(s, "text")} style={{ margin: 0, ...sx(s, "text").style }}>{d.text}</p></div>
+          <div><Eyebrow text={d.eyebrow} ed={sx(s, "eyebrow")} />{d.heading && <H first={first} testid={`${id}-heading`} ed={sx(s, "heading")}>{d.heading}</H>}<p className="lede" data-testid={`${id}-description`} {...sx(s, "text")} style={{ margin: 0, ...sx(s, "text").style }}>{d.text}</p></div>
           <div className="invite-actions">
             {d.buttons?.filter((b) => b.label).length
               ? d.buttons.filter((b) => b.label).map((b, k) => <Btn key={k} href={b.href} label={b.label} ghost={k > 0} testid={`${id}-button-${k}`} />)

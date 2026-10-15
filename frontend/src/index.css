@@ -1010,7 +1010,7 @@ body.live-editing main [data-edit][contenteditable="true"] { cursor: text; outli
 .live-guide { position: fixed; z-index: 100000; pointer-events: none; background: #00B8D9; box-shadow: 0 0 0 0.5px rgba(0,0,0,.15); }
 .live-guide-v { top: 0; bottom: 0; width: 1px; }
 .live-guide-h { left: 0; right: 0; height: 1px; }
-.live-panel { position: fixed; top: 12px; right: 12px; width: 300px; max-height: calc(100vh - 24px); z-index: 100001; background: #fff; border: 1px solid #ddd; box-shadow: 0 10px 40px rgba(0,0,0,.22); padding: 14px; overflow-y: auto; font-size: 13px; color: #2d302b; border-radius: 8px; }
+.live-panel { position: fixed; top: var(--live-panel-top, 132px); right: 12px; width: 300px; max-height: calc(100dvh - var(--live-panel-top, 132px) - 12px); z-index: 100001; background: #fff; border: 1px solid #ddd; box-shadow: 0 10px 40px rgba(0,0,0,.22); padding: 14px; overflow-y: auto; font-size: 13px; color: #2d302b; border-radius: 8px; }
 .live-drag { flex: 1; display: inline-flex; align-items: center; gap: 6px; cursor: move; user-select: none; touch-action: none; }
 .live-row { display: flex; gap: 8px; align-items: flex-end; margin-bottom: 10px; flex-wrap: wrap; }
 .live-top { align-items: center; border-bottom: 1px solid #eee; padding-bottom: 10px; }
@@ -1026,7 +1026,7 @@ body.live-editing main [data-edit][contenteditable="true"] { cursor: text; outli
 .live-field input[type=color] { padding: 2px; }
 .live-label { font-weight: 600; text-transform: uppercase; letter-spacing: .08em; font-size: 11px; color: #D41445; margin-bottom: 6px; }
 .live-hint { color: #3a3a3a; font-size: 12px; line-height: 1.5; margin-bottom: 10px; }
-@media (max-width: 760px) { body.live-editing main { padding-right: 0; } .live-panel { top: auto; height: 46vh; left: 8px; right: 8px; width: auto; } }
+@media (max-width: 760px) { body.live-editing main { padding-right: 0; } .live-panel { top: auto; bottom: 8px; height: 46dvh; left: 8px; right: 8px; width: auto; } }
 
 /* ---- Advanced live editor additions ---- */
 body.live-editing main [data-sec] { position: relative; }

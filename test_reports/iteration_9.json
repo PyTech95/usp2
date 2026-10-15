@@ -1,0 +1,58 @@
+{
+  "summary": "Frontend-only verification completed on preview URL for homepage reference match, responsiveness, regression pages, and live editor integration. Most layout requirements pass at 1440/1920 and responsive breakpoints (320/390/768/1024/1440/1920) with no horizontal overflow. One important editor/navigation interaction issue found.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "LiveEditor panel + Header nav (Connect)",
+        "issue": "When live editor is ON, fixed panel default position (top-right) overlays header area and blocks clicking the Connect nav link on Field Notes page. Reproduced: /?edit=1 -> Field Notes -> click Connect remains on /field-notes.",
+        "selector": "[data-testid='live-editor-panel'], [data-testid='nav-m-connect']",
+        "priority": "HIGH"
+      }
+    ],
+    "integration_issues": [
+      {
+        "flow": "Homepage media requests while hidden work images",
+        "issue": "Console repeatedly logs 401 resource failures from hidden work-card media/image requests during homepage load. Visual layout still matches, but integration noise remains.",
+        "affected_selectors": [
+          "#home-reference .work-card .photo img"
+        ]
+      }
+    ],
+    "design_issues": [
+      {
+        "screen": "Homepage 1920 alignment audit",
+        "issues": [
+          "Measured left rail variance: brandLeft 134.39px vs heroTextLeft 120px (~14px offset).",
+          "Footer/content rails align at 120px left; header brand text starts slightly inset relative to content rail."
+        ]
+      }
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Adjust live editor panel default placement or z-index/offset so header navigation (especially Connect) remains clickable while editor is active.",
+    "Stop rendering hidden work-card media requests (or ensure accessible media IDs) to remove repeated 401 console errors.",
+    "If strict rail alignment is required at 1920, align header brand left edge exactly with content/footer rail."
+  ],
+  "critical_code_review_comments": [
+    "LiveEditor click-capture logic is scoped to <main>, but fixed panel placement can still create practical interaction blocking in header.",
+    "Homepage reference CSS and block rendering generally satisfy layout constraints (hero text-only, right-column work intro, 2x2 work grid, field-note image proportions, connect links under copy, no overflow).",
+    "Field Notes card links currently route to /field-notes index (not detail); functional but worth confirming intended destination behavior."
+  ],
+  "updated_files": [
+    "/app/test_reports/iteration_9.json"
+  ],
+  "success_rate": {
+    "backend": "N/A (frontend-only scope)",
+    "frontend": "~90%"
+  },
+  "seed_data_creation": "None",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Use wait for '#home-reference .hero-plain .h1' + document.fonts.ready before measurements. Verified responsive matrix (320/390/768/1024/1440/1920) with no overflow and expected stacking behavior. Verified owner login and live editor availability/selectability (image + heading + resize handles). Repro bug is specific to editor panel default overlap with nav Connect on /field-notes while editor is active.",
+  "rca of the issue": "RCA (nav block): Live editor panel defaults to top-right and visually overlaps the header/nav hit area. During active editing, Connect nav click target is covered on Field Notes page, so click attempts do not navigate. Mitigation: move panel lower by default, add collision-aware placement, or reduce panel width at desktop breakpoints.\n\nRCA (401 console noise): Work card image nodes still trigger media fetches despite design intending hidden/non-visual media; unresolved/unauthorized media IDs return 401 and clutter console. Mitigation: do not render hidden image tags in reference mode or provide valid public media refs."
+}

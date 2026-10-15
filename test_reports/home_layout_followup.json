@@ -1,0 +1,30 @@
+{
+  "task": "Homepage reference layout follow-up after iteration_9",
+  "date": "2026-10-15",
+  "build": "PASS: yarn build compiled successfully",
+  "changes_after_report": [
+    "Removed homepage work Photo nodes rather than merely hiding them",
+    "Removed stale wrapper max-width and Connect background overrides for consistent content rails",
+    "Offset live editor default panel below the measured header and anchored mobile panel to bottom"
+  ],
+  "verified": {
+    "1920_content_rails": {"brand": 134.390625, "hero": 134.390625, "connect": 134.390625, "footer": 134.390625},
+    "1920_horizontal_overflow": false,
+    "homepage_hidden_work_image_nodes": 0,
+    "editor_on_home_to_field_notes": "PASS, link center not covered",
+    "editor_on_field_notes_to_connect": "PASS, link center not covered",
+    "editor_on_connect_to_our_work": "PASS, link center not covered",
+    "editor_on_our_work_to_about": "PASS, link center not covered",
+    "editor_persistence_all_navigations": "PASS",
+    "editor_exit_clears_session_flag": "PASS",
+    "content_saved_during_tests": false,
+    "media_401_in_followup_console_log": false
+  },
+  "notes": [
+    "Responsive 320/390/768/1024/1440/1920 and inner-page regression checks passed in iteration_9",
+    "Remaining 401 console responses are expected anonymous /api/auth/me probes, not media",
+    "Images intentionally unchanged per user's explicit instruction; exact second reference image is deferred",
+    "Field Notes cards route to the working index until real articles are published",
+    "No production data or credentials modified; no mocked APIs"
+  ]
+}

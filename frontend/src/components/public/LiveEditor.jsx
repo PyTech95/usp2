@@ -95,6 +95,7 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
   const [device, setDevice] = useState("desktop");
   const [hist, setHist] = useState({ past: [], future: [] });
   const [pos, setPos] = useState(null);
+  const [panelTop, setPanelTop] = useState(132);
   const [guides, setGuides] = useState([]);
   const fileRef = useRef(null);
 
@@ -164,6 +165,18 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
   }, [on, device]);
 
   const previewSrc = typeof window !== "undefined" ? window.location.pathname : "/";
+
+  // Keep the default panel clear of navigation on every page and viewport.
+  useEffect(() => {
+    if (!on) return undefined;
+    const header = document.querySelector(".site .header");
+    if (!header) return undefined;
+    const measure = () => setPanelTop(Math.ceil(header.getBoundingClientRect().height) + 12);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(header);
+    return () => observer.disconnect();
+  }, [on, pageKey]);
 
   // click to select
   useEffect(() => {
@@ -358,7 +371,7 @@ function Editor({ pageKey, content, setContent, original, remount, autoStart }) 
         </div>
       )}
 
-      <aside className="live-ui live-panel" style={pos ? { top: pos.top, left: pos.left, right: "auto" } : undefined} data-testid="live-editor-panel">
+      <aside className="live-ui live-panel" style={{ "--live-panel-top": `${panelTop}px`, ...(pos ? { top: pos.top, left: pos.left, right: "auto" } : {}) }} data-testid="live-editor-panel">
         <div className="live-row live-top">
           <strong className="live-drag" onPointerDown={dragPanel} title="Drag to move" data-testid="live-panel-drag"><GripVertical size={14} /> Live editor</strong>
           <button type="button" className="live-btn" disabled={!hist.past.length} onClick={undo} title="Undo" data-testid="live-undo"><Undo2 size={14} /></button>

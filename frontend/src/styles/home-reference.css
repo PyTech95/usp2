@@ -1,0 +1,214 @@
+/* Homepage reference: 611 × 2000 supplied artwork, reflowed for small screens.
+   ID scope deliberately isolates this from legacy block-index rules.
+   No page data, media permissions, or other page styles are changed. */
+.site:has(#home-reference) {
+  --home-bg: #f8f8f8;
+  --home-ink: #575757;
+  --home-body: #606060;
+  --home-rule: #e7e7e7;
+  --home-inset: max(24px, 7%);
+  --home-gap: 8%;
+  --home-section: 92px;
+  background: var(--home-bg) !important;
+  color: var(--home-ink);
+}
+.site:has(#home-reference)::before { display: none; }
+.site #home-reference { background: var(--home-bg); font-family: "Public Sans", sans-serif; }
+.site #home-reference .wrap { width: 100%; max-width: none !important; padding-inline: var(--home-inset) !important; margin-inline: auto !important; }
+.site #home-reference .hb { margin: 0; border: 0; background: transparent; }
+.site #home-reference .hb > section { max-width: none !important; margin: 0; border: 0; background: transparent; }
+.site #home-reference .hb > .section,
+.site #home-reference .hb-related_work .section { padding-block: var(--home-section) !important; }
+.site #home-reference :is(.h1, .h2, .h3) {
+  font-family: "Public Sans", sans-serif !important; font-weight: 300 !important;
+  color: var(--home-ink) !important; letter-spacing: 0 !important; text-wrap: auto;
+  padding: 0; border: 0; max-width: none; margin: 0 !important;
+}
+.site #home-reference .h2 { font-size: 36px !important; line-height: 1.3 !important; }
+.site #home-reference .h3 { font-size: 28px !important; line-height: 1.3 !important; }
+.site #home-reference :is(.h1, .h2, .h3)::before,
+.site #home-reference :is(.h1, .h2, .h3)::after { content: none; }
+.site #home-reference :is(.prose, .prose p, .lede, .lede p, .work-card-body p, .note-card p:not(.eyebrow)) {
+  font-family: "Public Sans", sans-serif !important; font-size: 20px !important;
+  line-height: 1.5 !important; font-weight: 300 !important; letter-spacing: 0 !important;
+  color: var(--home-body) !important; opacity: 1;
+}
+.site #home-reference :is(.prose, .lede) { max-width: none; }
+.site #home-reference :is(.prose, .lede) p { margin: 0 0 20px !important; }
+.site #home-reference :is(.prose, .lede) p:last-child { margin-bottom: 0 !important; }
+.site #home-reference .eyebrow { font-size: 13px !important; line-height: 20px !important; font-weight: 400 !important; letter-spacing: 0 !important; color: var(--home-body) !important; margin: 0 0 24px !important; }
+.site #home-reference .eyebrow::before { display: none; }
+.site #home-reference .more-link,
+.site #home-reference .invite .btn { font: 300 16px/24px "Public Sans", sans-serif !important; letter-spacing: 0 !important; color: var(--home-ink) !important; min-height: 28px !important; text-transform: none; border: 0 !important; padding: 0 !important; gap: 12px; }
+.site #home-reference .more-link:hover,
+.site #home-reference .invite .btn:hover { color: #292929 !important; text-decoration: underline; text-underline-offset: 5px; }
+.site #home-reference .more-link svg,
+.site #home-reference .invite .btn svg { width: 24px; stroke-width: 1; }
+
+/* A flat, text-only hero — independent of whether a CMS hero photo exists. */
+.site #home-reference .hb-hero > section { display: block !important; padding: 0 !important; }
+.site #home-reference .hero-plain { background: #ede9e6; border: 0; }
+.site #home-reference .hero-plain .hero-text { padding-block: 132px 92px !important; }
+.site #home-reference .hero-plain .h1 { font-size: 40px !important; line-height: 1.3 !important; text-transform: uppercase; }
+.site #home-reference .hero-line { display: block; }
+.site #home-reference .hero-tagline { font: 300 24px/1.5 "Public Sans", sans-serif; color: var(--home-ink); margin: 44px 0 0 !important; }
+.site #home-reference .hb-image { display: none !important; }
+
+/* Introduction: body starts at the heading baseline, not the eyebrow. */
+.site #home-reference .hb-text:not(.band) .text-cols {
+  display: grid !important; grid-template-columns: minmax(0, 40fr) minmax(0, 52fr) !important;
+  column-gap: var(--home-gap) !important; align-items: start; background: transparent;
+  position: relative; margin-top: 0; border: 0;
+}
+.site #home-reference .text-cols-head { position: static; }
+.site #home-reference .hb-text:not(.band) .prose { padding: 0; margin-top: 44px; }
+.site #home-reference .hb-text:not(.band) .text-cols::after {
+  content: ""; position: absolute; bottom: 0; left: var(--home-inset); right: var(--home-inset); border-bottom: 1px solid var(--home-rule);
+}
+
+/* Work headings and intros are siblings, so the intro occupies the right track. */
+.site #home-reference .hb-related_work > section { display: block !important; padding: 0 !important; }
+.site #home-reference :is(.hb-related_work, .hb-notes_feed) .sec-head {
+  display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 var(--home-gap); align-items: start; margin: 0 0 76px;
+}
+.site #home-reference :is(.hb-related_work, .hb-notes_feed) .sec-head > div { display: block; grid-column: auto; grid-row: auto; }
+.site #home-reference :is(.hb-related_work, .hb-notes_feed) .sec-head .lede { margin: 0 !important; }
+.site #home-reference .work-grid { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 68px var(--home-gap) !important; margin: 0; }
+.site #home-reference .work-card { display: block; position: relative; background: transparent !important; border: 0 !important; padding: 0 !important; box-shadow: none !important; transform: none !important; }
+.site #home-reference .work-card::before { content: none; }
+.site #home-reference .work-card .photo { display: none; }
+.site #home-reference .work-card-body { display: flex; flex-direction: column; padding: 0 0 0 72px !important; margin: 0 !important; border: 0; gap: 0; height: 100%; }
+.site #home-reference .work-card .work-num { display: block !important; padding-top: 44px; position: relative; margin: 0; letter-spacing: 0; }
+.site #home-reference .work-card .wn-n { position: absolute; left: -72px; top: 0; font: 300 36px/1 "Public Sans", sans-serif; color: #76716b; padding: 0; margin: 0; border: 0; }
+.site #home-reference .work-card .work-num::before { content: ""; position: absolute; inset: 16px 0 auto; border-top: 1px solid var(--home-rule); }
+.site #home-reference .work-card .wn-t { font: 400 13px/20px "Public Sans", sans-serif; letter-spacing: 0; color: var(--home-body); margin: 0 0 14px; }
+.site #home-reference .work-card .h3 { margin: 0 0 22px !important; max-width: 360px; }
+.site #home-reference .work-title-line { display: block; }
+.site #home-reference .work-card .h3 a { color: var(--home-ink) !important; }
+.site #home-reference .work-card .h3 a::after { content: none; }
+.site #home-reference .work-card-body p { margin: 0 0 20px !important; flex: 1; }
+.site #home-reference .work-card .more-link { display: inline-flex !important; align-self: flex-start; margin: auto 0 0 !important; }
+
+/* A quiet grey band; the closing sentence is larger, without a callout box. */
+.site #home-reference .hb-text.band { background: #e8e6e7 !important; border: 0 !important; }
+.site #home-reference .hb-text.band .stacked { display: grid !important; grid-template-columns: minmax(0, 43fr) minmax(0, 49fr) !important; gap: 0 var(--home-gap) !important; align-items: start; }
+.site #home-reference .hb-text.band .stacked > div { display: contents; }
+.site #home-reference .hb-text.band .eyebrow { grid-column: 1; grid-row: 1; }
+.site #home-reference .hb-text.band .h2 { grid-column: 1; grid-row: 2; max-width: 420px; }
+.site #home-reference .hb-text.band .prose { grid-column: 2; grid-row: 2 / span 2; }
+.site #home-reference .hb-text.band .prose p:last-child { font-size: 25px !important; line-height: 1.45 !important; margin-top: 26px !important; padding: 0; border: 0; background: none; box-shadow: none; }
+
+/* Field Notes: narrow portrait at left, wider landscape at right, equal heights. */
+.site #home-reference .hb-notes_feed .sec-head { margin-bottom: 64px; }
+.site #home-reference .note-cards { display: grid !important; grid-template-columns: minmax(0, 40fr) minmax(0, 52fr) !important; gap: 48px var(--home-gap) !important; margin: 0; }
+.site #home-reference .note-card { display: block; border: 0 !important; padding: 0 !important; background: transparent !important; box-shadow: none !important; }
+.site #home-reference .note-card .photo { width: 100%; margin: 0 0 24px !important; }
+.site #home-reference .note-card:first-child .photo { width: 78%; }
+.site #home-reference .note-card .photo-frame { background: transparent; }
+.site #home-reference .note-card .photo img { width: 100%; height: auto !important; aspect-ratio: 5/4 !important; object-fit: cover; transform: none !important; }
+.site #home-reference .note-card:first-child .photo img { aspect-ratio: 3/4 !important; object-fit: contain; }
+.site #home-reference .note-card .eyebrow { font-size: 13px !important; margin: 0 0 18px !important; }
+.site #home-reference .note-card .h3 { margin: 0 0 20px !important; }
+.site #home-reference .note-card p:not(.eyebrow) { margin: 0 0 22px !important; }
+.site #home-reference .note-card .more-link { margin: 0; }
+.site #home-reference .notes-more { margin-top: 60px !important; }
+
+/* Connect reads across the page; all three links sit underneath the copy. */
+.site #home-reference .hb-contact_invite .invite { width: 100%; background: transparent !important; padding: 0 !important; margin: 0 !important; border: 0 !important; }
+.site #home-reference .hb-contact_invite .invite-inner { display: block !important; padding-block: 92px !important; position: relative; }
+.site #home-reference .invite-inner::before,
+.site #home-reference .invite-inner::after { content: ""; position: absolute; left: var(--home-inset); right: var(--home-inset); border-top: 1px solid var(--home-rule); }
+.site #home-reference .invite-inner::before { top: 0; }
+.site #home-reference .invite-inner::after { bottom: 0; }
+.site #home-reference .invite .h2 { max-width: none; margin: 0 0 26px !important; }
+.site #home-reference .invite .lede { max-width: 960px; }
+.site #home-reference .invite-actions { display: flex; flex-wrap: wrap; gap: 24px 144px; margin-top: 36px; }
+.site #home-reference .invite .btn { background: transparent !important; box-shadow: none !important; width: auto; }
+
+/* Header and footer align with the same content rails as the reference. */
+.site:has(#home-reference) .header { position: relative; background: #fff !important; border: 0 !important; padding: 0; }
+.site:has(#home-reference) .header-inner { min-height: 116px; padding: 0 0 0 7% !important; gap: 0; max-width: none; align-items: stretch; }
+.site:has(#home-reference) .brand { width: 32%; flex: 0 1 32%; }
+.site:has(#home-reference) .brand-name { font-size: 32px !important; font-weight: 300; line-height: 1.2; color: var(--home-ink) !important; }
+.site:has(#home-reference) .brand-sub { font-size: 11px !important; margin-top: 6px; color: var(--home-ink) !important; letter-spacing: 0 !important; }
+.site:has(#home-reference) .nav-list > li::before { display: none; }
+.site:has(#home-reference) .nav-list .nav-link { font-size: 12px !important; font-weight: 400; letter-spacing: 0 !important; color: var(--home-body) !important; }
+.site:has(#home-reference) .footer { border: 0 !important; background: var(--home-bg) !important; padding: 52px 0 28px !important; }
+.site:has(#home-reference) .footer .wrap { max-width: none; padding-inline: var(--home-inset); }
+.site:has(#home-reference) .footer-top { border: 0; align-items: center; padding-bottom: 0; }
+.site:has(#home-reference) .footer-brand { font-size: 30px !important; color: var(--home-ink) !important; letter-spacing: 0; }
+.site:has(#home-reference) .footer-sub { font-size: 11px !important; line-height: 1.5; color: var(--home-body) !important; letter-spacing: 0; opacity: 1; }
+.site:has(#home-reference) .footer-tagline { font-size: 18px !important; font-weight: 300; color: var(--home-body) !important; text-transform: none; letter-spacing: 0; margin-right: 12% !important; }
+/* Retain the previously requested Blog and privacy access, discreetly below. */
+.site:has(#home-reference) .footer-bottom { border: 0 !important; margin-top: 20px !important; padding-top: 0 !important; justify-content: flex-end; gap: 24px; }
+.site:has(#home-reference) .footer-bottom :is(a, summary) { font-size: 12px !important; text-transform: none; letter-spacing: 0; }
+@media (min-width: 961px) {
+  .site:has(#home-reference) nav[aria-label="Main"] { width: 68%; margin: 0; background: #fdf2ee !important; }
+  .site:has(#home-reference) .nav-list { padding-inline: 8% 12% !important; }
+}
+
+@media (max-width: 1200px) {
+  .site:has(#home-reference) { --home-section: 68px; }
+  .site #home-reference .h2 { font-size: 28px !important; }
+  .site #home-reference .h3 { font-size: 24px !important; }
+  .site #home-reference :is(.prose, .prose p, .lede, .lede p, .work-card-body p, .note-card p:not(.eyebrow)) { font-size: 16px !important; }
+  .site #home-reference .hero-plain .hero-text { padding-block: 100px 76px !important; }
+  .site #home-reference .hero-plain .h1 { font-size: 34px !important; }
+  .site #home-reference .work-card-body { padding-left: 56px !important; }
+  .site #home-reference .work-card .wn-n { left: -56px; font-size: 30px; }
+  .site #home-reference .hb-text.band .prose p:last-child { font-size: 20px !important; }
+  .site #home-reference .invite-actions { column-gap: 80px; }
+  .site:has(#home-reference) .header-inner { min-height: 90px; }
+}
+@media (max-width: 960px) {
+  .site:has(#home-reference) .header-inner { padding-right: var(--home-inset) !important; justify-content: space-between; }
+  .site:has(#home-reference) .brand { width: auto; flex: 1; }
+  .site:has(#home-reference) nav[aria-label="Main"] { align-self: center; }
+  .site:has(#home-reference) .nav-list.open { background: #fdf2ee; padding: 20px var(--home-inset); z-index: 30; }
+  .site #home-reference :is(.hb-related_work, .hb-notes_feed) .sec-head { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; margin-bottom: 48px; }
+  .site #home-reference .hb-related_work .sec-head .lede,
+  .site #home-reference .hb-notes_feed .sec-head .lede { grid-column: auto; grid-row: auto; }
+  .site #home-reference .work-grid { gap: 48px var(--home-gap) !important; }
+  .site #home-reference .eyebrow { margin-bottom: 16px !important; }
+  .site #home-reference .hb-text:not(.band) .prose { margin-top: 36px; }
+  .site #home-reference .hb-text.band .stacked > div { display: contents; }
+  .site #home-reference .hb-text.band .eyebrow { grid-column: 1 !important; grid-row: 1 !important; }
+  .site #home-reference .hb-text.band .h2 { grid-column: 1 !important; grid-row: 2 !important; }
+  .site #home-reference .hb-text.band .prose { grid-column: 2 !important; grid-row: 2 / span 2 !important; }
+}
+@media (max-width: 700px) {
+  .site:has(#home-reference) { --home-section: 48px; --home-gap: 28px; }
+  .site #home-reference .h2 { font-size: 27px !important; }
+  .site #home-reference .h3 { font-size: 23px !important; }
+  .site #home-reference .hero-plain .hero-text { padding-block: 64px !important; }
+  .site #home-reference .hero-plain .h1 { font-size: 27px !important; }
+  .site #home-reference .hero-tagline { font-size: 18px; margin-top: 28px !important; }
+  .site #home-reference .hb-text:not(.band) .text-cols,
+  .site #home-reference .hb-text.band .stacked,
+  .site #home-reference :is(.hb-related_work, .hb-notes_feed) .sec-head,
+  .site #home-reference .work-grid,
+  .site #home-reference .note-cards { grid-template-columns: minmax(0, 1fr) !important; row-gap: 28px !important; }
+  .site #home-reference .hb-text:not(.band) .prose { margin: 0; }
+  .site #home-reference .hb-text.band .stacked > div { display: block; }
+  .site #home-reference .hb-text.band :is(.eyebrow, .h2, .prose) { grid-column: auto !important; grid-row: auto !important; }
+  .site #home-reference .hb-text.band .h2 { max-width: 330px; }
+  .site #home-reference .hb-text.band .prose { margin-top: 24px; }
+  .site #home-reference .work-grid { row-gap: 40px !important; }
+  .site #home-reference .work-card-body { padding-left: 44px !important; }
+  .site #home-reference .work-card .wn-n { left: -44px; }
+  .site #home-reference .work-card .work-num { padding-top: 36px; }
+  .site #home-reference .note-cards { row-gap: 40px !important; }
+  .site #home-reference .note-card:first-child .photo { width: 72%; max-width: 340px; }
+  .site #home-reference .notes-more { margin-top: 32px !important; }
+  .site #home-reference .hb-contact_invite .invite-inner { padding-block: 48px !important; }
+  .site #home-reference .invite-actions { gap: 20px 32px; margin-top: 24px; }
+  .site #home-reference .invite .btn { min-height: 44px !important; }
+  .site:has(#home-reference) .footer { padding-top: 32px !important; }
+  .site:has(#home-reference) .footer-tagline { font-size: 16px !important; margin-right: 0 !important; }
+  .site:has(#home-reference) .footer-bottom { justify-content: flex-start; }
+}
+@media (max-width: 360px) {
+  .site #home-reference .hero-plain .h1 { font-size: 24px !important; }
+  .site:has(#home-reference) .brand-sub { font-size: 9px !important; }
+}
