@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-15",
+  "task": "Workshops & Learning follow-up after iteration_11",
+  "fixes": [
+    "Removed inherited Creative Exchange section offset, shadow and old padding",
+    "Removed inherited Restoration negative margin and decorative rule",
+    "Enforced exact lavender intro color against old important CSS",
+    "Scoped mobile grid placement correctly for Creative Exchange"
+  ],
+  "responsive_matrix": [
+    {"width": 320, "scrollWidth": 320, "creativeLeft": 0, "creativeRight": 320},
+    {"width": 390, "scrollWidth": 390, "creativeLeft": 0, "creativeRight": 390},
+    {"width": 768, "scrollWidth": 768, "creativeLeft": 16.890625, "creativeRight": 751.09375},
+    {"width": 1024, "scrollWidth": 1024, "creativeLeft": 22.53125, "creativeRight": 1001.46875},
+    {"width": 1440, "scrollWidth": 1440, "creativeLeft": 31.6875, "creativeRight": 1408.3125},
+    {"width": 1920, "scrollWidth": 1920, "creativeLeft": 42.234375, "creativeRight": 1877.75}
+  ],
+  "all_widths_verified": {
+    "creative_margin_left": "0px",
+    "intro_color": "rgb(236, 231, 243)",
+    "placeholder_count": 4,
+    "real_image_count": 0,
+    "overlapping_sections": false
+  },
+  "connect_navigation": "PASS: /connect?topic=Workshops%20%26%20Learning",
+  "film_control": "Verified intentionally disabled; URL not supplied",
+  "earlier_tests": "Build PASS; backend 5/5; editor selection/picker/8 handles/persistence PASS in iteration_11",
+  "mocked_apis": false,
+  "intentional_placeholder_content": "Four user-approved dummy photo boxes",
+  "remaining": ["User review", "Actual film URL", "Approved photos when user is ready"]
+}

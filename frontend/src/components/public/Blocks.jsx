@@ -6,6 +6,7 @@ import { NoteList } from "./NoteList";
 import { media } from "../../lib/api";
 import { useSite } from "../../lib/site";
 import { CraftHero } from "./CraftHero";
+import { WorkshopsHero } from "./WorkshopsHero";
 
 export const fontStack = (f) => `"${f}", system-ui, sans-serif`;
 const IMPORTANT_PROPS = ["fontFamily", "fontSize", "fontWeight", "fontStyle", "color", "textAlign", "textTransform", "lineHeight", "letterSpacing"];
@@ -83,6 +84,9 @@ function AreaStrip() {
 
 function Hero({ d, s, first, i, home, pageKey }) {
   const hasImg = !!d.image?.media;
+  if (pageKey === "workshops-learning") {
+    return <WorkshopsHero data={d} id={`block-${i}`} editable={(field) => sx(s, field)} />;
+  }
   if (pageKey === "craft-livelihood" && hasImg) {
     return <CraftHero data={d} first={first} id={`block-${i}`} editable={(field) => sx(s, field)} />;
   }
@@ -172,17 +176,21 @@ export function Block(props) {
 
 function TextBlock({ d, s, first, id }) {
   const head = <><Eyebrow text={d.eyebrow} ed={sx(s, "eyebrow")} />{d.heading && <H first={first} testid={`${id}-heading`} ed={sx(s, "heading")}>{d.heading}</H>}{d.subheading && <p className="subhead" {...sx(s, "subheading")}>{d.subheading}</p>}</>;
+  const html = <Html html={d.body_html} testid={`${id}-body`} ed={sx(s, "body_html")} />;
+  const body = d.link_label ? <div className="text-block-copy">{html}<div className="text-block-link">
+    {d.link_href ? <Btn href={d.link_href} label={d.link_label} testid={`${id}-link`} /> : <><button type="button" className="more-link" disabled aria-describedby={`${id}-link-status`} data-testid={`${id}-link-pending`}>{d.link_label} <ArrowRight size={16} aria-hidden="true" /></button><span id={`${id}-link-status`} className="link-pending-note" data-testid={`${id}-link-status`}>Film link pending</span></>}
+  </div></div> : html;
   if (d.style === "stacked")
     return (
       <section className={`wrap section stacked ${d.aside ? "has-aside" : ""}`} data-testid={id}>
-        <div>{head}<Html html={d.body_html} testid={`${id}-body`} ed={sx(s, "body_html")} /></div>
+        <div>{head}{body}</div>
         {d.aside && <p className="aside-statement" data-testid={`${id}-aside`} {...sx(s, "aside")}>{d.aside}</p>}
       </section>
     );
   return (
     <section className="wrap section text-cols" data-testid={id}>
       <div className="text-cols-head">{head}</div>
-      <Html html={d.body_html} testid={`${id}-body`} ed={sx(s, "body_html")} />
+      {body}
     </section>
   );
 }
@@ -210,7 +218,7 @@ function BlockInner({ s, first, i, home, pageKey }) {
         ) : (
           <Photo ref_={d.image} crop={d.crop} sizes="(min-width: 860px) 40vw, 100vw" testid={`${id}-image`} small={d.image?.size === "small"} className="reveal" ed={sx(s, "image")} />
         )}
-        <div className="split-text"><Eyebrow text={d.eyebrow} ed={sx(s, "eyebrow")} />{d.heading && <H first={first} ed={sx(s, "heading")}>{d.heading}</H>}<Html html={d.body_html} testid={`${id}-body`} ed={sx(s, "body_html")} /></div>
+        <div className="split-text"><Eyebrow text={d.eyebrow} ed={sx(s, "eyebrow")} />{d.heading && <H first={first} testid={`${id}-heading`} ed={sx(s, "heading")}>{d.heading}</H>}<Html html={d.body_html} testid={`${id}-body`} ed={sx(s, "body_html")} /></div>
       </section>
     );
   if (t === "image")

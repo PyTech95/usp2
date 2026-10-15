@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { media } from "../../lib/api";
 import { usePreview } from "../../lib/site";
+import { PhotoPlaceholder } from "./PhotoPlaceholder";
 
 function Pending({ ref_, testid }) {
   return (
@@ -15,6 +16,7 @@ export function Photo({ ref_, eager = false, sizes = "(min-width: 1024px) 58vw, 
   const [showOriginal, setShowOriginal] = useState(false);
   const m = ref_?.media;
   if (!m) {
+    if (ref_?.placeholder) return <PhotoPlaceholder label={ref_.placeholder_label} crop={crop} className={className} testid={testid} ed={ed} />;
     if (preview) return <Pending ref_={ref_} testid={testid} />;
     if (ed?.["data-edit"] && typeof document !== "undefined" && document.body.classList.contains("live-editing"))
       return (
