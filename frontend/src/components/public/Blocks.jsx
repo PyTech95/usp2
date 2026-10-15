@@ -94,10 +94,14 @@ function Hero({ d, s, first, i, home }) {
   if (!hasImg) return <div className="wrap hero-type">{text}<Photo ref_={d.image} testid={`block-${i}-image`} ed={sx(s, "image")} /></div>;
   if (home)
     return (
-      <div className="hero-home hero-journal">
-        <div className="wrap hero-grid">
-          {text}
-          <Photo ref_={d.image} eager className="reveal d1" sizes="(min-width: 1024px) 50vw, 100vw" testid={`block-${i}-image`} ed={sx(s, "image")} />
+      <div className="hero-home hero-cinematic" data-testid="hero-section">
+        <div className="hero-cine-stage">
+          <div className="hero-cine-media">
+            <Photo ref_={d.image} eager sizes="100vw" testid={`block-${i}-image`} ed={sx(s, "image")} />
+          </div>
+          <div className="hero-cine-scrim" aria-hidden="true" />
+          <div className="hero-cine-grain" aria-hidden="true" />
+          <div className="wrap hero-cine-inner">{text}</div>
         </div>
         <AreaStrip />
       </div>

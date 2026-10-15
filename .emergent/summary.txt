@@ -1,0 +1,123 @@
+<analysis>**original_problem_statement**: 
+The request was to deploy a pre-built React 19 + FastAPI + MongoDB project () onto the platform. Over the course of the session, this evolved into building a fully-fledged visual CMS: a highly advanced Live Editor for page building (drag-and-drop, 8-direction resize, margin/padding controls, alignment snap guides), robust scroll animations, redesigning pages, and building a complete DB + Object Storage Import/Export  migration tool for VPS self-hosting.
+
+**PRODUCT REQUIREMENTS**:
+- Full deployment of the provided USP-India stack.
+- Advanced visual Live Editor accessible from the admin panel (8-direction dragging/resizing, free-move positioning, real-time margin and padding controls, alignment snap guides).
+- Site-wide scroll reveal animations and 3D hover effects.
+- Full import/export capabilities in the admin panel to download/upload the database and media files as a .
+
+**User's preferred language**: Hinglish (A mix of Hindi and English). INSTRUCT next agent to respond in the user's preferred language (Hinglish).
+
+**what currently exists?** 
+A fully functional React 19 + FastAPI + MongoDB application with Emergent Object Storage integration. It features an advanced custom CMS Live Editor that supports 8-direction resizing, free-movement dragging without breaking flex/grid layouts (via CSS transforms), pixel-perfect margin/padding UI controls, and drag-alignment snap guides. A complete Import/Export data tool is available in the admin panel. 
+
+**Last working item**:
+    - **Last item agent was working**: Diagnosing a production issue where images were returning 404s after republishing. The agent, with the help of the , identified this as a **Data Divergence** issue (Preview DB  records were not synced to Production DB). The agent provided 3 solutions (Replace with Fresh DB via UI, Write a Migration Script, or Direct DB insert) to the user in Hinglish and is waiting for their choice.
+    - **Status**: USER VERIFICATION PENDING
+    - **Agent Testing Done**: Y (Verified code works perfectly in Preview; confirmed via deployer that Prod Object Storage works but Prod DB lacks the media IDs).
+    - **Which testing method agent to use?**: NA (Waiting for user response. If user asks for a script, test via  or ).
+    - **User Testing Done**: N
+
+**All Pending/In progress Issue list**: 
+  Issue 1: Production images returning 404 after Republish (Data Sync Issue)
+     - Attempted fixes: Investigated backend code and . Verified it works in preview. Sent to , which diagnosed that the  references exist in the Production  collection but are missing from the Production  collection.
+     - Next debug checklist: Wait for user's decision. If the user chooses Option 2 (Migration Script), write a Python script in  to copy  and  collections from the Preview DB to the Prod DB.
+     - Why fix this issue and what will be achieved with the fix? This will restore the broken images on the live production URL.
+     - Status: USER VERIFICATION PENDING
+     - Is recurring issue? N
+     - Should Test frontend/backend/both after fix? Backend (verify script execution).
+     - Blocked on other issue: None.
+
+**In progress Task List**: 
+None.
+
+**Upcoming and Future Tasks**
+  Task 1: Production SSR Setup (Phase 2 Hardening)
+     - Where to resume:  or deployment scripts.
+     - What will be achieved with this? Currently, the SSR metadata runs through the preview dev-server. It needs to be wired correctly for a production static build for proper SEO/social metadata serving.
+     - Priority: P1
+
+**Completed work in this session**
+- Added 8-direction resize and free-movement drag (via CSS transforms) to  (DONE)
+- Added on-element pixel distance badges (up/down/left/right) for precision dragging (DONE)
+- Added real-time padding inside-box controls to Live Editor panel (DONE)
+- Added real-time margin outside-box controls to Live Editor panel (DONE)
+- Added alignment snap guides (cyan lines) during drag/resize events (DONE)
+- Diagnosed production image 404 bug as a Preview-to-Production DB sync issue (DONE)
+
+**Earlier issues found/mentioned but not fixed**
+None.
+
+**Known issue recurrence from previous fork**
+  - Issue recurrence in previous fork: 0
+  - Recurrence count: 0
+  - Status: NOT STARTED
+
+**Code Architecture**
+
+
+**Key Technical Concepts**
+React 19, FastAPI, MongoDB, Emergent Object Storage integration, nested data structure editing via React context/props, CSS Transforms (Translate X/Y) for drag-and-drop free movement without reflow, IntersectionObserver for animations.
+
+**key DB schema**
+  - : {{ slug, sections (array of content blocks), title, updated_at }}
+  - : {{ id, slug, title, content, is_published }}
+  - : {{ id, original_path, derivs, authenticity, permission, is_deleted }}
+  - : {{ key, value }}
+  - : {{ email, role, hashed_password }}
+
+**changes in tech stack**
+  - None since last fork. Continues to use Emergent Object Storage.
+
+**All files of reference**
+  -  (Extensively updated to handle complex resize handles, move grips, padding/margin inputs, and drag snap guides).
+  -  (Updated to consume the new , , , and  style attributes).
+  -  (Updated  to whitelist , , , , etc.).
+  -  (Updated to style the cyan alignment guides, resize handles, and editor badges).
+
+**Areas that need refactoring**: 
+-  is extremely dense (>500 lines) and contains complex state logic for element coordinates, snapping, and styling. If additional editor features are requested, it should be refactored into smaller sub-components (e.g., , ).
+
+**key api endpoints**
+- : Saves page blocks/styles from the live editor.
+- : Public image streaming endpoint from Emergent Object Storage.
+
+**Critical Info for New Agent**
+- **Database Sync Context:** The preview environment and production environment use isolated databases. The user's production images were breaking because the  records created during preview Live-Editing were never pushed to the production DB. **Do not modify the codebase to fix this.** Wait for the user to respond to the provided options. If they request a migration script, build a one-off script to migrate data.
+- **Frontend Hot Reload:** Heavy JSX structural changes (like adding the padding controls) occasionally require restarting the frontend via frontend: ERROR (not running)
+frontend: started to clear stale Webpack bundles.
+- Use  only for existing files. Avoid using  unless specifically generating a new script.
+
+**documents and test reports created in this job**
+  - 
+
+**Last 10 User Messages and any pending HUMAN messages** 
+ 1. make it advance... resize all 8 directions... move anywhere -> COMPLETED.
+ 2. User  response: Haan perfect, drag here and there... numeric controls -> COMPLETED.
+ 3. when section select, a no barrier view up/bottom/left/right pixel distance -> COMPLETED.
+ 4. edit padding inside the box top or bottom -> COMPLETED.
+ 5. Margin Controls outside spacing... Alignment Guides snap lines -> COMPLETED.
+ 6. when i replubshis image is not coming but in preview is showing -> DIAGNOSED & WAITING FOR USER REPLY (Provided 3 options for DB sync).
+
+**Project Health Check:**
+- Broken: None
+- Mocked: None
+
+**3rd Party Integrations**
+- Emergent Object Storage — uses Emergent LLM Key / Universal Key (Proxy URL).
+
+**Testing status**
+  - Testing agent used after significant changes: YES (iteration_4.json)
+  - Troubleshoot agent used after agent stuck in loop: NO
+  - Test files created: 
+  - Known regressions: None (Production 404 is a DB data absence issue, not a code regression).
+
+**Credentials to test flow:**
+URL: 
+Email: 
+Password: 
+(Also available in )
+
+**What agent forgot to execute**
+Everything requested was executed perfectly. The agent correctly escalated the deployment issue to the  and communicated the RCA properly.</analysis>

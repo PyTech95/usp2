@@ -1,0 +1,168 @@
+{
+  "project_name": "USP India (Urban Suburban Perspectives) - Homepage Redesign",
+  "design_direction": "Cinematic Museum & Bold Editorial Magazine Blend",
+  "emotional_archetype": "Organic & Earthy with High-End Editorial Authority",
+  "theme": "Light Warm Documentary with Dark Earthy Accents",
+  "typography": {
+    "heading_font": "Cormorant Garamond, serif",
+    "body_font": "Public Sans, sans-serif",
+    "mono_font": "IBM Plex Mono, monospace",
+    "hierarchy": {
+      "hero_h1": "text-4xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight leading-[1.08] text-white drop-shadow-md",
+      "section_h2": "text-2xl sm:text-3xl lg:text-4xl font-serif font-bold tracking-tight text-[#1E1A17]",
+      "card_h3": "text-xl sm:text-2xl font-serif font-semibold text-[#1E1A17]",
+      "body_lead": "text-lg sm:text-xl font-sans text-[#4A443F] leading-relaxed",
+      "body_main": "text-base font-sans text-[#2B2B2B] leading-relaxed",
+      "caption_overline": "text-xs font-mono uppercase tracking-[0.25em] text-[#B83227] font-semibold"
+    }
+  },
+  "colors": {
+    "background_page": "#F9F6F0",
+    "background_card": "#EFECE6",
+    "background_card_hover": "#E8E3DA",
+    "background_dark_band": "#1E1A17",
+    "background_header": "rgba(249, 246, 240, 0.92)",
+    "text_primary": "#1E1A17",
+    "text_secondary": "#5C544D",
+    "text_muted": "#8A8178",
+    "text_light": "#F9F6F0",
+    "accent_ruby": "#B83227",
+    "accent_terracotta": "#D41445",
+    "accent_ochre": "#C88A3B",
+    "accent_moss": "#3E4C3F",
+    "border_subtle": "#E2DDD5",
+    "border_strong": "#C5BDB2"
+  },
+  "layout_sections": [
+    {
+      "section_id": "header",
+      "name": "Navigation Bar",
+      "style": "Fixed sticky glassmorphism bar with z-50, shadow-sm, bg-[#F9F6F0]/90 backdrop-blur-md, border-b border-[#E2DDD5]",
+      "components": ["Brand Logo (USP India)", "Nav Links (Who We Are, Rakhigarhi, Theatre, Craft, Field Notes)", "CTA Button (Connect / Get Involved)"],
+      "data_testids": {
+        "header_nav": "main-navigation",
+        "brand_logo": "brand-logo-link",
+        "nav_link_work": "nav-link-work",
+        "nav_link_notes": "nav-link-notes",
+        "connect_cta": "nav-connect-button"
+      }
+    },
+    {
+      "section_id": "hero",
+      "name": "Full-Bleed Cinematic Hero",
+      "style": "Relative h-[90vh] min-h-[600px] w-full overflow-hidden flex items-end pb-16 px-6 sm:px-12 lg:px-20",
+      "image": "8 women seated under shaded roof with basket-making craft materials",
+      "overlay": "bg-gradient-to-t from-[#1E1A17]/90 via-[#1E1A17]/45 to-[#1E1A17]/20 absolute inset-0 z-10",
+      "content": {
+        "eyebrow": "HERITAGE • ART • LIVING CULTURE",
+        "headline": "What We Inherit. What We Create. What We Carry Forward.",
+        "subhead": "Unearthing 5,000 years of living history at Rakhigarhi, empowering indigenous craft traditions, and transforming community stories through contemporary theatre.",
+        "actions": [
+          {"text": "Explore Our Work", "href": "#our-work", "style": "bg-[#B83227] hover:bg-[#9B281F] text-white px-8 py-4 rounded-sm font-sans font-medium transition-all shadow-md hover:shadow-lg"},
+          {"text": "Read Field Notes", "href": "#field-notes", "style": "border border-white/40 hover:border-white bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm px-8 py-4 rounded-sm font-sans font-medium transition-all"}
+        ]
+      },
+      "data_testids": {
+        "hero_section": "hero-section",
+        "hero_title": "hero-title",
+        "hero_explore_button": "hero-explore-button",
+        "hero_notes_button": "hero-notes-button"
+      }
+    },
+    {
+      "section_id": "index_strip",
+      "name": "Four Areas of Work Ticker / Quick Index",
+      "style": "bg-[#1E1A17] text-[#F9F6F0] py-4 px-6 border-y border-[#3A332E] overflow-x-auto whitespace-nowrap scrollbar-none",
+      "items": [
+        "01 // RAKHIGARHI ARCHAEOLOGY & LIVING VILLAGE",
+        "02 // COMMUNITY THEATRE & PERFORMANCE",
+        "03 // CRAFT & SUSTAINABLE LIVELIHOODS",
+        "04 // INTERDISCIPLINARY WORKSHOPS & LEARNING"
+      ]
+    },
+    {
+      "section_id": "who_we_are",
+      "name": "Editorial Intro - Who We Are",
+      "style": "py-24 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start",
+      "left_col": "lg:col-span-5 border-l-2 border-[#B83227] pl-8",
+      "right_col": "lg:col-span-7 space-y-6 text-[#2B2B2B] text-lg leading-relaxed",
+      "data_testids": {
+        "about_section": "who-we-are-section",
+        "about_heading": "who-we-are-heading"
+      }
+    },
+    {
+      "section_id": "our_work",
+      "name": "Work Areas Asymmetric Bento Grid",
+      "style": "py-20 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto space-y-16",
+      "card_aspects": "High-density editorial cards with responsive 2-column or full-width feature layout, 1px subtle borders, image zoom micro-interactions on hover",
+      "work_items": [
+        {"num": "01", "title": "Rakhigarhi: Indus Valley Archaeology & Living Village", "tag": "ARCHAEOLOGY & HERITAGE", "image_description": "Excavation site and living village heritage"},
+        {"num": "02", "title": "Theatre: Memory, Body & Community Narrative", "tag": "PERFORMANCE ART", "image_description": "Stage performance and community storytelling"},
+        {"num": "03", "title": "Craft & Livelihood: Sustaining Grassroots Artisans", "tag": "CRAFT DEVELOPMENT", "image_description": "Artisan weaving and basketry techniques"},
+        {"num": "04", "title": "Workshops & Learning: Pedagogy for Cultural Fieldwork", "tag": "EDUCATION & FIELDWORK", "image_description": "Interactive learning and field research"}
+      ],
+      "data_testids": {
+        "work_grid": "our-work-grid",
+        "work_card_1": "work-card-rakhigarhi",
+        "work_card_2": "work-card-theatre",
+        "work_card_3": "work-card-craft",
+        "work_card_4": "work-card-workshops"
+      }
+    },
+    {
+      "section_id": "what_takes_shape",
+      "name": "Manifesto Statement Dark Band",
+      "style": "bg-[#1E1A17] text-[#F9F6F0] py-28 px-6 sm:px-12 lg:px-20 relative overflow-hidden my-12",
+      "quote": "“Art is not a quiet ornament in a gallery; it is a living practice rooted in land, labour, and collective memory.”",
+      "data_testids": {
+        "manifesto_section": "what-takes-shape-section",
+        "manifesto_quote": "manifesto-quote"
+      }
+    },
+    {
+      "section_id": "field_notes",
+      "name": "Field Notes Magazine Grid",
+      "style": "py-24 px-6 sm:px-12 lg:px-20 max-w-7xl mx-auto",
+      "grid_layout": "grid grid-cols-1 md:grid-cols-2 gap-10",
+      "data_testids": {
+        "field_notes_section": "field-notes-section",
+        "field_note_card": "field-note-card"
+      }
+    },
+    {
+      "section_id": "connect",
+      "name": "Be Part of What Takes Shape Next",
+      "style": "bg-[#EFECE6] border-t border-[#E2DDD5] py-24 px-6 sm:px-12 lg:px-20 rounded-t-2xl shadow-inner",
+      "data_testids": {
+        "connect_section": "connect-section",
+        "connect_form_email": "connect-email-input",
+        "connect_submit": "connect-submit-button"
+      }
+    },
+    {
+      "section_id": "footer",
+      "name": "Cultural Directory Footer",
+      "style": "bg-[#1E1A17] text-[#8A8178] py-16 px-6 sm:px-12 lg:px-20 border-t border-[#2D2824]",
+      "data_testids": {
+        "footer": "site-footer"
+      }
+    }
+  ],
+  "visual_enhancers": {
+    "texture": "Paper grain SVG noise overlay with 3% opacity for tactile documentary warmth",
+    "motion": "Scroll reveal via IntersectionObserver with staggered opacity and 20px upward translate transition",
+    "image_hover": "transition-transform duration-700 ease-out hover:scale-105 overflow-hidden",
+    "glassmorphism": "backdrop-blur-md bg-[#F9F6F0]/90 border-b border-[#E2DDD5]"
+  },
+  "accessibility_and_contrast": {
+    "wcag_compliance": "AA Standard (Minimum 4.5:1 ratio for body, 3:1 for large display)",
+    "text_dark_bg": "Text on dark surface (#1E1A17) uses #F9F6F0 (15.8:1 contrast)",
+    "text_light_bg": "Text on light surface (#F9F6F0) uses #1E1A17 (15.2:1 contrast)",
+    "interactive_focus": "focus:ring-2 focus:ring-[#B83227] focus:outline-none"
+  },
+  "testing_guidelines": {
+    "data_testid_rule": "All interactive elements, buttons, links, section containers, and inputs MUST have a descriptive kebab-case data-testid attribute."
+  },
+  "instructions_to_main_agent": "Ensure all React components in frontend/src use `.js` or `.jsx` file extension. Apply the provided CSS variables and Tailwind classes. Maintain full responsive support from mobile grid-cols-1 to desktop grid-cols-12. Do NOT leave transparent backgrounds under header or overlays."
+}

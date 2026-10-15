@@ -117,7 +117,7 @@ Await client content and permissions; then record approvals in Media Library and
 
 ## Update 2026-10-14 — ported to this environment + matched reference deployment
 - Code from usp-source.zip; fresh .env (new JWT_SECRET, same owner creds, own EMERGENT_LLM_KEY for storage).
-- Reference site https://preview-launch-65.preview.emergentagent.com ran newer frontend code than the zip: recovered exact sources from its source maps (LiveEditor.jsx, Blocks/Photo/PublicLayout/PageView/Settings/site.js, index.css with new content-page header + Craft hero overlay).
+- Reference site https://usp-india-cms.preview.emergentagent.com ran newer frontend code than the zip: recovered exact sources from its source maps (LiveEditor.jsx, Blocks/Photo/PublicLayout/PageView/Settings/site.js, index.css with new content-page header + Craft hero overlay).
 - Backend added: PUT /api/admin/pages/{key}/live (style whitelist, publishes + snapshots), `live_editor_enabled` setting.
 - `backend/scripts/sync_from_reference.py <url>` mirrors settings/menus/theme, all 9 pages and their approved media (same IDs) — all page JSON identical to reference.
 - Tests iteration_3: frontend pass; pytest 58/61 (3 asserted old media IDs replaced by reference content; approval_log fixed).
