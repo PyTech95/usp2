@@ -1,0 +1,39 @@
+{
+  "summary": "Frontend-only validation of the homepage cinematic redesign. Client React render reached on both 1440 and 390. Hero section, H1 copy, both CTA buttons, hero background image (naturalWidth=1440, loaded), 4 area-link items (Rakhigarhi, Theatre, Craft & Livelihood, Workshops & Learning), 4 work-item cards (warm bg rgb(239,236,230), each with image), and no horizontal overflow all verified. Regression on /about, /our-work, /our-work/craft-livelihood, /field-notes, /connect — all return 200, render normally, do NOT contain the home hero. Three real redesign issues found: (1) hero is not actually full-bleed on desktop — 93.6px padding-top on the hero's parent produces a visible empty cream band between header and hero; (2) the required dark 'What Takes Shape' manifesto band is MISSING entirely — only a cream-background 'Be Part of What Takes Shape Next.' connect invite band exists (bg rgb(239,236,230), dark text), there is no dark-background section with white heading between Our Work and Field Notes as the spec describes; (3) the hero scrim gradient dips to rgba(24,20,17,0.12) at 60% which makes the ochre eyebrow and parts of the white serif H1 low-contrast on bright image regions at 1440px (acceptable on mobile where hero is shorter).",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "Home hero wrapper (page-home / PageView container)", "issue": "Hero is not full-bleed on desktop: parent of [data-testid=hero-section] has padding-top: 93.6px, causing a visible empty cream band between the sticky header (bottom ~97px) and the hero top (~191px). Spec required a FULL-BLEED cinematic hero.", "selector": "[data-testid='hero-section'] (parent padding-top)", "priority": "HIGH"},
+      {"component": "Homepage sections order / manifesto band", "issue": "Dark 'What Takes Shape' manifesto band (white heading + light body on dark #1E1A17 bg) is MISSING. Only 'Be Part of What Takes Shape Next.' exists and it is on cream bg rgb(239,236,230) with dark text — that's the Connect invite band, not the manifesto. Spec required a separate dark band between Our Work and Field Notes.", "selector": "section.manifesto / .band-dark (not present)", "priority": "HIGH"},
+      {"component": ".hero-cine-scrim gradient", "issue": "Scrim gradient drops to rgba(24,20,17,0.12) at 60% from bottom. On 1440px the hero is 810px tall and the middle/upper band of the image is bright, making the ochre '.eyebrow' and parts of the white Cormorant H1 low-contrast against bright foliage. Needs stronger mid-scrim or a left-side vertical scrim.", "selector": ".hero-cinematic .hero-cine-scrim", "priority": "MEDIUM"}
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Homepage desktop 1440px hero", "issues": ["Empty cream band above hero breaks the intended full-bleed cinematic effect", "Ochre eyebrow 'URBAN SUBURBAN PERSPECTIVES' barely visible on bright image region", "Title 'Carry Forward.' overlaps the bright sunlit shrubbery area and loses contrast"]}
+    ]
+  },
+  "test_report_links": [
+    "/app/test_reports/home_desktop.png",
+    "/app/test_reports/home_mobile.png",
+    "/app/test_reports/hero_desktop_top.png",
+    "/app/test_reports/dark_band_desktop.png",
+    "/app/test_reports/our-work_desktop.png"
+  ],
+  "action_items": [
+    "Make the home hero truly full-bleed on desktop: remove/override the 93.6px padding-top on the PageView/page-home container when rendering the home route so hero sits flush under the header (or make the header overlay the hero).",
+    "Add the required dark 'What Takes Shape' manifesto band (bg #1E1A17/#181411, white Cormorant heading, light body) between the Our Work section and Field Notes. The existing cream 'Be Part of What Takes Shape Next.' block is the Connect invite, not the manifesto.",
+    "Strengthen the hero scrim on desktop — e.g. raise mid-stop opacity (0.12 → ~0.35) or add a left-anchored vertical gradient so the ochre eyebrow and serif H1 reach WCAG AA contrast on all backgrounds; mobile already looks fine."
+  ],
+  "critical_code_review_comments": [
+    "frontend/src/components/public/Blocks.jsx Hero() — relies on parent container padding; home branch should force a negative top margin or render outside the page padding wrapper to achieve full-bleed.",
+    "The scrim stops in index.css (.hero-cine-scrim) are tuned for shorter viewports; consider adding a @media (min-width:1024px) override with denser mid-stop.",
+    "No dark manifesto band component appears to have been added — verify the home page JSON blocks include a type for the dark band or add one in Blocks.jsx."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (not tested)", "frontend": "70%"},
+  "seed_data_creation": "none",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Home client render selector that works reliably: wait_for_function on document.querySelector('.hero-cinematic .h1')?.textContent?.includes('Inherit'). Hero stage bg is rgb(30,26,23); work cards bg is rgb(239,236,230). Image endpoint /api/media/6fc82b55f714459f9499182413231bbb/1600?v=1 is healthy. Primary open items: (a) hero not flush — parent padding-top 93.6px, (b) missing dark 'What Takes Shape' manifesto band (only the cream Connect invite exists), (c) desktop scrim too weak at mid-height. Regression pages are all fine.",
+  "rca of the issue": "Hero-not-full-bleed: the PageView wrapper applies a global top padding (93.6px) around every rendered page. The home hero was authored assuming it would be inserted into a full-width container but is actually rendered inside that padded wrapper, so the dark hero starts 93px below the header instead of flush. Missing dark manifesto: the home page's block list on the backend likely has no 'manifesto'/dark-band block, and Blocks.jsx does not synthesize one. Scrim contrast: linear-gradient stops drop to 0.12 at 60% which, at 810px desktop hero height, exposes a wide bright central area under the overlay text."
+}
