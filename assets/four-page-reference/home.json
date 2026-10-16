@@ -1,0 +1,465 @@
+{
+  "key": "home",
+  "path": "/",
+  "content": {
+    "sections": [
+      {
+        "data": {
+          "buttons": [
+            {
+              "href": "/our-work",
+              "label": "Explore Our Work"
+            },
+            {
+              "href": "/field-notes",
+              "label": "Read Field Notes"
+            }
+          ],
+          "eyebrow": "Urban Suburban Perspectives",
+          "heading": "What We Inherit. What We Create. What We Carry Forward.",
+          "image": {
+            "caption": "",
+            "media_id": "6fc82b55f714459f9499182413231bbb",
+            "media": {
+              "id": "6fc82b55f714459f9499182413231bbb",
+              "kind": "image",
+              "width": 1600,
+              "height": 1194,
+              "srcs": [
+                {
+                  "w": 800,
+                  "url": "/api/media/6fc82b55f714459f9499182413231bbb/800?v=1"
+                },
+                {
+                  "w": 1600,
+                  "url": "/api/media/6fc82b55f714459f9499182413231bbb/1600?v=1"
+                }
+              ],
+              "src": "/api/media/6fc82b55f714459f9499182413231bbb/1600?v=1",
+              "alt": "Eight women seated beneath a roof with basket-making materials around them.",
+              "caption": "Women working with basket-making materials beneath a shaded roof.",
+              "credit": "",
+              "focal_desktop": {
+                "x": 50,
+                "y": 50
+              },
+              "focal_mobile": {
+                "x": 50,
+                "y": 50
+              },
+              "filename": "Original4-edited.webp",
+              "public_ok": true,
+              "original": {
+                "id": "e8937a0a945b4aa8ada189813238f54d",
+                "src": "/api/media/e8937a0a945b4aa8ada189813238f54d/1280?v=1",
+                "srcs": [
+                  {
+                    "w": 800,
+                    "url": "/api/media/e8937a0a945b4aa8ada189813238f54d/800?v=1"
+                  },
+                  {
+                    "w": 1280,
+                    "url": "/api/media/e8937a0a945b4aa8ada189813238f54d/1280?v=1"
+                  }
+                ],
+                "width": 1280,
+                "height": 960,
+                "alt": "Eight women seated beneath a roof with basket-making materials around them."
+              },
+              "edit_note": "Client-supplied edited version: peripheral clean-up and exposure balance; all eight women, roof and both pillars retained."
+            }
+          },
+          "intro": "Culture isn\u2019t fixed in time. It is inherited and reinterpreted, questioned and created, lived and shared.\n\nUrban Suburban Perspectives works across Heritage, Art and Culture, exploring how what we inherit continues to find meaning in contemporary life."
+        },
+        "hidden": false,
+        "id": "8b9e00d593ec4da9af5f1f5a301a725b",
+        "styles": {},
+        "type": "hero"
+      },
+      {
+        "data": {
+          "body_html": "<p>A place, a building, a story, a tradition or a way of making can hold meaning far beyond where it began.</p><p>USP brings together people, knowledge and different perspectives to explore how these inheritances can remain meaningful in the present\u2014and become a starting point for new ideas, creative expression and opportunity.</p><p>Across Heritage, Art and Culture, the work takes different forms, each shaped by its own context and the people involved. Through it, people can develop skills, share knowledge, shape what is created and open new pathways to livelihood.</p>",
+          "eyebrow": "Who We Are",
+          "heading": "Heritage, Art and Culture \u2014 Kept in Motion.",
+          "style": "columns"
+        },
+        "hidden": false,
+        "id": "9acbb2583dfc483ab0f1a5654ac1786f",
+        "styles": {},
+        "type": "text"
+      },
+      {
+        "data": {
+          "eyebrow": "Our Work",
+          "heading": "Shaped by Place, Knowledge and Perspectives.",
+          "intro": "Each initiative begins differently\u2014with a place, an idea, a practice or a question worth exploring. Its direction develops from the context and from the knowledge and perspectives that become part of the work.",
+          "items": [
+            {
+              "href": "/our-work/rakhigarhi",
+              "image": {
+                "caption": "",
+                "media_id": "2a82250608b54857afe26c78d35bd669",
+                "media": {
+                  "id": "2a82250608b54857afe26c78d35bd669",
+                  "kind": "image",
+                  "width": 960,
+                  "height": 1280,
+                  "srcs": [
+                    {
+                      "w": 800,
+                      "url": "/api/media/2a82250608b54857afe26c78d35bd669/800?v=1"
+                    },
+                    {
+                      "w": 960,
+                      "url": "/api/media/2a82250608b54857afe26c78d35bd669/960?v=1"
+                    }
+                  ],
+                  "src": "/api/media/2a82250608b54857afe26c78d35bd669/960?v=1",
+                  "alt": "A carved wooden door with weathered surface detail.",
+                  "caption": "A carved wooden door with weathered surface detail.",
+                  "credit": "",
+                  "focal_desktop": {
+                    "x": 50,
+                    "y": 50
+                  },
+                  "focal_mobile": {
+                    "x": 50,
+                    "y": 50
+                  },
+                  "filename": "image(20261010-060550).png",
+                  "public_ok": true
+                }
+              },
+              "subtitle": "5,000 Years of History. A Place Still Evolving.",
+              "text": "One of the most significant archaeological sites of the Indus Valley Civilisation is also a living village\u2014where history, architecture, knowledge and everyday life continue alongside one another.",
+              "title": "Rakhigarhi"
+            },
+            {
+              "href": "/our-work/theatre",
+              "image": {
+                "caption": "",
+                "media_id": "d326aab636e2414e87528c6cb489eff6",
+                "media": {
+                  "id": "d326aab636e2414e87528c6cb489eff6",
+                  "kind": "image",
+                  "width": 1280,
+                  "height": 782,
+                  "srcs": [
+                    {
+                      "w": 800,
+                      "url": "/api/media/d326aab636e2414e87528c6cb489eff6/800?v=1"
+                    },
+                    {
+                      "w": 1280,
+                      "url": "/api/media/d326aab636e2414e87528c6cb489eff6/1280?v=1"
+                    }
+                  ],
+                  "src": "/api/media/d326aab636e2414e87528c6cb489eff6/1280?v=1",
+                  "alt": "A group of people seated together reading printed materials.",
+                  "caption": "Participants reading together with printed materials.",
+                  "credit": "",
+                  "focal_desktop": {
+                    "x": 50,
+                    "y": 50
+                  },
+                  "focal_mobile": {
+                    "x": 50,
+                    "y": 50
+                  },
+                  "filename": "WhatsApp Image 2026-10-10 at 10.10.24 AM.jpeg",
+                  "public_ok": true
+                }
+              },
+              "subtitle": "Stories Brought to Life. Conversations Opened.",
+              "text": "USP creates original theatre drawn from culture, lived experiences and familiar relationships, rituals and social conventions that shape everyday life.",
+              "title": "Theatre"
+            },
+            {
+              "href": "/our-work/craft-livelihood",
+              "image": {
+                "caption": "",
+                "media_id": "6c3cdc67f4964a01be0bc376eb1f9bc4",
+                "media": {
+                  "id": "6c3cdc67f4964a01be0bc376eb1f9bc4",
+                  "kind": "image",
+                  "width": 960,
+                  "height": 1280,
+                  "srcs": [
+                    {
+                      "w": 800,
+                      "url": "/api/media/6c3cdc67f4964a01be0bc376eb1f9bc4/800?v=1"
+                    },
+                    {
+                      "w": 960,
+                      "url": "/api/media/6c3cdc67f4964a01be0bc376eb1f9bc4/960?v=1"
+                    }
+                  ],
+                  "src": "/api/media/6c3cdc67f4964a01be0bc376eb1f9bc4/960?v=1",
+                  "alt": "Women holding up decorated bowls.",
+                  "caption": "Decorated handmade bowls displayed by participants.",
+                  "credit": "",
+                  "focal_desktop": {
+                    "x": 50,
+                    "y": 50
+                  },
+                  "focal_mobile": {
+                    "x": 50,
+                    "y": 50
+                  },
+                  "filename": "WhatsApp Image 2026-10-10 at 10.16.09 AM.jpeg",
+                  "public_ok": true
+                }
+              },
+              "subtitle": "Where Tradition Finds New Expression.",
+              "text": "In Rakhigarhi, women are developing craft through knowledge, practice and creative exchange\u2014strengthening skills while creating pathways to livelihood.",
+              "title": "Craft & Livelihood"
+            },
+            {
+              "href": "/our-work/workshops-learning",
+              "image": {
+                "caption": "",
+                "media_id": "b76e9d3c0db04992a410365056104913",
+                "media": {
+                  "id": "b76e9d3c0db04992a410365056104913",
+                  "kind": "image",
+                  "width": 1280,
+                  "height": 709,
+                  "srcs": [
+                    {
+                      "w": 800,
+                      "url": "/api/media/b76e9d3c0db04992a410365056104913/800?v=1"
+                    },
+                    {
+                      "w": 1280,
+                      "url": "/api/media/b76e9d3c0db04992a410365056104913/1280?v=1"
+                    }
+                  ],
+                  "src": "/api/media/b76e9d3c0db04992a410365056104913/1280?v=1",
+                  "alt": "Small handmade figures, bowls and other objects displayed on the ground.",
+                  "caption": "Small handmade figures and bowls on display.",
+                  "credit": "",
+                  "focal_desktop": {
+                    "x": 50,
+                    "y": 50
+                  },
+                  "focal_mobile": {
+                    "x": 50,
+                    "y": 50
+                  },
+                  "filename": "image(20261010-060534).png",
+                  "public_ok": true
+                }
+              },
+              "subtitle": "Knowledge Shared. Skills Developed.",
+              "text": "Learning happens through real work\u2014from interpreting the history of a place and restoring a historic building to making, designing and participating in projects as they develop.",
+              "title": "Workshops & Learning"
+            }
+          ]
+        },
+        "hidden": false,
+        "id": "0fce152d3e824b669ab612fe37c98dd3",
+        "styles": {},
+        "type": "related_work"
+      },
+      {
+        "data": {
+          "band": true,
+          "body_html": "<p>A restored building can find new purpose. Conservation skills can remain with the people who learn them. Knowledge of a place can become a livelihood. Craft can develop new forms and economic value. A performance can leave behind a conversation.</p><p>What begins through one initiative can create possibilities beyond it.</p>",
+          "eyebrow": "What Takes Shape",
+          "heading": "The Value Can Extend Beyond the Initiative.",
+          "style": "stacked"
+        },
+        "hidden": false,
+        "id": "a3457c6519cf4366ac6004a09bde1feb",
+        "styles": {},
+        "type": "text"
+      },
+      {
+        "data": {
+          "cards": [
+            {
+              "crop": "4/3",
+              "eyebrow": "Rakhigarhi / Heritage",
+              "href": "/field-notes",
+              "image": {
+                "caption": "",
+                "media_id": "07f3512b576f4ea19497a610d33a9fc9",
+                "media": {
+                  "id": "07f3512b576f4ea19497a610d33a9fc9",
+                  "kind": "image",
+                  "width": 1493,
+                  "height": 2000,
+                  "srcs": [
+                    {
+                      "w": 800,
+                      "url": "/api/media/07f3512b576f4ea19497a610d33a9fc9/800?v=1"
+                    },
+                    {
+                      "w": 1493,
+                      "url": "/api/media/07f3512b576f4ea19497a610d33a9fc9/1493?v=1"
+                    }
+                  ],
+                  "src": "/api/media/07f3512b576f4ea19497a610d33a9fc9/1493?v=1",
+                  "alt": "A woman holding two dressed cloth dolls.",
+                  "caption": "A woman displaying two dressed cloth dolls.",
+                  "credit": "",
+                  "focal_desktop": {
+                    "x": 50,
+                    "y": 50
+                  },
+                  "focal_mobile": {
+                    "x": 50,
+                    "y": 50
+                  },
+                  "filename": "WhatsApp Image 2026-09-21 at 12.58.20 AM-edited.webp",
+                  "public_ok": true,
+                  "original": {
+                    "id": "98cdc12745aa425387134a546a87a803",
+                    "src": "/api/media/98cdc12745aa425387134a546a87a803/960?v=1",
+                    "srcs": [
+                      {
+                        "w": 800,
+                        "url": "/api/media/98cdc12745aa425387134a546a87a803/800?v=1"
+                      },
+                      {
+                        "w": 960,
+                        "url": "/api/media/98cdc12745aa425387134a546a87a803/960?v=1"
+                      }
+                    ],
+                    "width": 960,
+                    "height": 1280,
+                    "alt": "A woman holding two dressed cloth dolls."
+                  },
+                  "edit_note": "Client-supplied edited version: peripheral people and distractions removed; woman and both dolls unchanged."
+                }
+              },
+              "link_label": "Read the Story",
+              "text": "Objects, memories and traces of everyday life encountered through the work.",
+              "title": "What Was Already There."
+            },
+            {
+              "crop": "4/3",
+              "eyebrow": "Rakhigarhi / Craft",
+              "href": "/field-notes",
+              "image": {
+                "caption": "",
+                "media_id": "6fc82b55f714459f9499182413231bbb",
+                "media": {
+                  "id": "6fc82b55f714459f9499182413231bbb",
+                  "kind": "image",
+                  "width": 1600,
+                  "height": 1194,
+                  "srcs": [
+                    {
+                      "w": 800,
+                      "url": "/api/media/6fc82b55f714459f9499182413231bbb/800?v=1"
+                    },
+                    {
+                      "w": 1600,
+                      "url": "/api/media/6fc82b55f714459f9499182413231bbb/1600?v=1"
+                    }
+                  ],
+                  "src": "/api/media/6fc82b55f714459f9499182413231bbb/1600?v=1",
+                  "alt": "Eight women seated beneath a roof with basket-making materials around them.",
+                  "caption": "Women working with basket-making materials beneath a shaded roof.",
+                  "credit": "",
+                  "focal_desktop": {
+                    "x": 50,
+                    "y": 50
+                  },
+                  "focal_mobile": {
+                    "x": 50,
+                    "y": 50
+                  },
+                  "filename": "Original4-edited.webp",
+                  "public_ok": true,
+                  "original": {
+                    "id": "e8937a0a945b4aa8ada189813238f54d",
+                    "src": "/api/media/e8937a0a945b4aa8ada189813238f54d/1280?v=1",
+                    "srcs": [
+                      {
+                        "w": 800,
+                        "url": "/api/media/e8937a0a945b4aa8ada189813238f54d/800?v=1"
+                      },
+                      {
+                        "w": 1280,
+                        "url": "/api/media/e8937a0a945b4aa8ada189813238f54d/1280?v=1"
+                      }
+                    ],
+                    "width": 1280,
+                    "height": 960,
+                    "alt": "Eight women seated beneath a roof with basket-making materials around them."
+                  },
+                  "edit_note": "Client-supplied edited version: peripheral clean-up and exposure balance; all eight women, roof and both pillars retained."
+                }
+              },
+              "link_label": "Read the Story",
+              "text": "Two experienced basket makers whose knowledge and skill inspire a new generation.",
+              "title": "The OG Basket Makers."
+            }
+          ],
+          "category": "",
+          "count": 3,
+          "eyebrow": "Field Notes",
+          "heading": "From the Work, as It Unfolds.",
+          "intro": "Some of the most interesting experiences happen along the way. Small observations, discoveries and stories from the people and places that are part of USP's work.",
+          "more_href": "/field-notes",
+          "more_label": "Explore Field Notes"
+        },
+        "hidden": false,
+        "id": "67d62a4864a04020805b3373b16c9ff8",
+        "styles": {},
+        "type": "notes_feed",
+        "notes": [
+          {
+            "slug": "how-field-notes-will-work",
+            "title": "How Field Notes will work (template preview)",
+            "standfirst": "A layout sample for the editorial team. Not a fieldwork story.",
+            "kind": "resource",
+            "category": "Resources",
+            "author": "USP India editorial team (placeholder)",
+            "published_at": "2026-10-15T06:45:01.868847+00:00",
+            "updated_at": "2026-10-15T08:15:41.634647+00:00",
+            "cover": null
+          }
+        ]
+      },
+      {
+        "data": {
+          "button_label": "Get in Touch",
+          "buttons": [
+            {
+              "href": "/connect?topic=Collaboration",
+              "label": "Collaborate"
+            },
+            {
+              "href": "/connect?topic=Volunteer",
+              "label": "Volunteer"
+            },
+            {
+              "href": "/connect",
+              "label": "Get in Touch"
+            }
+          ],
+          "eyebrow": "Connect",
+          "heading": "Be Part of What Takes Shape Next.",
+          "href": "/connect",
+          "text": "There are different ways to become part of the work\u2014through collaboration, participation, learning, or support for an initiative."
+        },
+        "hidden": false,
+        "id": "2b482fb1a353455eacb10261d5db8702",
+        "styles": {},
+        "type": "contact_invite"
+      }
+    ],
+    "seo": {
+      "canonical": "",
+      "description": "USP India (Urban Suburban Perspectives) \u2014 community, culture, craft, heritage, theatre and learning.",
+      "noindex": false,
+      "share_media_id": "",
+      "title": ""
+    },
+    "title": "Home"
+  },
+  "updated_at": "2026-10-15T14:32:50.881677+00:00"
+}

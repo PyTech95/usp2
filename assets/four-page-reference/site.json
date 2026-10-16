@@ -1,0 +1,130 @@
+{
+  "site_name": "USP India",
+  "full_name": "Urban Suburban Perspectives",
+  "tagline": "Heritage, Art and Culture",
+  "theme": {
+    "base_size": 18,
+    "button_style": "square",
+    "colors": {
+      "background": "#F9F9F9",
+      "green": "#454545",
+      "ochre": "#8C847C",
+      "surface": "#EDEAE7",
+      "terracotta": "#76716B",
+      "text": "#575757"
+    },
+    "fonts": {
+      "body": "Public Sans",
+      "heading": "Public Sans"
+    },
+    "spacing": "comfortable"
+  },
+  "footer_text": "USP India \u2014 Urban Suburban Perspectives.",
+  "privacy_html": "<p>Messages sent through Connect are stored privately and used only to respond to you. Draft privacy notice \u2014 awaiting approved text.</p>",
+  "contact": {
+    "address": "",
+    "email": "",
+    "phone": ""
+  },
+  "social": [],
+  "menus": {
+    "footer": [
+      {
+        "href": "/blog",
+        "id": "m-blog",
+        "label": "Blog"
+      }
+    ],
+    "main": [
+      {
+        "children": [],
+        "href": "/",
+        "id": "m-home",
+        "label": "Home",
+        "required": true
+      },
+      {
+        "children": [
+          {
+            "href": "/about#team",
+            "id": "m-team",
+            "label": "Team"
+          }
+        ],
+        "href": "/about",
+        "id": "m-about",
+        "label": "Who We Are",
+        "required": true
+      },
+      {
+        "children": [
+          {
+            "children": [],
+            "href": "/our-work/rakhigarhi",
+            "id": "m-rak",
+            "label": "Rakhigarhi",
+            "required": true
+          },
+          {
+            "children": [],
+            "href": "/our-work/theatre",
+            "id": "m-the",
+            "label": "Theatre",
+            "required": true
+          },
+          {
+            "children": [],
+            "href": "/our-work/craft-livelihood",
+            "id": "m-cra",
+            "label": "Craft & Livelihood",
+            "required": true
+          },
+          {
+            "children": [],
+            "href": "/our-work/workshops-learning",
+            "id": "m-wor",
+            "label": "Workshops & Learning",
+            "required": true
+          }
+        ],
+        "href": "/our-work",
+        "id": "m-work",
+        "label": "Our Work",
+        "required": true
+      },
+      {
+        "children": [],
+        "href": "/field-notes",
+        "id": "m-notes",
+        "label": "Field Notes",
+        "required": true
+      },
+      {
+        "children": [],
+        "href": "/connect",
+        "id": "m-connect",
+        "label": "Connect",
+        "required": true
+      }
+    ]
+  },
+  "preview_banner": false,
+  "indexing_enabled": false,
+  "live_editor_enabled": null,
+  "brand_label": "USP",
+  "ui_text": {
+    "menu": "Menu"
+  },
+  "header_styles": {},
+  "text_styles": {},
+  "logo": null,
+  "favicon": null,
+  "default_share": null,
+  "categories": [
+    "Rakhigarhi",
+    "Theatre",
+    "Craft & Livelihood",
+    "Workshops & Learning",
+    "Resources"
+  ]
+}

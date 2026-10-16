@@ -1,0 +1,352 @@
+{
+  "key": "craft-livelihood",
+  "path": "/our-work/craft-livelihood",
+  "content": {
+    "sections": [
+      {
+        "data": {
+          "buttons": [],
+          "eyebrow": "Craft & Livelihood",
+          "heading": "Made by Hand. Shaped by Knowledge.",
+          "image": {
+            "caption": "",
+            "media_id": "d72a4d6d99db4ee2b8f8380dfc0e9daa",
+            "media": {
+              "id": "d72a4d6d99db4ee2b8f8380dfc0e9daa",
+              "kind": "image",
+              "width": 1600,
+              "height": 1194,
+              "srcs": [
+                {
+                  "w": 800,
+                  "url": "/api/media/d72a4d6d99db4ee2b8f8380dfc0e9daa/800?v=1"
+                },
+                {
+                  "w": 1600,
+                  "url": "/api/media/d72a4d6d99db4ee2b8f8380dfc0e9daa/1600?v=1"
+                }
+              ],
+              "src": "/api/media/d72a4d6d99db4ee2b8f8380dfc0e9daa/1600?v=1",
+              "alt": "An older woman weaving a green-and-yellow basket, a walking stick beside her.",
+              "caption": "A woman weaving a green-and-yellow basket.",
+              "credit": "",
+              "focal_desktop": {
+                "x": 50,
+                "y": 50
+              },
+              "focal_mobile": {
+                "x": 50,
+                "y": 50
+              },
+              "filename": "Original-edited.webp",
+              "public_ok": true,
+              "original": {
+                "id": "b0db3e62207c4e96b08c4656097a146e",
+                "src": "/api/media/b0db3e62207c4e96b08c4656097a146e/1280?v=1",
+                "srcs": [
+                  {
+                    "w": 800,
+                    "url": "/api/media/b0db3e62207c4e96b08c4656097a146e/800?v=1"
+                  },
+                  {
+                    "w": 1280,
+                    "url": "/api/media/b0db3e62207c4e96b08c4656097a146e/1280?v=1"
+                  }
+                ],
+                "width": 1280,
+                "height": 960,
+                "alt": "An older woman weaving a green-and-yellow basket, a walking stick beside her."
+              },
+              "edit_note": "Client-supplied edited version: neighbouring person at the left edge removed; woman, basket and walking stick unchanged."
+            }
+          },
+          "intro": "In Rakhigarhi, women are building on existing knowledge and ways of making. Through practice and creative exchange, they are developing skills, individual expression and new pathways to livelihood."
+        },
+        "hidden": false,
+        "id": "efc99444967244a494a8a827477732f9",
+        "type": "hero"
+      },
+      {
+        "data": {
+          "body_html": "<p>Ways of choosing materials, judging a form or working with colour are often learned through watching, doing and making alongside others.</p><p>USP brings women in Rakhigarhi together with artists, designers and craft practitioners to build on this knowledge. Together, they test and adapt new materials, techniques and ideas, developing work rooted in the place and shaped by the women involved.</p>",
+          "eyebrow": "Knowledge Carried Forward",
+          "heading": "Not everything we know is formally taught.",
+          "style": "columns"
+        },
+        "hidden": false,
+        "id": "2f77f69154024bc18e63c209b09dd8bb",
+        "type": "text"
+      },
+      {
+        "data": {
+          "body_html": "<p>Three crafts form the starting point of the initiative. Each brings its own materials, techniques and possibilities for colour, pattern and form.</p>",
+          "eyebrow": "Three Crafts",
+          "heading": "Basket Making. Papier-M\u00e2ch\u00e9. Dhurrie Weaving.",
+          "style": "stacked"
+        },
+        "hidden": false,
+        "id": "b7030ee2f943407bbe9f66f67c5618ff",
+        "type": "text"
+      },
+      {
+        "data": {
+          "anchor": "basket-making",
+          "body_html": "<p>Basket making draws on skills and ways of working already present within the community. Through the initiative, women are exploring new combinations of colour, pattern and form while developing the consistency and finish of the work.</p>",
+          "crop": "4/5",
+          "eyebrow": "Basket Making",
+          "heading": "Tradition carried forward through colour, pattern and form.",
+          "image": {
+            "caption": "",
+            "media_id": "546270d000a2421f913f59054d09a089",
+            "media": {
+              "id": "546270d000a2421f913f59054d09a089",
+              "kind": "image",
+              "width": 431,
+              "height": 790,
+              "srcs": [
+                {
+                  "w": 431,
+                  "url": "/api/media/546270d000a2421f913f59054d09a089/431?v=1"
+                }
+              ],
+              "src": "/api/media/546270d000a2421f913f59054d09a089/431?v=1",
+              "alt": "A blue woven basket.",
+              "caption": "A blue woven basket.",
+              "credit": "",
+              "focal_desktop": {
+                "x": 50,
+                "y": 50
+              },
+              "focal_mobile": {
+                "x": 50,
+                "y": 50
+              },
+              "filename": "blue-basket-border-removed.png",
+              "public_ok": true,
+              "original": {
+                "id": "aa2652aad00c4bc1a7b959b73ec671c2",
+                "src": "/api/media/aa2652aad00c4bc1a7b959b73ec671c2/540?v=1",
+                "srcs": [
+                  {
+                    "w": 540,
+                    "url": "/api/media/aa2652aad00c4bc1a7b959b73ec671c2/540?v=1"
+                  }
+                ],
+                "width": 540,
+                "height": 960,
+                "alt": "A blue woven basket."
+              },
+              "edit_note": "Removed uniform screenshot border only (crop box (55, 98, 486, 888)). No retouching, no resizing."
+            }
+          },
+          "image_side": "left"
+        },
+        "hidden": false,
+        "id": "32f319aca7d44c7bbb683b8b59074ca3",
+        "type": "image_text"
+      },
+      {
+        "data": {
+          "anchor": "papier-mache",
+          "band": true,
+          "body_html": "<p>Papier-m\u00e2ch\u00e9 introduces a different material and process into the initiative. Women are experimenting with form, surface and decoration, developing objects that combine individual expression with the visual language emerging from the group.</p>",
+          "eyebrow": "Papier-M\u00e2ch\u00e9",
+          "heading": "A new material. A new direction.",
+          "image": {
+            "caption": "",
+            "media_id": "b76e9d3c0db04992a410365056104913",
+            "media": {
+              "id": "b76e9d3c0db04992a410365056104913",
+              "kind": "image",
+              "width": 1280,
+              "height": 709,
+              "srcs": [
+                {
+                  "w": 800,
+                  "url": "/api/media/b76e9d3c0db04992a410365056104913/800?v=1"
+                },
+                {
+                  "w": 1280,
+                  "url": "/api/media/b76e9d3c0db04992a410365056104913/1280?v=1"
+                }
+              ],
+              "src": "/api/media/b76e9d3c0db04992a410365056104913/1280?v=1",
+              "alt": "Small handmade figures, bowls and other objects displayed on the ground.",
+              "caption": "Small handmade figures and bowls on display.",
+              "credit": "",
+              "focal_desktop": {
+                "x": 50,
+                "y": 50
+              },
+              "focal_mobile": {
+                "x": 50,
+                "y": 50
+              },
+              "filename": "image(20261010-060534).png",
+              "public_ok": true
+            }
+          },
+          "layout": "full"
+        },
+        "hidden": false,
+        "id": "f83ab3b1542d411d9135da3a0e87174f",
+        "type": "image"
+      },
+      {
+        "data": {
+          "anchor": "dhurrie-weaving",
+          "body_html": "<p>The patterns and motifs woven into the dhurries draw on designs passed down through generations within the community. Women use these as a starting point for new combinations of colour and composition\u2014carrying local textile knowledge into the work being created today.</p>",
+          "crop": "2/3",
+          "eyebrow": "Dhurrie Weaving",
+          "heading": "Textile knowledge carried forward through pattern and composition.",
+          "image": {
+            "caption": "",
+            "media_id": "6e9af671d7964b45bfd3cdb3d953d3ef",
+            "media": {
+              "id": "6e9af671d7964b45bfd3cdb3d953d3ef",
+              "kind": "image",
+              "width": 960,
+              "height": 1280,
+              "srcs": [
+                {
+                  "w": 800,
+                  "url": "/api/media/6e9af671d7964b45bfd3cdb3d953d3ef/800?v=1"
+                },
+                {
+                  "w": 960,
+                  "url": "/api/media/6e9af671d7964b45bfd3cdb3d953d3ef/960?v=1"
+                }
+              ],
+              "src": "/api/media/6e9af671d7964b45bfd3cdb3d953d3ef/960?v=1",
+              "alt": "A framed textile wall hanging with animal and bird motifs against a brick wall.",
+              "caption": "A textile wall hanging with animal and bird motifs.",
+              "credit": "",
+              "focal_desktop": {
+                "x": 50,
+                "y": 50
+              },
+              "focal_mobile": {
+                "x": 50,
+                "y": 50
+              },
+              "filename": "image(20261010-060445).png",
+              "public_ok": true
+            }
+          },
+          "image_side": "right"
+        },
+        "hidden": false,
+        "id": "7ca7cd345b9846cca493871ee8cc6728",
+        "type": "image_text"
+      },
+      {
+        "data": {
+          "anchor": "craft-centre",
+          "body_html": "<p>The Craft Centre within the Rakhigarhi Haveli and Chaupal will give the initiative a shared home\u2014a place for women to work together, develop designs and techniques, share knowledge and build consistency in what they produce.</p><p>Visitors will be able to encounter the work and understand the people, materials, and processes behind it.</p>",
+          "eyebrow": "The Craft Centre",
+          "heading": "A Place for the Work to Continue.",
+          "style": "columns"
+        },
+        "hidden": false,
+        "id": "4dc28ac23d2845d99f1c4446273357a6",
+        "type": "text"
+      },
+      {
+        "data": {
+          "crop": "2/1",
+          "flush": true,
+          "image": {
+            "caption": "",
+            "media_id": "6fc82b55f714459f9499182413231bbb",
+            "media": {
+              "id": "6fc82b55f714459f9499182413231bbb",
+              "kind": "image",
+              "width": 1600,
+              "height": 1194,
+              "srcs": [
+                {
+                  "w": 800,
+                  "url": "/api/media/6fc82b55f714459f9499182413231bbb/800?v=1"
+                },
+                {
+                  "w": 1600,
+                  "url": "/api/media/6fc82b55f714459f9499182413231bbb/1600?v=1"
+                }
+              ],
+              "src": "/api/media/6fc82b55f714459f9499182413231bbb/1600?v=1",
+              "alt": "Eight women seated beneath a roof with basket-making materials around them.",
+              "caption": "Women working with basket-making materials beneath a shaded roof.",
+              "credit": "",
+              "focal_desktop": {
+                "x": 50,
+                "y": 50
+              },
+              "focal_mobile": {
+                "x": 50,
+                "y": 50
+              },
+              "filename": "Original4-edited.webp",
+              "public_ok": true,
+              "original": {
+                "id": "e8937a0a945b4aa8ada189813238f54d",
+                "src": "/api/media/e8937a0a945b4aa8ada189813238f54d/1280?v=1",
+                "srcs": [
+                  {
+                    "w": 800,
+                    "url": "/api/media/e8937a0a945b4aa8ada189813238f54d/800?v=1"
+                  },
+                  {
+                    "w": 1280,
+                    "url": "/api/media/e8937a0a945b4aa8ada189813238f54d/1280?v=1"
+                  }
+                ],
+                "width": 1280,
+                "height": 960,
+                "alt": "Eight women seated beneath a roof with basket-making materials around them."
+              },
+              "edit_note": "Client-supplied edited version: peripheral clean-up and exposure balance; all eight women, roof and both pillars retained."
+            }
+          },
+          "layout": "full"
+        },
+        "hidden": false,
+        "id": "21ce6e4412b34cd68342742b8cc11ac9",
+        "type": "image"
+      },
+      {
+        "data": {
+          "anchor": "impact-ambition",
+          "body_html": "<p>As baskets, papier-m\u00e2ch\u00e9 and dhurries develop into products with wider appeal and economic value, they can create opportunities for women to earn.</p><p>Women are also contributing ideas, developing products and becoming more involved in decisions about how the initiative grows.</p><p>As the work gains value, so do the opportunities around it.</p>",
+          "eyebrow": "Impact & Livelihood",
+          "heading": "Creating Value Through Craft.",
+          "style": "stacked"
+        },
+        "hidden": false,
+        "id": "50c03293c3144ceaaae2ee9e23fd6c73",
+        "type": "text"
+      },
+      {
+        "data": {
+          "aside": "Rakhigarhi is known for its extraordinary past. The ambition is to make what is created here part of its future.",
+          "band": true,
+          "body_html": "<p>The work begins in Rakhigarhi, with the ambition to reach wider audiences through collections, creative collaborations, and partnerships.</p><p>The aim is for craft from Rakhigarhi to be recognised for its quality, character and originality\u2014with women increasingly shaping what is created and where it goes next.</p>",
+          "eyebrow": "The Ambition",
+          "heading": "From Rakhigarhi, Outwards.",
+          "style": "stacked"
+        },
+        "hidden": false,
+        "id": "d61b65c3893345f28a1a7ae506d5547c",
+        "type": "text"
+      }
+    ],
+    "seo": {
+      "canonical": "",
+      "description": "Craft & Livelihood at USP India: makers, making processes and objects.",
+      "noindex": false,
+      "share_media_id": "",
+      "title": ""
+    },
+    "title": "Craft & Livelihood"
+  },
+  "updated_at": "2026-10-15T06:45:56.455849+00:00"
+}

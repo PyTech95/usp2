@@ -1,0 +1,287 @@
+{
+  "key": "rakhigarhi",
+  "path": "/our-work/rakhigarhi",
+  "content": {
+    "sections": [
+      {
+        "data": {
+          "buttons": [],
+          "eyebrow": "Rakhigarhi",
+          "heading": "5,000 Years of History.\nA Place Still Evolving.",
+          "intro": ""
+        },
+        "hidden": false,
+        "id": "658b5d1f52e043a580c2e9a7fdf9b37c",
+        "styles": {},
+        "type": "hero"
+      },
+      {
+        "data": {
+          "anchor": "archaeology",
+          "aside": "USP's current work centres on restoring a historic haveli and chaupal and bringing them back into active use. The project explores how these buildings can serve the village today\u2014as places for craft, learning, gathering and welcoming visitors.",
+          "body_html": "<p>Rakhigarhi is one of the most significant archaeological sites of the Indus Valley Civilisation (IVC), with a history stretching back more than 5,000 years.</p><p>It is also a living village\u2014where history, architecture, knowledge, and everyday life continue alongside one another.</p>",
+          "heading": "",
+          "style": "stacked"
+        },
+        "hidden": false,
+        "id": "c11a215404494cbe8884290e1e0ae6f4",
+        "styles": {},
+        "type": "text"
+      },
+      {
+        "id": "b81e831b8677408e8ee1afcf2ff2ce05",
+        "type": "image_text",
+        "hidden": false,
+        "data": {
+          "anchor": "haveli-chaupal",
+          "body_html": "<p>Its architecture, materials, and spaces carry traces of generations of domestic life. The restoration seeks to retain that character while adapting the buildings for new uses.</p><p>The work itself is also a place of learning. Local construction workers are developing conservation techniques alongside conservation professionals, allowing skills developed through the project to remain within Rakhigarhi. Haveli itself is also a place of learning.</p><p>The aim is to demonstrate what is possible\u2014a conserved building that remains recognisable as a home while taking on a quiet new life as a space for community, culture and craft.</p><p>What begins with one haveli could grow into a wider pattern of conservation and renewal, encouraging other historic buildings in Rakhigarhi to be restored and brought back into use.</p>",
+          "collage": [
+            {
+              "caption": "",
+              "media_id": "71e1005acb1a499fa11270f418b1a86f",
+              "placeholder": false,
+              "placeholder_label": "Haveli brick arches",
+              "media": {
+                "id": "71e1005acb1a499fa11270f418b1a86f",
+                "kind": "image",
+                "width": 1086,
+                "height": 1448,
+                "srcs": [
+                  {
+                    "w": 800,
+                    "url": "/api/media/71e1005acb1a499fa11270f418b1a86f/800?v=1"
+                  },
+                  {
+                    "w": 1086,
+                    "url": "/api/media/71e1005acb1a499fa11270f418b1a86f/1086?v=1"
+                  }
+                ],
+                "src": "/api/media/71e1005acb1a499fa11270f418b1a86f/1086?v=1",
+                "alt": "Brick arches inside the haveli awaiting restoration.",
+                "caption": "",
+                "credit": "",
+                "focal_desktop": {
+                  "x": 50,
+                  "y": 50
+                },
+                "focal_mobile": {
+                  "x": 50,
+                  "y": 50
+                },
+                "filename": "brick.webp",
+                "public_ok": true
+              }
+            },
+            {
+              "caption": "",
+              "media_id": "4a53fa6386994d539589fbe1ef53c681",
+              "placeholder": false,
+              "placeholder_label": "Carved wooden door",
+              "media": {
+                "id": "4a53fa6386994d539589fbe1ef53c681",
+                "kind": "image",
+                "width": 1024,
+                "height": 1536,
+                "srcs": [
+                  {
+                    "w": 800,
+                    "url": "/api/media/4a53fa6386994d539589fbe1ef53c681/800?v=1"
+                  },
+                  {
+                    "w": 1024,
+                    "url": "/api/media/4a53fa6386994d539589fbe1ef53c681/1024?v=1"
+                  }
+                ],
+                "src": "/api/media/4a53fa6386994d539589fbe1ef53c681/1024?v=1",
+                "alt": "A carved wooden door with weathered surface detail.",
+                "caption": "",
+                "credit": "",
+                "focal_desktop": {
+                  "x": 50,
+                  "y": 50
+                },
+                "focal_mobile": {
+                  "x": 50,
+                  "y": 50
+                },
+                "filename": "door.webp",
+                "public_ok": true
+              }
+            }
+          ],
+          "eyebrow": "The Haveli and Chaupal",
+          "heading": "Restoring the Past.\nCreating a New Purpose.",
+          "image": {
+            "caption": "",
+            "media_id": "30c196bcfbab465b886424b8dc10266c",
+            "placeholder": false,
+            "placeholder_label": "Haveli facade",
+            "media": {
+              "id": "30c196bcfbab465b886424b8dc10266c",
+              "kind": "image",
+              "width": 1182,
+              "height": 1331,
+              "srcs": [
+                {
+                  "w": 800,
+                  "url": "/api/media/30c196bcfbab465b886424b8dc10266c/800?v=1"
+                },
+                {
+                  "w": 1182,
+                  "url": "/api/media/30c196bcfbab465b886424b8dc10266c/1182?v=1"
+                }
+              ],
+              "src": "/api/media/30c196bcfbab465b886424b8dc10266c/1182?v=1",
+              "alt": "Restored haveli facade in Rakhigarhi against a clear sky.",
+              "caption": "",
+              "credit": "",
+              "focal_desktop": {
+                "x": 50,
+                "y": 50
+              },
+              "focal_mobile": {
+                "x": 50,
+                "y": 50
+              },
+              "filename": "haveli.png",
+              "public_ok": true
+            }
+          },
+          "layout": "haveli-reference"
+        },
+        "styles": {
+          "body_html": {
+            "translateX": "-55.13330078125px",
+            "translateY": "-149.31666564941406px",
+            "width": "738px"
+          },
+          "collage.1": {
+            "height": "301px",
+            "width": "158px",
+            "translateX": "33.56671142578125px",
+            "translateY": "7.9499969482421875px"
+          },
+          "eyebrow": {
+            "translateX": "100.5999755859375px",
+            "translateY": "-505.95001220703125px"
+          },
+          "heading": {
+            "translateX": "100.2667236328125px",
+            "translateY": "-483.43334197998047px"
+          },
+          "image": {
+            "width": "694px"
+          },
+          "collage.0": {
+            "width": "338px",
+            "height": "382px"
+          },
+          "_section": {
+            "height": "1038px"
+          }
+        }
+      },
+      {
+        "data": {
+          "anchor": "haveli-in-use",
+          "body_html": "<p>The haveli and chaupal have been reimagined as places that can once again be part of everyday life in Rakhigarhi\u2014somewhere to make, gather, learn, welcome visitors and simply spend time.</p>",
+          "eyebrow": "A Haveli Brought Back Into Use",
+          "heading": "",
+          "style": "stacked"
+        },
+        "hidden": false,
+        "id": "4cd0518474cb4b04bd8e51afcb362d9d",
+        "styles": {},
+        "type": "text"
+      },
+      {
+        "data": {
+          "anchor": "craft-centre",
+          "body_html": "<p>The Rakhigarhi Craft Centre is envisioned as a working space within the haveli, where women make, learn, experiment and develop their work.</p><p>Basket making, papier-m\u00e2ch\u00e9 and dhurrie weaving are among the crafts being developed. The Centre will provide a permanent base for working together, exploring designs and techniques, sharing knowledge and presenting what is created.</p>",
+          "heading": "The Craft Centre",
+          "layout": "haveli-use",
+          "link_href": "/our-work/craft-livelihood",
+          "link_label": "Explore Craft & Livelihood",
+          "style": "columns"
+        },
+        "hidden": false,
+        "id": "052c9fe332574576aad9c748f1a7c8c0",
+        "styles": {},
+        "type": "text"
+      },
+      {
+        "data": {
+          "anchor": "place-to-arrive",
+          "body_html": "<p>For visitors, the haveli and chaupal become a starting point\u2014somewhere to meet people and understand Rakhigarhi's archaeology, history and life today.</p><p>Through its buildings, craft and stories, visitors connect with the village and the people who call it home.</p><p>The Heritage Guide Program is part of this experience. Women from Rakhigarhi are developing the knowledge and skills to interpret their heritage for visitors, giving them a greater role in how the village is presented and understood.</p>",
+          "heading": "A Place to Arrive",
+          "layout": "haveli-use",
+          "style": "columns"
+        },
+        "hidden": false,
+        "id": "33f3973c4b80473e911f3cd1b569e188",
+        "styles": {},
+        "type": "text"
+      },
+      {
+        "data": {
+          "anchor": "place-to-pause",
+          "body_html": "<p>Not every part of the haveli and chaupal needs a programme.</p><p>There should also be somewhere to sit.</p><p>A simple place for chai, cold drinks and conversation gives visitors a reason to pause and gives the haveli some of the informality of a lived-in place.</p>",
+          "heading": "A Place to Pause",
+          "layout": "haveli-use",
+          "style": "columns"
+        },
+        "hidden": false,
+        "id": "44eec0f60ecb4f05a6764f2550ef18ec",
+        "styles": {},
+        "type": "text"
+      },
+      {
+        "id": "e37b9ecc41b54976a2df579118dd6eb3",
+        "type": "text",
+        "hidden": false,
+        "data": {
+          "anchor": "active-use-summary",
+          "body_html": "<p>Part workshop, part gathering place, part visitor anchor\u2014the aim is for the haveli to feel active and welcoming rather than institutional.</p>",
+          "heading": "",
+          "style": "stacked"
+        },
+        "styles": {
+          "body_html": {
+            "fontSize": "20px"
+          }
+        }
+      },
+      {
+        "id": "1017b7e20a8648a0b3f8c546ed6f89d6",
+        "type": "text",
+        "hidden": false,
+        "data": {
+          "anchor": "the-ambition",
+          "body_html": "<p>The ambition reaches beyond the restoration of a single building. By bringing the haveli and Chaupal back into active use, the hope is to draw people into Rakhigarhi, support local craft and enterprise, and contribute to the village economy.</p><p>If that activity creates value, other historic havelis may also find new purpose\u2014encouraging further conservation and bringing more of Rakhigarhi's built heritage back into use.</p><p>What begins with one haveli could grow into a wider pattern of conservation and renewal, shaped by the people who live here.</p>",
+          "eyebrow": "The Ambition",
+          "heading": "One Restoration.\nA Wider Possibility.",
+          "style": "stacked"
+        },
+        "styles": {
+          "heading": {
+            "fontSize": "32px"
+          },
+          "body_html": {
+            "fontSize": "18px",
+            "translateX": "0px",
+            "translateY": "-37.100006103515625px"
+          }
+        }
+      }
+    ],
+    "seo": {
+      "canonical": "",
+      "description": "USP India's place-and-community work in Rakhigarhi.",
+      "noindex": false,
+      "share_media_id": "",
+      "title": ""
+    },
+    "title": "Rakhigarhi"
+  },
+  "updated_at": "2026-10-16T07:47:41.416658+00:00"
+}

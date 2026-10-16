@@ -97,7 +97,7 @@ function Hero({ d, s, first, i, home, pageKey }) {
   if (pageKey === "about" && d.layout === "about-hero") {
     return <AboutHero data={d} first={first} id={`block-${i}`} editable={(field) => sx(s, field)} />;
   }
-  if (pageKey === "theatre") {
+  if (pageKey === "theatre" && d.layout !== "theatre-rehearsal-reference") {
     return <TheatreHero data={d} first={first} id={`block-${i}`} editable={(field) => sx(s, field)} />;
   }
   if (pageKey === "rakhigarhi") {
@@ -234,7 +234,7 @@ function BlockInner({ s, first, i, home, pageKey }) {
   if (pageKey === "theatre" && d.layout === "theatre-production") {
     return <TheatreProduction data={d} id={id} editable={(field) => sx(s, field)} />;
   }
-  if (pageKey === "rakhigarhi" && t === "image_text" && d.layout === "haveli-reference") {
+  if (pageKey === "rakhigarhi" && t === "image_text" && ["haveli-reference", "haveli-reference-aligned"].includes(d.layout)) {
     return <HaveliRestoration data={d} id={id} editable={(field) => sx(s, field)} />;
   }
   if (t === "hero") return <section data-testid={id}><Hero d={d} s={s} first={first} i={i} home={home} pageKey={pageKey} /></section>;

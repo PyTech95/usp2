@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../../lib/api";
 import { useMeta, useSite, SITE_URL } from "../../lib/site";
@@ -8,6 +8,7 @@ import { loadFont } from "../../lib/site";
 import { useScrollReveal } from "../../lib/useScrollReveal";
 import NotFound from "./NotFound";
 import { SiteText } from "../../components/public/editor/SiteText";
+import { normalizeReferenceContent } from "../../components/public/editor/referenceGeometry";
 
 const PATHS = { home: "/", about: "/about", "our-work": "/our-work", rakhigarhi: "/our-work/rakhigarhi", theatre: "/our-work/theatre", "craft-livelihood": "/our-work/craft-livelihood", "workshops-learning": "/our-work/workshops-learning", "field-notes": "/field-notes", connect: "/connect" };
 
@@ -26,9 +27,10 @@ export function Crumbs({ path, title }) {
 
 export function PageBody({ pageKey, content: initial, live }) {
   const site = useSite();
-  const [content, setContent] = useState(initial);
+  const normalizedInitial = useMemo(() => normalizeReferenceContent(initial), [initial]);
+  const [content, setContent] = useState(normalizedInitial);
   const [rev, setRev] = useState(0);
-  useEffect(() => { setContent(initial); }, [initial]);
+  useEffect(() => { setContent(normalizedInitial); }, [normalizedInitial]);
   useEffect(() => { content.sections.forEach((s) => Object.values(s.styles || {}).forEach((v) => loadFont(v.fontFamily))); }, [content]);
   useScrollReveal([pageKey, content, rev, live]);
   const seo = content.seo || {};
@@ -43,7 +45,7 @@ export function PageBody({ pageKey, content: initial, live }) {
     <div id={{ home: "home-reference", "craft-livelihood": "craft-reference", "workshops-learning": "workshops-reference", rakhigarhi: "rakhigarhi-reference", theatre: "theatre-reference", about: "about-reference" }[pageKey]} data-testid={`page-${pageKey}`} className={`page-${pageKey}`}>
       <Crumbs path={PATHS[pageKey]} title={content.title} />
       <Fragment key={rev}><Blocks sections={content.sections} home={pageKey === "home"} pageKey={pageKey} /></Fragment>
-      {live && <LiveEditor pageKey={pageKey} content={content} setContent={setContent} original={initial} remount={() => setRev((r) => r + 1)} />}
+      {live && <LiveEditor pageKey={pageKey} content={content} setContent={setContent} original={normalizedInitial} remount={() => setRev((r) => r + 1)} />}
     </div>
   );
 }

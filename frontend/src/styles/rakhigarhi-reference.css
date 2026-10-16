@@ -133,3 +133,32 @@
   .site #rakhigarhi-reference .h1 { font-size: 29px !important; }
   .site #rakhigarhi-reference #the-ambition .h2 { font-size: 34px !important; }
 }
+
+/* Latest owner reference: facade/title above, detail photos/narrative below.
+   Captured drag offsets are normalized into this fluid layout, not doubled. */
+.site #rakhigarhi-reference #haveli-chaupal .rak-restoration-aligned { padding-bottom: 82px; }
+.site #rakhigarhi-reference .rak-restoration-top { display: grid; grid-template-columns: minmax(0, 44fr) minmax(0, 51.5fr); gap: 4.5%; align-items: start; }
+.site #rakhigarhi-reference #haveli-chaupal .rak-restoration-aligned .rak-facade { width: 100%; max-width: 694px; margin: 0; }
+.site #rakhigarhi-reference #haveli-chaupal .rak-restoration-heading .eyebrow { margin-bottom: 39px !important; }
+.site #rakhigarhi-reference .rak-restoration-bottom { display: grid; grid-template-columns: minmax(0, 38fr) minmax(0, 60.8fr); gap: 1.2%; margin-top: 44px; align-items: start; }
+.site #rakhigarhi-reference .rak-restoration-bottom .rak-restoration-copy { padding-top: 13px; }
+.site #rakhigarhi-reference .rak-restoration-bottom .prose { width: 100%; max-width: 738px; }
+.site #rakhigarhi-reference #haveli-chaupal .rak-restoration-aligned .rak-detail-photos { grid-template-columns: 52.6% 24.6%; grid-template-rows: auto; gap: 13.4%; width: 100%; aspect-ratio: auto; align-items: start; }
+.site #rakhigarhi-reference #haveli-chaupal .rak-restoration-aligned .rak-detail-photo-0,
+.site #rakhigarhi-reference #haveli-chaupal .rak-restoration-aligned .rak-detail-photo-0 img { height: auto; aspect-ratio: 338/382; }
+.site #rakhigarhi-reference #haveli-chaupal .rak-restoration-aligned .rak-detail-photo-1,
+.site #rakhigarhi-reference #haveli-chaupal .rak-restoration-aligned .rak-detail-photo-1 img { height: auto; aspect-ratio: 158/301; }
+.site #rakhigarhi-reference #haveli-chaupal .rak-restoration-aligned .rak-detail-photo-1 { margin-top: 8px; }
+.site #rakhigarhi-reference #the-ambition .h2 { margin-bottom: 35px !important; }
+@media (max-width: 1024px) {
+  .site #rakhigarhi-reference .rak-restoration-top { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6%; }
+  .site #rakhigarhi-reference #haveli-chaupal .rak-restoration-heading .eyebrow { margin-bottom: 20px !important; }
+  .site #rakhigarhi-reference .rak-restoration-bottom { grid-template-columns: minmax(0, 40fr) minmax(0, 54fr); gap: 6%; margin-top: 32px; }
+  .site #rakhigarhi-reference .rak-restoration-bottom .rak-restoration-copy { padding-top: 0; }
+}
+@media (max-width: 680px) {
+  .site #rakhigarhi-reference .rak-restoration-top, .site #rakhigarhi-reference .rak-restoration-bottom { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .site #rakhigarhi-reference .rak-restoration-heading { grid-row: 1; }
+  .site #rakhigarhi-reference #haveli-chaupal .rak-restoration-aligned .rak-detail-photos { max-width: 500px; margin-inline: auto; }
+  .site #rakhigarhi-reference #haveli-chaupal .rak-restoration-aligned { padding-bottom: 40px; }
+}

@@ -102,7 +102,7 @@ def test_haveli_collage_has_expected_images_and_media(client, api_base_url):
     haveli = _section_by_anchor(sections, "haveli-chaupal")
     assert haveli is not None
     data = haveli["data"]
-    assert data.get("layout") == "haveli-reference"
+    assert data.get("layout") == "haveli-reference-aligned"
 
     facade = data.get("image", {})
     assert facade.get("media")
@@ -189,7 +189,7 @@ def test_admin_rakhigarhi_page_contains_design_migration_flag(auth_client, api_b
     assert response.status_code == 200
     data = response.json()
     assert data.get("key") == "rakhigarhi"
-    assert data.get("design_migration") == "rakhigarhi-reference-2026-10-15"
+    assert data.get("design_migration") == "four-page-reference-2026-10-16"
 
 
 def test_admin_revisions_include_pre_migration_backups(auth_client, api_base_url):

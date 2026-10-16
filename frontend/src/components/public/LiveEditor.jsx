@@ -12,6 +12,7 @@ import { useLiveEditor } from "./editor/LiveEditorProvider";
 import { FieldInspector } from "./editor/FieldInspector";
 import { isImageField } from "./editor/editorFields";
 import { ColorField, FONTS, px } from "./editor/ColorField";
+import { normalizeReferenceContent } from "./editor/referenceGeometry";
 
 const LABELS = { eyebrow: "Small label", heading: "Heading", subheading: "Sub-heading", intro: "Intro text",
   body_html: "Body text", aside: "Side statement", text: "Text", image: "Image", _section: "Whole section" };
@@ -103,7 +104,8 @@ function Editor({ pageKey, content, setContent, original, remount, noteId }) {
     setReady(false); setLoadError("");
     api.get(`/admin/pages/${pageKey}/live`).then((r) => {
       if (!current) return;
-      setContent(r.data.content); setBase(r.data.content); setDirty(false);
+      const loaded = normalizeReferenceContent(r.data.content);
+      setContent(loaded); setBase(loaded); setDirty(false);
       setHist({ past: [], future: [] }); setReady(true);
     }).catch((e) => { if (current) setLoadError(errMsg(e)); });
     return () => { current = false; };

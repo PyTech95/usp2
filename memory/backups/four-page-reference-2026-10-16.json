@@ -1,0 +1,2826 @@
+{
+  "pages": [
+    {
+      "id": "7442f93975c94c8b945722c9bd9540eb",
+      "key": "home",
+      "path": "/",
+      "required": true,
+      "draft": {
+        "title": "Home",
+        "sections": [
+          {
+            "data": {
+              "buttons": [
+                {
+                  "href": "/our-work",
+                  "label": "Explore Our Work"
+                },
+                {
+                  "href": "/field-notes",
+                  "label": "Read Field Notes"
+                }
+              ],
+              "eyebrow": "Urban Suburban Perspectives",
+              "heading": "What We Inherit. What We Create. What We Carry Forward.",
+              "image": {
+                "caption": "",
+                "media_id": "6fc82b55f714459f9499182413231bbb"
+              },
+              "intro": "Culture isn\u2019t fixed in time. It is inherited and reinterpreted, questioned and created, lived and shared.\n\nUrban Suburban Perspectives works across Heritage, Art and Culture, exploring how what we inherit continues to find meaning in contemporary life."
+            },
+            "hidden": false,
+            "id": "8b9e00d593ec4da9af5f1f5a301a725b",
+            "styles": {},
+            "type": "hero"
+          },
+          {
+            "data": {
+              "body_html": "<p>A place, a building, a story, a tradition or a way of making can hold meaning far beyond where it began.</p><p>USP brings together people, knowledge and different perspectives to explore how these inheritances can remain meaningful in the present\u2014and become a starting point for new ideas, creative expression and opportunity.</p><p>Across Heritage, Art and Culture, the work takes different forms, each shaped by its own context and the people involved. Through it, people can develop skills, share knowledge, shape what is created and open new pathways to livelihood.</p>",
+              "eyebrow": "Who We Are",
+              "heading": "Heritage, Art and Culture \u2014 Kept in Motion.",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "9acbb2583dfc483ab0f1a5654ac1786f",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "eyebrow": "Our Work",
+              "heading": "Shaped by Place, Knowledge and Perspectives.",
+              "intro": "Each initiative begins differently\u2014with a place, an idea, a practice or a question worth exploring. Its direction develops from the context and from the knowledge and perspectives that become part of the work.",
+              "items": [
+                {
+                  "href": "/our-work/rakhigarhi",
+                  "image": {
+                    "caption": "",
+                    "media_id": "2a82250608b54857afe26c78d35bd669"
+                  },
+                  "subtitle": "5,000 Years of History. A Place Still Evolving.",
+                  "text": "One of the most significant archaeological sites of the Indus Valley Civilisation is also a living village\u2014where history, architecture, knowledge and everyday life continue alongside one another.",
+                  "title": "Rakhigarhi"
+                },
+                {
+                  "href": "/our-work/theatre",
+                  "image": {
+                    "caption": "",
+                    "media_id": "d326aab636e2414e87528c6cb489eff6"
+                  },
+                  "subtitle": "Stories Brought to Life. Conversations Opened.",
+                  "text": "USP creates original theatre drawn from culture, lived experiences and familiar relationships, rituals and social conventions that shape everyday life.",
+                  "title": "Theatre"
+                },
+                {
+                  "href": "/our-work/craft-livelihood",
+                  "image": {
+                    "caption": "",
+                    "media_id": "6c3cdc67f4964a01be0bc376eb1f9bc4"
+                  },
+                  "subtitle": "Where Tradition Finds New Expression.",
+                  "text": "In Rakhigarhi, women are developing craft through knowledge, practice and creative exchange\u2014strengthening skills while creating pathways to livelihood.",
+                  "title": "Craft & Livelihood"
+                },
+                {
+                  "href": "/our-work/workshops-learning",
+                  "image": {
+                    "caption": "",
+                    "media_id": "b76e9d3c0db04992a410365056104913"
+                  },
+                  "subtitle": "Knowledge Shared. Skills Developed.",
+                  "text": "Learning happens through real work\u2014from interpreting the history of a place and restoring a historic building to making, designing and participating in projects as they develop.",
+                  "title": "Workshops & Learning"
+                }
+              ]
+            },
+            "hidden": false,
+            "id": "0fce152d3e824b669ab612fe37c98dd3",
+            "styles": {},
+            "type": "related_work"
+          },
+          {
+            "data": {
+              "band": true,
+              "body_html": "<p>A restored building can find new purpose. Conservation skills can remain with the people who learn them. Knowledge of a place can become a livelihood. Craft can develop new forms and economic value. A performance can leave behind a conversation.</p><p>What begins through one initiative can create possibilities beyond it.</p>",
+              "eyebrow": "What Takes Shape",
+              "heading": "The Value Can Extend Beyond the Initiative.",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "a3457c6519cf4366ac6004a09bde1feb",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "cards": [
+                {
+                  "crop": "4/3",
+                  "eyebrow": "Rakhigarhi / Heritage",
+                  "href": "/field-notes",
+                  "image": {
+                    "caption": "",
+                    "media_id": "07f3512b576f4ea19497a610d33a9fc9"
+                  },
+                  "link_label": "Read the Story",
+                  "text": "Objects, memories and traces of everyday life encountered through the work.",
+                  "title": "What Was Already There."
+                },
+                {
+                  "crop": "4/3",
+                  "eyebrow": "Rakhigarhi / Craft",
+                  "href": "/field-notes",
+                  "image": {
+                    "caption": "",
+                    "media_id": "6fc82b55f714459f9499182413231bbb"
+                  },
+                  "link_label": "Read the Story",
+                  "text": "Two experienced basket makers whose knowledge and skill inspire a new generation.",
+                  "title": "The OG Basket Makers."
+                }
+              ],
+              "category": "",
+              "count": 3,
+              "eyebrow": "Field Notes",
+              "heading": "From the Work, as It Unfolds.",
+              "intro": "Some of the most interesting experiences happen along the way. Small observations, discoveries and stories from the people and places that are part of USP's work.",
+              "more_href": "/field-notes",
+              "more_label": "Explore Field Notes"
+            },
+            "hidden": false,
+            "id": "67d62a4864a04020805b3373b16c9ff8",
+            "styles": {},
+            "type": "notes_feed"
+          },
+          {
+            "data": {
+              "button_label": "Get in Touch",
+              "buttons": [
+                {
+                  "href": "/connect?topic=Collaboration",
+                  "label": "Collaborate"
+                },
+                {
+                  "href": "/connect?topic=Volunteer",
+                  "label": "Volunteer"
+                },
+                {
+                  "href": "/connect",
+                  "label": "Get in Touch"
+                }
+              ],
+              "eyebrow": "Connect",
+              "heading": "Be Part of What Takes Shape Next.",
+              "href": "/connect",
+              "text": "There are different ways to become part of the work\u2014through collaboration, participation, learning, or support for an initiative."
+            },
+            "hidden": false,
+            "id": "2b482fb1a353455eacb10261d5db8702",
+            "styles": {},
+            "type": "contact_invite"
+          }
+        ],
+        "seo": {
+          "title": "",
+          "description": "USP India (Urban Suburban Perspectives) \u2014 community, culture, craft, heritage, theatre and learning.",
+          "canonical": "",
+          "noindex": false,
+          "share_media_id": ""
+        }
+      },
+      "published": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [
+                {
+                  "href": "/our-work",
+                  "label": "Explore Our Work"
+                },
+                {
+                  "href": "/field-notes",
+                  "label": "Read Field Notes"
+                }
+              ],
+              "eyebrow": "Urban Suburban Perspectives",
+              "heading": "What We Inherit. What We Create. What We Carry Forward.",
+              "image": {
+                "caption": "",
+                "media_id": "6fc82b55f714459f9499182413231bbb"
+              },
+              "intro": "Culture isn\u2019t fixed in time. It is inherited and reinterpreted, questioned and created, lived and shared.\n\nUrban Suburban Perspectives works across Heritage, Art and Culture, exploring how what we inherit continues to find meaning in contemporary life."
+            },
+            "hidden": false,
+            "id": "8b9e00d593ec4da9af5f1f5a301a725b",
+            "styles": {},
+            "type": "hero"
+          },
+          {
+            "data": {
+              "body_html": "<p>A place, a building, a story, a tradition or a way of making can hold meaning far beyond where it began.</p><p>USP brings together people, knowledge and different perspectives to explore how these inheritances can remain meaningful in the present\u2014and become a starting point for new ideas, creative expression and opportunity.</p><p>Across Heritage, Art and Culture, the work takes different forms, each shaped by its own context and the people involved. Through it, people can develop skills, share knowledge, shape what is created and open new pathways to livelihood.</p>",
+              "eyebrow": "Who We Are",
+              "heading": "Heritage, Art and Culture \u2014 Kept in Motion.",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "9acbb2583dfc483ab0f1a5654ac1786f",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "eyebrow": "Our Work",
+              "heading": "Shaped by Place, Knowledge and Perspectives.",
+              "intro": "Each initiative begins differently\u2014with a place, an idea, a practice or a question worth exploring. Its direction develops from the context and from the knowledge and perspectives that become part of the work.",
+              "items": [
+                {
+                  "href": "/our-work/rakhigarhi",
+                  "image": {
+                    "caption": "",
+                    "media_id": "2a82250608b54857afe26c78d35bd669"
+                  },
+                  "subtitle": "5,000 Years of History. A Place Still Evolving.",
+                  "text": "One of the most significant archaeological sites of the Indus Valley Civilisation is also a living village\u2014where history, architecture, knowledge and everyday life continue alongside one another.",
+                  "title": "Rakhigarhi"
+                },
+                {
+                  "href": "/our-work/theatre",
+                  "image": {
+                    "caption": "",
+                    "media_id": "d326aab636e2414e87528c6cb489eff6"
+                  },
+                  "subtitle": "Stories Brought to Life. Conversations Opened.",
+                  "text": "USP creates original theatre drawn from culture, lived experiences and familiar relationships, rituals and social conventions that shape everyday life.",
+                  "title": "Theatre"
+                },
+                {
+                  "href": "/our-work/craft-livelihood",
+                  "image": {
+                    "caption": "",
+                    "media_id": "6c3cdc67f4964a01be0bc376eb1f9bc4"
+                  },
+                  "subtitle": "Where Tradition Finds New Expression.",
+                  "text": "In Rakhigarhi, women are developing craft through knowledge, practice and creative exchange\u2014strengthening skills while creating pathways to livelihood.",
+                  "title": "Craft & Livelihood"
+                },
+                {
+                  "href": "/our-work/workshops-learning",
+                  "image": {
+                    "caption": "",
+                    "media_id": "b76e9d3c0db04992a410365056104913"
+                  },
+                  "subtitle": "Knowledge Shared. Skills Developed.",
+                  "text": "Learning happens through real work\u2014from interpreting the history of a place and restoring a historic building to making, designing and participating in projects as they develop.",
+                  "title": "Workshops & Learning"
+                }
+              ]
+            },
+            "hidden": false,
+            "id": "0fce152d3e824b669ab612fe37c98dd3",
+            "styles": {},
+            "type": "related_work"
+          },
+          {
+            "data": {
+              "band": true,
+              "body_html": "<p>A restored building can find new purpose. Conservation skills can remain with the people who learn them. Knowledge of a place can become a livelihood. Craft can develop new forms and economic value. A performance can leave behind a conversation.</p><p>What begins through one initiative can create possibilities beyond it.</p>",
+              "eyebrow": "What Takes Shape",
+              "heading": "The Value Can Extend Beyond the Initiative.",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "a3457c6519cf4366ac6004a09bde1feb",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "cards": [
+                {
+                  "crop": "4/3",
+                  "eyebrow": "Rakhigarhi / Heritage",
+                  "href": "/field-notes",
+                  "image": {
+                    "caption": "",
+                    "media_id": "07f3512b576f4ea19497a610d33a9fc9"
+                  },
+                  "link_label": "Read the Story",
+                  "text": "Objects, memories and traces of everyday life encountered through the work.",
+                  "title": "What Was Already There."
+                },
+                {
+                  "crop": "4/3",
+                  "eyebrow": "Rakhigarhi / Craft",
+                  "href": "/field-notes",
+                  "image": {
+                    "caption": "",
+                    "media_id": "6fc82b55f714459f9499182413231bbb"
+                  },
+                  "link_label": "Read the Story",
+                  "text": "Two experienced basket makers whose knowledge and skill inspire a new generation.",
+                  "title": "The OG Basket Makers."
+                }
+              ],
+              "category": "",
+              "count": 3,
+              "eyebrow": "Field Notes",
+              "heading": "From the Work, as It Unfolds.",
+              "intro": "Some of the most interesting experiences happen along the way. Small observations, discoveries and stories from the people and places that are part of USP's work.",
+              "more_href": "/field-notes",
+              "more_label": "Explore Field Notes"
+            },
+            "hidden": false,
+            "id": "67d62a4864a04020805b3373b16c9ff8",
+            "styles": {},
+            "type": "notes_feed"
+          },
+          {
+            "data": {
+              "button_label": "Get in Touch",
+              "buttons": [
+                {
+                  "href": "/connect?topic=Collaboration",
+                  "label": "Collaborate"
+                },
+                {
+                  "href": "/connect?topic=Volunteer",
+                  "label": "Volunteer"
+                },
+                {
+                  "href": "/connect",
+                  "label": "Get in Touch"
+                }
+              ],
+              "eyebrow": "Connect",
+              "heading": "Be Part of What Takes Shape Next.",
+              "href": "/connect",
+              "text": "There are different ways to become part of the work\u2014through collaboration, participation, learning, or support for an initiative."
+            },
+            "hidden": false,
+            "id": "2b482fb1a353455eacb10261d5db8702",
+            "styles": {},
+            "type": "contact_invite"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "USP India (Urban Suburban Perspectives) \u2014 community, culture, craft, heritage, theatre and learning.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Home"
+      },
+      "status": "published",
+      "updated_at": "2026-10-16T09:30:07.192728+00:00",
+      "published_at": "2026-10-16T07:22:55.862081+00:00",
+      "has_unpublished_changes": true
+    },
+    {
+      "id": "8d883c6ee4db422f8ee84fef7f7d7e71",
+      "key": "about",
+      "path": "/about",
+      "required": true,
+      "draft": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "",
+              "heading": "Who We Are",
+              "intro": "",
+              "layout": "about-hero"
+            },
+            "hidden": false,
+            "id": "834dd7963a5e4a7f92083d25826d52e5",
+            "type": "hero"
+          },
+          {
+            "data": {
+              "body_html": "<p>Urban Suburban Perspectives (USP) works at the intersection of heritage, art and culture. It grew from a shared appreciation of our cultural inheritance, a passion for creative expression, and a desire to translate these interests into meaningful, enduring work.</p><p>Our work takes different forms\u2014from heritage conservation and traditional crafts to original theatre. Through these initiatives, we seek to preserve and renew cultural knowledge, nurture artistic expression, and create opportunities for learning, livelihood, and community engagement.</p>",
+              "heading": "",
+              "layout": "about-intro-left"
+            },
+            "hidden": false,
+            "id": "3d5f103a36574a41b8d76b8c56787db4",
+            "type": "text"
+          },
+          {
+            "data": {
+              "body_html": "<p>We believe that heritage, art and culture are not merely valuable in themselves; they can also bring people together, foster dialogue, strengthen communities, support local enterprise, and contribute to social, cultural and economic well-being.</p><p>Our aim is to develop work that honours the past while engaging with the present and remaining open to new ideas\u2014creating meaningful experiences and lasting value for the people and communities with whom we work.</p>",
+              "heading": "",
+              "layout": "about-intro-right"
+            },
+            "hidden": false,
+            "id": "0a1786ecdded4d8f8ca3c84eaf4a1ca9",
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "team",
+              "body_html": "",
+              "heading": "The Core",
+              "items": [
+                {
+                  "image": {
+                    "media_id": "",
+                    "placeholder": true,
+                    "placeholder_label": "Photograph 01"
+                  },
+                  "intro": "Short introduction",
+                  "name": "Name"
+                },
+                {
+                  "image": {
+                    "media_id": "",
+                    "placeholder": true,
+                    "placeholder_label": "Photograph 02"
+                  },
+                  "intro": "Short introduction",
+                  "name": "Name"
+                },
+                {
+                  "image": {
+                    "media_id": "",
+                    "placeholder": true,
+                    "placeholder_label": "Photograph 03"
+                  },
+                  "intro": "Short introduction",
+                  "name": "Name"
+                },
+                {
+                  "image": {
+                    "media_id": "",
+                    "placeholder": true,
+                    "placeholder_label": "Photograph 04"
+                  },
+                  "intro": "Short introduction",
+                  "name": "Name"
+                },
+                {
+                  "image": {
+                    "media_id": "",
+                    "placeholder": true,
+                    "placeholder_label": "Photograph 05"
+                  },
+                  "intro": "Short introduction",
+                  "name": "Name"
+                }
+              ],
+              "layout": "about-team"
+            },
+            "hidden": false,
+            "id": "fedb0c5f6247445abc90b25f06274c54",
+            "type": "gallery"
+          },
+          {
+            "data": {
+              "anchor": "our-approach",
+              "body_html": "<p>Every initiative begins with an understanding of the people, places, and traditions involved. This means exploring what already exists, recognising the knowledge and experiences people bring, and considering what new possibilities might emerge.</p><p>Bringing together different skills and perspectives creates opportunities for collaboration and experimentation, allowing ideas to develop through participation, practice, and exchange.</p><p>We believe there is room for both preservation and imagination. Historic buildings can find new purposes without losing their character, traditional skills can inspire contemporary design, and familiar stories can find new forms of expression.</p>",
+              "heading": "Our Approach",
+              "layout": "about-approach",
+              "values": [
+                {
+                  "text": "Cultural Sustainability"
+                },
+                {
+                  "text": "Conscious Practice"
+                },
+                {
+                  "text": "Responsible Innovation"
+                },
+                {
+                  "text": "Collaboration & Community"
+                }
+              ]
+            },
+            "hidden": false,
+            "id": "b32d461590ae4c36830e13ca032aadb0",
+            "type": "text"
+          },
+          {
+            "data": {
+              "body_html": "<p>Draft placeholder \u2014 awaiting approved client copy.</p>",
+              "heading": "Participation and collaboration"
+            },
+            "hidden": true,
+            "id": "4e606e84ad7e48f98f005341f5f766d0",
+            "type": "text"
+          },
+          {
+            "data": {
+              "heading": "From the field",
+              "items": [
+                {
+                  "image": {
+                    "caption": "",
+                    "media_id": "6fc82b55f714459f9499182413231bbb"
+                  }
+                },
+                {
+                  "image": {
+                    "caption": "",
+                    "media_id": "07f3512b576f4ea19497a610d33a9fc9"
+                  }
+                },
+                {
+                  "image": {
+                    "caption": "",
+                    "media_id": "6e9af671d7964b45bfd3cdb3d953d3ef"
+                  }
+                }
+              ]
+            },
+            "hidden": true,
+            "id": "7975bca4f8d9429989a0ad0cd1345bdf",
+            "type": "gallery"
+          },
+          {
+            "data": {
+              "button_label": "Connect with Us",
+              "heading": "Connect with Us",
+              "href": "/connect",
+              "text": "Draft placeholder \u2014 awaiting approved client copy."
+            },
+            "hidden": true,
+            "id": "2f0d3b664cfa498c9f87fe553f8ed66b",
+            "type": "contact_invite"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "About USP India \u2014 Urban Suburban Perspectives: story, purpose, approach and team.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Who We Are"
+      },
+      "published": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "",
+              "heading": "Who We Are",
+              "intro": "",
+              "layout": "about-hero"
+            },
+            "hidden": false,
+            "id": "834dd7963a5e4a7f92083d25826d52e5",
+            "type": "hero"
+          },
+          {
+            "data": {
+              "body_html": "<p>Urban Suburban Perspectives (USP) works at the intersection of heritage, art and culture. It grew from a shared appreciation of our cultural inheritance, a passion for creative expression, and a desire to translate these interests into meaningful, enduring work.</p><p>Our work takes different forms\u2014from heritage conservation and traditional crafts to original theatre. Through these initiatives, we seek to preserve and renew cultural knowledge, nurture artistic expression, and create opportunities for learning, livelihood, and community engagement.</p>",
+              "heading": "",
+              "layout": "about-intro-left"
+            },
+            "hidden": false,
+            "id": "3d5f103a36574a41b8d76b8c56787db4",
+            "type": "text"
+          },
+          {
+            "data": {
+              "body_html": "<p>We believe that heritage, art and culture are not merely valuable in themselves; they can also bring people together, foster dialogue, strengthen communities, support local enterprise, and contribute to social, cultural and economic well-being.</p><p>Our aim is to develop work that honours the past while engaging with the present and remaining open to new ideas\u2014creating meaningful experiences and lasting value for the people and communities with whom we work.</p>",
+              "heading": "",
+              "layout": "about-intro-right"
+            },
+            "hidden": false,
+            "id": "0a1786ecdded4d8f8ca3c84eaf4a1ca9",
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "team",
+              "body_html": "",
+              "heading": "The Core",
+              "items": [
+                {
+                  "image": {
+                    "media_id": "",
+                    "placeholder": true,
+                    "placeholder_label": "Photograph 01"
+                  },
+                  "intro": "Short introduction",
+                  "name": "Name"
+                },
+                {
+                  "image": {
+                    "media_id": "",
+                    "placeholder": true,
+                    "placeholder_label": "Photograph 02"
+                  },
+                  "intro": "Short introduction",
+                  "name": "Name"
+                },
+                {
+                  "image": {
+                    "media_id": "",
+                    "placeholder": true,
+                    "placeholder_label": "Photograph 03"
+                  },
+                  "intro": "Short introduction",
+                  "name": "Name"
+                },
+                {
+                  "image": {
+                    "media_id": "",
+                    "placeholder": true,
+                    "placeholder_label": "Photograph 04"
+                  },
+                  "intro": "Short introduction",
+                  "name": "Name"
+                },
+                {
+                  "image": {
+                    "media_id": "",
+                    "placeholder": true,
+                    "placeholder_label": "Photograph 05"
+                  },
+                  "intro": "Short introduction",
+                  "name": "Name"
+                }
+              ],
+              "layout": "about-team"
+            },
+            "hidden": false,
+            "id": "fedb0c5f6247445abc90b25f06274c54",
+            "type": "gallery"
+          },
+          {
+            "data": {
+              "anchor": "our-approach",
+              "body_html": "<p>Every initiative begins with an understanding of the people, places, and traditions involved. This means exploring what already exists, recognising the knowledge and experiences people bring, and considering what new possibilities might emerge.</p><p>Bringing together different skills and perspectives creates opportunities for collaboration and experimentation, allowing ideas to develop through participation, practice, and exchange.</p><p>We believe there is room for both preservation and imagination. Historic buildings can find new purposes without losing their character, traditional skills can inspire contemporary design, and familiar stories can find new forms of expression.</p>",
+              "heading": "Our Approach",
+              "layout": "about-approach",
+              "values": [
+                {
+                  "text": "Cultural Sustainability"
+                },
+                {
+                  "text": "Conscious Practice"
+                },
+                {
+                  "text": "Responsible Innovation"
+                },
+                {
+                  "text": "Collaboration & Community"
+                }
+              ]
+            },
+            "hidden": false,
+            "id": "b32d461590ae4c36830e13ca032aadb0",
+            "type": "text"
+          },
+          {
+            "data": {
+              "body_html": "<p>Draft placeholder \u2014 awaiting approved client copy.</p>",
+              "heading": "Participation and collaboration"
+            },
+            "hidden": true,
+            "id": "4e606e84ad7e48f98f005341f5f766d0",
+            "type": "text"
+          },
+          {
+            "data": {
+              "heading": "From the field",
+              "items": [
+                {
+                  "image": {
+                    "caption": "",
+                    "media_id": "6fc82b55f714459f9499182413231bbb"
+                  }
+                },
+                {
+                  "image": {
+                    "caption": "",
+                    "media_id": "07f3512b576f4ea19497a610d33a9fc9"
+                  }
+                },
+                {
+                  "image": {
+                    "caption": "",
+                    "media_id": "6e9af671d7964b45bfd3cdb3d953d3ef"
+                  }
+                }
+              ]
+            },
+            "hidden": true,
+            "id": "13a84f1874d54c309d7238f2273a7863",
+            "type": "gallery"
+          },
+          {
+            "data": {
+              "button_label": "Connect with Us",
+              "heading": "Connect with Us",
+              "href": "/connect",
+              "text": "Draft placeholder \u2014 awaiting approved client copy."
+            },
+            "hidden": true,
+            "id": "2f0d3b664cfa498c9f87fe553f8ed66b",
+            "type": "contact_invite"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "About USP India \u2014 Urban Suburban Perspectives: story, purpose, approach and team.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Who We Are"
+      },
+      "status": "published",
+      "updated_at": "2026-10-16T08:47:15.487743+00:00",
+      "published_at": "2026-10-16T08:47:15.487743+00:00",
+      "has_unpublished_changes": false,
+      "design_migration": "about-reference-2026-10-16"
+    },
+    {
+      "id": "0b2e5b2e39e54bf6932f8ef5c93f59f8",
+      "key": "our-work",
+      "path": "/our-work",
+      "required": true,
+      "draft": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "Our Work",
+              "heading": "Our Work",
+              "image": {
+                "caption": "",
+                "media_id": "6fc82b55f714459f9499182413231bbb"
+              },
+              "intro": "Draft placeholder \u2014 awaiting approved client copy."
+            },
+            "hidden": false,
+            "id": "7a35ea07ba9e415e8664aee5b9f86c2d",
+            "type": "hero"
+          },
+          {
+            "data": {
+              "body_html": "<p>Draft placeholder \u2014 awaiting approved client copy.</p>",
+              "heading": "How the four areas relate"
+            },
+            "hidden": false,
+            "id": "325bde9b89734868b5a3a3db915623ac",
+            "type": "text"
+          },
+          {
+            "data": {
+              "heading": "Areas of work",
+              "intro": "",
+              "items": [
+                {
+                  "href": "/our-work/rakhigarhi",
+                  "image": {
+                    "caption": "",
+                    "media_id": "2a82250608b54857afe26c78d35bd669"
+                  },
+                  "text": "Draft placeholder \u2014 awaiting approved client copy.",
+                  "title": "Rakhigarhi"
+                },
+                {
+                  "href": "/our-work/theatre",
+                  "image": {
+                    "caption": "",
+                    "media_id": "d326aab636e2414e87528c6cb489eff6"
+                  },
+                  "text": "Draft placeholder \u2014 awaiting approved client copy.",
+                  "title": "Theatre"
+                },
+                {
+                  "href": "/our-work/craft-livelihood",
+                  "image": {
+                    "caption": "",
+                    "media_id": "6c3cdc67f4964a01be0bc376eb1f9bc4"
+                  },
+                  "text": "Draft placeholder \u2014 awaiting approved client copy.",
+                  "title": "Craft & Livelihood"
+                },
+                {
+                  "href": "/our-work/workshops-learning",
+                  "image": {
+                    "caption": "",
+                    "media_id": "b76e9d3c0db04992a410365056104913"
+                  },
+                  "text": "Draft placeholder \u2014 awaiting approved client copy.",
+                  "title": "Workshops & Learning"
+                }
+              ]
+            },
+            "hidden": false,
+            "id": "457e32fc77f64070a0f696620a053d34",
+            "type": "related_work"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "USP India's four areas of work: Rakhigarhi, Theatre, Craft & Livelihood, and Workshops & Learning.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Our Work"
+      },
+      "published": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "Our Work",
+              "heading": "Our Work",
+              "image": {
+                "caption": "",
+                "media_id": "6fc82b55f714459f9499182413231bbb"
+              },
+              "intro": "Draft placeholder \u2014 awaiting approved client copy."
+            },
+            "hidden": false,
+            "id": "7a35ea07ba9e415e8664aee5b9f86c2d",
+            "type": "hero"
+          },
+          {
+            "data": {
+              "body_html": "<p>Draft placeholder \u2014 awaiting approved client copy.</p>",
+              "heading": "How the four areas relate"
+            },
+            "hidden": false,
+            "id": "325bde9b89734868b5a3a3db915623ac",
+            "type": "text"
+          },
+          {
+            "data": {
+              "heading": "Areas of work",
+              "intro": "",
+              "items": [
+                {
+                  "href": "/our-work/rakhigarhi",
+                  "image": {
+                    "caption": "",
+                    "media_id": "2a82250608b54857afe26c78d35bd669"
+                  },
+                  "text": "Draft placeholder \u2014 awaiting approved client copy.",
+                  "title": "Rakhigarhi"
+                },
+                {
+                  "href": "/our-work/theatre",
+                  "image": {
+                    "caption": "",
+                    "media_id": "d326aab636e2414e87528c6cb489eff6"
+                  },
+                  "text": "Draft placeholder \u2014 awaiting approved client copy.",
+                  "title": "Theatre"
+                },
+                {
+                  "href": "/our-work/craft-livelihood",
+                  "image": {
+                    "caption": "",
+                    "media_id": "6c3cdc67f4964a01be0bc376eb1f9bc4"
+                  },
+                  "text": "Draft placeholder \u2014 awaiting approved client copy.",
+                  "title": "Craft & Livelihood"
+                },
+                {
+                  "href": "/our-work/workshops-learning",
+                  "image": {
+                    "caption": "",
+                    "media_id": "b76e9d3c0db04992a410365056104913"
+                  },
+                  "text": "Draft placeholder \u2014 awaiting approved client copy.",
+                  "title": "Workshops & Learning"
+                }
+              ]
+            },
+            "hidden": false,
+            "id": "457e32fc77f64070a0f696620a053d34",
+            "type": "related_work"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "USP India's four areas of work: Rakhigarhi, Theatre, Craft & Livelihood, and Workshops & Learning.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Our Work"
+      },
+      "status": "published",
+      "updated_at": "2026-10-15T06:45:55.908670+00:00",
+      "published_at": "2026-10-15T06:45:01.831894+00:00",
+      "has_unpublished_changes": false
+    },
+    {
+      "id": "8ecc7aaa90274ad487d479db96f09c84",
+      "key": "rakhigarhi",
+      "path": "/our-work/rakhigarhi",
+      "required": true,
+      "draft": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "Rakhigarhi",
+              "heading": "5,000 Years of History.\nA Place Still Evolving.",
+              "intro": ""
+            },
+            "hidden": false,
+            "id": "658b5d1f52e043a580c2e9a7fdf9b37c",
+            "styles": {},
+            "type": "hero"
+          },
+          {
+            "data": {
+              "anchor": "archaeology",
+              "aside": "USP's current work centres on restoring a historic haveli and chaupal and bringing them back into active use. The project explores how these buildings can serve the village today\u2014as places for craft, learning, gathering and welcoming visitors.",
+              "body_html": "<p>Rakhigarhi is one of the most significant archaeological sites of the Indus Valley Civilisation (IVC), with a history stretching back more than 5,000 years.</p><p>It is also a living village\u2014where history, architecture, knowledge, and everyday life continue alongside one another.</p>",
+              "heading": "",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "c11a215404494cbe8884290e1e0ae6f4",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "haveli-chaupal",
+              "body_html": "<p>Its architecture, materials, and spaces carry traces of generations of domestic life. The restoration seeks to retain that character while adapting the buildings for new uses.</p><p>The work itself is also a place of learning. Local construction workers are developing conservation techniques alongside conservation professionals, allowing skills developed through the project to remain within Rakhigarhi. Haveli itself is also a place of learning.</p><p>The aim is to demonstrate what is possible\u2014a conserved building that remains recognisable as a home while taking on a quiet new life as a space for community, culture and craft.</p><p>What begins with one haveli could grow into a wider pattern of conservation and renewal, encouraging other historic buildings in Rakhigarhi to be restored and brought back into use.</p>",
+              "collage": [
+                {
+                  "caption": "",
+                  "media_id": "71e1005acb1a499fa11270f418b1a86f",
+                  "placeholder": false,
+                  "placeholder_label": "Haveli brick arches"
+                },
+                {
+                  "caption": "",
+                  "media_id": "4a53fa6386994d539589fbe1ef53c681",
+                  "placeholder": false,
+                  "placeholder_label": "Carved wooden door"
+                }
+              ],
+              "eyebrow": "The Haveli and Chaupal",
+              "heading": "Restoring the Past.\nCreating a New Purpose.",
+              "image": {
+                "caption": "",
+                "media_id": "30c196bcfbab465b886424b8dc10266c",
+                "placeholder": false,
+                "placeholder_label": "Haveli facade"
+              },
+              "layout": "haveli-reference"
+            },
+            "hidden": false,
+            "id": "b81e831b8677408e8ee1afcf2ff2ce05",
+            "styles": {
+              "body_html": {
+                "translateX": "-0.000091552734375px",
+                "translateY": "-207.19998168945312px"
+              },
+              "collage.1": {
+                "height": "374px",
+                "width": "200px"
+              },
+              "eyebrow": {
+                "translateX": "0.0166015625px",
+                "translateY": "-261.6000061035156px"
+              },
+              "heading": {
+                "translateX": "-0.000091552734375px",
+                "translateY": "-222.39999389648438px"
+              },
+              "image": {
+                "width": "514px"
+              }
+            },
+            "type": "image_text"
+          },
+          {
+            "data": {
+              "anchor": "haveli-in-use",
+              "body_html": "<p>The haveli and chaupal have been reimagined as places that can once again be part of everyday life in Rakhigarhi\u2014somewhere to make, gather, learn, welcome visitors and simply spend time.</p>",
+              "eyebrow": "A Haveli Brought Back Into Use",
+              "heading": "",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "4cd0518474cb4b04bd8e51afcb362d9d",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "craft-centre",
+              "body_html": "<p>The Rakhigarhi Craft Centre is envisioned as a working space within the haveli, where women make, learn, experiment and develop their work.</p><p>Basket making, papier-m\u00e2ch\u00e9 and dhurrie weaving are among the crafts being developed. The Centre will provide a permanent base for working together, exploring designs and techniques, sharing knowledge and presenting what is created.</p>",
+              "heading": "The Craft Centre",
+              "layout": "haveli-use",
+              "link_href": "/our-work/craft-livelihood",
+              "link_label": "Explore Craft & Livelihood",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "052c9fe332574576aad9c748f1a7c8c0",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "place-to-arrive",
+              "body_html": "<p>For visitors, the haveli and chaupal become a starting point\u2014somewhere to meet people and understand Rakhigarhi's archaeology, history and life today.</p><p>Through its buildings, craft and stories, visitors connect with the village and the people who call it home.</p><p>The Heritage Guide Program is part of this experience. Women from Rakhigarhi are developing the knowledge and skills to interpret their heritage for visitors, giving them a greater role in how the village is presented and understood.</p>",
+              "heading": "A Place to Arrive",
+              "layout": "haveli-use",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "33f3973c4b80473e911f3cd1b569e188",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "place-to-pause",
+              "body_html": "<p>Not every part of the haveli and chaupal needs a programme.</p><p>There should also be somewhere to sit.</p><p>A simple place for chai, cold drinks and conversation gives visitors a reason to pause and gives the haveli some of the informality of a lived-in place.</p>",
+              "heading": "A Place to Pause",
+              "layout": "haveli-use",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "44eec0f60ecb4f05a6764f2550ef18ec",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "active-use-summary",
+              "body_html": "<p>Part workshop, part gathering place, part visitor anchor\u2014the aim is for the haveli to feel active and welcoming rather than institutional.</p>",
+              "heading": "",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "e37b9ecc41b54976a2df579118dd6eb3",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "the-ambition",
+              "body_html": "<p>The ambition reaches beyond the restoration of a single building. By bringing the haveli and Chaupal back into active use, the hope is to draw people into Rakhigarhi, support local craft and enterprise, and contribute to the village economy.</p><p>If that activity creates value, other historic havelis may also find new purpose\u2014encouraging further conservation and bringing more of Rakhigarhi's built heritage back into use.</p><p>What begins with one haveli could grow into a wider pattern of conservation and renewal, shaped by the people who live here.</p>",
+              "eyebrow": "The Ambition",
+              "heading": "One Restoration.\nA Wider Possibility.",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "1017b7e20a8648a0b3f8c546ed6f89d6",
+            "styles": {},
+            "type": "text"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "USP India's place-and-community work in Rakhigarhi.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Rakhigarhi"
+      },
+      "published": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "Rakhigarhi",
+              "heading": "5,000 Years of History.\nA Place Still Evolving.",
+              "intro": ""
+            },
+            "hidden": false,
+            "id": "658b5d1f52e043a580c2e9a7fdf9b37c",
+            "styles": {},
+            "type": "hero"
+          },
+          {
+            "data": {
+              "anchor": "archaeology",
+              "aside": "USP's current work centres on restoring a historic haveli and chaupal and bringing them back into active use. The project explores how these buildings can serve the village today\u2014as places for craft, learning, gathering and welcoming visitors.",
+              "body_html": "<p>Rakhigarhi is one of the most significant archaeological sites of the Indus Valley Civilisation (IVC), with a history stretching back more than 5,000 years.</p><p>It is also a living village\u2014where history, architecture, knowledge, and everyday life continue alongside one another.</p>",
+              "heading": "",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "c11a215404494cbe8884290e1e0ae6f4",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "haveli-chaupal",
+              "body_html": "<p>Its architecture, materials, and spaces carry traces of generations of domestic life. The restoration seeks to retain that character while adapting the buildings for new uses.</p><p>The work itself is also a place of learning. Local construction workers are developing conservation techniques alongside conservation professionals, allowing skills developed through the project to remain within Rakhigarhi. Haveli itself is also a place of learning.</p><p>The aim is to demonstrate what is possible\u2014a conserved building that remains recognisable as a home while taking on a quiet new life as a space for community, culture and craft.</p><p>What begins with one haveli could grow into a wider pattern of conservation and renewal, encouraging other historic buildings in Rakhigarhi to be restored and brought back into use.</p>",
+              "collage": [
+                {
+                  "caption": "",
+                  "media_id": "71e1005acb1a499fa11270f418b1a86f",
+                  "placeholder": false,
+                  "placeholder_label": "Haveli brick arches"
+                },
+                {
+                  "caption": "",
+                  "media_id": "4a53fa6386994d539589fbe1ef53c681",
+                  "placeholder": false,
+                  "placeholder_label": "Carved wooden door"
+                }
+              ],
+              "eyebrow": "The Haveli and Chaupal",
+              "heading": "Restoring the Past.\nCreating a New Purpose.",
+              "image": {
+                "caption": "",
+                "media_id": "30c196bcfbab465b886424b8dc10266c",
+                "placeholder": false,
+                "placeholder_label": "Haveli facade"
+              },
+              "layout": "haveli-reference"
+            },
+            "hidden": false,
+            "id": "b81e831b8677408e8ee1afcf2ff2ce05",
+            "styles": {
+              "body_html": {
+                "translateX": "-0.000091552734375px",
+                "translateY": "-207.19998168945312px"
+              },
+              "collage.1": {
+                "height": "374px",
+                "width": "200px"
+              },
+              "eyebrow": {
+                "translateX": "0.0166015625px",
+                "translateY": "-261.6000061035156px"
+              },
+              "heading": {
+                "translateX": "-0.000091552734375px",
+                "translateY": "-222.39999389648438px"
+              },
+              "image": {
+                "width": "514px"
+              }
+            },
+            "type": "image_text"
+          },
+          {
+            "data": {
+              "anchor": "haveli-in-use",
+              "body_html": "<p>The haveli and chaupal have been reimagined as places that can once again be part of everyday life in Rakhigarhi\u2014somewhere to make, gather, learn, welcome visitors and simply spend time.</p>",
+              "eyebrow": "A Haveli Brought Back Into Use",
+              "heading": "",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "4cd0518474cb4b04bd8e51afcb362d9d",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "craft-centre",
+              "body_html": "<p>The Rakhigarhi Craft Centre is envisioned as a working space within the haveli, where women make, learn, experiment and develop their work.</p><p>Basket making, papier-m\u00e2ch\u00e9 and dhurrie weaving are among the crafts being developed. The Centre will provide a permanent base for working together, exploring designs and techniques, sharing knowledge and presenting what is created.</p>",
+              "heading": "The Craft Centre",
+              "layout": "haveli-use",
+              "link_href": "/our-work/craft-livelihood",
+              "link_label": "Explore Craft & Livelihood",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "052c9fe332574576aad9c748f1a7c8c0",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "place-to-arrive",
+              "body_html": "<p>For visitors, the haveli and chaupal become a starting point\u2014somewhere to meet people and understand Rakhigarhi's archaeology, history and life today.</p><p>Through its buildings, craft and stories, visitors connect with the village and the people who call it home.</p><p>The Heritage Guide Program is part of this experience. Women from Rakhigarhi are developing the knowledge and skills to interpret their heritage for visitors, giving them a greater role in how the village is presented and understood.</p>",
+              "heading": "A Place to Arrive",
+              "layout": "haveli-use",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "33f3973c4b80473e911f3cd1b569e188",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "place-to-pause",
+              "body_html": "<p>Not every part of the haveli and chaupal needs a programme.</p><p>There should also be somewhere to sit.</p><p>A simple place for chai, cold drinks and conversation gives visitors a reason to pause and gives the haveli some of the informality of a lived-in place.</p>",
+              "heading": "A Place to Pause",
+              "layout": "haveli-use",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "44eec0f60ecb4f05a6764f2550ef18ec",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "active-use-summary",
+              "body_html": "<p>Part workshop, part gathering place, part visitor anchor\u2014the aim is for the haveli to feel active and welcoming rather than institutional.</p>",
+              "heading": "",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "e37b9ecc41b54976a2df579118dd6eb3",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "the-ambition",
+              "body_html": "<p>The ambition reaches beyond the restoration of a single building. By bringing the haveli and Chaupal back into active use, the hope is to draw people into Rakhigarhi, support local craft and enterprise, and contribute to the village economy.</p><p>If that activity creates value, other historic havelis may also find new purpose\u2014encouraging further conservation and bringing more of Rakhigarhi's built heritage back into use.</p><p>What begins with one haveli could grow into a wider pattern of conservation and renewal, shaped by the people who live here.</p>",
+              "eyebrow": "The Ambition",
+              "heading": "One Restoration.\nA Wider Possibility.",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "1017b7e20a8648a0b3f8c546ed6f89d6",
+            "styles": {},
+            "type": "text"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "USP India's place-and-community work in Rakhigarhi.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Rakhigarhi"
+      },
+      "status": "published",
+      "updated_at": "2026-10-16T07:23:04.823053+00:00",
+      "published_at": "2026-10-16T07:23:04.823042+00:00",
+      "has_unpublished_changes": false,
+      "design_migration": "rakhigarhi-reference-2026-10-15"
+    },
+    {
+      "id": "b38606c288b148acbbc4c2eb711a286a",
+      "key": "theatre",
+      "path": "/our-work/theatre",
+      "required": true,
+      "draft": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "Theatre",
+              "heading": "Stories Brought to Life. Conversations Opened.",
+              "image": {
+                "caption": "",
+                "credit": "",
+                "media_id": "066851c267384af38915014947dd6e0b"
+              },
+              "intro": "Drawn from shared experiences, personal reflections and familiar situations, USP\u2019s productions bring stories to the stage that audiences can recognise, enjoy and sometimes see differently.",
+              "intro_heading": "Original stories rooted in the world around us."
+            },
+            "hidden": false,
+            "id": "75160ac390c74cc8a56d614132348fd7",
+            "styles": {},
+            "type": "hero"
+          },
+          {
+            "data": {
+              "anchor": "everyday-culture",
+              "body_html": "<p>Culture is not only found in architecture, craft, festivals and traditions. It also lives in family relationships, social conventions, rituals, expectations, and the way people relate to one another.</p><p>Theatre allows USP to explore this less tangible side of culture\u2014bringing familiar experiences and situations to the stage through storytelling, humour and performance.</p><p>Some stories entertain. Others make us question.<br>The most memorable can do both.</p>",
+              "eyebrow": "Culture in Everyday Life",
+              "heading": "The Worlds We Live In.",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "1c2f108bae614093bd6a851710c6b635",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "past-work",
+              "body_html": "<p>For more than a decade, USP has developed and staged original theatre across a range of subjects, settings and characters.</p><p>Each production has its own story, tone, and perspective. Together, they reflect an ongoing interest in the cultural and social worlds around us.</p>",
+              "eyebrow": "Theatre Over Time",
+              "heading": "More Than a Decade of Original Work.",
+              "image": {
+                "caption": "",
+                "credit": "",
+                "media_id": "2ebb2389301f4b2c8375de4c2318181e"
+              },
+              "layout": "theatre-archive",
+              "link_href": "/our-work/theatre#past-work",
+              "link_label": "Explore Past Productions",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "50af8d23713b4ada8587344dfeef6dde",
+            "type": "image_text"
+          },
+          {
+            "data": {
+              "anchor": "prayer-meeting",
+              "aside_html": "<p>Through recognisable characters and situations, the play opens up conversations about money, independence and women\u2019s involvement in decisions affecting their lives.</p>",
+              "band": false,
+              "body_html": "<p>The Prayer Meeting Edit is an original comedy set around a chautha\u2014a familiar cultural gathering for prayer and remembrance.</p><p>As family and friends come together, relationships, expectations and social conventions begin to surface. What should be solemn becomes revealing, uncomfortable and unexpectedly funny.</p>",
+              "eyebrow": "Current Production",
+              "heading": "The Prayer Meeting Edit",
+              "layout": "theatre-production",
+              "link_href": "/our-work/theatre#prayer-meeting",
+              "link_label": "Explore The Prayer Meeting Edit",
+              "question": "Beneath the humour lies a question:\nhow involved are women in the financial decisions that shape their own lives?",
+              "style": "stacked",
+              "subheading": "A Familiar Setting. A Contemporary Conversation."
+            },
+            "hidden": false,
+            "id": "d1c6adfa71134d87a9c984a670d8db46",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "theatre-ambition",
+              "aside": "The performance ends.\nWhat it opens up can continue.",
+              "band": true,
+              "body_html": "<p>The ambition is to continue developing original theatre that is engaging, culturally rooted, and relevant to contemporary life.</p><p>As the work grows, USP hopes to reach wider audiences and create space for different stories and perspectives, while remaining connected to the experiences and cultural contexts from which they emerge.</p>",
+              "eyebrow": "The Ambition",
+              "heading": "Stories That Travel\nBeyond the Stage.",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "cd57ccd290ed4a8d82b70ef9ddc8447f",
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "theatre-connect",
+              "button_label": "Connect with USP",
+              "eyebrow": "Stay Connected with USP Theatre",
+              "heading": "Be Part of What Comes Next.",
+              "href": "/connect",
+              "text": "Follow our productions, discover upcoming performances and connect with the work."
+            },
+            "hidden": false,
+            "id": "16f8802ee5f943eb92efc55411b468ec",
+            "type": "contact_invite"
+          },
+          {
+            "data": {
+              "category": "Theatre",
+              "count": 3,
+              "heading": "Related Field Notes"
+            },
+            "hidden": true,
+            "id": "db1f41eeea4f46afa5dca891ae695469",
+            "type": "notes_feed"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "Theatre at USP India: readings, rehearsals, performances and workshops.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Theatre"
+      },
+      "published": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "Theatre",
+              "heading": "Stories Brought to Life. Conversations Opened.",
+              "image": {
+                "caption": "",
+                "credit": "",
+                "media_id": "066851c267384af38915014947dd6e0b"
+              },
+              "intro": "Drawn from shared experiences, personal reflections and familiar situations, USP\u2019s productions bring stories to the stage that audiences can recognise, enjoy and sometimes see differently.",
+              "intro_heading": "Original stories rooted in the world around us."
+            },
+            "hidden": false,
+            "id": "75160ac390c74cc8a56d614132348fd7",
+            "styles": {},
+            "type": "hero"
+          },
+          {
+            "data": {
+              "anchor": "everyday-culture",
+              "body_html": "<p>Culture is not only found in architecture, craft, festivals and traditions. It also lives in family relationships, social conventions, rituals, expectations, and the way people relate to one another.</p><p>Theatre allows USP to explore this less tangible side of culture\u2014bringing familiar experiences and situations to the stage through storytelling, humour and performance.</p><p>Some stories entertain. Others make us question.<br>The most memorable can do both.</p>",
+              "eyebrow": "Culture in Everyday Life",
+              "heading": "The Worlds We Live In.",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "1c2f108bae614093bd6a851710c6b635",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "past-work",
+              "body_html": "<p>For more than a decade, USP has developed and staged original theatre across a range of subjects, settings and characters.</p><p>Each production has its own story, tone, and perspective. Together, they reflect an ongoing interest in the cultural and social worlds around us.</p>",
+              "eyebrow": "Theatre Over Time",
+              "heading": "More Than a Decade of Original Work.",
+              "image": {
+                "caption": "",
+                "credit": "",
+                "media_id": "2ebb2389301f4b2c8375de4c2318181e"
+              },
+              "layout": "theatre-archive",
+              "link_href": "/our-work/theatre#past-work",
+              "link_label": "Explore Past Productions",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "50af8d23713b4ada8587344dfeef6dde",
+            "type": "image_text"
+          },
+          {
+            "data": {
+              "anchor": "prayer-meeting",
+              "aside_html": "<p>Through recognisable characters and situations, the play opens up conversations about money, independence and women\u2019s involvement in decisions affecting their lives.</p>",
+              "band": false,
+              "body_html": "<p>The Prayer Meeting Edit is an original comedy set around a chautha\u2014a familiar cultural gathering for prayer and remembrance.</p><p>As family and friends come together, relationships, expectations and social conventions begin to surface. What should be solemn becomes revealing, uncomfortable and unexpectedly funny.</p>",
+              "eyebrow": "Current Production",
+              "heading": "The Prayer Meeting Edit",
+              "layout": "theatre-production",
+              "link_href": "/our-work/theatre#prayer-meeting",
+              "link_label": "Explore The Prayer Meeting Edit",
+              "question": "Beneath the humour lies a question:\nhow involved are women in the financial decisions that shape their own lives?",
+              "style": "stacked",
+              "subheading": "A Familiar Setting. A Contemporary Conversation."
+            },
+            "hidden": false,
+            "id": "d1c6adfa71134d87a9c984a670d8db46",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "theatre-ambition",
+              "aside": "The performance ends.\nWhat it opens up can continue.",
+              "band": true,
+              "body_html": "<p>The ambition is to continue developing original theatre that is engaging, culturally rooted, and relevant to contemporary life.</p><p>As the work grows, USP hopes to reach wider audiences and create space for different stories and perspectives, while remaining connected to the experiences and cultural contexts from which they emerge.</p>",
+              "eyebrow": "The Ambition",
+              "heading": "Stories That Travel\nBeyond the Stage.",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "cd57ccd290ed4a8d82b70ef9ddc8447f",
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "theatre-connect",
+              "button_label": "Connect with USP",
+              "eyebrow": "Stay Connected with USP Theatre",
+              "heading": "Be Part of What Comes Next.",
+              "href": "/connect",
+              "text": "Follow our productions, discover upcoming performances and connect with the work."
+            },
+            "hidden": false,
+            "id": "16f8802ee5f943eb92efc55411b468ec",
+            "type": "contact_invite"
+          },
+          {
+            "data": {
+              "category": "Theatre",
+              "count": 3,
+              "heading": "Related Field Notes"
+            },
+            "hidden": true,
+            "id": "db1f41eeea4f46afa5dca891ae695469",
+            "type": "notes_feed"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "Theatre at USP India: readings, rehearsals, performances and workshops.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Theatre"
+      },
+      "status": "published",
+      "updated_at": "2026-10-16T08:36:20.884861+00:00",
+      "published_at": "2026-10-16T08:36:20.884852+00:00",
+      "has_unpublished_changes": false,
+      "design_migration": "theatre-reference-2026-10-16"
+    },
+    {
+      "id": "5dc0f2f87b8a4548b09dac595b8c8409",
+      "key": "craft-livelihood",
+      "path": "/our-work/craft-livelihood",
+      "required": true,
+      "draft": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "Craft & Livelihood",
+              "heading": "Made by Hand. Shaped by Knowledge.",
+              "image": {
+                "caption": "",
+                "media_id": "d72a4d6d99db4ee2b8f8380dfc0e9daa"
+              },
+              "intro": "In Rakhigarhi, women are building on existing knowledge and ways of making. Through practice and creative exchange, they are developing skills, individual expression and new pathways to livelihood."
+            },
+            "hidden": false,
+            "id": "efc99444967244a494a8a827477732f9",
+            "styles": {},
+            "type": "hero"
+          },
+          {
+            "data": {
+              "body_html": "<p>Ways of choosing materials, judging a form or working with colour are often learned through watching, doing and making alongside others.</p><p>USP brings women in Rakhigarhi together with artists, designers and craft practitioners to build on this knowledge. Together, they test and adapt new materials, techniques and ideas, developing work rooted in the place and shaped by the women involved.</p>",
+              "eyebrow": "Knowledge Carried Forward",
+              "heading": "Not everything we know is formally taught.",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "2f77f69154024bc18e63c209b09dd8bb",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "body_html": "<p>Three crafts form the starting point of the initiative. Each brings its own materials, techniques and possibilities for colour, pattern and form.</p>",
+              "eyebrow": "Three Crafts",
+              "heading": "Basket Making. Papier-M\u00e2ch\u00e9. Dhurrie Weaving.",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "b7030ee2f943407bbe9f66f67c5618ff",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "basket-making",
+              "body_html": "<p>Basket making draws on skills and ways of working already present within the community. Through the initiative, women are exploring new combinations of colour, pattern and form while developing the consistency and finish of the work.</p>",
+              "crop": "4/5",
+              "eyebrow": "Basket Making",
+              "heading": "Tradition carried forward through colour, pattern and form.",
+              "image": {
+                "caption": "",
+                "media_id": "546270d000a2421f913f59054d09a089"
+              },
+              "image_side": "left"
+            },
+            "hidden": false,
+            "id": "32f319aca7d44c7bbb683b8b59074ca3",
+            "styles": {},
+            "type": "image_text"
+          },
+          {
+            "data": {
+              "anchor": "papier-mache",
+              "band": true,
+              "body_html": "<p>Papier-m\u00e2ch\u00e9 introduces a different material and process into the initiative. Women are experimenting with form, surface and decoration, developing objects that combine individual expression with the visual language emerging from the group.</p>",
+              "eyebrow": "Papier-M\u00e2ch\u00e9",
+              "heading": "A new material. A new direction.",
+              "image": {
+                "caption": "",
+                "media_id": "b76e9d3c0db04992a410365056104913"
+              },
+              "layout": "full"
+            },
+            "hidden": false,
+            "id": "f83ab3b1542d411d9135da3a0e87174f",
+            "styles": {},
+            "type": "image"
+          },
+          {
+            "data": {
+              "anchor": "dhurrie-weaving",
+              "body_html": "<p>The patterns and motifs woven into the dhurries draw on designs passed down through generations within the community. Women use these as a starting point for new combinations of colour and composition\u2014carrying local textile knowledge into the work being created today.</p>",
+              "crop": "2/3",
+              "eyebrow": "Dhurrie Weaving",
+              "heading": "Textile knowledge carried forward through pattern and composition.",
+              "image": {
+                "caption": "",
+                "media_id": "6e9af671d7964b45bfd3cdb3d953d3ef"
+              },
+              "image_side": "right"
+            },
+            "hidden": false,
+            "id": "7ca7cd345b9846cca493871ee8cc6728",
+            "styles": {},
+            "type": "image_text"
+          },
+          {
+            "data": {
+              "anchor": "craft-centre",
+              "body_html": "<p>The Craft Centre within the Rakhigarhi Haveli and Chaupal will give the initiative a shared home\u2014a place for women to work together, develop designs and techniques, share knowledge and build consistency in what they produce.</p><p>Visitors will be able to encounter the work and understand the people, materials, and processes behind it.</p>",
+              "eyebrow": "The Craft Centre",
+              "heading": "A Place for the Work to Continue.",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "4dc28ac23d2845d99f1c4446273357a6",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "crop": "2/1",
+              "flush": true,
+              "image": {
+                "caption": "",
+                "media_id": "6fc82b55f714459f9499182413231bbb"
+              },
+              "layout": "full"
+            },
+            "hidden": false,
+            "id": "21ce6e4412b34cd68342742b8cc11ac9",
+            "styles": {},
+            "type": "image"
+          },
+          {
+            "data": {
+              "anchor": "impact-ambition",
+              "body_html": "<p>As baskets, papier-m\u00e2ch\u00e9 and dhurries develop into products with wider appeal and economic value, they can create opportunities for women to earn.</p><p>Women are also contributing ideas, developing products and becoming more involved in decisions about how the initiative grows.</p><p>As the work gains value, so do the opportunities around it.</p>",
+              "eyebrow": "Impact & Livelihood",
+              "heading": "Creating Value Through Craft.",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "50c03293c3144ceaaae2ee9e23fd6c73",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "aside": "Rakhigarhi is known for its extraordinary past. The ambition is to make what is created here part of its future.",
+              "band": true,
+              "body_html": "<p>The work begins in Rakhigarhi, with the ambition to reach wider audiences through collections, creative collaborations, and partnerships.</p><p>The aim is for craft from Rakhigarhi to be recognised for its quality, character and originality\u2014with women increasingly shaping what is created and where it goes next.</p>",
+              "eyebrow": "The Ambition",
+              "heading": "From Rakhigarhi, Outwards.",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "d61b65c3893345f28a1a7ae506d5547c",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "button_label": "Send a craft enquiry",
+              "heading": "Craft enquiries",
+              "href": "/connect?topic=Craft",
+              "text": "Questions about craft and makers can be sent through Connect."
+            },
+            "hidden": true,
+            "id": "90fa1c9d91d044bd822f906d156a3298",
+            "styles": {},
+            "type": "contact_invite"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "Craft & Livelihood at USP India: makers, making processes and objects.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Craft & Livelihood"
+      },
+      "published": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "Craft & Livelihood",
+              "heading": "Made by Hand. Shaped by Knowledge.",
+              "image": {
+                "caption": "",
+                "media_id": "d72a4d6d99db4ee2b8f8380dfc0e9daa"
+              },
+              "intro": "In Rakhigarhi, women are building on existing knowledge and ways of making. Through practice and creative exchange, they are developing skills, individual expression and new pathways to livelihood."
+            },
+            "hidden": false,
+            "id": "efc99444967244a494a8a827477732f9",
+            "styles": {},
+            "type": "hero"
+          },
+          {
+            "data": {
+              "body_html": "<p>Ways of choosing materials, judging a form or working with colour are often learned through watching, doing and making alongside others.</p><p>USP brings women in Rakhigarhi together with artists, designers and craft practitioners to build on this knowledge. Together, they test and adapt new materials, techniques and ideas, developing work rooted in the place and shaped by the women involved.</p>",
+              "eyebrow": "Knowledge Carried Forward",
+              "heading": "Not everything we know is formally taught.",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "2f77f69154024bc18e63c209b09dd8bb",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "body_html": "<p>Three crafts form the starting point of the initiative. Each brings its own materials, techniques and possibilities for colour, pattern and form.</p>",
+              "eyebrow": "Three Crafts",
+              "heading": "Basket Making. Papier-M\u00e2ch\u00e9. Dhurrie Weaving.",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "b7030ee2f943407bbe9f66f67c5618ff",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "basket-making",
+              "body_html": "<p>Basket making draws on skills and ways of working already present within the community. Through the initiative, women are exploring new combinations of colour, pattern and form while developing the consistency and finish of the work.</p>",
+              "crop": "4/5",
+              "eyebrow": "Basket Making",
+              "heading": "Tradition carried forward through colour, pattern and form.",
+              "image": {
+                "caption": "",
+                "media_id": "546270d000a2421f913f59054d09a089"
+              },
+              "image_side": "left"
+            },
+            "hidden": false,
+            "id": "32f319aca7d44c7bbb683b8b59074ca3",
+            "styles": {},
+            "type": "image_text"
+          },
+          {
+            "data": {
+              "anchor": "papier-mache",
+              "band": true,
+              "body_html": "<p>Papier-m\u00e2ch\u00e9 introduces a different material and process into the initiative. Women are experimenting with form, surface and decoration, developing objects that combine individual expression with the visual language emerging from the group.</p>",
+              "eyebrow": "Papier-M\u00e2ch\u00e9",
+              "heading": "A new material. A new direction.",
+              "image": {
+                "caption": "",
+                "media_id": "b76e9d3c0db04992a410365056104913"
+              },
+              "layout": "full"
+            },
+            "hidden": false,
+            "id": "f83ab3b1542d411d9135da3a0e87174f",
+            "styles": {},
+            "type": "image"
+          },
+          {
+            "data": {
+              "anchor": "dhurrie-weaving",
+              "body_html": "<p>The patterns and motifs woven into the dhurries draw on designs passed down through generations within the community. Women use these as a starting point for new combinations of colour and composition\u2014carrying local textile knowledge into the work being created today.</p>",
+              "crop": "2/3",
+              "eyebrow": "Dhurrie Weaving",
+              "heading": "Textile knowledge carried forward through pattern and composition.",
+              "image": {
+                "caption": "",
+                "media_id": "6e9af671d7964b45bfd3cdb3d953d3ef"
+              },
+              "image_side": "right"
+            },
+            "hidden": false,
+            "id": "7ca7cd345b9846cca493871ee8cc6728",
+            "styles": {},
+            "type": "image_text"
+          },
+          {
+            "data": {
+              "anchor": "craft-centre",
+              "body_html": "<p>The Craft Centre within the Rakhigarhi Haveli and Chaupal will give the initiative a shared home\u2014a place for women to work together, develop designs and techniques, share knowledge and build consistency in what they produce.</p><p>Visitors will be able to encounter the work and understand the people, materials, and processes behind it.</p>",
+              "eyebrow": "The Craft Centre",
+              "heading": "A Place for the Work to Continue.",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "4dc28ac23d2845d99f1c4446273357a6",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "crop": "2/1",
+              "flush": true,
+              "image": {
+                "caption": "",
+                "media_id": "6fc82b55f714459f9499182413231bbb"
+              },
+              "layout": "full"
+            },
+            "hidden": false,
+            "id": "21ce6e4412b34cd68342742b8cc11ac9",
+            "styles": {},
+            "type": "image"
+          },
+          {
+            "data": {
+              "anchor": "impact-ambition",
+              "body_html": "<p>As baskets, papier-m\u00e2ch\u00e9 and dhurries develop into products with wider appeal and economic value, they can create opportunities for women to earn.</p><p>Women are also contributing ideas, developing products and becoming more involved in decisions about how the initiative grows.</p><p>As the work gains value, so do the opportunities around it.</p>",
+              "eyebrow": "Impact & Livelihood",
+              "heading": "Creating Value Through Craft.",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "50c03293c3144ceaaae2ee9e23fd6c73",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "aside": "Rakhigarhi is known for its extraordinary past. The ambition is to make what is created here part of its future.",
+              "band": true,
+              "body_html": "<p>The work begins in Rakhigarhi, with the ambition to reach wider audiences through collections, creative collaborations, and partnerships.</p><p>The aim is for craft from Rakhigarhi to be recognised for its quality, character and originality\u2014with women increasingly shaping what is created and where it goes next.</p>",
+              "eyebrow": "The Ambition",
+              "heading": "From Rakhigarhi, Outwards.",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "d61b65c3893345f28a1a7ae506d5547c",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "button_label": "Send a craft enquiry",
+              "heading": "Craft enquiries",
+              "href": "/connect?topic=Craft",
+              "text": "Questions about craft and makers can be sent through Connect."
+            },
+            "hidden": true,
+            "id": "90fa1c9d91d044bd822f906d156a3298",
+            "styles": {},
+            "type": "contact_invite"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "Craft & Livelihood at USP India: makers, making processes and objects.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Craft & Livelihood"
+      },
+      "status": "published",
+      "updated_at": "2026-10-16T07:22:59.444510+00:00",
+      "published_at": "2026-10-16T07:22:59.444497+00:00",
+      "has_unpublished_changes": false
+    },
+    {
+      "id": "1b3a7cf8a59a4720926bb1157f077311",
+      "key": "workshops-learning",
+      "path": "/our-work/workshops-learning",
+      "required": true,
+      "draft": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "Workshops & Learning",
+              "heading": "Learning, Sharing, and Passing It On.",
+              "image": {
+                "caption": "",
+                "media_id": "",
+                "placeholder": true,
+                "placeholder_label": "Workshop photograph"
+              },
+              "intro": ""
+            },
+            "hidden": false,
+            "id": "3df1b07d4cf44b72aa10debcf68761ac",
+            "styles": {},
+            "type": "hero"
+          },
+          {
+            "data": {
+              "anchor": "learning-intro",
+              "body_html": "<p>For generations, people have learned from one another\u2014through stories told, skills demonstrated, techniques practised and knowledge passed from one person to the next.</p><p>USP carries that very human way of learning into its work today\u2014creating opportunities to learn through participation, practice and exchange.</p>",
+              "eyebrow": "",
+              "heading": "What matters is not simply what is taught, but what people are able to do with what they learn.",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "workshops-learning-intro",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "heritage-guide",
+              "body_html": "<p>Who better to tell the story of a place than the women who call it home?</p><p>The Heritage Guide Program works with women from Rakhigarhi to deepen their understanding of the village's archaeology, history and heritage, while developing the skills and confidence to interpret it for visitors.</p><p>The program gives women a greater role in how Rakhigarhi is presented and understood, while creating an opportunity for knowledge of their own place to become a livelihood.</p>",
+              "crop": "16/7",
+              "eyebrow": "Heritage Guide Program",
+              "heading": "Knowing Rakhigarhi. Sharing Its Story.",
+              "image": {
+                "caption": "",
+                "media_id": "",
+                "placeholder": true,
+                "placeholder_label": "Heritage Guide Program photograph"
+              },
+              "layout": "wide",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "deafa1532aa9445ea7a5aaf17e717803",
+            "styles": {},
+            "type": "image"
+          },
+          {
+            "data": {
+              "anchor": "restoration-skills",
+              "band": false,
+              "body_html": "<p>As the Rakhigarhi haveli and chaupal are restored, local workers learn alongside conservation professionals, gaining practical skills in traditional building techniques.</p><p>The restoration becomes a place of learning, with skills that remain with the workers long after the work is complete.</p>",
+              "crop": "4/3",
+              "eyebrow": "Restoration Skills",
+              "heading": "Learning Through the Haveli.",
+              "image": {
+                "caption": "",
+                "media_id": "",
+                "placeholder": true,
+                "placeholder_label": "Restoration skills photograph"
+              },
+              "image_side": "left",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "682ce3976f824681900eb17c646bf1d6",
+            "styles": {},
+            "type": "image_text"
+          },
+          {
+            "data": {
+              "anchor": "creative-exchange",
+              "body_html": "<p>Artists, designers and craft practitioners work alongside women in Rakhigarhi, bringing different skills and perspectives to the making process.</p><p>The women\u2019s existing knowledge provides a starting point. Together, they explore materials, techniques, colour, pattern and form\u2014testing and adapting ideas through practice.</p><p>Alongside creative development, the aim is to strengthen the quality and appeal of the work, opening up market opportunities and the possibility of better returns for the women who make it.</p>",
+              "crop": "4/3",
+              "eyebrow": "Creative Exchange",
+              "heading": "New Ideas. New Directions.",
+              "image": {
+                "caption": "",
+                "media_id": "",
+                "placeholder": true,
+                "placeholder_label": "Creative exchange photograph"
+              },
+              "image_side": "right"
+            },
+            "hidden": false,
+            "id": "432c67c85f4949b5a839e7ac25950d5e",
+            "styles": {},
+            "type": "image_text"
+          },
+          {
+            "data": {
+              "anchor": "student-projects",
+              "body_html": "<p>Students can contribute to USP\u2019s initiatives by putting their learning into practice.</p><p>One student\u2019s research into Rakhigarhi led to a series of short films created as learning resources for women participating in the Heritage Guide Program. A further Q&amp;A film is being developed around questions visitors may ask.</p><p>What began as a student learning project became a resource that others could use.</p>",
+              "eyebrow": "Student Projects",
+              "heading": "Learning That Becomes a Contribution.",
+              "link_href": "",
+              "link_label": "Explore Film",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "47ef97c9cf5d4d118998a1008520a18b",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "ambition",
+              "aside": "Skills can be used again.\nKnowledge can be shared.\nIdeas can be adapted and passed on.",
+              "band": true,
+              "body_html": "<p>The ambition is for learning to extend beyond any one workshop, project or exchange.</p><p>Over time, this can give people greater confidence to participate, contribute to their communities, and pursue new opportunities\u2014including opportunities to earn a livelihood.</p>",
+              "eyebrow": "The Ambition",
+              "heading": "Knowledge That Continues to Travel.",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "adbb8955bb9d4c48afa2f1b5a86fd35b",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "category": "Workshops & Learning",
+              "count": 3,
+              "heading": "Workshop reflections"
+            },
+            "hidden": true,
+            "id": "6bf1a6e9c5ae4f03a832206bbf6accda",
+            "styles": {},
+            "type": "notes_feed"
+          },
+          {
+            "data": {
+              "button_label": "Connect with USP",
+              "eyebrow": "Learn. Contribute. Take Part.",
+              "heading": "",
+              "href": "/connect?topic=Workshops%20%26%20Learning",
+              "text": "USP welcomes students, designers, practitioners and others who want to learn through the work, contribute their knowledge, or share their expertise."
+            },
+            "hidden": false,
+            "id": "ced085e25b09466b86c22ae7af209b5a",
+            "styles": {},
+            "type": "contact_invite"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "Workshops & Learning at USP India: documented workshops and resources.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Workshops & Learning"
+      },
+      "published": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "Workshops & Learning",
+              "heading": "Learning, Sharing, and Passing It On.",
+              "image": {
+                "caption": "",
+                "media_id": "",
+                "placeholder": true,
+                "placeholder_label": "Workshop photograph"
+              },
+              "intro": ""
+            },
+            "hidden": false,
+            "id": "3df1b07d4cf44b72aa10debcf68761ac",
+            "styles": {},
+            "type": "hero"
+          },
+          {
+            "data": {
+              "anchor": "learning-intro",
+              "body_html": "<p>For generations, people have learned from one another\u2014through stories told, skills demonstrated, techniques practised and knowledge passed from one person to the next.</p><p>USP carries that very human way of learning into its work today\u2014creating opportunities to learn through participation, practice and exchange.</p>",
+              "eyebrow": "",
+              "heading": "What matters is not simply what is taught, but what people are able to do with what they learn.",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "workshops-learning-intro",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "heritage-guide",
+              "body_html": "<p>Who better to tell the story of a place than the women who call it home?</p><p>The Heritage Guide Program works with women from Rakhigarhi to deepen their understanding of the village's archaeology, history and heritage, while developing the skills and confidence to interpret it for visitors.</p><p>The program gives women a greater role in how Rakhigarhi is presented and understood, while creating an opportunity for knowledge of their own place to become a livelihood.</p>",
+              "crop": "16/7",
+              "eyebrow": "Heritage Guide Program",
+              "heading": "Knowing Rakhigarhi. Sharing Its Story.",
+              "image": {
+                "caption": "",
+                "media_id": "",
+                "placeholder": true,
+                "placeholder_label": "Heritage Guide Program photograph"
+              },
+              "layout": "wide",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "deafa1532aa9445ea7a5aaf17e717803",
+            "styles": {},
+            "type": "image"
+          },
+          {
+            "data": {
+              "anchor": "restoration-skills",
+              "band": false,
+              "body_html": "<p>As the Rakhigarhi haveli and chaupal are restored, local workers learn alongside conservation professionals, gaining practical skills in traditional building techniques.</p><p>The restoration becomes a place of learning, with skills that remain with the workers long after the work is complete.</p>",
+              "crop": "4/3",
+              "eyebrow": "Restoration Skills",
+              "heading": "Learning Through the Haveli.",
+              "image": {
+                "caption": "",
+                "media_id": "",
+                "placeholder": true,
+                "placeholder_label": "Restoration skills photograph"
+              },
+              "image_side": "left",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "682ce3976f824681900eb17c646bf1d6",
+            "styles": {},
+            "type": "image_text"
+          },
+          {
+            "data": {
+              "anchor": "creative-exchange",
+              "body_html": "<p>Artists, designers and craft practitioners work alongside women in Rakhigarhi, bringing different skills and perspectives to the making process.</p><p>The women\u2019s existing knowledge provides a starting point. Together, they explore materials, techniques, colour, pattern and form\u2014testing and adapting ideas through practice.</p><p>Alongside creative development, the aim is to strengthen the quality and appeal of the work, opening up market opportunities and the possibility of better returns for the women who make it.</p>",
+              "crop": "4/3",
+              "eyebrow": "Creative Exchange",
+              "heading": "New Ideas. New Directions.",
+              "image": {
+                "caption": "",
+                "media_id": "",
+                "placeholder": true,
+                "placeholder_label": "Creative exchange photograph"
+              },
+              "image_side": "right"
+            },
+            "hidden": false,
+            "id": "432c67c85f4949b5a839e7ac25950d5e",
+            "styles": {},
+            "type": "image_text"
+          },
+          {
+            "data": {
+              "anchor": "student-projects",
+              "body_html": "<p>Students can contribute to USP\u2019s initiatives by putting their learning into practice.</p><p>One student\u2019s research into Rakhigarhi led to a series of short films created as learning resources for women participating in the Heritage Guide Program. A further Q&amp;A film is being developed around questions visitors may ask.</p><p>What began as a student learning project became a resource that others could use.</p>",
+              "eyebrow": "Student Projects",
+              "heading": "Learning That Becomes a Contribution.",
+              "link_href": "",
+              "link_label": "Explore Film",
+              "style": "columns"
+            },
+            "hidden": false,
+            "id": "47ef97c9cf5d4d118998a1008520a18b",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "anchor": "ambition",
+              "aside": "Skills can be used again.\nKnowledge can be shared.\nIdeas can be adapted and passed on.",
+              "band": true,
+              "body_html": "<p>The ambition is for learning to extend beyond any one workshop, project or exchange.</p><p>Over time, this can give people greater confidence to participate, contribute to their communities, and pursue new opportunities\u2014including opportunities to earn a livelihood.</p>",
+              "eyebrow": "The Ambition",
+              "heading": "Knowledge That Continues to Travel.",
+              "style": "stacked"
+            },
+            "hidden": false,
+            "id": "adbb8955bb9d4c48afa2f1b5a86fd35b",
+            "styles": {},
+            "type": "text"
+          },
+          {
+            "data": {
+              "category": "Workshops & Learning",
+              "count": 3,
+              "heading": "Workshop reflections"
+            },
+            "hidden": true,
+            "id": "6bf1a6e9c5ae4f03a832206bbf6accda",
+            "styles": {},
+            "type": "notes_feed"
+          },
+          {
+            "data": {
+              "button_label": "Connect with USP",
+              "eyebrow": "Learn. Contribute. Take Part.",
+              "heading": "",
+              "href": "/connect?topic=Workshops%20%26%20Learning",
+              "text": "USP welcomes students, designers, practitioners and others who want to learn through the work, contribute their knowledge, or share their expertise."
+            },
+            "hidden": false,
+            "id": "ced085e25b09466b86c22ae7af209b5a",
+            "styles": {},
+            "type": "contact_invite"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "Workshops & Learning at USP India: documented workshops and resources.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Workshops & Learning"
+      },
+      "status": "published",
+      "updated_at": "2026-10-16T07:23:02.153897+00:00",
+      "published_at": "2026-10-16T07:23:02.153885+00:00",
+      "has_unpublished_changes": false,
+      "design_migration": "workshops-reference-2026-10-15"
+    },
+    {
+      "id": "5a9c0038d5b243a9a6f81ede39d0b52b",
+      "key": "field-notes",
+      "path": "/field-notes",
+      "required": true,
+      "draft": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "Field Notes",
+              "heading": "Field Notes",
+              "image": {
+                "caption": "",
+                "media_id": "b76e9d3c0db04992a410365056104913"
+              },
+              "intro": "Articles, photo essays, interviews, workshop reflections and resources from USP India."
+            },
+            "hidden": false,
+            "id": "8961e49959b44a3d9f15e32e534313c3",
+            "type": "hero"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "Field Notes from USP India: articles, photo essays, interviews, workshop reflections and resources.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Field Notes"
+      },
+      "published": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "Field Notes",
+              "heading": "Field Notes",
+              "image": {
+                "caption": "",
+                "media_id": "b76e9d3c0db04992a410365056104913"
+              },
+              "intro": "Articles, photo essays, interviews, workshop reflections and resources from USP India."
+            },
+            "hidden": false,
+            "id": "8961e49959b44a3d9f15e32e534313c3",
+            "type": "hero"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "Field Notes from USP India: articles, photo essays, interviews, workshop reflections and resources.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Field Notes"
+      },
+      "status": "published",
+      "updated_at": "2026-10-15T06:45:55.910447+00:00",
+      "published_at": "2026-10-15T06:45:01.836586+00:00",
+      "has_unpublished_changes": false
+    },
+    {
+      "id": "816b31c4a000436e850f0b78003797b7",
+      "key": "connect",
+      "path": "/connect",
+      "required": true,
+      "draft": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "Connect",
+              "heading": "Connect with Us",
+              "image": {
+                "caption": "",
+                "media_id": "6e9af671d7964b45bfd3cdb3d953d3ef"
+              },
+              "intro": "Use the form below for general questions, collaboration, craft, theatre, or workshops and learning."
+            },
+            "hidden": false,
+            "id": "70c8a7400f0c4595b37fed15df07345d",
+            "type": "hero"
+          },
+          {
+            "data": {
+              "heading": "Send a message",
+              "intro": ""
+            },
+            "hidden": false,
+            "id": "1d26a083472b4a0a9111119d445501b4",
+            "type": "contact_form"
+          },
+          {
+            "data": {
+              "body_html": "<p>Verified contact details will be shown here once supplied.</p>",
+              "heading": "Contact details"
+            },
+            "hidden": false,
+            "id": "385762f039b847408ffe8bb4f089b51c",
+            "type": "text"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "Contact USP India \u2014 Urban Suburban Perspectives.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Connect"
+      },
+      "published": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "Connect",
+              "heading": "Connect with Us",
+              "image": {
+                "caption": "",
+                "media_id": "6e9af671d7964b45bfd3cdb3d953d3ef"
+              },
+              "intro": "Use the form below for general questions, collaboration, craft, theatre, or workshops and learning."
+            },
+            "hidden": false,
+            "id": "70c8a7400f0c4595b37fed15df07345d",
+            "type": "hero"
+          },
+          {
+            "data": {
+              "heading": "Send a message",
+              "intro": ""
+            },
+            "hidden": false,
+            "id": "1d26a083472b4a0a9111119d445501b4",
+            "type": "contact_form"
+          },
+          {
+            "data": {
+              "body_html": "<p>Verified contact details will be shown here once supplied.</p>",
+              "heading": "Contact details"
+            },
+            "hidden": false,
+            "id": "385762f039b847408ffe8bb4f089b51c",
+            "type": "text"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "Contact USP India \u2014 Urban Suburban Perspectives.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Connect"
+      },
+      "status": "published",
+      "updated_at": "2026-10-15T06:45:55.910729+00:00",
+      "published_at": "2026-10-15T06:45:01.837443+00:00",
+      "has_unpublished_changes": false
+    },
+    {
+      "id": "a67e11392e4e4643b9af55c96aaf2ea4",
+      "key": "blog",
+      "path": "/blog",
+      "required": true,
+      "draft": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "Blog",
+              "heading": "Blog",
+              "image": {
+                "caption": "",
+                "media_id": ""
+              },
+              "intro": "News, updates and stories from USP India."
+            },
+            "hidden": false,
+            "id": "26ac04de97934307a074dba9f0057bab",
+            "type": "hero"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "The USP India blog: news, updates and stories.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Blog"
+      },
+      "published": {
+        "sections": [
+          {
+            "data": {
+              "buttons": [],
+              "eyebrow": "Blog",
+              "heading": "Blog",
+              "image": {
+                "caption": "",
+                "media_id": ""
+              },
+              "intro": "News, updates and stories from USP India."
+            },
+            "hidden": false,
+            "id": "26ac04de97934307a074dba9f0057bab",
+            "type": "hero"
+          }
+        ],
+        "seo": {
+          "canonical": "",
+          "description": "The USP India blog: news, updates and stories.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "title": "Blog"
+      },
+      "status": "published",
+      "updated_at": "2026-10-15T08:09:56.614983+00:00",
+      "published_at": "2026-10-15T08:09:56.614994+00:00",
+      "has_unpublished_changes": false
+    }
+  ],
+  "settings": {
+    "key": "site",
+    "site_name": "USP India",
+    "full_name": "Urban Suburban Perspectives",
+    "tagline": "Heritage, Art and Culture",
+    "logo_media_id": "",
+    "favicon_media_id": "",
+    "theme": {
+      "base_size": 18,
+      "button_style": "square",
+      "colors": {
+        "background": "#F9F9F9",
+        "green": "#454545",
+        "ochre": "#8C847C",
+        "surface": "#EDEAE7",
+        "terracotta": "#76716B",
+        "text": "#575757"
+      },
+      "fonts": {
+        "body": "Public Sans",
+        "heading": "Public Sans"
+      },
+      "spacing": "comfortable"
+    },
+    "footer_text": "USP India \u2014 Urban Suburban Perspectives.",
+    "privacy_html": "<p>Messages sent through Connect are stored privately and used only to respond to you. Draft privacy notice \u2014 awaiting approved text.</p>",
+    "contact": {
+      "address": "",
+      "email": "",
+      "phone": ""
+    },
+    "social": [],
+    "menus": {
+      "footer": [
+        {
+          "href": "/blog",
+          "id": "m-blog",
+          "label": "Blog"
+        }
+      ],
+      "main": [
+        {
+          "children": [],
+          "href": "/",
+          "id": "m-home",
+          "label": "Home",
+          "required": true
+        },
+        {
+          "children": [
+            {
+              "href": "/about#team",
+              "id": "m-team",
+              "label": "Team"
+            }
+          ],
+          "href": "/about",
+          "id": "m-about",
+          "label": "Who We Are",
+          "required": true
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "href": "/our-work/rakhigarhi",
+              "id": "m-rak",
+              "label": "Rakhigarhi",
+              "required": true
+            },
+            {
+              "children": [],
+              "href": "/our-work/theatre",
+              "id": "m-the",
+              "label": "Theatre",
+              "required": true
+            },
+            {
+              "children": [],
+              "href": "/our-work/craft-livelihood",
+              "id": "m-cra",
+              "label": "Craft & Livelihood",
+              "required": true
+            },
+            {
+              "children": [],
+              "href": "/our-work/workshops-learning",
+              "id": "m-wor",
+              "label": "Workshops & Learning",
+              "required": true
+            }
+          ],
+          "href": "/our-work",
+          "id": "m-work",
+          "label": "Our Work",
+          "required": true
+        },
+        {
+          "children": [],
+          "href": "/field-notes",
+          "id": "m-notes",
+          "label": "Field Notes",
+          "required": true
+        },
+        {
+          "children": [],
+          "href": "/connect",
+          "id": "m-connect",
+          "label": "Connect",
+          "required": true
+        }
+      ]
+    },
+    "preview_banner": false,
+    "indexing_enabled": false,
+    "default_share_media_id": "",
+    "checklist": [
+      {
+        "id": "70bfc1ee0d6847a79bd5feece8c1b1d3",
+        "label": "Final colour chart supplied and applied",
+        "done": false
+      },
+      {
+        "id": "51fd4642f3e84341b409467cfaed2f4a",
+        "label": "Organisation statement approved",
+        "done": false
+      },
+      {
+        "id": "2b6d22d0395e4d88bdfaa62b2c33b2d0",
+        "label": "Home page copy approved",
+        "done": false
+      },
+      {
+        "id": "59bc3d587e934950814cf711b04673df",
+        "label": "About: story, purpose, approach approved",
+        "done": false
+      },
+      {
+        "id": "6f959e79f6524e1bb71eeb472d6c17d2",
+        "label": "Team names, biographies and portraits approved",
+        "done": false
+      },
+      {
+        "id": "3412b34051bb4bb09db885cbcee54fe9",
+        "label": "Our Work overview copy approved",
+        "done": false
+      },
+      {
+        "id": "d397dfcdd03f4e1982e0316f4cd1723b",
+        "label": "Rakhigarhi copy and sources approved",
+        "done": false
+      },
+      {
+        "id": "c9caaeff6a4640828a8c549a58f0b44c",
+        "label": "Theatre copy approved",
+        "done": false
+      },
+      {
+        "id": "2ca6dc1795e84f4a852418b139e0124f",
+        "label": "Craft & Livelihood classifications confirmed",
+        "done": false
+      },
+      {
+        "id": "644dc9b4c9554bcb97f216064ac8fdfc",
+        "label": "Workshops & Learning copy approved",
+        "done": false
+      },
+      {
+        "id": "c389868c76514d1a95be16af149e52bd",
+        "label": "Verified contact details supplied",
+        "done": false
+      },
+      {
+        "id": "ca9c43e8697247c8ba283233c1189faa",
+        "label": "Approved social links supplied",
+        "done": false
+      },
+      {
+        "id": "13791460aa1f4134a38de16f9e412e7d",
+        "label": "Original photographs uploaded",
+        "done": false
+      },
+      {
+        "id": "0938310437e649208d5212c3a22bcca7",
+        "label": "Photograph permissions recorded",
+        "done": false
+      },
+      {
+        "id": "2fbf0460794148e09c3bc203f0aca6f1",
+        "label": "Process for photographs that may include minors documented",
+        "done": false
+      },
+      {
+        "id": "6c07033732b140d182205bcb5344c0e3",
+        "label": "Home hero photograph selected",
+        "done": false
+      },
+      {
+        "id": "d6017b9169ad4a4da7dc79a5087a1144",
+        "label": "Font licences confirmed",
+        "done": false
+      },
+      {
+        "id": "d70be88affda4dc2889caa05bfac2993",
+        "label": "Enquiry email notification provider approved",
+        "done": false
+      },
+      {
+        "id": "90ea39dccc8b4c3ba63181ae04e77a5e",
+        "label": "Search indexing enabled (only after launch approval)",
+        "done": false
+      },
+      {
+        "id": "35caa86886894f1e8267a90b37606647",
+        "label": "Public deployment and domain change approved",
+        "done": false
+      }
+    ],
+    "taxonomy": {
+      "authors": [
+        {
+          "bio": "",
+          "name": "USP India editorial team (placeholder)"
+        }
+      ],
+      "categories": [
+        "Rakhigarhi",
+        "Theatre",
+        "Craft & Livelihood",
+        "Workshops & Learning",
+        "Resources"
+      ],
+      "tags": []
+    },
+    "email_notifications": {
+      "status": "not_configured",
+      "detail": "No email provider approved yet. Enquiries are stored in the admin only."
+    },
+    "updated_at": "2026-10-16T09:30:18.061806+00:00",
+    "chrome_styles": {
+      "__header": {},
+      "__footer": {}
+    },
+    "style_presets": [],
+    "blog_menu_added": true,
+    "header_styles": {},
+    "brand_label": "USP",
+    "ui_text": {
+      "menu": "Menu"
+    },
+    "text_styles": {}
+  },
+  "notes": [
+    {
+      "id": "3d0fbb341f964927b6a82a20b8e2fac2",
+      "slug": "how-field-notes-will-work",
+      "draft": {
+        "author": "USP India editorial team (placeholder)",
+        "body_html": "<p>This entry is a template preview that shows how a Field Note is laid out. It is not a fieldwork story and should be unpublished or replaced once real notes are approved.</p>\n<h2>What a Field Note can hold</h2>\n<p>One content model supports articles, photo essays, interviews, workshop reflections and resource posts. Each note can carry a standfirst, an identifiable author, published and updated dates, a cover photograph, captions and credits, references and downloadable resources.</p>\n<h2>Keeping sources clear</h2>\n<p>Observations, quotations, organisational statements and historical references should be written as separate passages, with sources listed under References.</p>",
+        "category": "Resources",
+        "cover": {
+          "caption": "",
+          "media_id": ""
+        },
+        "credits": "",
+        "downloads": [],
+        "kind": "resource",
+        "references": [],
+        "related": [],
+        "seo": {
+          "canonical": "",
+          "description": "Template preview showing how USP India Field Notes are structured.",
+          "noindex": true,
+          "share_media_id": "",
+          "title": ""
+        },
+        "slug": "how-field-notes-will-work",
+        "standfirst": "A layout sample for the editorial team. Not a fieldwork story.",
+        "styles": {},
+        "tags": [
+          "template"
+        ],
+        "title": "How Field Notes will work (template preview)"
+      },
+      "published": {
+        "author": "USP India editorial team (placeholder)",
+        "body_html": "<p>This entry is a template preview that shows how a Field Note is laid out. It is not a fieldwork story and should be unpublished or replaced once real notes are approved.</p>\n<h2>What a Field Note can hold</h2>\n<p>One content model supports articles, photo essays, interviews, workshop reflections and resource posts. Each note can carry a standfirst, an identifiable author, published and updated dates, a cover photograph, captions and credits, references and downloadable resources.</p>\n<h2>Keeping sources clear</h2>\n<p>Observations, quotations, organisational statements and historical references should be written as separate passages, with sources listed under References.</p>",
+        "category": "Resources",
+        "cover": {
+          "caption": "",
+          "media_id": ""
+        },
+        "credits": "",
+        "downloads": [],
+        "kind": "resource",
+        "references": [],
+        "related": [],
+        "seo": {
+          "canonical": "",
+          "description": "Template preview showing how USP India Field Notes are structured.",
+          "noindex": true,
+          "share_media_id": "",
+          "title": ""
+        },
+        "slug": "how-field-notes-will-work",
+        "standfirst": "A layout sample for the editorial team. Not a fieldwork story.",
+        "styles": {},
+        "tags": [
+          "template"
+        ],
+        "title": "How Field Notes will work (template preview)"
+      },
+      "status": "published",
+      "created_by": "system",
+      "created_at": "2026-10-15T06:45:01.868836+00:00",
+      "updated_at": "2026-10-15T08:15:41.634647+00:00",
+      "published_at": "2026-10-15T06:45:01.868847+00:00",
+      "has_unpublished_changes": false
+    },
+    {
+      "id": "24893cef9879409f85d41f4fd41c4a68",
+      "slug": "what-was-already-there",
+      "draft": {
+        "author": "USP India editorial team (placeholder)",
+        "body_html": "<p>Draft placeholder \u2014 awaiting the story text from the client.</p>",
+        "category": "Rakhigarhi",
+        "cover": {
+          "caption": "",
+          "media_id": ""
+        },
+        "credits": "",
+        "downloads": [],
+        "kind": "article",
+        "references": [],
+        "related": [],
+        "seo": {
+          "canonical": "",
+          "description": "Objects, memories and traces of everyday life encountered through the work.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "slug": "what-was-already-there",
+        "standfirst": "Objects, memories and traces of everyday life encountered through the work.",
+        "tags": [
+          "Heritage"
+        ],
+        "title": "What Was Already There."
+      },
+      "published": null,
+      "status": "draft",
+      "created_by": "import",
+      "created_at": "2026-10-15T06:45:56.459665+00:00",
+      "updated_at": "2026-10-15T06:45:56.459670+00:00",
+      "has_unpublished_changes": true
+    },
+    {
+      "id": "420d6caa93aa4fcea7037855ce8510a8",
+      "slug": "the-og-basket-makers",
+      "draft": {
+        "author": "USP India editorial team (placeholder)",
+        "body_html": "<p>Draft placeholder \u2014 awaiting the story text from the client.</p>",
+        "category": "Craft & Livelihood",
+        "cover": {
+          "caption": "",
+          "media_id": ""
+        },
+        "credits": "",
+        "downloads": [],
+        "kind": "article",
+        "references": [],
+        "related": [],
+        "seo": {
+          "canonical": "",
+          "description": "Two experienced basket makers whose knowledge and skill inspire a new generation.",
+          "noindex": false,
+          "share_media_id": "",
+          "title": ""
+        },
+        "slug": "the-og-basket-makers",
+        "standfirst": "Two experienced basket makers whose knowledge and skill inspire a new generation.",
+        "tags": [
+          "Craft"
+        ],
+        "title": "The OG Basket Makers."
+      },
+      "published": null,
+      "status": "draft",
+      "created_by": "import",
+      "created_at": "2026-10-15T06:45:56.460205+00:00",
+      "updated_at": "2026-10-15T06:45:56.460209+00:00",
+      "has_unpublished_changes": true
+    }
+  ]
+}
