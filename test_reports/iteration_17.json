@@ -1,0 +1,66 @@
+{
+  "summary": "Executed backend + frontend regression testing for live header/site/page editors, content-sync safety, and auth/session behavior. Core backend suites passed; frontend exposed critical header computed-style regressions despite successful saves.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "HeaderStyleTag application on public pages",
+        "issue": "Saved header style values do not reliably apply as computed styles. After saving backgroundColor=#efe6d8 and brandFontSize=27px, computed header background stayed white and brand/subtitle font sizes varied by page (home/craft/workshops/rakhigarhi) instead of using configured values.",
+        "selector": "#site-header, #site-header .brand-name, #site-header .brand-sub",
+        "priority": "CRITICAL"
+      },
+      {
+        "component": "Header navigation background style",
+        "issue": "Saved navBackgroundColor did not reflect in computed nav background (remained transparent across tested pages).",
+        "selector": "#site-header nav[aria-label='Main'], #site-header .nav-list",
+        "priority": "HIGH"
+      }
+    ],
+    "integration_issues": [
+      {
+        "flow": "Public browsing while anonymous",
+        "issue": "Repeated /api/auth/me 401 console entries observed; behavior appears expected probe pattern and was non-blocking.",
+        "affected_selectors": [
+          "Network: /api/auth/me"
+        ]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_header_live_editor_api.py",
+    "/app/backend/tests/test_live_editor_auth_site_api.py",
+    "/app/backend/tests/test_content_release_sync.py",
+    "/app/backend/tests/test_live_page_and_site_styles_api.py",
+    "/app/test_reports/pytest/pytest_results_iteration_17_backend_core.xml",
+    "/app/test_reports/pytest/pytest_results_iteration_17_content_sync.xml",
+    "/app/test_reports/pytest/pytest_results_iteration_17_live_page.xml"
+  ],
+  "action_items": [
+    "Fix header computed-style precedence so saved header background/nav background/brand and subtitle sizes apply consistently on all public pages.",
+    "Validate interaction between HeaderStyleTag and existing page/reference typography rules (including any !important rules and SiteText/text_styles overrides).",
+    "After fix, re-run cross-page computed-style assertions for Home/Craft/Workshops/Rakhigarhi and dropdown state.",
+    "Confirm whether empty text_styles entries should be deleted on reset-save (display.notes-title currently persisted with styles:{})."
+  ],
+  "critical_code_review_comments": [
+    "Backend live-page endpoint now correctly returns full published section sets including hidden sections; unauthorized access properly denied with a fresh anonymous client.",
+    "Three-way content sync tests in isolated Mongo DBs remain stable: backup-first apply, rollback on fault injection, idempotent no-op, and sentinel collection protection all passed.",
+    "Header style save path returns success, but UI computed-style results indicate frontend style precedence/selector conflict rather than backend persistence failure."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_live_page_and_site_styles_api.py",
+    "/app/test_reports/iteration_17.json"
+  ],
+  "success_rate": {
+    "backend": "100% of executed tests passed (42 passed, 2 skipped across executed suites)",
+    "frontend": "~72% targeted flows passed (login, dock, header content/menu save+restore, notes-title style save/reset, page text-size save/reload/reset, responsive overflow, logout hide dock passed; header computed-style consistency failed)"
+  },
+  "seed_data_creation": "No persistent seed data created. Isolated temporary Mongo DBs used by content-sync tests were dropped.",
+  "retest_needed": true,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Preview content was restored for edited header content/menu and page heading style. Header styles were reset and saved. Validate if display.notes-title empty style object existed before this run; reset currently leaves styles:{} entry. Reproduce CRITICAL issue with saved header styles: background/nav bg/brand-subtitle sizes not matching computed output across pages.",
+  "rca of the issue": "Repro: login owner -> Edit Header -> set background/nav bg/font sizes -> Save header -> open Home/Craft/Workshops/Rakhigarhi and read computed styles on #site-header/.brand-name/.brand-sub/.nav-list. Observed: position/padding/minHeight/nav font family/size applied, but header background/nav background/brand/subtitle sizes are overridden/inconsistent by page. Likely root cause is stronger per-page typography/layout CSS (or text-style overrides) still outranking parts of HeaderStyleTag rules. Mitigation: tighten selectors for all targeted header elements (including specific background-color targets for header/nav wrappers and explicit brand/subtitle selectors), and add regression assertions on computed styles, not only style-tag presence."
+}

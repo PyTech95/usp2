@@ -105,7 +105,7 @@ export function MediaPicker({ open, onClose, onPick, kind = "image" }) {
   }, [open, q, kind]);
   return (
     <Dialog open={open} onOpenChange={(o) => !o && onClose()}>
-      <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto">
+      <DialogContent className="media-picker-dialog max-w-4xl max-h-[85vh] overflow-y-auto" data-testid="media-picker-dialog">
         <DialogHeader><DialogTitle>Choose from the Media Library</DialogTitle>
           <DialogDescription>Only items with an eligible source, approved permission and approved edit appear publicly. Others show only in private preview.</DialogDescription></DialogHeader>
         <Input placeholder="Search filename, caption, credit…" value={q} onChange={(e) => setQ(e.target.value)} data-testid="media-picker-search" />

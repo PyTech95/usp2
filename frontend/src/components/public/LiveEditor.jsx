@@ -84,6 +84,7 @@ function Editor({ pageKey, content, setContent, original, remount, noteId }) {
   const [dirty, setDirty] = useState(false);
   const [base, setBase] = useState(original);
   const [busy, setBusy] = useState(false);
+  const [ready, setReady] = useState(!!noteId), [loadError, setLoadError] = useState("");
   const [picker, setPicker] = useState(false);
   const [addAt, setAddAt] = useState(null);
   const [rect, setRect] = useState(null);
@@ -94,6 +95,18 @@ function Editor({ pageKey, content, setContent, original, remount, noteId }) {
   const [guides, setGuides] = useState([]);
   const fileRef = useRef(null);
   const inlineDraft = useRef(null);
+
+  useEffect(() => {
+    if (!on || noteId) return undefined;
+    let current = true;
+    setReady(false); setLoadError("");
+    api.get(`/admin/pages/${pageKey}/live`).then((r) => {
+      if (!current) return;
+      setContent(r.data.content); setBase(r.data.content); setDirty(false);
+      setHist({ past: [], future: [] }); setReady(true);
+    }).catch((e) => { if (current) setLoadError(errMsg(e)); });
+    return () => { current = false; };
+  }, [on, noteId, pageKey, setContent]);
 
   const sections = content.sections;
   const sec = sel && sections.find((s) => s.id === sel.sec);
@@ -187,7 +200,7 @@ function Editor({ pageKey, content, setContent, original, remount, noteId }) {
 
   // click to select
   useEffect(() => {
-    if (!on || scope !== "page") return undefined;
+    if (!on || !ready || scope !== "page") return undefined;
     const h = (e) => {
       if (e.target.closest(".live-ui, [role=dialog], [data-site-edit], [data-live-navigate]") || !e.target.closest("main")) return;
       const el = e.target.closest("[data-edit]");
@@ -197,7 +210,7 @@ function Editor({ pageKey, content, setContent, original, remount, noteId }) {
     };
     document.addEventListener("click", h, true);
     return () => document.removeEventListener("click", h, true);
-  }, [on, scope, sections]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [on, ready, scope, sections]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // inline contentEditable for text fields
   useEffect(() => {
@@ -351,6 +364,10 @@ function Editor({ pageKey, content, setContent, original, remount, noteId }) {
   };
 
   if (!on || scope !== "page") return null;
+  if (!ready) return <aside className="live-ui live-panel" data-testid="live-editor-loading" role={loadError ? "alert" : "status"}>
+    <p>{loadError || "Loading editable content…"}</p>
+    <button type="button" className="live-btn" onClick={exit} data-testid="live-loading-close">Close editor</button>
+  </aside>;
 
   return (
     <>
@@ -428,7 +445,7 @@ function Editor({ pageKey, content, setContent, original, remount, noteId }) {
                 </select>
               </label>
               <div className="live-row">
-                <label className="live-field">Size (px)<input type="number" min="8" max="200" value={px(st.fontSize)} placeholder="auto" onChange={(e) => setStyles({ fontSize: e.target.value ? `${e.target.value}px` : "" })} data-testid="live-font-size" /></label>
+                <label className="live-field">Size (px)<input type="number" min="8" max="200" value={px(st.fontSize)} placeholder={cstyle ? String(parseFloat(cstyle.fontSize)) : "Default"} onChange={(e) => setStyles({ fontSize: e.target.value ? `${e.target.value}px` : "" })} data-testid="live-font-size" /></label>
                 <label className="live-field">Weight
                   <select value={st.fontWeight || ""} onChange={(e) => setStyles({ fontWeight: e.target.value })} data-testid="live-font-weight">
                     <option value="">Default</option>{["300", "400", "500", "600", "700"].map((w) => <option key={w}>{w}</option>)}

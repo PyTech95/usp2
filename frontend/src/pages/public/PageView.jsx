@@ -19,7 +19,7 @@ export function Crumbs({ path, title }) {
   trail.push([title, path]);
   return (
     <nav aria-label="Breadcrumb" className="wrap crumbs" style={{ paddingTop: "1.5rem" }} data-testid="breadcrumbs">
-      <ol>{trail.map(([n, p], i) => <li key={p}>{i === trail.length - 1 ? <span aria-current="page">{n}</span> : <Link to={p} data-testid={`crumb-${i}`}><SiteText name={p === "/" ? "home" : p === "/our-work" ? "our_work" : "field_notes"} fallback={n} /></Link>}</li>)}</ol>
+      <ol>{trail.map(([n, p], i) => <li key={p}>{i === trail.length - 1 ? <span aria-current="page" data-site-style="display.breadcrumb-current" data-testid="breadcrumb-current">{n}</span> : <Link to={p} data-testid={`crumb-${i}`}><SiteText name={p === "/" ? "home" : p === "/our-work" ? "our_work" : "field_notes"} fallback={n} /></Link>}</li>)}</ol>
     </nav>
   );
 }

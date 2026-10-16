@@ -7,6 +7,7 @@ export const PreviewCtx = createContext(false);
 export const useSite = () => useContext(SiteCtx);
 export const usePreview = () => useContext(PreviewCtx);
 export const useRefreshSite = () => useContext(SiteRefreshCtx);
+export const SitePreviewProvider = ({ site, children }) => <SiteCtx.Provider value={site}>{children}</SiteCtx.Provider>;
 
 const SPACING = { compact: 0.75, comfortable: 1, airy: 1.3 };
 const RADIUS = { square: "0px", soft: "4px", pill: "999px" };

@@ -26,7 +26,7 @@ export function NoteArticle({ note, id, slug, published_at, updated_at, related 
           <p className="eyebrow" data-testid="note-category"><SiteText name={`kind_${data.kind}`} fallback="Field Note" />{data.category && <> · <span {...sx(s, "category")}>{data.category}</span></>}</p>
           <h1 className="h1" data-testid="note-title" {...sx(s, "title")}>{data.title}</h1>
           {data.standfirst && <p className="lede" data-testid="note-standfirst" {...sx(s, "standfirst")}>{data.standfirst}</p>}
-          <p className="meta" data-testid="note-publication-info">
+          <p className="meta" data-testid="note-publication-info" data-site-style="display.note-dates">
             {data.author && <><SiteText name="note_by" /> <span data-testid="note-author" {...sx(s, "author")}>{data.author}</span> · </>}
             {published_at && <><SiteText name="note_published" /> <time dateTime={published_at}>{fmtDate(published_at)}</time></>}
             {updated_at && updated_at.slice(0, 10) !== (published_at || "").slice(0, 10) && <> · <SiteText name="note_updated" /> <time dateTime={updated_at}>{fmtDate(updated_at)}</time></>}

@@ -12,7 +12,7 @@ BUNDLE_FILE = ROOT / "content_release.json"
 COLLECTION_KEYS = {"pages": "key", "notes": "slug", "media": "id", "redirects": "from_path"}
 SITE_FIELDS = {"site_name", "full_name", "brand_label", "tagline", "theme", "footer_text", "privacy_html", "ui_text",
                "contact", "social", "menus", "logo_media_id", "favicon_media_id", "default_share_media_id",
-               "live_editor_enabled", "preview_banner", "taxonomy"}
+               "live_editor_enabled", "preview_banner", "taxonomy", "header_styles", "text_styles"}
 MAX_BYTES = 12 * 1024 * 1024
 
 

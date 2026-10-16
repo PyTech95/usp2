@@ -18,7 +18,7 @@ async def status(user=Depends(require("config"))):
     current = await db.content_runtime.find_one({"key": role}, {"_id": 0}) or {"state": "pending"}
     backups = await db.content_backups.find({"state": "ready"}, {"_id": 0}).sort("created_at", -1).limit(10).to_list(10)
     return {"configured": True, "role": role, "current": current, "backups": backups,
-            "preserved": ["users", "passwords", "sessions", "enquiries", "email configuration", "indexing policy"]}
+            "preserved": ["saved live editor changes", "users", "passwords", "sessions", "enquiries", "email configuration", "indexing policy"]}
 
 
 @router.post("/prepare")

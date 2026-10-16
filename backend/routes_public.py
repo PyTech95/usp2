@@ -16,6 +16,7 @@ async def get_site():
     out["brand_label"] = s.get("brand_label", "USP")
     out["ui_text"] = s.get("ui_text", {})
     out["header_styles"] = s.get("header_styles") or {}
+    out["text_styles"] = s.get("text_styles") or {}
     for f in ("logo_media_id", "favicon_media_id", "default_share_media_id"):
         m = await db.media.find_one({"id": s.get(f)}, {"_id": 0}) if s.get(f) else None
         out[f.replace("_media_id", "")] = media_public_view(m) if media_public_ok(m) else None

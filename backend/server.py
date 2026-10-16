@@ -49,6 +49,12 @@ for r in (routes_auth.router, routes_admin.router, routes_media.router, routes_p
 app.add_middleware(CORSMiddleware, allow_credentials=True, allow_origins=ALLOWED_ORIGINS, allow_methods=["*"], allow_headers=["*"])
 
 
+@app.middleware("http")
+async def coordinate_content_writes(request: Request, call_next):
+    async with content_runtime.write_guard(request.url.path, request.method):
+        return await call_next(request)
+
+
 @app.on_event("startup")
 async def startup():
     await seed()

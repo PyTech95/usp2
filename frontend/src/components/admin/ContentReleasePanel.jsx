@@ -24,9 +24,10 @@ export const ContentReleasePanel = () => {
         {current?.counts && <p data-testid="release-counts">{current.counts.pages} pages · {current.counts.notes} Field Notes · {current.counts.media} media records</p>}
         {current?.counts?.page_sections?.rakhigarhi !== undefined && <p data-testid="release-rakhigarhi-sections">Rakhigarhi: {current.counts.page_sections.rakhigarhi} sections</p>}
       </div>
-      <p className="text-sm text-muted-foreground">{source ? "Saved content is prepared automatically for the next republish. Drafts remain drafts." : "Each new preview release is applied with a content backup. Users, passwords and enquiries stay here."}</p>
+      <p className="text-sm text-muted-foreground" data-testid="release-preservation-policy">Saved live edits are preserved when republishing. If Preview and live both change the same field, the live edit is kept. Each application creates a backup.</p>
+      {current?.preserved_count > 0 && <p className="text-sm" data-testid="release-preserved-count">{current.preserved_count} live field changes protected in the latest release.</p>}
       <button type="button" disabled={busy} className="inline-flex items-center gap-2 rounded bg-black px-4 py-2 text-sm text-white disabled:opacity-50" data-testid="release-action" onClick={() => {
-        if (!source && !window.confirm("Re-apply the preview content packaged with this deployment? A backup will be created. Users and enquiries will not change.")) return;
+        if (!source && !window.confirm("Re-apply packaged Preview updates while preserving saved live edits? A backup will be created. Users and enquiries will not change.")) return;
         run(source ? "prepare" : "apply", source ? "Complete content release prepared" : "Preview content applied with backup");
       }}><RefreshCw size={15} className={busy ? "animate-spin" : ""} />{busy ? "Working…" : source ? "Prepare latest content" : "Re-apply deployment content"}</button>
       {status.backups?.length > 0 && <div className="border-t pt-4 space-y-2"><h3 className="font-medium text-sm">Content backups</h3>{status.backups.map((b) => <div className="flex flex-wrap items-center justify-between gap-2 text-xs" key={b.id} data-testid={`release-backup-${b.id}`}><span>{fmtDateTime(b.created_at)} · {b.records} records</span><button type="button" disabled={busy} className="inline-flex items-center gap-1 underline" data-testid={`release-restore-${b.id}`} onClick={() => {

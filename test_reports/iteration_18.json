@@ -1,0 +1,26 @@
+{
+  "author": "Main-agent verification follow-up after testing-agent timeout",
+  "summary": "Header editor, text-size application and safe content promotion verified. Prior iteration17 header CSS defects resolved; current preview serves two-ID selectors. Test content restored and clean release prepared.",
+  "backend": {"passed": 49, "failed": 0, "skipped": 0, "report": "/app/test_reports/pytest/final_editor_regression.xml", "execution": "Serial pytest with existing backend/frontend environment variables loaded"},
+  "preservation": {
+    "passed": 5,
+    "report": "/app/test_reports/pytest/pytest_results_iteration_18_live_edit_preservation.xml",
+    "cases": ["Local content/header/menu/note edits survive conflicting subsequent releases and forced reapply", "Local section/note additions, removals and ordering retained with incoming additions", "Legacy missing-baseline and prior-edited first-release targets preserve live text", "Injected failure restores content and baseline byte-for-byte", "Header/site style saves participate in release capture"]
+  },
+  "browser_followup": [
+    {"case": "Header styles saved through UI, then real computed styles after navigation on Home/Craft/Workshops/Rakhigarhi", "result": "PASS", "values": {"headerBackground": "rgb(239, 230, 216)", "navBackground": "rgb(220, 239, 237)", "brandFontSize": "30px", "subtitleFontSize": "13px", "menuFontSize": "15px"}, "evidence": "/root/.emergent/automation_output/20261016_072154"},
+    {"case": "Paragraph font sizes before Save and after reload on Home/Craft/Workshops/Rakhigarhi", "result": "PASS", "values": "Actual paragraph descendants 21px, not merely parent CSS", "evidence": "/root/.emergent/automation_output/20261016_072249"},
+    {"case": "Craft and Workshops actual live-page save retains hidden sections byte-identically; paragraph sizes persist", "result": "PASS", "values": "20px actual paragraphs and unchanged hidden dictionaries", "evidence": "/root/.emergent/automation_output/20261016_072719"},
+    {"case": "Published Field Note body size Save/reload", "result": "PASS", "values": "Three actual paragraphs at 22px", "evidence": "/root/.emergent/automation_output/20261016_072719"},
+    {"case": "Footer tagline size preview/Save/reload", "result": "PASS", "values": "24px", "evidence": "/root/.emergent/automation_output/20261016_072809"},
+    {"case": "Cancel unsaved close retains edit; Discard restores saved brand", "result": "PASS", "evidence": "/root/.emergent/automation_output/20261016_072847"},
+    {"case": "Approved logo selection, UI Save, reload, image naturalWidth, removal; modal above editor", "result": "PASS", "values": {"modalZIndex": 100100, "panelZIndex": 100050}, "evidence": "/root/.emergent/automation_output/20261016_072957"}
+  ],
+  "earlier_verified_coverage": "iteration17: login/logout and hidden launcher, header content/menu Save/reload, split-heading size and dynamic note-title size Save/reset, no horizontal overflow at 320/768/1024/1440.",
+  "resolved_findings": ["Page reference !important CSS outranked header ID: now two stable IDs and explicit nav-list background", "Development watcher initially served stale module: confirmed actual downloaded bundle after watcher refresh", "Rich-text descendants had explicit font sizes: typography applied to actual text children", "Unchanged hidden sections gained empty defaults: preserve identical original dictionaries", "Media dialog z-index below editor: raised dialog and overlay"],
+  "test_setup_corrections": ["Browser API requests require absolute external URLs", "Wait for React preview/discard effects before assertions", "Wait for media picker exit animation to detach before clicking Save", "Load auth test environment and disable xdist to avoid shared preview mutation races"],
+  "build": {"result": "PASS", "report": "/app/test_reports/final_editor_build.log"},
+  "cleanup": "Temporary test values restored, generated empty typography entries removed; content capture READY (10 pages, 3 notes, 63 media, 1 redirect; Rakhigarhi and Workshops each 9 sections). Existing credentials unchanged.",
+  "mocked_apis": [],
+  "remaining": ["Live production deployment/republish verification not performed in this task", "Existing Workshops film URL and approved placeholder replacements still await user assets", "These targeted tests do not constitute a guarantee that every possible editor configuration is error-free"]
+}

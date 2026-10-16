@@ -1,6 +1,7 @@
+from contextlib import asynccontextmanager
 from core import db, log, now
 from .schema import config
-from .state import ensure_indexes, is_source
+from .state import ensure_indexes, is_source, lease
 from .source import capture, baked
 from .target import apply
 
@@ -38,7 +39,18 @@ async def prepare():
 
 
 def is_content_mutation(path):
-    return any(path.startswith(f"/api/admin/{part}") for part in ("pages", "notes", "media", "menus", "settings", "site-live", "site-import", "revisions")) or path == "/api/admin/restore"
+    return any(path.startswith(f"/api/admin/{part}") for part in ("pages", "notes", "media", "menus", "settings", "site-live", "site-styles", "header-live", "site-import", "revisions")) or path == "/api/admin/restore"
+
+
+@asynccontextmanager
+async def write_guard(path, method):
+    # Coordinate saves in old/new pods with release application, so neither can
+    # overwrite a successful concurrent save between reading and importing data.
+    if method in {"POST", "PUT", "PATCH", "DELETE"} and is_content_mutation(path) and config() and not await is_source(db, config()):
+        async with lease(db, "promotion"):
+            yield
+    else:
+        yield
 
 
 async def after_mutation(path, method, status_code):

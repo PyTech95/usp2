@@ -9,6 +9,8 @@ from core import (db, now, new_id, require, current_user, can, sanitize_tree, re
                   PAGE_PATHS, SITE_URL, media_public_ok)
 from seed import DEFAULT_THEME
 from routes_auth import issue_token
+from header_settings import HeaderPatch, HeaderSaved, clean_header_styles, valid_header_link
+from text_styles import clean_text_style, text_style_key
 
 router = APIRouter(prefix="/api/admin")
 SECTION_TYPES = {"hero", "text", "image_text", "image", "gallery", "quote", "video", "related_work", "notes_feed", "download", "contact_invite", "contact_form"}
@@ -94,7 +96,7 @@ def clean_styles(styles):
         if isinstance(st, dict):
             f = {k: str(v)[:80] for k, v in st.items() if k in STYLE_KEYS and v not in ("", None) and not re.search(r"[;{}<>]|url\(", str(v))}
             if f:
-                out[str(field)[:40]] = f
+                out[str(field)[:180]] = f
     return out
 
 
@@ -115,16 +117,23 @@ async def live_save(key: str, body: dict, user=Depends(require("content.publish"
     if not isinstance(sections, list):
         raise HTTPException(400, "No sections provided")
     clean = []
+    existing = {s["id"]: s for s in p["published"].get("sections", [])}
     for s in sections:
         if s.get("type") not in SECTION_TYPES:
             raise HTTPException(400, f"Unknown section type {s.get('type')}")
-        clean.append({
+        item = {
             "id": s.get("id") or new_id(),
             "type": s["type"],
             "hidden": bool(s.get("hidden")),
             "data": strip_resolved(s.get("data") or {}),
             "styles": clean_styles(s.get("styles")),
-        })
+        }
+        previous = existing.get(item["id"])
+        normalised = ({"id": previous["id"], "type": previous["type"], "hidden": bool(previous.get("hidden")),
+                       "data": strip_resolved(previous.get("data") or {}), "styles": clean_styles(previous.get("styles"))} if previous else None)
+        # Do not rewrite untouched sections just because the editor supplied
+        # explicit false/empty defaults or resolved media metadata.
+        clean.append(previous if item == normalised else item)
     pub = {**p["published"], "sections": clean}
     if body.get("title"):
         pub["title"] = str(body["title"]).strip()[:200] or pub.get("title", "Untitled")
@@ -132,6 +141,18 @@ async def live_save(key: str, body: dict, user=Depends(require("content.publish"
     await db.pages.update_one({"key": key}, {"$set": {"published": pub, "draft": pub, "published_at": now(), "updated_at": now(), "has_unpublished_changes": False}})
     await snapshot("page", key, pub, "live edit published", user)
     return {"key": key, "content": await resolve_media_tree(pub)}
+
+
+@router.get("/pages/{key}/live")
+async def live_page_content(key: str, user=Depends(require("content.publish"))):
+    page = await get_page(key)
+    # Public responses intentionally omit hidden sections; the editor must not.
+    content = await resolve_media_tree(page["published"])
+    from routes_public import list_notes
+    for section in content["sections"]:
+        if section["type"] == "notes_feed":
+            section["notes"] = (await list_notes(category=section["data"].get("category", ""), per=int(section["data"].get("count") or 3)))["items"]
+    return {"key": key, "content": content}
 
 
 @router.post("/pages/{key}/discard")
@@ -397,6 +418,8 @@ SETTINGS_FIELDS = {"site_name", "full_name", "tagline", "logo_media_id", "favico
 class SiteLivePatch(BaseModel):
     path: str = Field(min_length=1, max_length=180)
     value: str = Field(max_length=20000)
+    area: str = Field(default="main", pattern=r"^(main|header|footer)$")
+    styles: dict | None = None
 
 
 @router.put("/site-live")
@@ -407,7 +430,8 @@ async def site_live_patch(body: SiteLivePatch, user=Depends(require("config"))):
     menu = re.fullmatch(r"menus\.(main|footer)\.\d+(?:\.children\.\d+){0,2}\.label", path)
     ui = re.fullmatch(r"ui_text\.[a-z][a-z0-9_]{0,79}", path)
     social = re.fullmatch(r"social\.\d+\.label", path)
-    if path not in plain and not (menu or ui or social):
+    display = re.fullmatch(r"display\.[a-z][a-z0-9_-]{0,79}", path)
+    if path not in plain and not (menu or ui or social or display):
         raise HTTPException(400, "This setting is not editable as public copy")
     s = await db.settings.find_one({"key": "site"}, {"_id": 0})
     if menu or social:
@@ -424,13 +448,14 @@ async def site_live_patch(body: SiteLivePatch, user=Depends(require("config"))):
         if not logo or not media_public_ok(logo):
             raise HTTPException(400, "Choose an approved public logo image")
     value = sanitize_tree({path.split(".")[-1]: body.value})[path.split(".")[-1]]
-    await db.settings.update_one({"key": "site"}, {"$set": {path: value, "updated_at": now()}})
-    await snapshot("settings", "site", {"path": path, "value": value}, "public copy live edit", user)
+    updates = {"updated_at": now()}
+    if not display:
+        updates[path] = value
+    if body.styles is not None:
+        updates[f"text_styles.{text_style_key(body.area, path)}"] = {"path": path, "area": body.area, "styles": clean_text_style(body.styles)}
+    await db.settings.update_one({"key": "site"}, {"$set": updates})
+    await snapshot("settings", "site", {"path": path, "value": value, "styles": body.styles, "area": body.area}, "public copy live edit", user)
     return {"path": path, "value": value}
-
-
-HEADER_STYLE_KEYS = {"backgroundColor", "color", "fontFamily", "paddingTop", "paddingBottom"}
-_css_value = re.compile(r"^[#0-9a-zA-Z .,%()\-'\"]{1,80}$")
 
 
 class SiteStylesPatch(BaseModel):
@@ -440,19 +465,45 @@ class SiteStylesPatch(BaseModel):
 @router.put("/site-styles")
 async def site_styles_patch(body: SiteStylesPatch, user=Depends(require("config"))):
     """Store whitelisted header presentation styles only; reject any CSS injection."""
-    clean = {}
-    for key, raw in (body.styles or {}).items():
-        if key not in HEADER_STYLE_KEYS:
-            continue
-        val = ("" if raw is None else str(raw)).strip()
-        if not val:
-            continue
-        if not _css_value.fullmatch(val):
-            raise HTTPException(400, f"Invalid value for {key}")
-        clean[key] = val
+    clean = clean_header_styles(body.styles)
     await db.settings.update_one({"key": "site"}, {"$set": {"header_styles": clean, "updated_at": now()}})
     await snapshot("settings", "site", {"header_styles": clean}, "header style live edit", user)
     return {"header_styles": clean}
+
+
+@router.put("/header-live", response_model=HeaderSaved)
+async def header_live_patch(body: HeaderPatch, user=Depends(require("config"))):
+    """Save header content/styles atomically while retaining the existing menu structure."""
+    site = await db.settings.find_one({"key": "site"}, {"_id": 0})
+    if not site:
+        raise HTTPException(404, "Site settings not found")
+    if not body.brand_label.strip() or not body.mobile_menu_label.strip():
+        raise HTTPException(400, "Brand and mobile menu labels cannot be empty")
+    if body.logo_media_id:
+        logo = await db.media.find_one({"id": body.logo_media_id}, {"_id": 0})
+        if not logo or not media_public_ok(logo) or logo.get("kind") != "image":
+            raise HTTPException(400, "Choose an approved public logo image")
+    updates = {"brand_label": body.brand_label.strip(), "full_name": body.full_name.strip(),
+               "logo_media_id": body.logo_media_id, "ui_text.menu": body.mobile_menu_label.strip(),
+               "header_styles": clean_header_styles(body.styles)}
+    seen = set()
+    for item in body.menu_items:
+        current = site
+        try:
+            for part in item.path.split("."):
+                current = current[int(part)] if isinstance(current, list) else current[part]
+            if current.get("id") != item.id or item.path in seen:
+                raise ValueError()
+        except (KeyError, IndexError, ValueError, TypeError, AttributeError):
+            raise HTTPException(409, "Navigation has changed. Reopen the header editor and try again.")
+        seen.add(item.path)
+        if not item.label.strip() or not valid_header_link(item.href.strip()):
+            raise HTTPException(400, "Each menu item needs a label and a /path or https:// address")
+        updates[f"{item.path}.label"] = item.label.strip()
+        updates[f"{item.path}.href"] = item.href.strip()
+    await snapshot("settings", "site", site, "before header live edit", user)
+    await db.settings.update_one({"key": "site"}, {"$set": {**updates, "updated_at": now()}})
+    return HeaderSaved(ok=True)
 
 
 @router.get("/settings")

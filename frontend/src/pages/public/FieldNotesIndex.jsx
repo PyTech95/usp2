@@ -45,7 +45,7 @@ export default function FieldNotesIndex() {
         <form role="search" onSubmit={(e) => { e.preventDefault(); setParams(term ? { q: term, ...(category && { category }) } : category ? { category } : {}); }}
           style={{ display: "flex", gap: ".5rem", maxWidth: 560, marginBottom: "1.5rem" }} className="form-field">
           <label htmlFor="notes-search" className="sr-only"><SiteText name="search_notes" /></label>
-          <input id="notes-search" type="search" value={term} onChange={(e) => setTerm(e.target.value)} placeholder={textFor(site, "search_notes")} style={{ flex: 1, minWidth: 0 }} data-testid="notes-search-input" />
+          <input id="notes-search" type="search" value={term} onChange={(e) => setTerm(e.target.value)} placeholder={textFor(site, "search_notes")} style={{ flex: 1, minWidth: 0 }} data-site-style="display.notes-search" data-testid="notes-search-input" />
           <button className="btn" type="submit" data-testid="notes-search-submit"><Search size={16} aria-hidden="true" /> <SiteText name="search" /></button>
         </form>
         <nav aria-label="Topics" style={{ display: "flex", flexWrap: "wrap", gap: ".5rem" }} data-testid="notes-filters">
@@ -56,12 +56,12 @@ export default function FieldNotesIndex() {
         </nav>
         {list && (
           <>
-            <p className="meta" style={{ marginTop: "1.5rem" }} aria-live="polite" data-testid="notes-count">{list.total} <SiteText name={list.total === 1 ? "note_singular" : "note_plural"} />{q && <> <SiteText name="matching" /> “{q}”</>}{category && <> <SiteText name="in_category" /> {category}</>}</p>
+            <p className="meta" style={{ marginTop: "1.5rem" }} aria-live="polite" data-site-style="display.notes-count" data-testid="notes-count">{list.total} <SiteText name={list.total === 1 ? "note_singular" : "note_plural"} />{q && <> <SiteText name="matching" /> “{q}”</>}{category && <> <SiteText name="in_category" /> {category}</>}</p>
             <NoteList items={list.items} />
             {list.pages > 1 && (
               <nav aria-label="Pagination" style={{ display: "flex", gap: ".5rem", marginTop: "2rem" }} data-testid="notes-pagination">
                 {Array.from({ length: list.pages }, (_, i) => i + 1).map((n) => (
-                  <Link key={n} className="chip" to={href({ page: n === 1 ? "" : String(n) })} aria-current={n === page ? "true" : undefined} data-testid={`notes-page-${n}`}><SiteText name="page" /> {n}</Link>
+                  <Link key={n} className="chip" to={href({ page: n === 1 ? "" : String(n) })} aria-current={n === page ? "true" : undefined} data-site-style="display.notes-page" data-testid={`notes-page-${n}`}><SiteText name="page" /> {n}</Link>
                 ))}
               </nav>
             )}

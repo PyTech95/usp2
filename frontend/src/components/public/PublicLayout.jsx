@@ -1,30 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
-import { useSite, PreviewCtx, loadFont } from "../../lib/site";
+import { useSite, PreviewCtx, SitePreviewProvider } from "../../lib/site";
 import { media } from "../../lib/api";
-import { LiveEditorProvider } from "./editor/LiveEditorProvider";
+import { LiveEditorProvider, useLiveEditor } from "./editor/LiveEditorProvider";
 import { SiteChromeEditor } from "./editor/SiteChromeEditor";
+import { HeaderEditor } from "./editor/HeaderEditor";
+import { HeaderStyleTag } from "./editor/HeaderStyleTag";
+import { SiteTextStyles } from "./editor/TextStyleTag";
 import { SiteText } from "./editor/SiteText";
-
-function HeaderStyleTag({ styles }) {
-  useEffect(() => { if (styles?.fontFamily) loadFont(styles.fontFamily); }, [styles]);
-  if (!styles || !Object.keys(styles).length) return null;
-  const header = [
-    styles.backgroundColor && `background: ${styles.backgroundColor} !important`,
-    styles.paddingTop && `padding-top: ${styles.paddingTop} !important`,
-    styles.paddingBottom && `padding-bottom: ${styles.paddingBottom} !important`,
-  ].filter(Boolean).join("; ");
-  const text = [
-    styles.color && `color: ${styles.color} !important`,
-    styles.fontFamily && `font-family: "${styles.fontFamily}", system-ui, sans-serif !important`,
-  ].filter(Boolean).join("; ");
-  const css = [
-    header && `.site .header { ${header}; }`,
-    text && `.site .header .brand-name, .site .header .brand-sub, .site .header .nav-link, .site .header .dropdown a { ${text}; }`,
-  ].filter(Boolean).join("\n");
-  return <style data-testid="header-style-overrides">{css}</style>;
-}
 
 function Dropdown({ item, onNavigate }) {
   const [open, setOpen] = useState(false);
@@ -64,11 +48,13 @@ function Dropdown({ item, onNavigate }) {
   );
 }
 
-function Header({ site }) {
+function Header({ site: savedSite }) {
+  const { headerPreview } = useLiveEditor();
+  const site = headerPreview || savedSite;
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
   return (
-    <header className="header">
+    <SitePreviewProvider site={site}><header className="header" id="site-header" data-testid="site-header">
       <HeaderStyleTag styles={site?.header_styles} />
       <div className="wrap header-inner">
         <Link to="/" className="brand" data-testid="brand-link">
@@ -88,13 +74,13 @@ function Header({ site }) {
           </ul>
         </nav>
       </div>
-    </header>
+    </header></SitePreviewProvider>
   );
 }
 
 function Footer({ site }) {
   return (
-    <footer className="footer" data-testid="site-footer">
+    <footer className="footer" id="site-footer" data-testid="site-footer">
       <div className="wrap footer-top">
         <div>
           <SiteText as="p" path="brand_label" fallback="USP" className="footer-brand" data-testid="footer-brand-name" />
@@ -106,7 +92,7 @@ function Footer({ site }) {
         {site?.tagline && <SiteText as="p" path="tagline" className="footer-tagline" data-testid="footer-tagline" />}
       </div>
       <div className="wrap footer-bottom">
-        <span data-testid="footer-copyright">© {new Date().getFullYear()} <SiteText path="site_name" /></span>
+        <span data-testid="footer-copyright" data-site-style="display.copyright">© {new Date().getFullYear()} <SiteText path="site_name" /></span>
         {site?.contact?.email && <a href={`mailto:${site.contact.email}`} data-testid="footer-email"><SiteText path="contact.email" /></a>}
         {site?.contact?.phone && <SiteText path="contact.phone" data-testid="footer-phone" />}
         {(site?.social || []).map((s, i) => <a key={s.url} href={s.url} rel="noopener noreferrer" data-testid={`footer-social-${i}`}><SiteText path={`social.${i}.label`}>{s.label}</SiteText></a>)}
@@ -141,7 +127,8 @@ export default function PublicLayout({ preview = false }) {
   useHashScroll();
   return (
     <PreviewCtx.Provider value={preview}><LiveEditorProvider preview={preview}>
-      <div className="site">
+      <div className="site" id="public-site">
+        <SiteTextStyles />
         <a href="#main" className="skip" data-testid="skip-to-content"><SiteText name="skip" /></a>
         {(preview || site?.preview_banner) && (
           <div className="preview-banner" data-testid="preview-banner" role="note">
@@ -152,6 +139,7 @@ export default function PublicLayout({ preview = false }) {
         <main id="main" tabIndex={-1}><Outlet /></main>
         <Footer site={site} />
         <SiteChromeEditor />
+        <HeaderEditor />
       </div>
     </LiveEditorProvider></PreviewCtx.Provider>
   );

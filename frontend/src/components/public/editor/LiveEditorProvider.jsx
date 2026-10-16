@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Pencil, Globe, LogOut, X } from "lucide-react";
+import { Pencil, Globe, LogOut, X, PanelTop } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "../../../lib/auth";
 import { errMsg } from "../../../lib/api";
@@ -14,10 +14,12 @@ export function LiveEditorProvider({ children, preview = false }) {
   const location = useLocation();
   const [active, setActive] = useState(() => stored() || new URLSearchParams(location.search).has("edit"));
   const [scope, updateScope] = useState("page");
-  const [pending, setPending] = useState({ page: false, site: false });
-  const dirty = pending.page || pending.site;
+  const [headerPreview, setHeaderPreview] = useState(null);
+  const [textStylePreview, setTextStylePreview] = useState(null);
+  const [pending, setPending] = useState({ page: false, site: false, header: false });
+  const dirty = Object.values(pending).some(Boolean);
   const setScope = (next) => {
-    if (scope === "site" && next !== scope && pending.site && !window.confirm("Discard unsaved site text?")) return;
+    if (scope !== "page" && next !== scope && pending[scope] && !window.confirm("Discard unsaved changes?")) return;
     updateScope(next);
   };
   const registerDirty = useCallback((value, target = "page") => setPending((p) => p[target] === value ? p : { ...p, [target]: value }), []);
@@ -41,11 +43,18 @@ export function LiveEditorProvider({ children, preview = false }) {
   useEffect(() => { registerDirty(false); }, [location.pathname, registerDirty]);
   useEffect(() => {
     if (!dirty) return undefined;
+    const guard = (event) => { event.preventDefault(); event.returnValue = ""; };
+    window.addEventListener("beforeunload", guard);
+    return () => window.removeEventListener("beforeunload", guard);
+  }, [dirty]);
+  useEffect(() => {
+    if (!dirty) return undefined;
     const guard = (e) => {
       const a = e.target.closest("a[href]");
       if (!a || e.target.closest(".live-ui") || a.getAttribute("href")?.startsWith("#")) return;
       if (on && scope === "page" && e.target.closest("[data-sec]") && !e.target.closest("[data-live-navigate]")) return;
-      if (on && scope === "site" && e.target.closest("[data-site-edit]")) return;
+      if (on && e.target.closest("[data-site-edit],[data-site-style]")) return;
+      if (on && scope === "header" && e.target.closest("#site-header")) return;
       if (!window.confirm("Leave this page and discard unsaved changes?")) { e.preventDefault(); e.stopPropagation(); }
       else registerDirty(false);
     };
@@ -56,16 +65,17 @@ export function LiveEditorProvider({ children, preview = false }) {
     if (dirty && !window.confirm("Discard unsaved changes and log out?")) return;
     try { await logout(); } catch (e) { toast.error(errMsg(e)); }
   };
-  return <Context.Provider value={{ on, setOn, scope, setScope, registerDirty }}>
+  return <Context.Provider value={{ on, setOn, scope, setScope, registerDirty, headerPreview: on && scope === "header" ? headerPreview : null, setHeaderPreview, textStylePreview: on && scope === "site" ? textStylePreview : null, setTextStylePreview }}>
     {children}
     {allowed && <div className="live-ui live-dock" data-testid="live-editor-dock">
       <button type="button" onClick={() => {
-        if (scope === "site") setScope("page");
+        if (scope !== "page") setOn(false);
         else setOn(!(on && document.querySelector('[data-live-panel-ready="true"]')));
       }} aria-expanded={on} data-testid="live-editor-toggle">
         {on ? <X size={15} /> : <Pencil size={15} />} {on ? "Close editor" : "Live editor"}
       </button>
-      {can("config") && <button type="button" title="Edit header, footer and shared text" onClick={() => { setOn(true); setScope(scope === "site" ? "page" : "site"); }} aria-pressed={scope === "site"} data-testid="live-site-toggle"><Globe size={15} /> Site text</button>}
+      {can("config") && <button type="button" title="Edit header" onClick={() => { setOn(true); setScope(scope === "header" ? "page" : "header"); }} aria-pressed={on && scope === "header"} data-testid="live-header-toggle"><PanelTop size={15} /> Edit Header</button>}
+      {can("config") && <button type="button" title="Edit footer and shared text" onClick={() => { setOn(true); setScope(scope === "site" ? "page" : "site"); }} aria-pressed={on && scope === "site"} data-testid="live-site-toggle"><Globe size={15} /> Site text</button>}
       <button type="button" title="Log out" aria-label="Log out" onClick={endSession} data-testid="live-editor-logout"><LogOut size={15} /></button>
     </div>}
   </Context.Provider>;

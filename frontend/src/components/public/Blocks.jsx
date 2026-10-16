@@ -10,9 +10,9 @@ import { WorkshopsHero } from "./WorkshopsHero";
 import { RakhigarhiHero, HaveliRestoration } from "./RakhigarhiSections";
 import { isImageField } from "./editor/editorFields";
 import { SiteText } from "./editor/SiteText";
+import { applyTypography } from "./editor/typography";
 
 export const fontStack = (f) => `"${f}", system-ui, sans-serif`;
-const IMPORTANT_PROPS = ["fontFamily", "fontSize", "fontWeight", "fontStyle", "color", "textAlign", "textTransform", "lineHeight", "letterSpacing"];
 const LAYOUT_PROPS = ["width", "maxWidth", "height", "overflow", "transform", "position", "alignSelf", "justifySelf", "zIndex", "paddingTop", "paddingBottom", "paddingLeft", "paddingRight", "marginTop", "marginBottom", "marginLeft", "marginRight"];
 const toKebab = (p) => p.replace(/[A-Z]/g, (m) => "-" + m.toLowerCase());
 function applyProps(node, obj, keys) {
@@ -23,7 +23,6 @@ function applyProps(node, obj, keys) {
     else node.style.removeProperty(toKebab(p));
   });
 }
-function applyImportant(node, st) { applyProps(node, st, IMPORTANT_PROPS); }
 // Build the free-form layout (size + float position) from editor style values.
 export function layoutStyle(raw, field) {
   const o = {};
@@ -43,7 +42,11 @@ export function sx(s, field) {
   return {
     "data-edit": field,
     style: Object.keys(style).length ? style : undefined,
-    ref: (node) => { if (!isImageField(field)) applyImportant(node, raw); applyProps(node, style, LAYOUT_PROPS); },
+    ref: (node) => {
+      if (!isImageField(field)) applyTypography(node, raw);
+      applyProps(node, style, LAYOUT_PROPS);
+      if (node && !node.dataset.testid) node.dataset.testid = `editable-${s?.id || "text"}-${field.replaceAll(".", "-")}`;
+    },
     ...(isImageField(field) ? { captionEd: sx(s, `${field}.caption`), creditEd: sx(s, `${field}.credit`) } : {}),
   };
 }
@@ -144,7 +147,7 @@ function RelatedWork({ d, s, i, home }) {
           <article className={`work-card reveal d${k + 1}`} key={k} data-testid={`work-item-${k}`}>
             {!home && <Photo ref_={it.image} crop="4/5" sizes="(min-width: 860px) 24vw, 90vw" testid={`work-item-${k}-image`} ed={sx(s, `items.${k}.image`)} />}
             <div className="work-card-body">
-              <span className="work-num"><span className="wn-n" aria-hidden="true">{String(k + 1).padStart(2, "0")}</span><span className="wn-sep"> — </span><span className="wn-t" data-testid={`work-item-${k}-category`} {...sx(s, `items.${k}.title`)}>{it.title}</span></span>
+              <span className="work-num"><span className="wn-n" aria-hidden="true" data-site-style="display.work-number" data-testid={`work-item-${k}-number`}>{String(k + 1).padStart(2, "0")}</span><span className="wn-sep"> — </span><span className="wn-t" data-testid={`work-item-${k}-category`} {...sx(s, `items.${k}.title`)}>{it.title}</span></span>
               <h3 className="h3"><Link to={it.href || "#"} data-testid={`work-item-${k}-link`}><span data-testid={`work-item-${k}-title`} {...sx(s, `items.${k}.subtitle`)}>{home ? (it.subtitle || it.title).split(/(?<=\.)\s+/).map((line, n) => <span className="work-title-line" key={n}>{line}</span>) : it.subtitle || it.title}</span></Link></h3>
               <p data-testid={`work-item-${k}-description`} {...sx(s, `items.${k}.text`)}>{it.text}</p>
               <Link to={it.href || "/our-work"} className="more-link" data-testid={`work-item-${k}-explore`}><span {...sx(s, `items.${k}.link_label`)}>{it.link_label ?? "Explore"}</span> <ArrowRight size={14} aria-hidden="true" /></Link>
