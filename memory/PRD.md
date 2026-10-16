@@ -280,3 +280,9 @@ Await client content and permissions; then record approvals in Media Library and
 - BACKEND: `routes_admin.py` PUT `/api/admin/site-styles` — whitelist keys {backgroundColor,color,fontFamily,paddingTop,paddingBottom}, regex-validated (`^[#0-9a-zA-Z .,%()\-'"]{1,80}$`) to block CSS injection (';', '{' → 400). Stored at settings.header_styles + snapshot. `routes_public.py` get_site() now returns `header_styles`.
 - APPLY: `PublicLayout.jsx` `HeaderStyleTag` injects a scoped `<style data-testid=header-style-overrides>` applying header_styles to `.site .header` (bg/padding) and `.site .header .brand-name/.brand-sub/.nav-link/.dropdown a` (colour/font) with !important; loads the chosen Google font via loadFont.
 - Verified: curl (save, 400 on injection, public reflection) + testing_agent iteration_15 (100% frontend) — all hex inputs + header-style controls work, live preview updates, header persists & re-renders override tag, Reset+Save restores default. Live site left at header_styles={} (default).
+
+## Update 2026-06 — Our Work dropdown simplified to 4 items
+- User: the "Our Work" header dropdown should show only the four backend items (Rakhigarhi, Theatre, Craft & Livelihood, Workshops & Learning) as a clean list; remove the third-level sub-items (esp. under Rakhigarhi). Menu is fully backend-driven (no frontend fallback).
+- Fix: emptied the `children` of each of the four /our-work menu items in settings.menus.main (script `backend/scripts/strip_ourwork_subs.py`, idempotent). With no grandchildren, PublicLayout Dropdown renders a simple (non-mega) 4-item list matching the attached example. The 4 items + /our-work area strip (Blocks.jsx) unaffected.
+- Verified: testing_agent iteration_16 (100%) — dropdown has exactly 4 links, 0 nested sub-items, class 'dropdown' (not mega), all /our-work/* pages 200.
+- NOTE: change is in PREVIEW Mongo; production needs a republish/content-release to promote.
