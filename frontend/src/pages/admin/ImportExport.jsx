@@ -3,8 +3,7 @@ import { Download, Upload, Loader2, DatabaseBackup, AlertTriangle } from "lucide
 import { toast } from "sonner";
 import { api, errMsg } from "../../lib/api";
 import { ContentReleasePanel } from "../../components/admin/ContentReleasePanel";
-
-const BACKEND = process.env.REACT_APP_BACKEND_URL;
+import { ContentJsonPanel } from "../../components/admin/ContentJsonPanel";
 
 export default function ImportExport() {
   const [exporting, setExporting] = useState(false);
@@ -49,6 +48,7 @@ export default function ImportExport() {
       </div>
 
       <ContentReleasePanel />
+      <ContentJsonPanel />
       <section className="border rounded-lg p-6 bg-white" data-testid="export-card">
         <h2 className="font-semibold text-lg flex items-center gap-2"><Download size={18} /> Export the whole site</h2>
         <p className="text-sm text-muted-foreground mt-1">Downloads a single <code>.zip</code> containing every page, Field Note, media file (images) and site settings. Keep it safe or move it to another install.</p>

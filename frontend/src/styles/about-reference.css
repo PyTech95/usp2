@@ -12,7 +12,7 @@
 #about-reference .prose p:last-child { margin-bottom: 0; }
 #about-reference .about-hero { min-height: 240px; height: min(52svh, 460px); display: flex; align-items: flex-end; padding: 60px 7%; background: var(--about-hero); }
 #about-reference .about-intro-grid { width: 86%; margin: 0 auto; padding-block: 80px 88px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8%; }
-#about-reference .about-intro-column { padding: 0; }
+#about-reference .about-intro-column { padding: 0; border: 0; }
 #about-reference .about-intro-grid > .hb:last-child { border-left: 2px solid var(--about-accent); padding-left: 9%; }
 #about-reference .about-core { background: var(--about-core); padding: 76px 7% 88px; }
 #about-reference #team { background: var(--about-core); }

@@ -167,7 +167,7 @@ def test_anonymous_auth_me_is_unauthorized(client, api_base_url):
     assert response.status_code == 401
 
 
-def test_public_menu_contains_rakhigarhi_hash_links(client, api_base_url):
+def test_public_menu_has_exactly_four_work_links_without_nested_submenus(client, api_base_url):
     response = client.get(f"{api_base_url}/api/public/site", timeout=20)
     assert response.status_code == 200
     site = response.json()
@@ -176,12 +176,12 @@ def test_public_menu_contains_rakhigarhi_hash_links(client, api_base_url):
     our_work = next((item for item in main_menu if item.get("href") == "/our-work"), None)
     assert our_work is not None
 
-    # Section links belong under Rakhigarhi, not alongside the four work areas.
-    rakhigarhi = next((c for c in our_work.get("children", []) if c.get("href") == "/our-work/rakhigarhi"), None)
-    assert rakhigarhi is not None
-    child_hrefs = {c.get("href") for c in rakhigarhi.get("children", [])}
-    assert "/our-work/rakhigarhi#archaeology" in child_hrefs
-    assert "/our-work/rakhigarhi#haveli-chaupal" in child_hrefs
+    # Updated user contract: only the four work areas, never third-level menus.
+    children = our_work.get("children", [])
+    assert [child.get("href") for child in children] == [
+        "/our-work/rakhigarhi", "/our-work/theatre", "/our-work/craft-livelihood", "/our-work/workshops-learning"
+    ]
+    assert all(not child.get("children") for child in children)
 
 
 def test_admin_rakhigarhi_page_contains_design_migration_flag(auth_client, api_base_url):

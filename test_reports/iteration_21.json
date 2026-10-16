@@ -1,0 +1,26 @@
+{
+  "author": "Main-agent final follow-up to iteration20",
+  "scope": ["Theatre reference completion", "Who We Are PDF/reference layout", "Live Editor reopen/retry fix", "Content JSON import/export"],
+  "backend": {"passed": 88, "failed": 0, "skipped": 0, "report": "/app/test_reports/pytest/final_layout_json_import.xml", "execution": "Serial pytest, backend/frontend environment loaded and existing owner credentials mapped to TEST_OWNER aliases"},
+  "build": {"result": "Compiled successfully", "report": "/app/test_reports/final_layout_json_build.log"},
+  "resolved_iteration20_findings": [
+    "Release media count assertions updated for the two approved Theatre photos: expected library now at least65, apply count compared to actual bundle size.",
+    "Rakhigarhi submenu regression test replaced with approved four-work-links/no-nested-submenu contract. No submenu restored; user requirements retained.",
+    "Previously skipped owner checks ran with existing credentials; no account creation or auth changes."
+  ],
+  "browser_evidence": {
+    "editor_delayed_load_and_three_reopen_cycles": "/root/.emergent/automation_output/20261016_084138",
+    "about_layout_smoke": "/root/.emergent/automation_output/20261016_092100",
+    "full_frontend_results": "/app/test_reports/iteration_20.json",
+    "verified_flows": ["About reference layout and responsive behavior", "Five intentionally editable portrait/name/bio placeholders", "JSON review cancel without changes", "JSON confirm, backup visibility/download and changed-text persistence", "Restoration to approved About copy", "Live Editor Retry after a test-injected content-load failure"]
+  },
+  "import_contract": {
+    "admin_route": "/admin/transfer",
+    "formats": ["USP content JSON v1", "metadata backup top-level collections", "content.json collections shape"],
+    "safety": ["full validation before writes", "automatic backup", "file/state fingerprint checks", "rollback after injected write failure", "protected accounts/enquiries/security settings excluded", "unlisted records retained"],
+    "binary_media": "Not uploaded by JSON; metadata references existing storage. Separate ZIP flow remains available."
+  },
+  "final_data_check": {"non_about_page_content_differences_from_pre_about_backup": [], "shared_settings_differences": [], "team_placeholders": 5, "release_state": "ready", "release_counts": {"pages": 10, "notes": 3, "media": 65, "redirects": 1}, "sections": {"about": 8, "theatre": 7, "rakhigarhi": 9, "workshops_learning": 9}},
+  "mocked_application_flows": [],
+  "remaining": ["Real team photos/names/bios intentionally deferred by user", "Existing Workshops film destination and approved photos pending", "Live production verification after a future updated republish has not been performed"]
+}

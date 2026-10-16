@@ -10,6 +10,7 @@ import routes_admin
 import routes_media
 import routes_public
 import routes_content_release
+import routes_content_json
 from content_sync import runtime as content_runtime
 from seed import seed
 
@@ -43,7 +44,7 @@ async def security(request: Request, call_next):
     return resp
 
 
-for r in (routes_auth.router, routes_admin.router, routes_media.router, routes_public.router, routes_content_release.router):
+for r in (routes_auth.router, routes_admin.router, routes_media.router, routes_public.router, routes_content_release.router, routes_content_json.router):
     app.include_router(r)
 
 app.add_middleware(CORSMiddleware, allow_credentials=True, allow_origins=ALLOWED_ORIGINS, allow_methods=["*"], allow_headers=["*"])
@@ -51,8 +52,13 @@ app.add_middleware(CORSMiddleware, allow_credentials=True, allow_origins=ALLOWED
 
 @app.middleware("http")
 async def coordinate_content_writes(request: Request, call_next):
-    async with content_runtime.write_guard(request.url.path, request.method):
-        return await call_next(request)
+    try:
+        async with content_runtime.write_guard(request.url.path, request.method):
+            return await call_next(request)
+    except RuntimeError as error:
+        if str(error).startswith("Another content operation is still in progress"):
+            return JSONResponse({"detail": "Another content operation is in progress. Please retry shortly; nothing was imported."}, status_code=409)
+        raise
 
 
 @app.on_event("startup")

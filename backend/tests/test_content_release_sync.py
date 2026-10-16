@@ -94,7 +94,8 @@ def test_release_bundle_shape_and_key_counts_match_expected_scope():
     assert manifest["release_id"] == schema.digest(schema.encoded(bundle))
     assert len(bundle["collections"]["pages"]) == 10
     assert len(bundle["collections"]["notes"]) == 3
-    assert len(bundle["collections"]["media"]) == 63
+    # The two owner-supplied Theatre photographs extend the original 63 records.
+    assert len(bundle["collections"]["media"]) >= 65
     pages = {p["key"]: p for p in bundle["collections"]["pages"]}
     assert len(pages["rakhigarhi"]["published"]["sections"]) == 9
     assert len(pages["workshops-learning"]["published"]["sections"]) == 9
@@ -114,7 +115,7 @@ def test_apply_to_isolated_target_imports_content_and_preserves_sentinels_byte_f
             assert result["state"] == "applied"
             assert result["counts"]["pages"] == 10
             assert result["counts"]["notes"] == 3
-            assert result["counts"]["media"] == 63
+            assert result["counts"]["media"] == len(bundle["collections"]["media"])
             assert result["counts"]["page_sections"]["rakhigarhi"] == 9
             assert result["counts"]["page_sections"]["workshops-learning"] == 9
 

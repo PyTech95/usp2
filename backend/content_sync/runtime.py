@@ -39,14 +39,14 @@ async def prepare():
 
 
 def is_content_mutation(path):
-    return any(path.startswith(f"/api/admin/{part}") for part in ("pages", "notes", "media", "menus", "settings", "site-live", "site-styles", "header-live", "site-import", "revisions")) or path == "/api/admin/restore"
+    return any(path.startswith(f"/api/admin/{part}") for part in ("pages", "notes", "media", "menus", "settings", "site-live", "site-styles", "header-live", "site-import", "content-import", "revisions")) or path == "/api/admin/restore"
 
 
 @asynccontextmanager
 async def write_guard(path, method):
     # Coordinate saves in old/new pods with release application, so neither can
     # overwrite a successful concurrent save between reading and importing data.
-    if method in {"POST", "PUT", "PATCH", "DELETE"} and is_content_mutation(path) and config() and not await is_source(db, config()):
+    if method in {"POST", "PUT", "PATCH", "DELETE"} and is_content_mutation(path):
         async with lease(db, "promotion"):
             yield
     else:
@@ -54,7 +54,7 @@ async def write_guard(path, method):
 
 
 async def after_mutation(path, method, status_code):
-    if method not in {"POST", "PUT", "PATCH", "DELETE"} or not 200 <= status_code < 300 or not is_content_mutation(path) or not config():
+    if path.endswith("/content-import/preview") or method not in {"POST", "PUT", "PATCH", "DELETE"} or not 200 <= status_code < 300 or not is_content_mutation(path) or not config():
         return None
     if not await is_source(db, config()):
         return None
