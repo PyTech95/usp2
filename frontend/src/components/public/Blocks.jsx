@@ -12,6 +12,7 @@ import { isImageField } from "./editor/editorFields";
 import { SiteText } from "./editor/SiteText";
 import { applyTypography } from "./editor/typography";
 import { TheatreHero, TheatreArchive, TheatreProduction } from "./TheatreSections";
+import { AboutHero, AboutIntroduction, AboutTeam, AboutApproach } from "./AboutSections";
 
 export const fontStack = (f) => `"${f}", system-ui, sans-serif`;
 const LAYOUT_PROPS = ["width", "maxWidth", "height", "overflow", "transform", "position", "alignSelf", "justifySelf", "zIndex", "paddingTop", "paddingBottom", "paddingLeft", "paddingRight", "marginTop", "marginBottom", "marginLeft", "marginRight"];
@@ -93,6 +94,9 @@ function AreaStrip() {
 
 function Hero({ d, s, first, i, home, pageKey }) {
   const hasImg = !!d.image?.media;
+  if (pageKey === "about" && d.layout === "about-hero") {
+    return <AboutHero data={d} first={first} id={`block-${i}`} editable={(field) => sx(s, field)} />;
+  }
   if (pageKey === "theatre") {
     return <TheatreHero data={d} first={first} id={`block-${i}`} editable={(field) => sx(s, field)} />;
   }
@@ -188,7 +192,7 @@ export function Block(props) {
   const hasBg = !!secStyle?.backgroundColor;
   return <div id={d.anchor || undefined} className={`hb hb-${t} ${d.band ? "band" : ""} ${hasBg ? "hb-bg" : ""}`} data-block-type={t} data-sec={props.s.id} style={style} ref={(node) => {
     applyProps(node, style || {}, [...LAYOUT_PROPS, "backgroundColor", "borderRadius"]);
-    if (node) node.querySelectorAll(":scope > section, .hero-plain, .rak-hero, .workshops-hero, .craft-hero-intro").forEach((child) => {
+    if (node) node.querySelectorAll(":scope > section, .hero-plain, .rak-hero, .workshops-hero, .craft-hero-intro, .about-hero").forEach((child) => {
       if (hasBg) child.style.setProperty("background-color", "transparent", "important");
       else child.style.removeProperty("background-color");
     });
@@ -220,6 +224,10 @@ function BlockInner({ s, first, i, home, pageKey }) {
   const d = s.data || {};
   const t = s.type;
   const id = `block-${i}`;
+  if (pageKey === "about") {
+    const Component = { "about-intro-left": AboutIntroduction, "about-intro-right": AboutIntroduction, "about-team": AboutTeam, "about-approach": AboutApproach }[d.layout];
+    if (Component) return <Component data={d} id={id} editable={(field) => sx(s, field)} />;
+  }
   if (pageKey === "theatre" && d.layout === "theatre-archive") {
     return <TheatreArchive data={d} id={id} editable={(field) => sx(s, field)} />;
   }
@@ -341,15 +349,15 @@ function BlockInner({ s, first, i, home, pageKey }) {
 export function Blocks({ sections, home = false, pageKey }) {
   const visible = sections.filter((s) => !s.hidden);
   const render = (s, i) => <Block key={s.id || i} s={s} i={i} first={i === 0} home={home} pageKey={pageKey} />;
-  if (pageKey !== "rakhigarhi") return visible.map(render);
+  if (!["rakhigarhi", "about"].includes(pageKey)) return visible.map(render);
   const result = [];
   let group = [];
   const flush = () => {
-    if (group.length) result.push(<div className="rak-use-grid" data-testid={`rakhigarhi-use-grid-${result.length}`} key={`use-${group[0].key}`}>{group}</div>);
+    if (group.length) result.push(<div className={pageKey === "about" ? "about-intro-grid" : "rak-use-grid"} data-testid={`${pageKey === "about" ? "about-intro-grid" : "rakhigarhi-use-grid"}-${result.length}`} key={`use-${group[0].key}`}>{group}</div>);
     group = [];
   };
   visible.forEach((s, i) => {
-    if (s.data?.layout === "haveli-use") group.push(render(s, i));
+    if (pageKey === "about" ? s.data?.layout?.startsWith("about-intro-") : s.data?.layout === "haveli-use") group.push(render(s, i));
     else { flush(); result.push(render(s, i)); }
   });
   flush();

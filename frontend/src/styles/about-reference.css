@@ -1,0 +1,74 @@
+/* Owner-supplied Who We Are layout. Everything is scoped to the page, not shared chrome. */
+#about-reference { --about-paper: #fff; --about-hero: #ebeae6; --about-core: #f7f7f6; --about-panel: #f2f2f1; --about-portrait: #e9e7e7; --about-ink: #3c3c3b; --about-accent: #a72a50; width: min(92%, 1440px); margin: 0 auto; background: var(--about-paper); color: var(--about-ink); font-family: "Public Sans", sans-serif; padding-bottom: 84px; }
+#about-reference .crumbs { display: none; }
+#about-reference .hb { background: transparent; border: 0; margin: 0; }
+#about-reference .hb > section { background: transparent; }
+#about-reference :is(.h1, .h2, .h3) { font-family: "Public Sans", sans-serif !important; font-weight: 300 !important; color: var(--about-ink); letter-spacing: 0 !important; text-wrap: auto; max-width: none; padding: 0; border: 0; }
+#about-reference .h1 { font-size: 48px; line-height: 1.25; margin: 0; }
+#about-reference .h2 { font-size: 18px !important; line-height: 1.4; margin: 0 0 36px; }
+#about-reference .about-title::after { content: ""; display: block; width: 50px; height: 2px; background: var(--about-accent); margin-top: 22px; }
+#about-reference :is(.prose, .prose p) { font: 300 16px/1.7 "Public Sans", sans-serif !important; letter-spacing: 0; max-width: none; color: var(--about-ink); }
+#about-reference .prose p { margin: 0 0 24px; }
+#about-reference .prose p:last-child { margin-bottom: 0; }
+#about-reference .about-hero { min-height: 240px; height: min(52svh, 460px); display: flex; align-items: flex-end; padding: 60px 7%; background: var(--about-hero); }
+#about-reference .about-intro-grid { width: 86%; margin: 0 auto; padding-block: 80px 88px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8%; }
+#about-reference .about-intro-column { padding: 0; }
+#about-reference .about-intro-grid > .hb:last-child { border-left: 2px solid var(--about-accent); padding-left: 9%; }
+#about-reference .about-core { background: var(--about-core); padding: 76px 7% 88px; }
+#about-reference #team { background: var(--about-core); }
+#about-reference .about-team-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 52px 24px; max-width: 1100px; margin: 0 auto; }
+#about-reference .about-team-member { grid-column: span 2; min-width: 0; }
+#about-reference .about-team-member:nth-child(4):nth-last-child(2) { grid-column: 2 / span 2; }
+#about-reference .about-team-portrait { width: 100%; aspect-ratio: 3/4; margin: 0 0 14px; border: 0; border-radius: 0; box-shadow: none; }
+#about-reference .about-team-portrait .photo-frame { height: 100%; border: 0; border-radius: 0; box-shadow: none; }
+#about-reference .about-team-portrait img { width: 100%; height: 100%; aspect-ratio: 3/4; object-fit: contain; }
+#about-reference .about-team-portrait.photo-placeholder { background: var(--about-portrait); }
+#about-reference .about-team-portrait.photo-placeholder .photo-frame { display: flex; justify-content: center; align-items: center; padding: 16px; text-align: center; }
+#about-reference .photo-placeholder .photo-frame > svg { display: none; }
+#about-reference .photo-placeholder .photo-frame > span { color: #747171; font-size: 10px; text-transform: uppercase; letter-spacing: 0; }
+#about-reference .about-person-name { margin: 0 0 4px; font: 400 16px/1.45 "Public Sans", sans-serif; overflow-wrap: anywhere; }
+#about-reference .about-person-intro { margin: 0; font: 300 14px/1.55 "Public Sans", sans-serif; overflow-wrap: anywhere; }
+#about-reference .about-approach { width: 86%; margin: 80px auto 0; display: grid; grid-template-columns: minmax(0, 60fr) minmax(0, 40fr); gap: 4%; align-items: center; position: relative; isolation: isolate; padding: 64px 0; }
+#about-reference .about-approach::before { content: ""; position: absolute; inset: 0 24% 0 0; background: var(--about-panel); z-index: -1; }
+#about-reference .about-approach-copy { padding-inline: 8% 3%; min-width: 0; }
+#about-reference .about-approach .h2 { margin-bottom: 30px; }
+#about-reference .about-principles { background: var(--about-portrait); padding: 42px 30px; min-width: 0; }
+#about-reference .about-principles ul { list-style: none; padding: 16px 0 16px 28px; margin: 0; border-left: 2px solid var(--about-accent); }
+#about-reference .about-principles li { font: 300 18px/1.6 "Public Sans", sans-serif; margin: 0 0 20px; overflow-wrap: anywhere; }
+#about-reference .about-principles li:last-child { margin-bottom: 0; }
+@media (max-width: 1024px) {
+  #about-reference .h1 { font-size: 40px; }
+  #about-reference .about-hero { height: 320px; padding-block: 44px; }
+  #about-reference .about-intro-grid { padding-block: 56px 64px; gap: 6%; }
+  #about-reference .about-core { padding-block: 56px 64px; }
+  #about-reference .about-team-grid { gap: 36px 18px; }
+  #about-reference .about-approach { width: 90%; margin-top: 56px; gap: 3%; padding-block: 48px; }
+  #about-reference .about-approach-copy { padding-inline: 7% 2%; }
+  #about-reference .about-principles { padding: 32px 22px; }
+  #about-reference .about-principles ul { padding-left: 20px; }
+  #about-reference .about-principles li { font-size: 16px; }
+}
+@media (max-width: 760px) {
+  #about-reference .about-approach { grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 36px 24px; }
+  #about-reference .about-approach::before { inset: 0; }
+  #about-reference .about-approach-copy { padding: 0; }
+}
+@media (max-width: 700px) {
+  #about-reference { width: calc(100% - 24px); padding-bottom: 40px; }
+  #about-reference .h1 { font-size: 34px; }
+  #about-reference .h2 { font-size: 16px !important; }
+  #about-reference :is(.prose, .prose p) { font-size: 14px !important; }
+  #about-reference .about-hero { min-height: 220px; height: 220px; padding: 32px 24px; }
+  #about-reference .about-title::after { width: 40px; margin-top: 16px; }
+  #about-reference .about-intro-grid { width: auto; margin-inline: 24px; padding-block: 40px; grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  #about-reference .about-intro-grid > .hb:last-child { padding-left: 20px; }
+  #about-reference .about-core { padding: 40px 24px; }
+  #about-reference .about-team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 16px; }
+  #about-reference .about-team-member, #about-reference .about-team-member:nth-child(4):nth-last-child(2) { grid-column: auto; }
+  #about-reference .about-team-member:last-child:nth-child(odd) { grid-column: 1 / -1; width: calc(50% - 8px); justify-self: center; }
+  #about-reference .about-approach { width: 100%; margin-top: 40px; }
+}
+@media (max-width: 480px) {
+  #about-reference .about-team-grid { grid-template-columns: minmax(0, 1fr); }
+  #about-reference .about-team-member:last-child:nth-child(odd) { width: 100%; grid-column: auto; }
+}

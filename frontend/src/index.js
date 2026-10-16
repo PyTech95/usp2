@@ -7,6 +7,7 @@ import "@/styles/craft-reference.css";
 import "@/styles/workshops-reference.css";
 import "@/styles/rakhigarhi-reference.css";
 import "@/styles/theatre-reference.css";
+import "@/styles/about-reference.css";
 import "@/styles/live-editor-access.css";
 import App from "@/App";
 

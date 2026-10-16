@@ -1,0 +1,17 @@
+{
+  "sections": [
+    {"match": "hero", "type": "hero", "data": {"layout": "about-hero", "heading": "Who We Are", "eyebrow": "", "intro": "", "buttons": []}},
+    {"match": "Our story", "type": "text", "data": {"layout": "about-intro-left", "heading": "", "body_html": "<p>Urban Suburban Perspectives (USP) works at the intersection of heritage, art and culture. It grew from a shared appreciation of our cultural inheritance, a passion for creative expression, and a desire to translate these interests into meaningful, enduring work.</p><p>Our work takes different forms—from heritage conservation and traditional crafts to original theatre. Through these initiatives, we seek to preserve and renew cultural knowledge, nurture artistic expression, and create opportunities for learning, livelihood, and community engagement.</p>"}},
+    {"match": "Purpose", "type": "text", "data": {"layout": "about-intro-right", "heading": "", "body_html": "<p>We believe that heritage, art and culture are not merely valuable in themselves; they can also bring people together, foster dialogue, strengthen communities, support local enterprise, and contribute to social, cultural and economic well-being.</p><p>Our aim is to develop work that honours the past while engaging with the present and remaining open to new ideas—creating meaningful experiences and lasting value for the people and communities with whom we work.</p>"}},
+    {"match": "Team", "type": "gallery", "data": {"layout": "about-team", "heading": "The Core", "anchor": "team", "body_html": "", "items": [
+      {"name": "Name", "intro": "Short introduction", "image": {"media_id": "", "placeholder": true, "placeholder_label": "Photograph 01"}},
+      {"name": "Name", "intro": "Short introduction", "image": {"media_id": "", "placeholder": true, "placeholder_label": "Photograph 02"}},
+      {"name": "Name", "intro": "Short introduction", "image": {"media_id": "", "placeholder": true, "placeholder_label": "Photograph 03"}},
+      {"name": "Name", "intro": "Short introduction", "image": {"media_id": "", "placeholder": true, "placeholder_label": "Photograph 04"}},
+      {"name": "Name", "intro": "Short introduction", "image": {"media_id": "", "placeholder": true, "placeholder_label": "Photograph 05"}}
+    ]}},
+    {"match": "Approach", "type": "text", "data": {"layout": "about-approach", "anchor": "our-approach", "heading": "Our Approach", "body_html": "<p>Every initiative begins with an understanding of the people, places, and traditions involved. This means exploring what already exists, recognising the knowledge and experiences people bring, and considering what new possibilities might emerge.</p><p>Bringing together different skills and perspectives creates opportunities for collaboration and experimentation, allowing ideas to develop through participation, practice, and exchange.</p><p>We believe there is room for both preservation and imagination. Historic buildings can find new purposes without losing their character, traditional skills can inspire contemporary design, and familiar stories can find new forms of expression.</p>", "values": [
+      {"text": "Cultural Sustainability"}, {"text": "Conscious Practice"}, {"text": "Responsible Innovation"}, {"text": "Collaboration & Community"}
+    ]}}
+  ]
+}

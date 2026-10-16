@@ -40,7 +40,7 @@ export function PageBody({ pageKey, content: initial, live }) {
     noindex: seo.noindex,
   });
   return (
-    <div id={{ home: "home-reference", "craft-livelihood": "craft-reference", "workshops-learning": "workshops-reference", rakhigarhi: "rakhigarhi-reference", theatre: "theatre-reference" }[pageKey]} data-testid={`page-${pageKey}`} className={`page-${pageKey}`}>
+    <div id={{ home: "home-reference", "craft-livelihood": "craft-reference", "workshops-learning": "workshops-reference", rakhigarhi: "rakhigarhi-reference", theatre: "theatre-reference", about: "about-reference" }[pageKey]} data-testid={`page-${pageKey}`} className={`page-${pageKey}`}>
       <Crumbs path={PATHS[pageKey]} title={content.title} />
       <Fragment key={rev}><Blocks sections={content.sections} home={pageKey === "home"} pageKey={pageKey} /></Fragment>
       {live && <LiveEditor pageKey={pageKey} content={content} setContent={setContent} original={initial} remount={() => setRev((r) => r + 1)} />}

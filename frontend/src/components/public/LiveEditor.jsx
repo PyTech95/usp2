@@ -85,6 +85,7 @@ function Editor({ pageKey, content, setContent, original, remount, noteId }) {
   const [base, setBase] = useState(original);
   const [busy, setBusy] = useState(false);
   const [ready, setReady] = useState(!!noteId), [loadError, setLoadError] = useState("");
+  const [loadAttempt, setLoadAttempt] = useState(0);
   const [picker, setPicker] = useState(false);
   const [addAt, setAddAt] = useState(null);
   const [rect, setRect] = useState(null);
@@ -106,7 +107,7 @@ function Editor({ pageKey, content, setContent, original, remount, noteId }) {
       setHist({ past: [], future: [] }); setReady(true);
     }).catch((e) => { if (current) setLoadError(errMsg(e)); });
     return () => { current = false; };
-  }, [on, noteId, pageKey, setContent]);
+  }, [on, noteId, pageKey, setContent, loadAttempt]);
 
   const sections = content.sections;
   const sec = sel && sections.find((s) => s.id === sel.sec);
@@ -366,6 +367,7 @@ function Editor({ pageKey, content, setContent, original, remount, noteId }) {
   if (!on || scope !== "page") return null;
   if (!ready) return <aside className="live-ui live-panel" data-testid="live-editor-loading" role={loadError ? "alert" : "status"}>
     <p>{loadError || "Loading editable content…"}</p>
+    {loadError && <button type="button" className="live-btn" onClick={() => setLoadAttempt((n) => n + 1)} data-testid="live-loading-retry">Retry loading</button>}
     <button type="button" className="live-btn" onClick={exit} data-testid="live-loading-close">Close editor</button>
   </aside>;
 

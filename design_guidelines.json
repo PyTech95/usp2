@@ -1,7 +1,7 @@
 {
-  "page_title": "USP Theatre - Stories Beyond the Stage Redesign Blueprint",
-  "target_route": "/our-work/theatre",
-  "context": "NGO Cultural Website / Theatre Page Editorial Redesign",
+  "page_title": "WHO WE ARE (/about) Redesign Blueprint",
+  "target_route": "/about",
+  "context": "NGO Cultural Website / About Page Editorial Redesign with Visual CMS",
   "typography": {
     "heading_font": "Cormorant, Georgia, serif",
     "body_font": "Public Sans, -apple-system, BlinkMacSystemFont, sans-serif",
@@ -9,22 +9,23 @@
     "h1": {
       "font_family": "Cormorant, Georgia, serif",
       "font_weight": "400",
-      "line_height": "1.18",
+      "line_height": "1.2",
       "letter_spacing": "-0.015em",
-      "font_size": "clamp(36px, 3.2vw, 52px)"
+      "font_size": "clamp(32px, 3.5vw, 52px)"
     },
     "h2": {
       "font_family": "Cormorant, Georgia, serif",
       "font_weight": "400",
       "line_height": "1.25",
-      "letter_spacing": "-0.01em",
-      "font_size": "clamp(26px, 2.2vw, 34px)"
+      "letter_spacing": "0.05em",
+      "text_transform": "uppercase",
+      "font_size": "clamp(24px, 2.5vw, 36px)"
     },
     "h3": {
       "font_family": "Cormorant, Georgia, serif",
       "font_weight": "500",
       "line_height": "1.3",
-      "font_size": "clamp(20px, 1.5vw, 24px)"
+      "font_size": "clamp(20px, 1.8vw, 24px)"
     },
     "eyebrow": {
       "font_family": "Public Sans, sans-serif",
@@ -37,9 +38,9 @@
     "body": {
       "font_family": "Public Sans, sans-serif",
       "font_weight": "300",
-      "font_size": "15px",
-      "line_height": "1.75",
-      "letter_spacing": "0.02em",
+      "font_size": "16px",
+      "line_height": "1.8",
+      "letter_spacing": "0.01em",
       "color": "#444444"
     },
     "button": {
@@ -66,61 +67,63 @@
   },
   "visual_enhancers": {
     "borders": "1px solid #E6E6E6",
-    "hover_state": "Subtle border-color transition to #111111, image micro-zoom scale(1.02)",
+    "hover_state": "Subtle border-color transition to #111111, card micro-elevation",
     "shadows": "Flat non-gradient subtle ambient crisp edges",
-    "framing": "Clean 1px stroke around photography cards without heavy elevation"
+    "framing": "Clean 1px stroke around team photo placeholders and core principle cards"
   },
-  "image_urls": {
-    "hero_photo": {
-      "url": "https://customer-assets-39nsmqrw.emergentagent.net/job_5ec4ca08-0c12-4a0c-bc35-7fc5dff11a55/artifacts/b778a6c623a41081_Joyful%20Dance%20on%20a%20Warm%20Theater%20Stage.png",
-      "alt": "Joyful Dance on a Warm Theater Stage (Women in white costumes performing)",
-      "usage": "Hero section prominent feature image",
-      "aspect_ratio": "16/10 desktop, 4/3 mobile"
-    },
-    "past_productions_photo": {
-      "url": "https://customer-assets-39nsmqrw.emergentagent.net/job_5ec4ca08-0c12-4a0c-bc35-7fc5dff11a55/artifacts/90b0f0aee5d39b17_Dramatic%20Trio%20Under%20Stage%20Lights.png",
-      "alt": "Dramatic Trio Under Stage Lights (Performers in red, grey, green stage attire)",
-      "usage": "Past Productions / In Performance section feature photo",
-      "aspect_ratio": "16/10 desktop, 4/3 mobile"
-    },
-    "reference_screenshot": {
-      "url": "https://customer-assets-39nsmqrw.emergentagent.net/job_5ec4ca08-0c12-4a0c-bc35-7fc5dff11a55/artifacts/79f9c86531650c51_USP%20Theatre%20stories%20beyond%20the%20stage%20%281%29.webp",
-      "alt": "USP Theatre reference screenshot layout target"
-    }
+  "approved_pdf_content": {
+    "hero_intro_paragraphs": [
+      "Urban Suburban Perspectives (USP) works at the intersection of heritage, art and culture. It grew from a shared appreciation of our cultural inheritance, a passion for creative expression, and a desire to translate these interests into meaningful, enduring work.",
+      "Our work takes different forms—from heritage conservation and traditional crafts to original theatre. Through these initiatives, we seek to preserve and renew cultural knowledge, nurture artistic expression, and create opportunities for learning, livelihood, and community engagement.",
+      "We believe that heritage, art and culture are not merely valuable in themselves; they can also bring people together, foster dialogue, strengthen communities, support local enterprise, and contribute to social, cultural and economic well-being.",
+      "Our aim is to develop work that honours the past while engaging with the present and remaining open to new ideas—creating meaningful experiences and lasting value for the people and communities with whom we work."
+    ],
+    "the_core_placeholders_count": 5,
+    "our_approach_paragraphs": [
+      "Every initiative begins with an understanding of the people, places, and traditions involved. This means exploring what already exists, recognising the knowledge and experiences people bring, and considering what new possibilities might emerge.",
+      "Bringing together different skills and perspectives creates opportunities for collaboration and experimentation, allowing ideas to develop through participation, practice, and exchange.",
+      "We believe there is room for both preservation and imagination. Historic buildings can find new purposes without losing their character, traditional skills can inspire contemporary design, and familiar stories can find new forms of expression."
+    ],
+    "core_principles": [
+      "Cultural Sustainability",
+      "Conscious Practice",
+      "Responsible Innovation",
+      "Collaboration & Community"
+    ]
   },
   "grids_and_layouts": {
-    "wrap_container": "max-width: 1376px; margin: 0 auto; padding-inline: clamp(20px, 5vw, 64px);",
-    "hero_grid": "2-column split (Text 5fr, Hero Photo 7fr) on desktop (>=1024px); 1-column on mobile (<1024px)",
-    "text_cols_split": "Left header sticky/static 5fr, Right prose content 7fr; gap: clamp(2rem, 4vw, 4.5rem)",
-    "past_productions_split": "5fr left text / 7fr right photo with structured caption & action links",
-    "explore_grid": "4-column grid (>=1280px), 2-column (640px-1279px), 1-column (<640px)"
+    "wrap_container": "max-width: 1376px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 64px);",
+    "hero_layout": "Single max-w-4xl column editorial narrative layout with elegant left alignment",
+    "the_core_grid": "5 editable team member placeholders grid (3 cols top + 2 cols bottom on desktop; 2 cols on tablet; 1 col on mobile)",
+    "our_approach_layout": "Intro prose column followed by 4-column principle card grid (4 cols on desktop, 2 cols on tablet, 1 col on mobile)"
   },
   "responsive_breakpoints": {
     "breakpoint_320": {
       "padding_inline": "16px",
       "h1_size": "32px",
       "h2_size": "24px",
-      "hero_layout": "Single column vertical stack, image ratio 4/3",
-      "button_width": "100% full width"
+      "team_grid": "Single column vertical stack",
+      "principles_grid": "Single column vertical stack"
     },
     "breakpoint_768": {
       "padding_inline": "32px",
       "h1_size": "38px",
       "h2_size": "26px",
-      "hero_layout": "Single column vertical stack with centered photo container"
+      "team_grid": "2-column grid",
+      "principles_grid": "2-column grid"
     },
     "breakpoint_1024": {
       "padding_inline": "48px",
       "h1_size": "44px",
       "h2_size": "28px",
-      "hero_layout": "2-column grid layout (5fr text / 7fr photo)",
-      "text_cols_layout": "2-column split layout"
+      "team_grid": "3-column + 2-column centered grid",
+      "principles_grid": "4-column grid"
     },
     "breakpoint_1440": {
       "padding_inline": "64px",
       "h1_size": "48px",
       "h2_size": "32px",
-      "hero_layout": "Optimal editorial 2-column grid layout"
+      "team_grid": "5-column responsive grid layout"
     },
     "breakpoint_1920": {
       "padding_inline": "80px",
@@ -130,21 +133,19 @@
     }
   },
   "component_mapping": {
-    "Hero": "/app/frontend/src/components/public/CraftHero.jsx",
     "Blocks": "/app/frontend/src/components/public/Blocks.jsx",
-    "Photo": "/app/frontend/src/components/public/Photo.jsx",
+    "PhotoPlaceholder": "/app/frontend/src/components/public/PhotoPlaceholder.jsx",
     "PageView": "/app/frontend/src/pages/public/PageView.jsx",
     "LiveEditor": "/app/frontend/src/components/public/LiveEditor.jsx"
   },
   "instructions_to_main_agent": [
-    "Ensure exact copy and layout matching reference screenshot for /our-work/theatre page.",
-    "Preserve all existing shared links, header navigation dropdowns, footer links, and CMS LiveEditor capabilities.",
-    "Use the provided white-costume photo URL for the Theatre Hero section.",
-    "Use the provided red/green/grey-costume photo URL for the Past Productions/Performances section.",
-    "Do NOT generate or substitute external placeholder images — use the exact asset URLs provided.",
-    "All interactive elements (buttons, nav links, photo wrappers, card headers) MUST include role-based data-testid attributes (e.g. data-testid=\"theatre-hero-cta-button\").",
-    "Maintain strict typography: Headings in Cormorant, Body text in Public Sans, High-contrast monochrome palette (#111111 on #FFFFFF).",
-    "Respect responsive breakpoints (320px, 768px, 1024px, 1440px, 1920px) without image clipping or text truncation."
+    "Redesign the /about (WHO WE ARE) page layout following the Minimal Editorial Webpage Mockup screenshot.",
+    "Use approved PDF text for all 4 intro paragraphs, THE CORE section title with 5 team placeholders (no invented names), 3 approach paragraphs, and 4 core principles.",
+    "Preserve existing Live Editor capabilities, Blocks.jsx, and PhotoPlaceholder.jsx editable fields.",
+    "Do NOT alter shared header or footer components or other pages.",
+    "Do NOT generate fake external stock photos or invented identities for the core team placeholders.",
+    "All interactive elements and section headers MUST include data-testid attributes (e.g., data-testid=\"about-hero-heading\", data-testid=\"team-member-placeholder-1\").",
+    "Ensure total responsiveness across 320px, 768px, 1024px, 1440px, and 1920px viewports."
   ],
   "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
     "Avoid generic, AI-slop layouts: maintain crisp 1px borders, high-contrast monochrome design, and generous editorial line-height.",
@@ -153,7 +154,4 @@
     "Never use raw emoji characters as functional icons.",
     "Include data-testid on every button, link, CMS block wrapper, and interactive image component."
   ]
-},
-overwrite: true,
-path: "/app/design_guidelines.json"
-} axe-end
+}

@@ -59,6 +59,9 @@ def _block(s, d, t, h, head):
             intro = f'<p>{E(d["intro_heading"])}</p>' + intro
         return f'<section><p>{E(a(d, "eyebrow"))}</p>{head}{intro}{buttons(d.get("buttons"))}{figure(d.get("image"), eager=True)}</section>'
     if t == "text":
+        if d.get("layout") == "about-approach":
+            values = "".join(f'<li>{E(a(value, "text"))}</li>' for value in d.get("values", []))
+            return f'<section>{head}{a(d, "body_html")}<aside aria-label="Our principles"><ul>{values}</ul></aside></section>'
         if d.get("layout") == "theatre-production":
             link = buttons([{"href": d["link_href"], "label": d["link_label"]}]) if d.get("link_href") else ""
             return f'<section>{head}{a(d, "body_html")}{link}<p>{E(a(d, "question"))}</p>{a(d, "aside_html")}</section>'
@@ -71,6 +74,13 @@ def _block(s, d, t, h, head):
     if t == "image":
         return f"<section>{head}{figure(d.get('image'))}{a(d, 'body_html')}</section>"
     if t == "gallery":
+        if d.get("layout") == "about-team":
+            people = []
+            for i, person in enumerate(d.get("items", [])):
+                image = person.get("image") or {}
+                portrait = figure(image) or f'<p>{E(a(image, "placeholder_label", "Photograph"))}</p>'
+                people.append(f'<article data-testid="about-team-member-{i}">{portrait}<h3>{E(a(person, "name"))}</h3><p>{E(a(person, "intro"))}</p></article>')
+            return f'<section>{head}{"".join(people)}</section>'
         return f'<section>{head}{"".join(figure(i.get("image")) for i in d.get("items", []))}</section>'
     if t == "quote" and d.get("approved"):
         return f'<section><blockquote><p>{E(a(d, "quote"))}</p><footer>{E(a(d, "attribution"))}</footer></blockquote></section>'

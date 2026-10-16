@@ -28,11 +28,11 @@ export function LiveEditorProvider({ children, preview = false }) {
   const on = allowed && active;
   const setOn = (next) => {
     if (!next && dirty && !window.confirm("Discard unsaved changes and close the editor?")) return;
-    setActive(next); if (!next) setPending({ page: false, site: false });
+    setActive(next); if (!next) setPending({ page: false, site: false, header: false });
     if (!next) updateScope("page");
   };
   useEffect(() => {
-    if (user === false) { setActive(false); setPending({ page: false, site: false }); }
+    if (user === false) { setActive(false); setPending({ page: false, site: false, header: false }); }
   }, [user]);
   useEffect(() => {
     if (user === null || readOnly) return;
@@ -68,10 +68,7 @@ export function LiveEditorProvider({ children, preview = false }) {
   return <Context.Provider value={{ on, setOn, scope, setScope, registerDirty, headerPreview: on && scope === "header" ? headerPreview : null, setHeaderPreview, textStylePreview: on && scope === "site" ? textStylePreview : null, setTextStylePreview }}>
     {children}
     {allowed && <div className="live-ui live-dock" data-testid="live-editor-dock">
-      <button type="button" onClick={() => {
-        if (scope !== "page") setOn(false);
-        else setOn(!(on && document.querySelector('[data-live-panel-ready="true"]')));
-      }} aria-expanded={on} data-testid="live-editor-toggle">
+      <button type="button" onClick={() => setOn(!on)} aria-expanded={on} data-testid="live-editor-toggle">
         {on ? <X size={15} /> : <Pencil size={15} />} {on ? "Close editor" : "Live editor"}
       </button>
       {can("config") && <button type="button" title="Edit header" onClick={() => { setOn(true); setScope(scope === "header" ? "page" : "header"); }} aria-pressed={on && scope === "header"} data-testid="live-header-toggle"><PanelTop size={15} /> Edit Header</button>}
