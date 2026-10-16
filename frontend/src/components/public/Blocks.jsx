@@ -11,6 +11,7 @@ import { RakhigarhiHero, HaveliRestoration } from "./RakhigarhiSections";
 import { isImageField } from "./editor/editorFields";
 import { SiteText } from "./editor/SiteText";
 import { applyTypography } from "./editor/typography";
+import { TheatreHero, TheatreArchive, TheatreProduction } from "./TheatreSections";
 
 export const fontStack = (f) => `"${f}", system-ui, sans-serif`;
 const LAYOUT_PROPS = ["width", "maxWidth", "height", "overflow", "transform", "position", "alignSelf", "justifySelf", "zIndex", "paddingTop", "paddingBottom", "paddingLeft", "paddingRight", "marginTop", "marginBottom", "marginLeft", "marginRight"];
@@ -92,6 +93,9 @@ function AreaStrip() {
 
 function Hero({ d, s, first, i, home, pageKey }) {
   const hasImg = !!d.image?.media;
+  if (pageKey === "theatre") {
+    return <TheatreHero data={d} first={first} id={`block-${i}`} editable={(field) => sx(s, field)} />;
+  }
   if (pageKey === "rakhigarhi") {
     return <RakhigarhiHero data={d} id={`block-${i}`} editable={(field) => sx(s, field)} />;
   }
@@ -216,6 +220,12 @@ function BlockInner({ s, first, i, home, pageKey }) {
   const d = s.data || {};
   const t = s.type;
   const id = `block-${i}`;
+  if (pageKey === "theatre" && d.layout === "theatre-archive") {
+    return <TheatreArchive data={d} id={id} editable={(field) => sx(s, field)} />;
+  }
+  if (pageKey === "theatre" && d.layout === "theatre-production") {
+    return <TheatreProduction data={d} id={id} editable={(field) => sx(s, field)} />;
+  }
   if (pageKey === "rakhigarhi" && t === "image_text" && d.layout === "haveli-reference") {
     return <HaveliRestoration data={d} id={id} editable={(field) => sx(s, field)} />;
   }

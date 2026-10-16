@@ -1,0 +1,28 @@
+{
+  "sections": [
+    {
+      "match": "hero", "type": "hero", "photo": "hero",
+      "data": {"eyebrow": "Theatre", "heading": "Stories Brought to Life. Conversations Opened.", "intro_heading": "Original stories rooted in the world around us.", "intro": "Drawn from shared experiences, personal reflections and familiar situations, USP’s productions bring stories to the stage that audiences can recognise, enjoy and sometimes see differently.", "buttons": []}
+    },
+    {
+      "match": "Culture in Everyday Life", "type": "text",
+      "data": {"anchor": "everyday-culture", "eyebrow": "Culture in Everyday Life", "heading": "The Worlds We Live In.", "style": "columns", "body_html": "<p>Culture is not only found in architecture, craft, festivals and traditions. It also lives in family relationships, social conventions, rituals, expectations, and the way people relate to one another.</p><p>Theatre allows USP to explore this less tangible side of culture—bringing familiar experiences and situations to the stage through storytelling, humour and performance.</p><p>Some stories entertain. Others make us question.<br>The most memorable can do both.</p>"}
+    },
+    {
+      "match": "Theatre Over Time", "type": "image_text", "photo": "archive",
+      "data": {"anchor": "past-work", "eyebrow": "Theatre Over Time", "heading": "More Than a Decade of Original Work.", "layout": "theatre-archive", "body_html": "<p>For more than a decade, USP has developed and staged original theatre across a range of subjects, settings and characters.</p><p>Each production has its own story, tone, and perspective. Together, they reflect an ongoing interest in the cultural and social worlds around us.</p>", "link_label": "Explore Past Productions", "link_href": "/our-work/theatre#past-work"}
+    },
+    {
+      "match": "Current Production", "type": "text",
+      "data": {"anchor": "prayer-meeting", "eyebrow": "Current Production", "heading": "The Prayer Meeting Edit", "subheading": "A Familiar Setting. A Contemporary Conversation.", "layout": "theatre-production", "band": false, "body_html": "<p>The Prayer Meeting Edit is an original comedy set around a chautha—a familiar cultural gathering for prayer and remembrance.</p><p>As family and friends come together, relationships, expectations and social conventions begin to surface. What should be solemn becomes revealing, uncomfortable and unexpectedly funny.</p>", "question": "Beneath the humour lies a question:\nhow involved are women in the financial decisions that shape their own lives?", "aside_html": "<p>Through recognisable characters and situations, the play opens up conversations about money, independence and women’s involvement in decisions affecting their lives.</p>", "link_label": "Explore The Prayer Meeting Edit", "link_href": "/our-work/theatre#prayer-meeting"}
+    },
+    {
+      "match": "The Ambition", "type": "text",
+      "data": {"anchor": "theatre-ambition", "eyebrow": "The Ambition", "heading": "Stories That Travel\nBeyond the Stage.", "style": "stacked", "band": true, "body_html": "<p>The ambition is to continue developing original theatre that is engaging, culturally rooted, and relevant to contemporary life.</p><p>As the work grows, USP hopes to reach wider audiences and create space for different stories and perspectives, while remaining connected to the experiences and cultural contexts from which they emerge.</p>", "aside": "The performance ends.\nWhat it opens up can continue."}
+    },
+    {
+      "match": "contact_invite", "type": "contact_invite",
+      "data": {"anchor": "theatre-connect", "eyebrow": "Stay Connected with USP Theatre", "heading": "Be Part of What Comes Next.", "text": "Follow our productions, discover upcoming performances and connect with the work.", "button_label": "Connect with USP", "href": "/connect"}
+    }
+  ]
+}

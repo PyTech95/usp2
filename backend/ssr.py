@@ -55,10 +55,18 @@ def block(s, first):
 def _block(s, d, t, h, head):
     if t == "hero":
         intro = "".join(f"<p>{E(x)}</p>" for x in a(d, "intro").split("\n\n") if x.strip())
+        if d.get("intro_heading"):
+            intro = f'<p>{E(d["intro_heading"])}</p>' + intro
         return f'<section><p>{E(a(d, "eyebrow"))}</p>{head}{intro}{buttons(d.get("buttons"))}{figure(d.get("image"), eager=True)}</section>'
     if t == "text":
+        if d.get("layout") == "theatre-production":
+            link = buttons([{"href": d["link_href"], "label": d["link_label"]}]) if d.get("link_href") else ""
+            return f'<section>{head}{a(d, "body_html")}{link}<p>{E(a(d, "question"))}</p>{a(d, "aside_html")}</section>'
         return f'<section>{head}{a(d, "body_html")}{("<p>" + E(d["aside"]) + "</p>") if a(d, "aside") else ""}</section>'
     if t == "image_text":
+        if d.get("layout") == "theatre-archive":
+            link = buttons([{"href": d["link_href"], "label": d["link_label"]}]) if d.get("link_href") else ""
+            return f'<section>{head}{a(d, "body_html")}{figure(d.get("image"))}{link}</section>'
         return f'<section>{head}{a(d, "body_html")}{figure(d.get("image"))}</section>'
     if t == "image":
         return f"<section>{head}{figure(d.get('image'))}{a(d, 'body_html')}</section>"
