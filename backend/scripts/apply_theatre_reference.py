@@ -85,6 +85,9 @@ async def main(folder):
     if page.get("design_migration") == VERSION:
         print("Already applied; saved edits unchanged")
         return
+    if page.get("design_migration", "").startswith("four-page-reference-"):
+        print("A newer owner-approved Theatre reference is already applied; unchanged")
+        return
     backup_path = ROOT.parent / "memory/backups" / f"{VERSION}.json"
     backup_path.parent.mkdir(parents=True, exist_ok=True)
     if not backup_path.exists():

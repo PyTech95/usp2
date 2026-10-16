@@ -1,0 +1,16 @@
+{
+  "author": "Main-agent final follow-up to iteration22",
+  "scope": "Four-page exact reference matching: Craft, Theatre, Rakhigarhi, Home",
+  "backend": {"passed": 87, "failed": 0, "skipped": 1, "report": "/app/test_reports/pytest/pytest_results_iteration_22.xml", "skip_reason": "Legacy local-file hash check has no matching rehearsal original; public media resolution tests passed"},
+  "public_layout": {"result": "PASS", "report": "/app/test_reports/iteration_22.json", "viewports": [320,768,1024,1440,1920], "checks": ["all four routes and navigation", "no horizontal overflow", "Theatre rehearsal photograph and latest section order", "Rakh facade/title/detail/body placement and target sizes", "Craft/Home exact reference content and scoped CSS parity"]},
+  "editor_followup": {
+    "result": "PASS; prior automation uncertainty resolved by completed UI flow",
+    "evidence": "/root/.emergent/automation_output/20261016_145112",
+    "theatre": ["changed heading through field inspector", "31px font", "UI Save returned200", "database values verified", "reload retained text/font", "actual computed font31px", "close/reopen succeeded"],
+    "rakhigarhi": ["changed heading and31px font", "NEW12px translateX and620px image width", "UI Save returned200", "database values verified", "reload retained all values", "actual rendered image width620px", "close/reopen succeeded"],
+    "cleanup": "Both original published baselines restored through API; exact content equality True for both."
+  },
+  "build": {"result": "Compiled successfully", "report": "/app/test_reports/four_page_match_build.log"},
+  "mocked_application_flows": [],
+  "remaining": ["User visual review", "Actual production completion/verification not established by asynchronous deployment notifications"]
+}
